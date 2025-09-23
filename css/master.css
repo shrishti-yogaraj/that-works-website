@@ -249,12 +249,11 @@ h6 { font-size: 1rem; }
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    min-height: 300px; /* Ensures consistent card heights */
-    justify-content: center;
+    justify-content: space-between;
+    min-height: 320px;
+    text-align: center;
 }
-.card .text-secondary {
-    flex: 1; /* Makes the main content area expand to fill space */
-}
+
 .card::before {
     content: '';
     position: absolute;
@@ -276,41 +275,28 @@ h6 { font-size: 1rem; }
     border-color: var(--accent-color);
     box-shadow: var(--shadow-xl);
 }
-.card-detail {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(255, 107, 53, 0.95);
-    color: white;
-    padding: var(--space-md);
-    border-radius: 0 0 var(--radius-xl) var(--radius-xl);
-    transform: translateY(100%);
-    opacity: 0;
-    transition: all 0.3s ease;
-}
-
-.card:hover .card-detail {
-    transform: translateY(0);
-    opacity: 1;
-}
 
 .card-content {
-    transition: all 0.3s ease;
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-bottom: var(--space-lg); /* Ensures space for hover content */
 }
 
-.card:hover .card-content {
-    transform: translateY(-15px); /* Moves existing content up */
+.card-detail {
+    background: var(--subtle-gradient);
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
+    margin-top: var(--space-md);
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .card:hover .card-detail {
-    bottom: var(--space-md);
+    max-height: 100px;
     opacity: 1;
 }
 /* Agent Cards (Special Component) */
