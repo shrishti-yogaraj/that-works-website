@@ -145,6 +145,54 @@
             font-size: 0.85rem;
             margin: 1rem 0;
         }
+        .faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.faq-item {
+    background: var(--accent-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.faq-icon {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--accent-color);
+    transition: transform 0.2s ease;
+}
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+.faq-answer p {
+    padding: 0 1.25rem 1.25rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+/* Active state for accordion */
+.faq-item.active .faq-answer {
+    max-height: 200px; /* Adjust if your answers are longer */
+}
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
     </style>
 </head>
 <body>
@@ -169,11 +217,11 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero" style="min-height: 70vh; padding: 8rem 0 4rem;">
+        <section class="hero" style="min-height: 50vh; padding: 8rem 0 4rem;">
             <div class="container">
                 <div class="hero-content">
                     <h1 class="fade-in" style="font-weight: 900; font-size: clamp(2.5rem, 6vw, 4rem); line-height: 0.95; margin-bottom: 1.5rem;">
-                        Simple, Transparent <span class="text-gradient">Pricing</span>
+                        Find the <span class="text-gradient">Right Plan</span>
                     </h1>
                     <p class="hero-description fade-in stagger-1" style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
                         Choose the plan that fits your business size and goals. All plans include our core lead generation automation.
@@ -337,27 +385,44 @@
                 </div>
                 
                 <div style="max-width: 800px; margin: 0 auto;">
-                    <div style="display: grid; gap: 1.5rem;">
-                        <div class="card">
-                            <h4 style="margin-bottom: 0.5rem;">How quickly can I get started?</h4>
-                            <p style="color: var(--text-secondary);">Setup takes 48-72 hours after purchase. We handle the technical integration while you provide your ideal customer profile and messaging preferences.</p>
-                        </div>
-                        
-                        <div class="card">
-                            <h4 style="margin-bottom: 0.5rem;">What's included in the free trial?</h4>
-                            <p style="color: var(--text-secondary);">14-day full access to your chosen plan with up to 100 prospects researched and contacted. No setup fees, cancel anytime.</p>
-                        </div>
-                        
-                        <div class="card">
-                            <h4 style="margin-bottom: 0.5rem;">Do you offer custom pricing for larger volumes?</h4>
-                            <p style="color: var(--text-secondary);">Yes! Enterprise customers processing 5,000+ prospects monthly can get volume discounts. Contact our sales team for custom pricing.</p>
-                        </div>
-                        
-                        <div class="card">
-                            <h4 style="margin-bottom: 0.5rem;">What happens if I exceed my prospect limit?</h4>
-                            <p style="color: var(--text-secondary);">We'll contact you before you hit your limit. You can upgrade your plan or purchase additional prospect credits at $1 per prospect.</p>
-                        </div>
-                    </div>
+                    <div class="faq-accordion">
+    <div class="faq-item">
+        <button class="faq-question">
+            <span>How quickly can I get started?</span>
+            <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+            <p>Setup takes 48-72 hours after purchase. We handle the technical integration while you provide your ideal customer profile and messaging preferences.</p>
+        </div>
+    </div>
+    <div class="faq-item">
+        <button class="faq-question">
+            <span>What's included in the free trial?</span>
+            <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+            <p>14-day full access to your chosen plan with up to 100 prospects researched and contacted. No setup fees, cancel anytime.</p>
+        </div>
+    </div>
+    <div class="faq-item">
+        <button class="faq-question">
+            <span>Do you offer custom pricing for larger volumes?</span>
+            <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+            <p>Yes! Enterprise customers processing 5,000+ prospects monthly can get volume discounts. Contact our sales team for custom pricing.</p>
+        </div>
+    </div>
+    <div class="faq-item">
+        <button class="faq-question">
+            <span>What happens if I exceed my prospect limit?</span>
+            <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+            <p>We'll contact you before you hit your limit. You can upgrade your plan or purchase additional prospect credits at $1 per prospect.</p>
+        </div>
+    </div>
+</div>
                 </div>
             </div>
         </section>
@@ -381,7 +446,13 @@
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
         });
-
+        // FAQ Accordion Logic
+document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+        const faqItem = button.parentElement;
+        faqItem.classList.toggle('active');
+    });
+});
         // Billing Toggle
         const billingToggle = document.getElementById('billingToggle');
         const starterPrice = document.getElementById('starter-price');
