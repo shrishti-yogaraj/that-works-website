@@ -208,7 +208,8 @@ h6 { font-size: 1rem; }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+    background: linear-gradient(135deg, #e55a2e 0%, #7c3aed 100%);
 }
 
 .btn-secondary {
