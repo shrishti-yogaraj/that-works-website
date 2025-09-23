@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Resources - Lead Gen That Works</title>
+    
+    <link rel="stylesheet" href="css/master.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Lead Gen That Works</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="dark-mode-label">
+                    <span>Dark mode</span>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
+                </div>
+                <a href="contact.html" class="btn btn-primary btn-sm">Get Started</a>
+            </div>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero hero--blog section-hero">
+            <div class="container text-center">
+                <h1 class="hero-title hero-title--blog fade-in">
+                    Sales <span class="text-gradient">Intelligence</span> Hub
+                </h1>
+                <p class="hero-description fade-in stagger-1">
+                    Strategies, case studies, and insights to help you scale your lead generation and close more deals. Learn from real success stories and expert analysis.
+                </p>
+                
+                <div class="blog-categories fade-in stagger-2">
+                    <button class="category-filter active" data-category="all">All Posts</button>
+                    <button class="category-filter" data-category="case-studies">Case Studies</button>
+                    <button class="category-filter" data-category="strategies">Strategies</button>
+                    <button class="category-filter" data-category="ai-insights">AI Insights</button>
+                    <button class="category-filter" data-category="industry-trends">Industry Trends</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Article -->
+        <section class="section" id="blog">
+            <div class="container">
+                <div class="featured-article fade-in">
+                    <div class="featured-badge">Featured Article</div>
+                    <div class="grid grid-2 gap-xl items-center">
+                        <div class="featured-content">
+                            <div class="article-meta">
+                                <span class="article-category case-studies">Case Study</span>
+                                <span class="article-date">March 15, 2025</span>
+                            </div>
+                            <h2>How TechFlow Increased Qualified Leads by 340% in 90 Days</h2>
+                            <p class="article-excerpt">
+                                Discover how this B2B SaaS company transformed their lead generation process using AI-powered prospecting, resulting in $2.1M in new pipeline and a 87% reduction in manual prospecting time.
+                            </p>
+                            <div class="article-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">340%</span>
+                                    <span class="stat-label">More Qualified Leads</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">$2.1M</span>
+                                    <span class="stat-label">New Pipeline</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">87%</span>
+                                    <span class="stat-label">Time Saved</span>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-primary">Read Full Case Study</a>
+                        </div>
+                        <div class="featured-image">
+                            <div class="article-image-placeholder">
+                                <div class="placeholder-content">
+                                    <div class="placeholder-icon">📈</div>
+                                    <p>TechFlow's dramatic growth trajectory after implementing AI-powered lead generation</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Articles Grid -->
+        <section class="section section--accent">
+            <div class="container">
+                <div class="articles-grid">
+                    <!-- Case Study Articles -->
+                    <article class="article-card case-studies fade-in stagger-2">
+                        <div class="article-image">
+                            <div class="article-image-placeholder">
+                                <div class="placeholder-content">
+                                    <div class="placeholder-icon">🏢</div>
+                                    <p>Enterprise Success</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category case-studies">Case Study</span>
+                                <span class="article-date">March 10, 2025</span>
+                            </div>
+                            <h3>Enterprise Software Company Scales from $10M to $50M ARR</h3>
+                            <p class="article-excerpt">How GlobalSoft used AI prospecting to penetrate enterprise accounts and accelerate their growth trajectory...</p>
+                            <div class="article-footer">
+                                <span class="read-time">8 min read</span>
+                                <a href="#" class="read-more">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="article-card strategies fade-in stagger-3">
+                        <div class="article-image">
+                            <div class="article-image-placeholder">
+                                <div class="placeholder-content">
+                                    <div class="placeholder-icon">🎯</div>
+                                    <p>Strategy Guide</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category strategies">Strategy</span>
+                                <span class="article-date">March 8, 2025</span>
+                            </div>
+                            <h3>The Complete Guide to AI-Powered Sales Prospecting</h3>
+                            <p class="article-excerpt">Everything you need to know about implementing AI in your sales process, from research to personalization...</p>
+                            <div class="article-footer">
+                                <span class="read-time">12 min read</span>
+                                <a href="#" class="read-more">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="article-card ai-insights fade-in stagger-4">
+                        <div class="article-image">
+                            <div class="article-image-placeholder">
+                                <div class="placeholder-content">
+                                    <div class="placeholder-icon">🤖</div>
+                                    <p>AI Insights</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category ai-insights">AI Insights</span>
+                                <span class="article-date">March 5, 2025</span>
+                            </div>
+                            <h3>Why 73% of Sales Teams Will Use AI Prospecting by 2026</h3>
+                            <p class="article-excerpt">Industry analysis and predictions on the future of AI in sales, based on data from 500+ companies...</p>
+                            <div class="article-footer">
+                                <span class="read-time">6 min read</span>
+                                <a href="#" class="read-more">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="article-card case-studies fade-in stagger-5">
+                        <div class="article-image">
+                            <div class="article-image-placeholder">
+                                <div class="placeholder-content">
+                                    <div class="placeholder-icon">🎨</div>
+                                    <p>Agency Success</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category case-studies">Case Study</span>
+                                <span class="article-date">March 2, 2025</span>
+                            </div>
+                            <h3>Marketing Agency Doubles Client Acquisition in 6 Months</h3>
+                            <p class="article-excerpt">Creative Solutions Agency transformed their new business development using personalized AI outreach...</p>
+                            <div class="article-footer">
+                                <span class="read-time">10 min read</span>
+                                <a href="#" class="read-more">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="article-card strategies fade-in stagger-6">
+                        <div class="article-image">
+                            <div class="article-image-placeholder">
+                                <div class="placeholder-content">
+                                    <div class="placeholder-icon">📊</div>
+                                    <p>Data Strategy</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category strategies">Strategy</span>
+                                <span class="article-date">February 28, 2025</span>
+                            </div>
+                            <h3>10 Metrics Every Sales Team Should Track in 2025</h3>
+                            <p class="article-excerpt">Beyond basic conversion rates: the advanced metrics that predict sales success and drive growth...</p>
+                            <div class="article-footer">
+                                <span class="read-time">7 min read</span>
+                                <a href="#" class="read-more">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="article-card industry-trends fade-in stagger-7">
+                        <div class="article-image">
+                            <div class="article-image-placeholder">
+                                <div class="placeholder-content">
+                                    <div class="placeholder-icon">📈</div>
+                                    <p>Industry Report</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category industry-trends">Industry Trends</span>
+                                <span class="article-date">February 25, 2025</span>
+                            </div>
+                            <h3>The State of B2B Sales: 2025 Benchmark Report</h3>
+                            <p class="article-excerpt">Comprehensive analysis of sales performance metrics, trends, and predictions based on 1000+ companies...</p>
+                            <div class="article-footer">
+                                <span class="read-time">15 min read</span>
+                                <a href="#" class="read-more">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="text-center mt-2xl">
+                    <button class="btn btn-secondary btn-lg" id="loadMore">Load More Articles</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Signup -->
+        <section class="section">
+            <div class="container">
+                <div class="newsletter-signup">
+                    <div class="newsletter-content">
+                        <h2>Stay Ahead of the Competition</h2>
+                        <p>Get the latest sales strategies, case studies, and AI insights delivered to your inbox every week.</p>
+                        <div class="newsletter-benefits">
+                            <div class="benefit">📊 Weekly industry insights</div>
+                            <div class="benefit">🎯 Proven sales strategies</div>
+                            <div class="benefit">🚀 Early access to new features</div>
+                        </div>
+                    </div>
+                    <div class="newsletter-form">
+                        <form class="newsletter-form-container" data-form-type="newsletter">
+                            <div class="form-group">
+                                <input type="email" name="email" placeholder="Enter your work email" required>
+                            </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="firstName" placeholder="First name" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg">Subscribe Free</button>
+                        </form>
+                        <p class="newsletter-disclaimer">Join 2,500+ sales professionals. Unsubscribe anytime.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">Lead Gen That Works</div>
+                    <p class="footer-description">
+                        AI-powered lead generation that delivers results your sales team will love.
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="about.html#process">How It Works</a></li>
+                            <li><a href="pricing.html">Pricing</a></li>
+                            <li><a href="#blog">Case Studies</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="#blog">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Lead Gen That Works. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Blog functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const categoryFilters = document.querySelectorAll('.category-filter');
+            const articles = document.querySelectorAll('.article-card');
+            const loadMoreBtn = document.getElementById('loadMore');
+            
+            // Category filtering
+            categoryFilters.forEach(filter => {
+                filter.addEventListener('click', () => {
+                    // Update active filter
+                    categoryFilters.forEach(f => f.classList.remove('active'));
+                    filter.classList.add('active');
+                    
+                    const category = filter.dataset.category;
+                    
+                    // Show/hide articles
+                    articles.forEach(article => {
+                        if (category === 'all' || article.classList.contains(category)) {
+                            article.style.display = 'block';
+                            article.classList.add('fade-in');
+                        } else {
+                            article.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Load more functionality (placeholder)
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', () => {
+                    loadMoreBtn.textContent = 'Loading...';
+                    
+                    // Simulate loading
+                    setTimeout(() => {
+                        loadMoreBtn.textContent = 'No More Articles';
+                        loadMoreBtn.disabled = true;
+                    }, 1000);
+                });
+            }
+            
+            // Newsletter form handling
+            const newsletterForm = document.querySelector('[data-form-type="newsletter"]');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    
+                    const submitButton = newsletterForm.querySelector('button[type="submit"]');
+                    const originalText = submitButton.textContent;
+                    
+                    submitButton.textContent = 'Subscribing...';
+                    submitButton.disabled = true;
+                    
+                    try {
+                        // Simulate API call
+                        await new Promise(resolve => setTimeout(resolve, 1000));
+                        
+                        // Success
+                        submitButton.textContent = 'Subscribed!';
+                        newsletterForm.reset();
+                        
+                        setTimeout(() => {
+                            submitButton.textContent = originalText;
+                            submitButton.disabled = false;
+                        }, 3000);
+                        
+                    } catch (error) {
+                        submitButton.textContent = 'Try Again';
+                        submitButton.disabled = false;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
