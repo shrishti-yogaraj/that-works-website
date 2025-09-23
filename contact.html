@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started - Lead Gen That Works</title>
+    
+    <link rel="stylesheet" href="css/master.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Lead Gen That Works</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="dark-mode-label">
+                    <span>Dark mode</span>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
+                </div>
+                <a href="#contact" class="btn btn-primary btn-sm">Get Started</a>
+            </div>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero hero--contact section-hero">
+            <div class="container text-center">
+                <h1 class="hero-title hero-title--contact fade-in">
+                    Ready to <span class="text-gradient">Scale</span> Your Sales?
+                </h1>
+                <p class="hero-description fade-in stagger-1">
+                    Start your free 14-day trial and see how AI-powered prospecting can transform your lead generation. No credit card required.
+                </p>
+                
+                <div class="contact-options fade-in stagger-2">
+                    <div class="contact-option contact-option--active" data-option="trial">
+                        <h3>🚀 Start Free Trial</h3>
+                        <p>14-day trial with 25 researched leads</p>
+                    </div>
+                    <div class="contact-option" data-option="demo">
+                        <h3>📅 Book a Demo</h3>
+                        <p>Personalized 30-minute strategy session</p>
+                    </div>
+                    <div class="contact-option" data-option="contact">
+                        <h3>💬 Get in Touch</h3>
+                        <p>Questions or custom requirements</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Forms Section -->
+        <section class="section" id="contact">
+            <div class="container">
+                <div class="contact-container">
+                    <!-- Free Trial Form -->
+                    <div class="contact-form-wrapper form-trial active" id="form-trial">
+                        <div class="form-header">
+                            <h2>Start Your Free Trial</h2>
+                            <p>Get 25 researched leads and full platform access for 14 days. No credit card required.</p>
+                        </div>
+                        
+                        <form class="contact-form" data-form-type="contact" data-form-category="trial">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="trial-first-name">First Name *</label>
+                                    <input type="text" id="trial-first-name" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="trial-last-name">Last Name *</label>
+                                    <input type="text" id="trial-last-name" name="lastName" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="trial-email">Work Email *</label>
+                                <input type="email" id="trial-email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="trial-company">Company Name *</label>
+                                <input type="text
