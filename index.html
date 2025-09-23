@@ -22,7 +22,10 @@
                 <li><a href="#why-us">Why Us</a></li>
                 <li><a href="#process">Process</a></li>
             </ul>
-            <a href="#demo" class="btn btn-primary btn-sm">Get Started</a>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
+                <a href="#demo" class="btn btn-primary btn-sm">Get Started</a>
+            </div>
         </nav>
     </header>
 
@@ -274,6 +277,21 @@
     </footer>
 
     <script>
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
+        // Set initial theme
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
         // Float animation for background elements
         const style = document.createElement('style');
         style.textContent = `
@@ -304,12 +322,21 @@
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             const currentScroll = window.pageYOffset;
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
             if (currentScroll > 100) {
-                header.style.background = 'rgba(254, 254, 254, 0.95)';
+                if (isDark) {
+                    header.style.background = 'rgba(10, 10, 10, 0.95)';
+                } else {
+                    header.style.background = 'rgba(254, 253, 251, 0.95)';
+                }
                 header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
             } else {
-                header.style.background = 'rgba(254, 254, 254, 0.9)';
+                if (isDark) {
+                    header.style.background = 'rgba(10, 10, 10, 0.9)';
+                } else {
+                    header.style.background = 'rgba(254, 253, 251, 0.9)';
+                }
                 header.style.boxShadow = 'none';
             }
 
