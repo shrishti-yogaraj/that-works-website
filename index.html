@@ -11,7 +11,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -29,12 +29,18 @@
     <main>
         <!-- Hero Section -->
         <section class="hero">
+            <!-- Background patterns -->
+            <div style="position: absolute; top: 20%; right: 10%; width: 100px; height: 100px; background: var(--gradient); border-radius: 50%; opacity: 0.1; animation: float 6s ease-in-out infinite;"></div>
+            <div style="position: absolute; bottom: 30%; left: 15%; width: 60px; height: 60px; background: var(--secondary-accent); border-radius: 30%; opacity: 0.15; animation: float 4s ease-in-out infinite reverse;"></div>
+            <div style="position: absolute; top: 40%; left: 5%; width: 40px; height: 40px; background: var(--accent-color); border-radius: 8px; opacity: 0.2; animation: float 5s ease-in-out infinite;"></div>
+            <div style="position: absolute; bottom: 20%; right: 20%; width: 80px; height: 80px; border: 2px solid var(--accent-color); border-radius: 50%; opacity: 0.1; animation: float 7s ease-in-out infinite;"></div>
+            
             <div class="container">
                 <div class="hero-content">
-                    <h1 class="fade-in">
+                    <h1 class="fade-in" style="font-weight: 900;">
                         Better than your <span class="text-gradient">best prospector.</span>
                     </h1>
-                    <p class="hero-subtitle fade-in stagger-1">
+                    <p class="hero-subtitle fade-in stagger-1" style="font-weight: 600;">
                         Hyper-personalized outreach that scales without losing the 'personal'
                     </p>
                     <p class="hero-description fade-in stagger-2">
@@ -247,6 +253,17 @@
     </footer>
 
     <script>
+        // Float animation for background elements
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0px) rotate(0deg); }
+                33% { transform: translateY(-20px) rotate(5deg); }
+                66% { transform: translateY(10px) rotate(-3deg); }
+            }
+        `;
+        document.head.appendChild(style);
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
