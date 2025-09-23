@@ -17,264 +17,326 @@
             <div class="logo">Lead Gen That Works</div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#how-it-works">How It Works</a></li>
+                <li><a href="index.html#why-us">Why Us</a></li>
             </ul>
             <div class="nav-actions">
                 <div class="dark-mode-label">
                     <span>Dark mode</span>
                     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
                 </div>
-                <a href="contact.html" class="btn btn-primary btn-sm">Get Started</a>
-            </div>
-            <div class="mobile-menu-toggle" id="mobileMenuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
+                <a href="#demo" class="btn btn-primary btn-sm">Get Started</a>
             </div>
         </nav>
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="hero hero--pricing section-hero">
-            <div class="container text-center">
-                <h1 class="hero-title hero-title--pricing fade-in">
-                    Find the <span class="text-gradient">Right Plan</span>
-                </h1>
-                <p class="hero-description fade-in stagger-1">
-                    Choose the plan that fits your business size and goals. All plans include our core lead generation automation with personalized research and outreach.
-                </p>
-                
-                <!-- Billing Toggle -->
-                <div class="billing-toggle fade-in stagger-2">
-                    <span class="billing-label">Monthly</span>
-                    <div class="toggle-switch" id="billingToggle">
-                        <div class="toggle-handle"></div>
-                    </div>
-                    <span class="billing-label">
-                        Annual 
-                        <span class="billing-discount">Save 20%</span>
-                    </span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pricing Cards Section -->
-        <section class="section" id="pricing">
+        <section class="hero section-hero">
             <div class="container">
-                <div class="grid grid-3 gap-xl pricing-grid">
-                    <!-- Starter Plan -->
-                    <div class="card card--pricing fade-in stagger-3">
-                        <div class="pricing-header">
-                            <h3 class="pricing-title">Starter</h3>
-                            <p class="pricing-description">Perfect for small teams testing automated prospecting</p>
-                            <div class="pricing-price">
-                                <span class="price monthly-price">$297</span>
-                                <span class="price annual-price hidden">$238</span>
-                                <span class="price-period">/month</span>
-                            </div>
-                        </div>
-                        
-                        <ul class="feature-list">
-                            <li><span class="feature-check">✓</span>100 researched leads per month</li>
-                            <li><span class="feature-check">✓</span>Email & LinkedIn message templates</li>
-                            <li><span class="feature-check">✓</span>Basic company research</li>
-                            <li><span class="feature-check">✓</span>CRM integration</li>
-                            <li><span class="feature-check">✓</span>Email support</li>
-                        </ul>
-                        
-                        <a href="contact.html?plan=starter" class="btn btn-outline btn-full-width">Start Free Trial</a>
-                    </div>
-
-                    <!-- Professional Plan -->
-                    <div class="card card--pricing card--popular fade-in stagger-4">
-                        <div class="pricing-header">
-                            <h3 class="pricing-title">Professional</h3>
-                            <p class="pricing-description">For growing sales teams ready to scale their outreach</p>
-                            <div class="pricing-price">
-                                <span class="price monthly-price">$597</span>
-                                <span class="price annual-price hidden">$478</span>
-                                <span class="price-period">/month</span>
-                            </div>
-                        </div>
-                        
-                        <ul class="feature-list">
-                            <li><span class="feature-check">✓</span>300 researched leads per month</li>
-                            <li><span class="feature-check">✓</span>Advanced personalization</li>
-                            <li><span class="feature-check">✓</span>Multi-channel sequences</li>
-                            <li><span class="feature-check">✓</span>A/B testing</li>
-                            <li><span class="feature-check">✓</span>Priority support</li>
-                            <li><span class="feature-check">✓</span>Custom integrations</li>
-                        </ul>
-                        
-                        <a href="contact.html?plan=professional" class="btn btn-primary btn-full-width">Start Free Trial</a>
-                    </div>
-
-                    <!-- Enterprise Plan -->
-                    <div class="card card--pricing fade-in stagger-5">
-                        <div class="pricing-header">
-                            <h3 class="pricing-title">Enterprise</h3>
-                            <p class="pricing-description">For large teams needing unlimited prospecting power</p>
-                            <div class="pricing-price">
-                                <span class="price monthly-price">$1,497</span>
-                                <span class="price annual-price hidden">$1,198</span>
-                                <span class="price-period">/month</span>
-                            </div>
-                        </div>
-                        
-                        <ul class="feature-list">
-                            <li><span class="feature-check">✓</span>Unlimited researched leads</li>
-                            <li><span class="feature-check">✓</span>Custom research criteria</li>
-                            <li><span class="feature-check">✓</span>Multi-team management</li>
-                            <li><span class="feature-check">✓</span>Advanced analytics</li>
-                            <li><span class="feature-check">✓</span>Dedicated success manager</li>
-                            <li><span class="feature-check">✓</span>White-label options</li>
-                        </ul>
-                        
-                        <a href="contact.html?plan=enterprise" class="btn btn-outline btn-full-width">Contact Sales</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- One-Time Services Section -->
-        <section class="section section--accent">
-            <div class="container">
-                <div class="text-center mb-2xl">
-                    <h2 class="section-title">One-Time Services</h2>
-                    <p class="section-description">
-                        Need help getting started or want us to handle everything? We offer done-for-you services.
+                <div class="hero-content">
+                    <h1 class="hero-title pricing-hero-title fade-in">
+                        Find the <span class="text-gradient">Right Plan</span>
+                    </h1>
+                    <p class="hero-description fade-in stagger-1">
+                        Choose the plan that fits your business size and goals. All plans include our core lead generation automation.
                     </p>
-                </div>
-                
-                <div class="grid grid-2 gap-xl one-time-grid">
-                    <div class="card card--service">
-                        <div class="service-header">
-                            <h3>Lead List Building</h3>
-                            <div class="service-price">$2,997</div>
+                    
+                    <div class="toggle-switch-container fade-in stagger-2">
+                        <span class="text-secondary">Monthly</span>
+                        <div class="toggle-switch" id="billingToggle">
+                            <div class="switch-handle"></div>
                         </div>
-                        <p class="service-description">
-                            We'll build a custom list of 1,000 qualified prospects with complete research profiles, ready for your outreach campaigns.
-                        </p>
-                        <ul class="feature-list">
-                            <li><span class="feature-check">✓</span>1,000 researched prospects</li>
-                            <li><span class="feature-check">✓</span>Company & contact verification</li>
-                            <li><span class="feature-check">✓</span>Detailed research notes</li>
-                            <li><span class="feature-check">✓</span>Conversation starters</li>
-                            <li><span class="feature-check">✓</span>2-week delivery</li>
-                        </ul>
-                        <a href="contact.html?service=list-building" class="btn btn-primary btn-full-width">Get Quote</a>
+                        <span class="text-primary text-semibold">Annual <span class="text-accent text-small">(Save 20%)</span></span>
                     </div>
                     
-                    <div class="card card--service">
-                        <div class="service-header">
-                            <h3>Campaign Setup</h3>
-                            <div class="service-price">$4,997</div>
-                        </div>
-                        <p class="service-description">
-                            Complete campaign setup with custom messaging, automation sequences, and integration with your existing tools.
-                        </p>
-                        <ul class="feature-list">
-                            <li><span class="feature-check">✓</span>Campaign strategy development</li>
-                            <li><span class="feature-check">✓</span>Custom message templates</li>
-                            <li><span class="feature-check">✓</span>Automation setup</li>
-                            <li><span class="feature-check">✓</span>CRM integration</li>
-                            <li><span class="feature-check">✓</span>Team training session</li>
-                        </ul>
-                        <a href="contact.html?service=campaign-setup" class="btn btn-primary btn-full-width">Get Quote</a>
+                    <div class="geo-indicator" id="geoIndicator">
+                        Pricing shown for United States
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ Section -->
+        <section id="pricing" class="section">
+            <div class="container">
+                <div style="max-width: 1200px; margin: 0 auto;">
+                    <div class="grid grid-3 gap-xl">
+                        <div class="pricing-card fade-in">
+                            <div>
+                                <h3 class="pricing-card-title">Starter</h3>
+                                <p class="pricing-card-description">Perfect for small teams getting started with automation</p>
+                                
+                                <div class="price" data-monthly="497" data-annual="398">
+                                    $<span id="starter-price">497</span>
+                                    <span class="price-period">/month</span>
+                                </div>
+                                
+                                <ul class="feature-list">
+                                    <li><span class="feature-check">✓</span> Up to 500 prospects per month</li>
+                                    <li><span class="feature-check">✓</span> Basic prospect research</li>
+                                    <li><span class="feature-check">✓</span> Email sequence automation</li>
+                                    <li><span class="feature-check">✓</span> CRM integration</li>
+                                    <li><span class="feature-check">✓</span> Email support</li>
+                                    <li><span class="feature-check">✓</span> Basic analytics</li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-outline btn-full-width">
+                                Start Free Trial
+                            </button>
+                        </div>
+
+                        <div class="pricing-card popular fade-in stagger-1">
+                            <div>
+                                <h3 class="pricing-card-title">Growth</h3>
+                                <p class="pricing-card-description">Ideal for growing companies ready to scale</p>
+                                
+                                <div class="price" data-monthly="997" data-annual="798">
+                                    $<span id="growth-price">997</span>
+                                    <span class="price-period">/month</span>
+                                </div>
+                                
+                                <ul class="feature-list">
+                                    <li><span class="feature-check">✓</span> Up to 1,500 prospects per month</li>
+                                    <li><span class="feature-check">✓</span> Advanced prospect intelligence</li>
+                                    <li><span class="feature-check">✓</span> Multi-channel outreach (Email + LinkedIn)</li>
+                                    <li><span class="feature-check">✓</span> A/B testing automation</li>
+                                    <li><span class="feature-check">✓</span> Priority support</li>
+                                    <li><span class="feature-check">✓</span> Advanced analytics & reporting</li>
+                                    <li><span class="feature-check">✓</span> Custom integrations</li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-primary btn-full-width">
+                                Start Free Trial
+                            </button>
+                        </div>
+
+                        <div class="pricing-card fade-in stagger-2">
+                            <div>
+                                <h3 class="pricing-card-title">Enterprise</h3>
+                                <p class="pricing-card-description">For large teams with complex automation needs</p>
+                                
+                                <div class="price" data-monthly="1997" data-annual="1598">
+                                    $<span id="enterprise-price">1997</span>
+                                    <span class="price-period">/month</span>
+                                </div>
+                                
+                                <ul class="feature-list">
+                                    <li><span class="feature-check">✓</span> Unlimited prospects</li>
+                                    <li><span class="feature-check">✓</span> Premium research & intelligence</li>
+                                    <li><span class="feature-check">✓</span> Custom automation workflows</li>
+                                    <li><span class="feature-check">✓</span> Dedicated account manager</li>
+                                    <li><span class="feature-check">✓</span> White-glove onboarding</li>
+                                    <li><span class="feature-check">✓</span> Custom reporting</li>
+                                    <li><span class="feature-check">✓</span> API access</li>
+                                    <li><span class="feature-check">✓</span> SSO & advanced security</li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-primary btn-full-width">
+                                Contact Sales
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="background: var(--secondary-bg);">
+            <div class="container">
+                <div class="one-time-section">
+                    <h2 class="mb-lg">Or... Get It All Done For You</h2>
+                    <p class="text-large text-secondary mb-xl">
+                        Not ready to commit? Let us prove it works first with a one-time campaign.
+                    </p>
+                    
+                    <div class="one-time-grid">
+                        <div class="one-time-price">
+                            <div class="price" data-onetime="4997">
+                                $<span id="onetime-price">4,997</span>
+                                <span class="price-period">one-time</span>
+                            </div>
+                            <p>Complete 30-day campaign with 500 prospects</p>
+                        </div>
+                        
+                        <div class="one-time-features">
+                            <ul class="feature-list">
+                                <li><span class="feature-check">✓</span> Complete prospect research (500 leads)</li>
+                                <li><span class="feature-check">✓</span> Custom email sequences</li>
+                                <li><span class="feature-check">✓</span> LinkedIn outreach campaigns</li>
+                                <li><span class="feature-check">✓</span> Full campaign management</li>
+                                <li><span class="feature-check">✓</span> Detailed performance reporting</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-xl">
+                        <button class="btn btn-primary btn-lg">
+                            Start One-Time Campaign
+                        </button>
+                        <p class="one-time-guarantee">
+                            30-day money-back guarantee if you're not satisfied with results.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="section">
             <div class="container">
                 <div class="text-center mb-2xl">
-                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <h2 class="mb-lg">Frequently Asked Questions</h2>
                 </div>
                 
-                <div class="faq-grid">
+                <div class="faq-accordion">
                     <div class="faq-item">
-                        <h4 class="faq-question">How quickly can I get started?</h4>
-                        <p class="faq-answer">Most clients are up and running within 48 hours. We'll schedule a brief onboarding call to understand your ideal customer profile and set up your first campaign.</p>
+                        <button class="faq-question">
+                            How quickly can I see results?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Most clients start seeing qualified prospects in their pipeline within 2-3 weeks of launch. We spend the first week setting up your campaigns and the second week optimizing based on initial performance.</p>
+                        </div>
                     </div>
                     
                     <div class="faq-item">
-                        <h4 class="faq-question">What makes your leads different?</h4>
-                        <p class="faq-answer">Every lead comes with detailed research including recent company news, technology stack, hiring patterns, and specific conversation starters - not just contact information.</p>
+                        <button class="faq-question">
+                            What's included in prospect research?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We research company background, recent news, technology stack, hiring patterns, funding status, key personnel, pain points, and specific conversation starters for each prospect.</p>
+                        </div>
                     </div>
                     
                     <div class="faq-item">
-                        <h4 class="faq-question">Can I integrate with my existing CRM?</h4>
-                        <p class="faq-answer">Yes! We integrate with all major CRMs including Salesforce, HubSpot, Pipedrive, and 20+ others. Custom integrations are available for Enterprise plans.</p>
+                        <button class="faq-question">
+                            Can I pause or cancel anytime?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, you can pause your subscription for up to 3 months or cancel with 30 days' notice. No long-term contracts or cancellation fees.</p>
+                        </div>
                     </div>
                     
                     <div class="faq-item">
-                        <h4 class="faq-question">What's included in the free trial?</h4>
-                        <p class="faq-answer">Your 14-day free trial includes 25 researched leads, full access to our platform, and a strategy session with our team to optimize your campaigns.</p>
+                        <button class="faq-question">
+                            Do you integrate with my existing tools?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We integrate with most major CRMs (Salesforce, HubSpot, Pipedrive), email platforms, and marketing tools. Custom integrations are available for Enterprise plans.</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Final CTA -->
-        <section class="section section--cta text-center">
-            <div class="container">
-                <div class="cta-box">
-                    <h2>Ready to Transform Your Lead Generation?</h2>
-                    <p class="text-large">
-                        Start your free trial today and see why sales teams love our AI-powered prospecting.
-                    </p>
-                    <div class="hero-ctas">
-                        <a href="contact.html" class="btn btn-primary btn-lg">Start Free Trial</a>
-                        <a href="about.html" class="btn btn-secondary btn-lg">Learn More</a>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            What if I need more prospects than my plan includes?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>You can upgrade your plan or purchase additional prospect credits at $1 per prospect.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
+    <footer style="border-top: 1px solid var(--border-color); padding: var(--space-2xl) 0; text-align: center;">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo">Lead Gen That Works</div>
-                    <p class="footer-description">
-                        AI-powered lead generation that delivers results your sales team will love.
-                    </p>
-                </div>
-                
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Product</h4>
-                        <ul>
-                            <li><a href="about.html#process">How It Works</a></li>
-                            <li><a href="pricing.html">Pricing</a></li>
-                            <li><a href="blog.html">Case Studies</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4>Company</h4>
-                        <ul>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 Lead Gen That Works. All rights reserved.</p>
-            </div>
+            <p class="text-secondary">&copy; 2025 Lead Gen That Works. Better prospecting through better research.</p>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // =================== FAQ ACCORDION ===================
+            document.querySelectorAll('.faq-question').forEach(button => {
+                button.addEventListener('click', () => {
+                    const faqItem = button.parentElement;
+                    faqItem.classList.toggle('active');
+                });
+            });
+
+            // =================== BILLING TOGGLE ===================
+            const billingToggle = document.getElementById('billingToggle');
+            const starterPrice = document.getElementById('starter-price');
+            const growthPrice = document.getElementById('growth-price');
+            const enterprisePrice = document.getElementById('enterprise-price');
+            
+            billingToggle.addEventListener('click', () => {
+                billingToggle.classList.toggle('active');
+                const isAnnual = billingToggle.classList.contains('active');
+                
+                // Update prices based on the toggle, using values from data attributes
+                document.querySelectorAll('.price[data-monthly]').forEach(priceEl => {
+                    const priceSpan = priceEl.querySelector('span');
+                    const monthlyPrice = priceEl.dataset.monthly;
+                    const annualPrice = priceEl.dataset.annual;
+                    priceSpan.textContent = isAnnual ? annualPrice : monthlyPrice;
+                });
+            });
+
+            // =================== GEO-BASED PRICING ===================
+            async function updatePricingByLocation() {
+                try {
+                    const response = await fetch('https://ipapi.co/json/');
+                    const data = await response.json();
+                    const country = data.country_name;
+                    const countryCode = data.country_code;
+                    
+                    document.getElementById('geoIndicator').textContent = `Pricing for ${country} (shown in USD)`;
+                    
+                    const pricingMultiplier = getPricingMultiplier(countryCode);
+                    
+                    if (pricingMultiplier !== 1) {
+                        adjustPrices(pricingMultiplier);
+                    }
+                } catch (error) {
+                    console.warn('Could not determine location, using default pricing.');
+                }
+            }
+            
+            function getPricingMultiplier(countryCode) {
+                const regionalPricing = {
+                    'GB': 1.1,   // UK
+                    'AU': 1.05,  // Australia  
+                    'CA': 0.95,  // Canada
+                    'IN': 0.3,   // India
+                    'BR': 0.4,   // Brazil
+                };
+                return regionalPricing[countryCode] || 1;
+            }
+            
+            function adjustPrices(multiplier) {
+                const prices = document.querySelectorAll('[data-monthly], [data-annual], [data-onetime]');
+                
+                prices.forEach(priceElement => {
+                    // Update the data attributes themselves with the new regional price
+                    if (priceElement.dataset.monthly) {
+                        priceElement.dataset.monthly = Math.round(parseInt(priceElement.dataset.monthly) * multiplier).toLocaleString();
+                        priceElement.dataset.annual = Math.round(parseInt(priceElement.dataset.annual) * multiplier).toLocaleString();
+                    }
+                    if (priceElement.dataset.onetime) {
+                        priceElement.dataset.onetime = Math.round(parseInt(priceElement.dataset.onetime) * multiplier).toLocaleString();
+                    }
+                });
+                
+                // Trigger a click to refresh the displayed prices to the correct state (monthly/annual)
+                billingToggle.click();
+                billingToggle.click();
+
+                // Update the one-time price separately
+                const oneTimePriceEl = document.getElementById('onetime-price');
+                if (oneTimePriceEl) {
+                    oneTimePriceEl.textContent = document.querySelector('[data-onetime]').dataset.onetime;
+                }
+            }
+
+            // Initialize geo-pricing
+            updatePricingByLocation();
+        });
+    </script>
 </body>
 </html>
