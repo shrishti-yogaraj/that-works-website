@@ -95,4 +95,364 @@
                             
                             <div class="form-group">
                                 <label for="trial-company">Company Name *</label>
-                                <input type="text
+                                <input type="text" id="trial-company" name="company" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="trial-title">Your Title</label>
+                                    <input type="text" id="trial-title" name="title" placeholder="VP of Sales, Sales Manager, etc.">
+                                </div>
+                                <div class="form-group">
+                                    <label for="trial-team-size">Team Size</label>
+                                    <select id="trial-team-size" name="teamSize">
+                                        <option value="">Select team size</option>
+                                        <option value="1-5">1-5 people</option>
+                                        <option value="6-20">6-20 people</option>
+                                        <option value="21-50">21-50 people</option>
+                                        <option value="51+">51+ people</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="trial-industry">Industry</label>
+                                <select id="trial-industry" name="industry">
+                                    <option value="">Select industry</option>
+                                    <option value="saas">SaaS/Software</option>
+                                    <option value="financial">Financial Services</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="manufacturing">Manufacturing</option>
+                                    <option value="consulting">Consulting</option>
+                                    <option value="real-estate">Real Estate</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="trial-goals">What's your main goal? (Optional)</label>
+                                <textarea id="trial-goals" name="goals" rows="3" placeholder="e.g., Increase qualified leads, improve response rates, scale outreach..."></textarea>
+                            </div>
+                            
+                            <div class="form-benefits">
+                                <h4>What you'll get:</h4>
+                                <ul>
+                                    <li><span class="benefit-check">✓</span>25 fully researched prospects</li>
+                                    <li><span class="benefit-check">✓</span>Personalized email templates</li>
+                                    <li><span class="benefit-check">✓</span>LinkedIn message sequences</li>
+                                    <li><span class="benefit-check">✓</span>CRM integration setup</li>
+                                    <li><span class="benefit-check">✓</span>Strategy session with our team</li>
+                                </ul>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-lg btn-full-width">Start Free Trial</button>
+                            
+                            <p class="form-disclaimer">No credit card required. Cancel anytime during trial.</p>
+                        </form>
+                    </div>
+
+                    <!-- Demo Booking Form -->
+                    <div class="contact-form-wrapper form-demo" id="form-demo">
+                        <div class="form-header">
+                            <h2>Book Your Strategy Demo</h2>
+                            <p>Get a personalized 30-minute session where we'll analyze your current process and show you exactly how to scale your lead generation.</p>
+                        </div>
+                        
+                        <form class="contact-form" data-form-type="contact" data-form-category="demo">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="demo-first-name">First Name *</label>
+                                    <input type="text" id="demo-first-name" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="demo-last-name">Last Name *</label>
+                                    <input type="text" id="demo-last-name" name="lastName" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="demo-email">Work Email *</label>
+                                <input type="email" id="demo-email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="demo-company">Company Name *</label>
+                                <input type="text" id="demo-company" name="company" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="demo-title">Your Title *</label>
+                                    <input type="text" id="demo-title" name="title" placeholder="VP of Sales, Sales Manager, etc." required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="demo-phone">Phone Number</label>
+                                    <input type="tel" id="demo-phone" name="phone">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="demo-company-size">Company Size *</label>
+                                    <select id="demo-company-size" name="companySize" required>
+                                        <option value="">Select company size</option>
+                                        <option value="1-10">1-10 employees</option>
+                                        <option value="11-50">11-50 employees</option>
+                                        <option value="51-200">51-200 employees</option>
+                                        <option value="201-1000">201-1000 employees</option>
+                                        <option value="1000+">1000+ employees</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="demo-revenue">Annual Revenue</label>
+                                    <select id="demo-revenue" name="revenue">
+                                        <option value="">Select revenue range</option>
+                                        <option value="under-1m">Under $1M</option>
+                                        <option value="1-10m">$1M - $10M</option>
+                                        <option value="10-50m">$10M - $50M</option>
+                                        <option value="50-100m">$50M - $100M</option>
+                                        <option value="100m+">$100M+</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="demo-current-process">Current Lead Generation Process *</label>
+                                <textarea id="demo-current-process" name="currentProcess" rows="3" placeholder="How do you currently generate leads? What tools do you use?" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="demo-challenges">Biggest Challenges</label>
+                                <textarea id="demo-challenges" name="challenges" rows="3" placeholder="What are your main pain points with lead generation?"></textarea>
+                            </div>
+                            
+                            <div class="form-benefits">
+                                <h4>What we'll cover in your demo:</h4>
+                                <ul>
+                                    <li><span class="benefit-check">✓</span>Analysis of your current lead generation process</li>
+                                    <li><span class="benefit-check">✓</span>Custom strategy for your industry and goals</li>
+                                    <li><span class="benefit-check">✓</span>Live demonstration of our AI research capabilities</li>
+                                    <li><span class="benefit-check">✓</span>ROI projections based on your metrics</li>
+                                    <li><span class="benefit-check">✓</span>Q&A session with implementation roadmap</li>
+                                </ul>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-lg btn-full-width">Book My Demo</button>
+                            
+                            <p class="form-disclaimer">We'll follow up within 24 hours to schedule your personalized demo.</p>
+                        </form>
+                    </div>
+
+                    <!-- General Contact Form -->
+                    <div class="contact-form-wrapper form-contact" id="form-contact">
+                        <div class="form-header">
+                            <h2>Get in Touch</h2>
+                            <p>Have questions about our platform, pricing, or need a custom solution? We're here to help.</p>
+                        </div>
+                        
+                        <form class="contact-form" data-form-type="contact" data-form-category="general">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contact-first-name">First Name *</label>
+                                    <input type="text" id="contact-first-name" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-last-name">Last Name *</label>
+                                    <input type="text" id="contact-last-name" name="lastName" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-email">Email Address *</label>
+                                <input type="email" id="contact-email" name="email" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contact-company">Company Name</label>
+                                    <input type="text" id="contact-company" name="company">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-phone">Phone Number</label>
+                                    <input type="tel" id="contact-phone" name="phone">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-subject">Subject *</label>
+                                <select id="contact-subject" name="subject" required>
+                                    <option value="">Select a topic</option>
+                                    <option value="pricing">Pricing Questions</option>
+                                    <option value="features">Feature Questions</option>
+                                    <option value="integration">Integration Support</option>
+                                    <option value="enterprise">Enterprise Solutions</option>
+                                    <option value="partnership">Partnership Opportunities</option>
+                                    <option value="support">Technical Support</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-message">Message *</label>
+                                <textarea id="contact-message" name="message" rows="5" placeholder="Tell us how we can help..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-lg btn-full-width">Send Message</button>
+                            
+                            <p class="form-disclaimer">We'll respond within 24 hours during business days.</p>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Contact Information Sidebar -->
+                <div class="contact-sidebar">
+                    <div class="contact-info-card">
+                        <h3>Other Ways to Reach Us</h3>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>hello@leadgenthatworks.com</p>
+                                <p class="contact-note">For general inquiries</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">💼</div>
+                            <div class="contact-details">
+                                <h4>Sales</h4>
+                                <p>sales@leadgenthatworks.com</p>
+                                <p class="contact-note">For pricing and demos</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">🛠️</div>
+                            <div class="contact-details">
+                                <h4>Support</h4>
+                                <p>support@leadgenthatworks.com</p>
+                                <p class="contact-note">For technical assistance</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-details">
+                                <h4>Phone</h4>
+                                <p>(555) 123-LEAD</p>
+                                <p class="contact-note">Mon-Fri, 9am-6pm EST</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-faq-card">
+                        <h3>Quick Answers</h3>
+                        
+                        <div class="mini-faq">
+                            <h4>How quickly can I get started?</h4>
+                            <p>Most clients are generating leads within 48 hours of signup.</p>
+                        </div>
+                        
+                        <div class="mini-faq">
+                            <h4>Is there a setup fee?</h4>
+                            <p>No setup fees. You only pay the monthly subscription.</p>
+                        </div>
+                        
+                        <div class="mini-faq">
+                            <h4>Can I cancel anytime?</h4>
+                            <p>Yes, cancel anytime with 30 days notice. No long-term contracts.</p>
+                        </div>
+                        
+                        <div class="mini-faq">
+                            <h4>Do you integrate with my CRM?</h4>
+                            <p>We integrate with all major CRMs including Salesforce, HubSpot, and Pipedrive.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">Lead Gen That Works</div>
+                    <p class="footer-description">
+                        AI-powered lead generation that delivers results your sales team will love.
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="about.html#process">How It Works</a></li>
+                            <li><a href="pricing.html">Pricing</a></li>
+                            <li><a href="blog.html">Case Studies</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Lead Gen That Works. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Contact form switching functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactOptions = document.querySelectorAll('.contact-option');
+            const formWrappers = document.querySelectorAll('.contact-form-wrapper');
+            
+            contactOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    // Remove active class from all options and forms
+                    contactOptions.forEach(opt => opt.classList.remove('contact-option--active'));
+                    formWrappers.forEach(form => form.classList.remove('active'));
+                    
+                    // Add active class to clicked option
+                    option.classList.add('contact-option--active');
+                    
+                    // Show corresponding form
+                    const formType = option.dataset.option;
+                    const targetForm = document.getElementById(`form-${formType}`);
+                    if (targetForm) {
+                        targetForm.classList.add('active');
+                    }
+                });
+            });
+            
+            // Auto-select form based on URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const formType = urlParams.get('form') || urlParams.get('plan') || urlParams.get('service');
+            
+            if (formType && ['trial', 'demo', 'contact'].includes(formType)) {
+                const option = document.querySelector(`[data-option="${formType}"]`);
+                if (option) {
+                    option.click();
+                }
+            } else if (formType) {
+                // If it's a plan or service, default to demo
+                const demoOption = document.querySelector('[data-option="demo"]');
+                if (demoOption) {
+                    demoOption.click();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
