@@ -706,6 +706,7 @@ nav {
 .faq-item.active .faq-answer { max-height: 200px; }
 .faq-item.active .faq-icon { transform: rotate(45deg); }
 
+
 /* =================== ANIMATIONS =================== */
 .fade-in {
     opacity: 0;
