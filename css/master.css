@@ -481,6 +481,11 @@ nav {
         padding: var(--space-lg);
     }
 }
+@media (max-width: 900px) {
+    .grid-3 {
+        grid-template-columns: 1fr !important;
+    }
+}
 
 /* =================== UTILITY CLASSES =================== */
 .text-center { text-align: center; }
