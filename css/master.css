@@ -247,8 +247,13 @@ h6 { font-size: 1rem; }
     transition: all var(--transition-normal);
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 350px; /* Ensures consistent card heights */
 }
-
+.card .text-secondary {
+    flex: 1; /* Makes the main content area expand to fill space */
+}
 .card::before {
     content: '';
     position: absolute;
@@ -269,6 +274,18 @@ h6 { font-size: 1rem; }
     transform: translateY(-5px);
     border-color: var(--accent-color);
     box-shadow: var(--shadow-xl);
+}
+.card-detail {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card:hover .card-detail {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: var(--space-md);
 }
 
 /* Agent Cards (Special Component) */
