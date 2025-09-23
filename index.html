@@ -23,7 +23,10 @@
                 <li><a href="#process">Process</a></li>
             </ul>
             <div style="display: flex; align-items: center; gap: 1rem;">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Dark mode</span>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
+                </div>
                 <a href="#demo" class="btn btn-primary btn-sm">Get Started</a>
             </div>
         </nav>
@@ -88,7 +91,8 @@
                         Three simple steps that your team wishes they could do at scale.
                     </p>
                 </div>
-
+             <div style="max-width: 1000px; margin: 0 auto;">
+             <div class="grid grid-3 gap-xl">
                 <div class="grid grid-3 gap-xl">
                     <div class="card text-center fade-in">
                         <div style="width: 80px; height: 80px; background: var(--gradient); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 700; margin: 0 auto var(--space-lg); color: white;">1</div>
@@ -124,6 +128,8 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
         </section>
 
         <!-- The Honest Truth Section -->
@@ -132,39 +138,37 @@
                 <div class="text-center mb-2xl">
                     <h2 class="mb-lg" style="font-weight: 800; font-size: clamp(2rem, 5vw, 3rem);">"Another Day, Another AI Startup"</h2>
                 </div>
-
-                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                    <p class="text-large text-secondary mb-2xl fade-in">
-                        Lead Gen That Works isn't 'revolutionary' or 'life-changing' and it certainly isn't a 'powerful all-in-one, end-to-end solution' that promises to solve every business problem you've ever had.
-                    </p>
-
-                    <div class="card fade-in stagger-1" style="text-align: left; padding: var(--space-2xl);">
-                        <h3 class="text-gradient mb-lg">We do one thing: Prospecting. Really, really good prospecting.</h3>
-                        <p class="text-large mb-lg">
-                            Hyper-personalized outreach that makes every prospect feel like they're your only priority. At the scale that one person just can't achieve alone.
-                        </p>
-                        
-                        <div class="grid grid-2 gap-lg mt-xl">
-                            <div>
-                                <h4 class="mb-md text-semibold">What we're NOT:</h4>
-                                <ul style="color: var(--text-secondary); line-height: 1.8;">
-                                    <li>Another "revolutionary" AI platform</li>
-                                    <li>A magic bullet for all your problems</li>
-                                    <li>Cheap, mass-market spam automation</li>
-                                    <li>A replacement for good salespeople</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="mb-md text-semibold">What we ARE:</h4>
-                                <ul style="color: var(--text-secondary); line-height: 1.8;">
-                                    <li>Hyper-focused on lead generation</li>
-                                    <li>Obsessed with personalization quality</li>
-                                    <li>Built for scale without losing authenticity</li>
-                                    <li>Your prospecting team's best friend</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                <div class="fade-in stagger-1" style="max-width: 900px; margin: 0 auto;">
+    <h3 class="text-gradient mb-lg text-center">We do one thing: Prospecting. Really, really good prospecting.</h3>
+    <p class="text-large mb-2xl text-center">
+        Hyper-personalized outreach that makes every prospect feel like they're your only priority. At the scale that one person just can't achieve alone.
+    </p>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+        <div>
+            <h4 class="mb-md text-semibold" style="display: flex; align-items: center; gap: 0.5rem;">
+                <span style="font-size: 1.5rem;">✅</span> What we ARE:
+            </h4>
+            <ul style="color: var(--text-secondary); line-height: 1.8; list-style: none; padding: 0;">
+                <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: var(--accent-color);">•</span> Hyper-focused on lead generation</li>
+                <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: var(--accent-color);">•</span> Obsessed with personalization quality</li>
+                <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: var(--accent-color);">•</span> Built for scale without losing authenticity</li>
+                <li style="display: flex; align-items: start; gap: 0.5rem;"><span style="color: var(--accent-color);">•</span> Your prospecting team's best friend</li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="mb-md text-semibold" style="display: flex; align-items: center; gap: 0.5rem;">
+                <span style="font-size: 1.5rem;">❌</span> What we're NOT:
+            </h4>
+            <ul style="color: var(--text-secondary); line-height: 1.8; list-style: none; padding: 0;">
+                <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: var(--text-muted);">•</span> Another "revolutionary" AI platform</li>
+                <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: var(--text-muted);">•</span> A magic bullet for all your problems</li>
+                <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: var(--text-muted);">•</span> Cheap, mass-market spam automation</li>
+                <li style="display: flex; align-items: start; gap: 0.5rem;"><span style="color: var(--text-muted);">•</span> A replacement for good salespeople</li>
+            </ul>
+        </div>
+    </div>
+</div>
                 </div>
             </div>
         </section>
@@ -178,7 +182,8 @@
                         And how we fix the problems everyone else ignores.
                     </p>
                 </div>
-
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <div class="grid grid-3 gap-xl">
                 <div class="grid grid-3 gap-xl">
                     <div class="card fade-in">
                         <h3 class="text-gradient mb-md">The Research Problem</h3>
@@ -209,6 +214,8 @@
                             <strong>Our solution:</strong> Every message references specific, recent information about the prospect's business.
                         </div>
                     </div>
+                  </div>
+                </div>
                 </div>
             </div>
         </section>
@@ -223,7 +230,7 @@
                     </p>
                 </div>
 
-                <div class="grid grid-auto gap-xl">
+                <div class="grid grid-3 gap-xl" style="max-width: 1000px; margin: 0 auto;">
                     <div class="card text-center fade-in">
                         <div style="font-size: 2.5rem; font-weight: 900; color: var(--accent-color); margin-bottom: var(--space-md);">73%</div>
                         <h3 class="mb-md">Higher Response Rates</h3>
