@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Lead Gen That Works</title>
+    
+    <!-- Link to Master CSS -->
+    <link rel="stylesheet" href="css/master.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Pricing specific styles */
+        .pricing-card {
+            background: var(--accent-bg);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            position: relative;
+            transition: all var(--transition-normal);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.15);
+        }
+        
+        .pricing-card.popular {
+            border-color: var(--accent-color);
+            position: relative;
+        }
+        
+        .pricing-card.popular::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent-color);
+            margin: 1rem 0;
+        }
+        
+        .price-period {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+            flex: 1;
+        }
+        
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+        }
+        
+        .feature-check {
+            width: 20px;
+            height: 20px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+        
+        .one-time-section {
+            background: var(--subtle-gradient);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            margin-top: var(--space-3xl);
+            text-align: center;
+        }
+        
+        .toggle-switch {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: var(--border-color);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .switch.active {
+            background: var(--gradient);
+        }
+        
+        .switch-handle {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+        
+        .switch.active .switch-handle {
+            transform: translateX(30px);
+        }
+        
+        .geo-indicator {
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Lead Gen That Works</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="index.html#how-it-works">How It Works</a></li>
+                <li><a href="index.html#why-us">Why Us</a></li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Dark mode</span>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
+                </div>
+                <a href="#demo" class="btn btn-primary btn-sm">Get Started</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" style="min-height: 70vh; padding: 8rem 0 4rem;">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="fade-in" style="font-weight: 900; font-size: clamp(2.5rem, 6vw, 4rem); line-height: 0.95; margin-bottom: 1.5rem;">
+                        Simple, Transparent <span class="text-gradient">Pricing</span>
+                    </h1>
+                    <p class="hero-description fade-in stagger-1" style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                        Choose the plan that fits your business size and goals. All plans include our core lead generation automation.
+                    </p>
+                    
+                    <!-- Billing Toggle -->
+                    <div class="toggle-switch fade-in stagger-2">
+                        <span style="color: var(--text-secondary);">Monthly</span>
+                        <div class="switch" id="billingToggle">
+                            <div class="switch-handle"></div>
+                        </div>
+                        <span style="color: var(--text-primary); font-weight: 600;">Annual <span style="color: var(--accent-color); font-size: 0.85rem;">(Save 20%)</span></span>
+                    </div>
+                    
+                    <!-- Geo Indicator -->
+                    <div class="geo-indicator" id="geoIndicator">
+                        Pricing shown for United States
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Plans -->
+        <section id="pricing" class="section">
+            <div class="container">
+                <div style="max-width: 1200px; margin: 0 auto;">
+                    <div class="grid grid-3 gap-xl">
+                        <!-- Starter Plan -->
+                        <div class="pricing-card fade-in">
+                            <div>
+                                <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Starter</h3>
+                                <p style="color: var(--text-secondary); margin-bottom: 1rem;">Perfect for small teams getting started with automation</p>
+                                
+                                <div class="price" data-monthly="497" data-annual="398">
+                                    $<span id="starter-price">497</span>
+                                    <span class="price-period">/month</span>
+                                </div>
+                                
+                                <ul class="feature-list">
+                                    <li><span class="feature-check">✓</span> Up to 500 prospects per month</li>
+                                    <li><span class="feature-check">✓</span> Basic prospect research</li>
+                                    <li><span class="feature-check">✓</span> Email sequence automation</li>
+                                    <li><span class="feature-check">✓</span> CRM integration</li>
+                                    <li><span class="feature-check">✓</span> Email support</li>
+                                    <li><span class="feature-check">✓</span> Basic analytics</li>
+                                </ul>
+                            </div>
+                            
+                            <button class="btn btn-outline" style="width: 100%; margin-top: auto;">
+                                Start Free Trial
+                            </button>
+                        </div>
+
+                        <!-- Growth Plan (Most Popular) -->
+                        <div class="pricing-card popular fade-in stagger-1">
+                            <div>
+                                <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Growth</h3>
+                                <p style="color: var(--text-secondary); margin-bottom: 1rem;">Ideal for growing companies ready to scale</p>
+                                
+                                <div class="price" data-monthly="997" data-annual="798">
+                                    $<span id="growth-price">997</span>
+                                    <span class="price-period">/month</span>
+                                </div>
+                                
+                                <ul class="feature-list">
+                                    <li><span class="feature-check">✓</span> Up to 1,500 prospects per month</li>
+                                    <li><span class="feature-check">✓</span> Advanced prospect intelligence</li>
+                                    <li><span class="feature-check">✓</span> Multi-channel outreach (Email + LinkedIn)</li>
+                                    <li><span class="feature-check">✓</span> A/B testing automation</li>
+                                    <li><span class="feature-check">✓</span> Priority support</li>
+                                    <li><span class="feature-check">✓</span> Advanced analytics & reporting</li>
+                                    <li><span class="feature-check">✓</span> Custom integrations</li>
+                                </ul>
+                            </div>
+                            
+                            <button class="btn btn-primary" style="width: 100%; margin-top: auto;">
+                                Start Free Trial
+                            </button>
+                        </div>
+
+                        <!-- Enterprise Plan -->
+                        <div class="pricing-card fade-in stagger-2">
+                            <div>
+                                <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Enterprise</h3>
+                                <p style="color: var(--text-secondary); margin-bottom: 1rem;">For large teams with complex automation needs</p>
+                                
+                                <div class="price" data-monthly="1997" data-annual="1598">
+                                    $<span id="enterprise-price">1997</span>
+                                    <span class="price-period">/month</span>
+                                </div>
+                                
+                                <ul class="feature-list">
+                                    <li><span class="feature-check">✓</span> Unlimited prospects</li>
+                                    <li><span class="feature-check">✓</span> White-glove prospect research</li>
+                                    <li><span class="feature-check">✓</span> Full multi-channel automation</li>
+                                    <li><span class="feature-check">✓</span> Custom AI model training</li>
+                                    <li><span class="feature-check">✓</span> Dedicated success manager</li>
+                                    <li><span class="feature-check">✓</span> Custom reporting & dashboards</li>
+                                    <li><span class="feature-check">✓</span> API access</li>
+                                    <li><span class="feature-check">✓</span> SLA guarantee</li>
+                                </ul>
+                            </div>
+                            
+                            <button class="btn btn-outline" style="width: 100%; margin-top: auto;">
+                                Contact Sales
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- One-time Purchase Option -->
+        <section class="section" style="background: var(--secondary-bg);">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="one-time-section">
+                        <h2 style="font-weight: 800; font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1rem;">
+                            Prefer a One-Time Purchase?
+                        </h2>
+                        <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem;">
+                            Get our complete Lead Gen automation system with lifetime access. Perfect for businesses that want to own their tools outright.
+                        </p>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; margin: 2rem 0;">
+                            <div>
+                                <div class="price" style="font-size: 2.5rem;" data-onetime="9997">
+                                    $<span id="onetime-price">9,997</span>
+                                    <span class="price-period" style="font-size: 0.9rem;">one-time</span>
+                                </div>
+                                <p style="color: var(--text-muted); font-size: 0.9rem;">Equivalent to 10 months of Growth plan</p>
+                            </div>
+                            <div style="text-align: left;">
+                                <ul class="feature-list" style="margin: 0;">
+                                    <li><span class="feature-check">✓</span> Complete automation system</li>
+                                    <li><span class="feature-check">✓</span> Lifetime updates</li>
+                                    <li><span class="feature-check">✓</span> Priority support for 1 year</li>
+                                    <li><span class="feature-check">✓</span> Custom setup included</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-lg">
+                            Purchase Lifetime Access
+                        </button>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem;">
+                            30-day money-back guarantee
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section">
+            <div class="container">
+                <div class="text-center mb-2xl">
+                    <h2 style="font-weight: 800; font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem;">
+                        Frequently Asked Questions
+                    </h2>
+                </div>
+                
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div style="display: grid; gap: 1.5rem;">
+                        <div class="card">
+                            <h4 style="margin-bottom: 0.5rem;">How quickly can I get started?</h4>
+                            <p style="color: var(--text-secondary);">Setup takes 48-72 hours after purchase. We handle the technical integration while you provide your ideal customer profile and messaging preferences.</p>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 style="margin-bottom: 0.5rem;">What's included in the free trial?</h4>
+                            <p style="color: var(--text-secondary);">14-day full access to your chosen plan with up to 100 prospects researched and contacted. No setup fees, cancel anytime.</p>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 style="margin-bottom: 0.5rem;">Do you offer custom pricing for larger volumes?</h4>
+                            <p style="color: var(--text-secondary);">Yes! Enterprise customers processing 5,000+ prospects monthly can get volume discounts. Contact our sales team for custom pricing.</p>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 style="margin-bottom: 0.5rem;">What happens if I exceed my prospect limit?</h4>
+                            <p style="color: var(--text-secondary);">We'll contact you before you hit your limit. You can upgrade your plan or purchase additional prospect credits at $1 per prospect.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: var(--primary-bg); border-top: 1px solid var(--border-color); padding: var(--space-2xl) 0; text-align: center;">
+        <div class="container">
+            <p class="text-secondary">&copy; 2024 Lead Gen That Works. Better prospecting through better research.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark Mode Toggle (same as home page)
+        const themeToggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Billing Toggle
+        const billingToggle = document.getElementById('billingToggle');
+        const starterPrice = document.getElementById('starter-price');
+        const growthPrice = document.getElementById('growth-price');
+        const enterprisePrice = document.getElementById('enterprise-price');
+        
+        billingToggle.addEventListener('click', () => {
+            billingToggle.classList.toggle('active');
+            const isAnnual = billingToggle.classList.contains('active');
+            
+            if (isAnnual) {
+                starterPrice.textContent = '398';
+                growthPrice.textContent = '798';
+                enterprisePrice.textContent = '1,598';
+            } else {
+                starterPrice.textContent = '497';
+                growthPrice.textContent = '997';
+                enterprisePrice.textContent = '1,997';
+            }
+        });
+
+        // Geo-based pricing (basic implementation)
+        async function updatePricingByLocation() {
+            try {
+                // This is a basic example - you'd want to use a more robust geolocation service
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                const country = data.country_name;
+                const countryCode = data.country_code;
+                
+                document.getElementById('geoIndicator').textContent = `Pricing shown for ${country}`;
+                
+                // Example: Apply different pricing for different regions
+                // You'd implement your actual pricing logic here
+                const pricingMultiplier = getPricingMultiplier(countryCode);
+                
+                if (pricingMultiplier !== 1) {
+                    adjustPrices(pricingMultiplier);
+                }
+            } catch (error) {
+                console.log('Could not determine location, using default pricing');
+            }
+        }
+        
+        function getPricingMultiplier(countryCode) {
+            // Example pricing adjustments (you'd set these based on your business model)
+            const regionalPricing = {
+                'GB': 1.1,   // UK - slightly higher
+                'AU': 1.05,  // Australia - slightly higher  
+                'CA': 0.95,  // Canada - slightly lower
+                'IN': 0.3,   // India - much lower
+                'BR': 0.4,   // Brazil - lower
+                // Add more countries as needed
+            };
+            
+            return regionalPricing[countryCode] || 1; // Default to US pricing
+        }
+        
+        function adjustPrices(multiplier) {
+            // Adjust all prices by the multiplier
+            const prices = document.querySelectorAll('[data-monthly], [data-annual], [data-onetime]');
+            prices.forEach(priceElement => {
+                const monthly = parseInt(priceElement.dataset.monthly);
+                const annual = parseInt(priceElement.dataset.annual);
+                const onetime = parseInt(priceElement.dataset.onetime);
+                
+                if (monthly) {
+                    priceElement.dataset.monthly = Math.round(monthly * multiplier);
+                    priceElement.dataset.annual = Math.round(annual * multiplier);
+                }
+                if (onetime) {
+                    priceElement.dataset.onetime = Math.round(onetime * multiplier);
+                }
+            });
+            
+            // Update displayed prices
+            const isAnnual = billingToggle.classList.contains('active');
+            if (isAnnual) {
+                starterPrice.textContent = Math.round(398 * multiplier);
+                growthPrice.textContent = Math.round(798 * multiplier);
+                enterprisePrice.textContent = Math.round(1598 * multiplier).toLocaleString();
+            } else {
+                starterPrice.textContent = Math.round(497 * multiplier);
+                growthPrice.textContent = Math.round(997 * multiplier);
+                enterprisePrice.textContent = Math.round(1997 * multiplier).toLocaleString();
+            }
+            
+            document.getElementById('onetime-price').textContent = Math.round(9997 * multiplier).toLocaleString();
+        }
+
+        // Initialize geo-pricing
+        updatePricingByLocation();
+
+        // Animation on scroll (same as home page)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
