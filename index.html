@@ -20,7 +20,7 @@
 <body>
     <main>
         <!-- =================== HERO SECTION =================== -->
-        <section class="hero" style="min-height: 100vh; padding: 8rem 0 4rem;">
+        <section class="hero" style="min-height: 70vh; padding: 8rem 0 4rem;">
             <!-- Background Patterns -->
             <div style="position: absolute; top: 10%; right: 8%; width: 120px; height: 120px; background: var(--gradient); border-radius: 50%; opacity: 0.08; animation: float 6s ease-in-out infinite;"></div>
             <div style="position: absolute; bottom: 25%; left: 12%; width: 80px; height: 80px; background: var(--secondary-accent); border-radius: 30%; opacity: 0.12; animation: float 4s ease-in-out infinite reverse;"></div>
@@ -135,34 +135,36 @@
                 <div class="text-center mb-2xl">
                     <h2 class="mb-lg" style="font-weight: 800; font-size: clamp(2rem, 5vw, 3rem);">"Another Day, Another AI Startup"</h2>
                 </div>
-                <div class="fade-in stagger-1" style="max-width: 900px; margin: 0 auto;">
-                    <h3 class="text-gradient mb-lg text-center">We do one thing: Prospecting. Really, really good prospecting.</h3>
-                    <p class="text-large mb-2xl text-center">
-                        Hyper-personalized outreach that makes every prospect feel like they're your only priority. At the scale that one person just can't achieve alone.
-                    </p>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
-                        <div>
-                            <h4 class="mb-md text-semibold" style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span style="font-size: 1.5rem;">✅</span> What we ARE:
-                            </h4>
-                            <ul style="color: var(--text-secondary); line-height: 1.8; list-style: none; padding: 0;">
-                                <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: var(--accent-color);">•</span> Hyper-focused on lead generation</li>
-                                <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: var(--accent-color);">•</span> Obsessed with personalization quality</li>
-                                <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: var(--accent-color);">•</span> Built for scale without losing authenticity</li>
-                                <li style="display: flex; align-items: start; gap: 0.5rem;"><span style="color: var(--accent-color);">•</span> Your prospecting team's best friend</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="mb-md text-semibold" style="display: flex; align-items: center; gap: 0.5rem;">
-                                <span style="font-size: 1.5rem;">❌</span> What we're NOT:
-                            </h4>
-                            <ul style="color: var(--text-secondary); line-height: 1.8; list-style: none; padding: 0;">
-                                <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: var(--text-muted);">•</span> Another "revolutionary" AI platform</li>
-                                <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: var(--text-muted);">•</span> A magic bullet for all your problems</li>
-                                <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: var(--text-muted);">•</span> Cheap, mass-market spam automation</li>
-                                <li style="display: flex; align-items: start; gap: 0.5rem;"><span style="color: var(--text-muted);">•</span> A replacement for good salespeople</li>
-                            </ul>
+                        <div class="fade-in stagger-1" style="max-width: 1000px; margin: 0 auto;">
+                            <h3 class="text-gradient mb-lg text-center" style="font-size: clamp(1.5rem, 3vw, 2rem);">We do one thing: Prospecting. Really, really good prospecting.</h3>
+                            <p class="text-large mb-2xl text-center">
+                                Hyper-personalized outreach that makes every prospect feel like they're your only priority. At the scale that one person just can't achieve alone.
+                            </p>
+                            
+                            <div class="grid grid-2 gap-2xl">
+                                <div style="background: var(--accent-bg); padding: var(--space-2xl); border-radius: var(--radius-xl); border: 2px solid var(--success-color);">
+                                    <h4 class="mb-md text-semibold" style="display: flex; align-items: center; gap: 0.5rem; color: var(--success-color); font-size: 1.3rem;">
+                                        <span style="font-size: 1.5rem;">✅</span> What we ARE:
+                                    </h4>
+                                    <ul style="color: var(--text-secondary); line-height: 1.8; list-style: none; padding: 0;">
+                                        <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: var(--success-color);">•</span> Hyper-focused on lead generation</li>
+                                        <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: var(--success-color);">•</span> Obsessed with personalization quality</li>
+                                        <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: var(--success-color);">•</span> Built for scale without losing authenticity</li>
+                                        <li style="display: flex; align-items: start; gap: 0.5rem;"><span style="color: var(--success-color);">•</span> Your prospecting team's best friend</li>
+                                    </ul>
+                                </div>
+                                <div style="background: var(--accent-bg); padding: var(--space-2xl); border-radius: var(--radius-xl); border: 2px solid var(--error-color);">
+                                    <h4 class="mb-md text-semibold" style="display: flex; align-items: center; gap: 0.5rem; color: var(--error-color); font-size: 1.3rem;">
+                                        <span style="font-size: 1.5rem;">❌</span> What we're NOT:
+                                    </h4>
+                                    <ul style="color: var(--text-secondary); line-height: 1.8; list-style: none; padding: 0;">
+                                        <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: var(--error-color);">•</span> Another "revolutionary" AI platform</li>
+                                        <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: var(--error-color);">•</span> A magic bullet for all your problems</li>
+                                        <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: var(--error-color);">•</span> Cheap, mass-market spam automation</li>
+                                        <li style="display: flex; align-items: start; gap: 0.5rem;"><span style="color: var(--error-color);">•</span> A replacement for good salespeople</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -181,7 +183,7 @@
                 
                 <div style="max-width: 1200px; margin: 0 auto;">
                     <div class="grid grid-3 gap-xl">
-                        <div class="card fade-in">
+                        <div style="background: var(--accent-bg); border: 2px solid var(--border-color); border-radius: var(--radius-xl); padding: var(--space-2xl); height: auto; display: flex; flex-direction: column;">
                             <h3 class="text-gradient mb-md">The Research Problem</h3>
                             <p class="text-secondary mb-md">
                                 Your team spends 80% of their time researching prospects and only 20% actually selling.
@@ -191,7 +193,7 @@
                             </div>
                         </div>
 
-                        <div class="card fade-in stagger-1">
+                        <div style="background: var(--accent-bg); border: 2px solid var(--border-color); border-radius: var(--radius-xl); padding: var(--space-2xl); height: auto; display: flex; flex-direction: column;">
                             <h3 class="text-gradient mb-md">The Scale Problem</h3>
                             <p class="text-secondary mb-md">
                                 Good personalization doesn't scale. Mass outreach isn't personal. You're stuck choosing one or the other.
@@ -201,7 +203,7 @@
                             </div>
                         </div>
 
-                        <div class="card fade-in stagger-2">
+                        <div style="background: var(--accent-bg); border: 2px solid var(--border-color); border-radius: var(--radius-xl); padding: var(--space-2xl); height: auto; display: flex; flex-direction: column;">
                             <h3 class="text-gradient mb-md">The Authenticity Problem</h3>
                             <p class="text-secondary mb-md">
                                 Everyone can tell when you're using templates. Generic outreach gets ignored or deleted immediately.
