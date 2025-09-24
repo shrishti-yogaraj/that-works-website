@@ -5,81 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Lead Gen That Works</title>
     
+    <!-- =================== STYLESHEETS =================== -->
     <link rel="stylesheet" href="css/master.css">
     
+    <!-- =================== GOOGLE FONTS =================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- =================== SHARED COMPONENTS =================== -->
     <script src="js/header.js"></script>
     <script src="js/footer.js"></script>
-    <style>
-        .contact-form {
-            background: var(--accent-bg);
-            padding: var(--space-2xl);
-            border-radius: var(--radius-xl);
-            border: 2px solid var(--border-color);
-            transition: all var(--transition-normal);
-        }
-        .contact-form:hover {
-            border-color: var(--accent-color);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
-        }
-        .form-group {
-            margin-bottom: var(--space-lg);
-        }
-        .form-label {
-            display: block;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: var(--space-sm);
-        }
-        .form-input, .form-textarea {
-            width: 100%;
-            padding: var(--space-md);
-            border: 2px solid var(--border-color);
-            border-radius: var(--radius-md);
-            background: var(--primary-bg);
-            color: var(--text-primary);
-            font-family: inherit;
-            transition: all var(--transition-normal);
-        }
-        .form-input:focus, .form-textarea:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
-        }
-        .form-textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-        .contact-card {
-            background: var(--accent-bg);
-            padding: var(--space-xl);
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border-color);
-            text-align: center;
-            transition: all var(--transition-normal);
-        }
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto var(--space-md);
-            font-size: 1.5rem;
-            color: white;
-        }
-    </style>
 </head>
 <body>
     <main>
+        <!-- =================== HERO SECTION =================== -->
         <section class="hero section-hero">
             <div class="hero-bg-shapes" aria-hidden="true">
                 <div style="top: 20%; right: 8%; width: 90px; height: 90px; background: var(--gradient); border-radius: 50%; opacity: 0.08; animation: float 7s ease-in-out infinite;"></div>
@@ -97,6 +37,7 @@
             </div>
         </section>
 
+        <!-- =================== CONTACT FORM SECTION =================== -->
         <section class="section">
             <div class="container">
                 <div class="grid grid-2 gap-xl" style="max-width: 1000px; margin: 0 auto;">
@@ -174,6 +115,7 @@
                         </form>
                     </div>
                     
+                    <!-- =================== CONTACT INFORMATION =================== -->
                     <div class="fade-in stagger-1">
                         <h3 class="mb-xl">Other Ways to Reach Us</h3>
                         
@@ -209,6 +151,7 @@
             </div>
         </section>
 
+        <!-- =================== FAQ SECTION =================== -->
         <section class="section" style="background: var(--secondary-bg);">
             <div class="container text-center">
                 <h2 class="mb-lg fade-in">Frequently Asked Questions</h2>
@@ -256,6 +199,7 @@
             </div>
         </section>
 
+        <!-- =================== FINAL CTA SECTION =================== -->
         <section class="section">
             <div class="container text-center">
                 <h2 class="mb-lg fade-in">Ready to Get Your Time Back?</h2>
@@ -269,42 +213,8 @@
             </div>
         </section>
     </main>
+    
+    <!-- =================== JAVASCRIPT =================== -->
     <script src="js/main.js" defer></script>
-    <script>
-        // FAQ Accordion functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const faqItems = document.querySelectorAll('.faq-item');
-            
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
-                
-                question.addEventListener('click', () => {
-                    const isActive = item.classList.contains('active');
-                    
-                    // Close all other FAQ items
-                    faqItems.forEach(otherItem => {
-                        if (otherItem !== item) {
-                            otherItem.classList.remove('active');
-                        }
-                    });
-                    
-                    // Toggle current item
-                    item.classList.toggle('active', !isActive);
-                });
-            });
-            
-            // Form submission handling
-            const contactForm = document.getElementById('contactForm');
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Basic form validation and submission logic would go here
-                alert('Thank you for your message! We\'ll get back to you within 24 hours.');
-                
-                // Reset form
-                contactForm.reset();
-            });
-        });
-    </script>
 </body>
 </html>
