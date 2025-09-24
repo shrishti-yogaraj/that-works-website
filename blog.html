@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How It Works - Lead Gen That Works</title>
+    <title>Blog - Lead Gen That Works</title>
     
     <link rel="stylesheet" href="css/master.css">
     
@@ -12,111 +12,157 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        .process-step {
+        .blog-card {
             background: var(--accent-bg);
-            border: 2px solid var(--border-color);
-            border-radius: var(--radius-xl);
-            padding: var(--space-2xl);
-            position: relative;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
             transition: all var(--transition-normal);
             height: 100%;
+            display: flex;
+            flex-direction: column;
         }
-        .process-step:hover {
+        .blog-card:hover {
             transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
             border-color: var(--accent-color);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
         }
-        .step-number {
+        .blog-image {
+            height: 200px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+        .blog-content {
+            padding: var(--space-xl);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-category {
+            display: inline-block;
+            background: var(--subtle-gradient);
+            color: var(--accent-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+        .blog-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+            line-height: 1.3;
+        }
+        .blog-excerpt {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            flex-grow: 1;
+            margin-bottom: var(--space-md);
+        }
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-light);
+            padding-top: var(--space-sm);
+        }
+        .featured-post {
+            background: var(--subtle-gradient);
+            border: 2px solid var(--accent-color);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--space-2xl);
+            position: relative;
+        }
+        .featured-badge {
             position: absolute;
-            top: -15px;
+            top: -12px;
             left: var(--space-xl);
             background: var(--gradient);
             color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
         }
-        .step-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--subtle-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin-bottom: var(--space-lg);
-        }
-        .timeline-connector {
+        .search-bar {
+            max-width: 500px;
+            margin: 0 auto 2rem;
             position: relative;
         }
-        .timeline-connector::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: -2rem;
-            width: 4rem;
-            height: 2px;
-            background: var(--gradient);
-            transform: translateY(-50%);
-        }
-        .timeline-connector:last-child::after {
-            display: none;
-        }
-        .feature-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        .comparison-column h4 {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        .comparison-column ul {
-            list-style: none;
-            padding: 0;
-        }
-        .comparison-column li {
-            display: flex;
-            align-items: start;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-        .tech-stack {
-            background: var(--subtle-gradient);
+        .search-input {
+            width: 100%;
+            padding: var(--space-md) var(--space-lg);
+            border: 2px solid var(--border-color);
             border-radius: var(--radius-lg);
-            padding: var(--space-xl);
-            text-align: center;
-        }
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        .tech-item {
             background: var(--accent-bg);
-            padding: var(--space-lg);
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all var(--transition-normal);
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        .filter-button {
+            background: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            font-weight: 500;
+        }
+        .filter-button:hover, .filter-button.active {
+            background: var(--gradient);
+            color: white;
+            border-color: transparent;
+        }
+        .newsletter-signup {
+            background: var(--gradient);
+            color: white;
+            padding: var(--space-2xl);
+            border-radius: var(--radius-xl);
+            text-align: center;
+            margin: var(--space-3xl) 0;
+        }
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+            margin-top: 1.5rem;
+        }
+        .newsletter-input {
+            flex-grow: 1;
+            padding: var(--space-md);
+            border: none;
             border-radius: var(--radius-md);
-            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            placeholder-color: rgba(255, 255, 255, 0.7);
         }
-        .tech-item h5 {
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
-        }
+        .newsletter-input::placeholder { color: rgba(255, 255, 255, 0.7); }
+        .newsletter-input:focus { outline: none; background: rgba(255, 255, 255, 0.3); }
         @media (max-width: 768px) {
-            .timeline-connector::after { display: none; }
-            .feature-comparison { grid-template-columns: 1fr; }
+            .newsletter-form { flex-direction: column; }
+            .category-filters { gap: 0.5rem; }
         }
     </style>
 </head>
@@ -145,16 +191,16 @@
     <main>
         <section class="hero section-hero">
             <div class="hero-bg-shapes" aria-hidden="true">
-                <div style="top: 15%; right: 12%; width: 100px; height: 100px; background: var(--gradient); border-radius: 50%; opacity: 0.08; animation: float 8s ease-in-out infinite;"></div>
-                <div style="bottom: 25%; left: 8%; width: 70px; height: 70px; background: var(--secondary-accent); border-radius: 30%; opacity: 0.12; animation: float 6s ease-in-out infinite reverse;"></div>
+                <div style="top: 20%; right: 10%; width: 90px; height: 90px; background: var(--gradient); border-radius: 50%; opacity: 0.08; animation: float 7s ease-in-out infinite;"></div>
+                <div style="bottom: 30%; left: 8%; width: 60px; height: 60px; background: var(--secondary-accent); border-radius: 30%; opacity: 0.12; animation: float 5s ease-in-out infinite reverse;"></div>
             </div>
             <div class="container">
                 <div class="hero-content">
                     <h1 class="hero-title pricing-hero-title fade-in">
-                        How We <span class="text-gradient">Automate</span> Your Prospecting
+                        Sales <span class="text-gradient">Insights</span> & Strategies
                     </h1>
                     <p class="hero-description fade-in stagger-1">
-                        Our proven 4-step system researches prospects, identifies automation opportunities, and creates personalized outreach that gets responses.
+                        Learn how to transform your lead generation process with proven automation strategies, best practices, and industry insights.
                     </p>
                 </div>
             </div>
@@ -162,240 +208,199 @@
 
         <section class="section">
             <div class="container">
-                <div class="text-center mb-2xl">
-                    <h2 class="mb-lg fade-in">The Complete Process</h2>
-                    <p class="text-large text-secondary fade-in stagger-1" style="max-width: 700px; margin: 0 auto;">
-                        From raw prospect lists to personalized outreach scripts, here's exactly how we transform your lead generation process.
-                    </p>
+                <!-- Search Bar -->
+                <div class="search-bar fade-in">
+                    <input type="text" class="search-input" placeholder="Search articles..." id="searchInput">
                 </div>
                 
-                <div class="grid grid-auto gap-xl">
-                    <div class="process-step timeline-connector fade-in">
-                        <div class="step-number">1</div>
-                        <div class="step-icon">🎯</div>
-                        <h3 class="mb-md">Target Definition</h3>
-                        <p class="text-secondary mb-lg">
-                            We work with you to define your Ideal Customer Profile (ICP) and create specific targeting criteria that identify prospects most likely to buy.
-                        </p>
-                        <div style="background: var(--secondary-bg); padding: 1rem; border-radius: var(--radius-md); font-size: 0.9rem; color: var(--text-secondary);">
-                            <strong>What we define:</strong> Company size, industry, tech stack, growth stage, funding status, and specific automation readiness signals
-                        </div>
-                    </div>
-
-                    <div class="process-step timeline-connector fade-in stagger-1">
-                        <div class="step-number">2</div>
-                        <div class="step-icon">🔍</div>
-                        <h3 class="mb-md">Deep Research</h3>
-                        <p class="text-secondary mb-lg">
-                            Our AI system researches each prospect across multiple data sources, analyzing their business model, recent news, job postings, and automation opportunities.
-                        </p>
-                        <div style="background: var(--secondary-bg); padding: 1rem; border-radius: var(--radius-md); font-size: 0.9rem; color: var(--text-secondary);">
-                            <strong>Research includes:</strong> Company overview, recent developments, tech stack analysis, lead generation maturity, and decision-maker intelligence
-                        </div>
-                    </div>
-
-                    <div class="process-step timeline-connector fade-in stagger-2">
-                        <div class="step-number">3</div>
-                        <div class="step-icon">🧠</div>
-                        <h3 class="mb-md">Signal Analysis</h3>
-                        <p class="text-secondary mb-lg">
-                            We analyze the research to identify specific automation readiness signals, competitive pressures, and timing factors that make prospects ready to buy.
-                        </p>
-                        <div style="background: var(--secondary-bg); padding: 1rem; border-radius: var(--radius-md); font-size: 0.9rem; color: var(--text-secondary);">
-                            <strong>Key signals:</strong> Manual processes, scaling challenges, recent funding, team growth, competitive threats, and business expansion
-                        </div>
-                    </div>
-
-                    <div class="process-step fade-in stagger-3">
-                        <div class="step-number">4</div>
-                        <div class="step-icon">✉️</div>
-                        <h3 class="mb-md">Personalized Outreach</h3>
-                        <p class="text-secondary mb-lg">
-                            We create multiple personalized email and LinkedIn message variations that reference specific research findings and position your solution as the obvious choice.
-                        </p>
-                        <div style="background: var(--secondary-bg); padding: 1rem; border-radius: var(--radius-md); font-size: 0.9rem; color: var(--text-secondary);">
-                            <strong>You get:</strong> 2 email variations, 1 LinkedIn message, follow-up sequences, and A/B testing recommendations
-                        </div>
-                    </div>
+                <!-- Category Filters -->
+                <div class="category-filters fade-in stagger-1">
+                    <button class="filter-button active" data-category="all">All Posts</button>
+                    <button class="filter-button" data-category="automation">Automation</button>
+                    <button class="filter-button" data-category="personalization">Personalization</button>
+                    <button class="filter-button" data-category="strategy">Strategy</button>
+                    <button class="filter-button" data-category="case-studies">Case Studies</button>
+                    <button class="filter-button" data-category="tools">Tools</button>
                 </div>
-            </div>
-        </section>
 
-        <section class="section" style="background: var(--secondary-bg);">
-            <div class="container">
-                <div class="text-center mb-2xl">
-                    <h2 class="mb-lg fade-in">Manual vs. Automated: The Difference</h2>
-                    <p class="text-large text-secondary fade-in stagger-1" style="max-width: 700px; margin: 0 auto;">
-                        See why our automated process consistently outperforms traditional manual prospecting.
+                <!-- Featured Post -->
+                <article class="featured-post fade-in stagger-2">
+                    <div class="featured-badge">Featured</div>
+                    <div class="grid grid-2 gap-xl" style="align-items: center;">
+                        <div>
+                            <div class="blog-category">Automation</div>
+                            <h2 class="mb-md">How We 3x'd Response Rates Using AI-Powered Research</h2>
+                            <p class="text-secondary mb-lg">
+                                A detailed case study showing exactly how one SaaS company went from 7% to 23% response rates by automating their prospect research process. Includes the specific prompts, workflows, and strategies they used.
+                            </p>
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                                <span class="text-small text-muted">March 15, 2025</span>
+                                <span class="text-small text-muted">•</span>
+                                <span class="text-small text-muted">8 min read</span>
+                            </div>
+                            <a href="#" class="btn btn-primary">Read Full Case Study</a>
+                        </div>
+                        <div class="blog-image" style="height: 250px; border-radius: var(--radius-lg);">
+                            📈
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Posts Grid -->
+                <div class="grid grid-auto gap-xl" id="blogGrid">
+                    <article class="blog-card fade-in stagger-2" data-category="automation">
+                        <div class="blog-image">⚡</div>
+                        <div class="blog-content">
+                            <div class="blog-category">Automation</div>
+                            <h3 class="blog-title">Building Your First Lead Gen Automation in n8n</h3>
+                            <p class="blog-excerpt">
+                                Step-by-step guide to creating a simple but effective lead generation workflow that researches prospects and drafts personalized emails.
+                            </p>
+                            <div class="blog-meta">
+                                <span>March 8, 2025</span>
+                                <span>12 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card fade-in stagger-3" data-category="case-studies">
+                        <div class="blog-image">📊</div>
+                        <div class="blog-content">
+                            <div class="blog-category">Case Studies</div>
+                            <h3 class="blog-title">From 200 to 2,000 Prospects: A Scaling Success Story</h3>
+                            <p class="blog-excerpt">
+                                How a B2B SaaS company scaled their lead generation from 200 to 2,000 qualified prospects per month without hiring additional staff.
+                            </p>
+                            <div class="blog-meta">
+                                <span>March 5, 2025</span>
+                                <span>6 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card fade-in stagger-4" data-category="tools">
+                        <div class="blog-image">🛠️</div>
+                        <div class="blog-content">
+                            <div class="blog-category">Tools</div>
+                            <h3 class="blog-title">The Complete Lead Gen Tech Stack for 2025</h3>
+                            <p class="blog-excerpt">
+                                Our recommended tools for prospect research, data enrichment, automation, and personalization - plus how to integrate them effectively.
+                            </p>
+                            <div class="blog-meta">
+                                <span>March 3, 2025</span>
+                                <span>9 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card fade-in stagger-5" data-category="personalization">
+                        <div class="blog-image">💬</div>
+                        <div class="blog-content">
+                            <div class="blog-category">Personalization</div>
+                            <h3 class="blog-title">The Psychology of Cold Email: What Actually Works</h3>
+                            <p class="blog-excerpt">
+                                Behavioral psychology principles that increase cold email response rates, with real examples and A/B test results.
+                            </p>
+                            <div class="blog-meta">
+                                <span>February 28, 2025</span>
+                                <span>8 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card fade-in stagger-6" data-category="strategy">
+                        <div class="blog-image">🔍</div>
+                        <div class="blog-content">
+                            <div class="blog-category">Strategy</div>
+                            <h3 class="blog-title">How to Identify Automation-Ready Prospects</h3>
+                            <p class="blog-excerpt">
+                                The specific signals that indicate a company is ready to invest in automation solutions, and how to spot them in your research.
+                            </p>
+                            <div class="blog-meta">
+                                <span>February 25, 2025</span>
+                                <span>10 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card fade-in stagger-7" data-category="case-studies">
+                        <div class="blog-image">🎉</div>
+                        <div class="blog-content">
+                            <div class="blog-category">Case Studies</div>
+                            <h3 class="blog-title">How One Agency Got 47% Response Rates</h3>
+                            <p class="blog-excerpt">
+                                A marketing agency's complete playbook for achieving consistently high response rates through better prospect research and positioning.
+                            </p>
+                            <div class="blog-meta">
+                                <span>February 22, 2025</span>
+                                <span>7 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card fade-in stagger-8" data-category="automation">
+                        <div class="blog-image">🤖</div>
+                        <div class="blog-content">
+                            <div class="blog-category">Automation</div>
+                            <h3 class="blog-title">AI Prompt Engineering for Better Lead Research</h3>
+                            <p class="blog-excerpt">
+                                The specific prompts and techniques we use to get better research results from AI tools like GPT-4 and Claude.
+                            </p>
+                            <div class="blog-meta">
+                                <span>February 20, 2025</span>
+                                <span>11 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card fade-in stagger-9" data-category="tools">
+                        <div class="blog-image">📈</div>
+                        <div class="blog-content">
+                            <div class="blog-category">Tools</div>
+                            <h3 class="blog-title">Notion vs. HubSpot vs. Airtable for Lead Management</h3>
+                            <p class="blog-excerpt">
+                                A detailed comparison of popular CRM and database tools for managing your lead generation process and research data.
+                            </p>
+                            <div class="blog-meta">
+                                <span>February 18, 2025</span>
+                                <span>6 min read</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Newsletter Signup -->
+                <div class="newsletter-signup fade-in">
+                    <h3 class="mb-md">Get Weekly Lead Gen Tips</h3>
+                    <p style="margin-bottom: 1.5rem; opacity: 0.9;">
+                        Join 2,500+ sales professionals who get our weekly newsletter with actionable tips for improving their lead generation process.
                     </p>
-                </div>
-                
-                <div class="feature-comparison fade-in stagger-2">
-                    <div class="comparison-column">
-                        <h4>
-                            <span style="color: var(--error-color);">❌</span>
-                            Manual Prospecting
-                        </h4>
-                        <ul>
-                            <li>
-                                <span style="color: var(--error-color);">•</span>
-                                40+ hours per week researching prospects
-                            </li>
-                            <li>
-                                <span style="color: var(--error-color);">•</span>
-                                Generic research from basic LinkedIn profiles
-                            </li>
-                            <li>
-                                <span style="color: var(--error-color);">•</span>
-                                Inconsistent quality based on researcher skill
-                            </li>
-                            <li>
-                                <span style="color: var(--error-color);">•</span>
-                                Missed automation opportunities and signals
-                            </li>
-                            <li>
-                                <span style="color: var(--error-color);">•</span>
-                                Template-based messaging that feels generic
-                            </li>
-                            <li>
-                                <span style="color: var(--error-color);">•</span>
-                                Response rates around 2-5%
-                            </li>
-                            <li>
-                                <span style="color: var(--error-color);">•</span>
-                                Difficult to scale beyond a few prospects daily
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="comparison-column">
-                        <h4>
-                            <span style="color: var(--success-color);">✅</span>
-                            Our Automated System
-                        </h4>
-                        <ul>
-                            <li>
-                                <span style="color: var(--success-color);">•</span>
-                                2 hours per week reviewing and approving outreach
-                            </li>
-                            <li>
-                                <span style="color: var(--success-color);">•</span>
-                                Deep research across 15+ data sources per prospect
-                            </li>
-                            <li>
-                                <span style="color: var(--success-color);">•</span>
-                                Consistent quality driven by AI and proven processes
-                            </li>
-                            <li>
-                                <span style="color: var(--success-color);">•</span>
-                                Advanced signal detection identifies best prospects
-                            </li>
-                            <li>
-                                <span style="color: var(--success-color);">•</span>
-                                Truly personalized messaging based on specific research
-                            </li>
-                            <li>
-                                <span style="color: var(--success-color);">•</span>
-                                Response rates consistently 15-25%
-                            </li>
-                            <li>
-                                <span style="color: var(--success-color);">•</span>
-                                Easily scale to 200+ prospects per month
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container">
-                <div class="text-center mb-2xl">
-                    <h2 class="mb-lg fade-in">The Technology Behind the Magic</h2>
-                    <p class="text-large text-secondary fade-in stagger-1" style="max-width: 700px; margin: 0 auto;">
-                        Our system combines multiple AI models, data sources, and automation tools to deliver consistent results.
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                        <button type="submit" class="btn" style="background: white; color: var(--accent-color); border: none; font-weight: 600;">
+                            Subscribe
+                        </button>
+                    </form>
+                    <p class="text-small" style="margin-top: 1rem; opacity: 0.7;">
+                        No spam. Unsubscribe anytime. We respect your privacy.
                     </p>
-                </div>
-                
-                <div class="tech-stack fade-in stagger-2">
-                    <h3 class="mb-xl text-center">Our Tech Stack</h3>
-                    <div class="tech-grid">
-                        <div class="tech-item">
-                            <h5>Research Intelligence</h5>
-                            <p class="text-secondary text-small">
-                                Tavily, Perplexity, LinkedIn Sales Navigator, company websites, news sources
-                            </p>
-                        </div>
-                        
-                        <div class="tech-item">
-                            <h5>AI Processing</h5>
-                            <p class="text-secondary text-small">
-                                GPT-4, Claude, custom signal detection models, sentiment analysis
-                            </p>
-                        </div>
-                        
-                        <div class="tech-item">
-                            <h5>Data Management</h5>
-                            <p class="text-secondary text-small">
-                                Notion databases, automated workflows, quality scoring systems
-                            </p>
-                        </div>
-                        
-                        <div class="tech-item">
-                            <h5>Automation Platform</h5>
-                            <p class="text-secondary text-small">
-                                n8n workflows, API integrations, error handling, monitoring systems
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
 
         <section class="section" style="background: var(--secondary-bg);">
             <div class="container text-center">
-                <h2 class="mb-lg fade-in">What You Get Every Week</h2>
-                <div class="grid grid-3 gap-xl">
-                    <div class="card text-center fade-in">
-                        <div class="step-icon" style="margin: 0 auto 1rem;">📋</div>
-                        <h3 class="mb-md">Research Reports</h3>
-                        <p class="text-secondary">
-                            Detailed prospect profiles with company intelligence, automation readiness scores, and specific conversation starters.
-                        </p>
-                    </div>
-
-                    <div class="card text-center fade-in stagger-1">
-                        <div class="step-icon" style="margin: 0 auto 1rem;">✉️</div>
-                        <h3 class="mb-md">Outreach Scripts</h3>
-                        <p class="text-secondary">
-                            Multiple personalized email and LinkedIn message variations ready to copy, paste, and send.
-                        </p>
-                    </div>
-
-                    <div class="card text-center fade-in stagger-2">
-                        <div class="step-icon" style="margin: 0 auto 1rem;">📊</div>
-                        <h3 class="mb-md">Performance Insights</h3>
-                        <p class="text-secondary">
-                            Response rate analysis, A/B testing results, and recommendations for improving your outreach.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container text-center">
-                <h2 class="mb-lg fade-in">Ready to See It in Action?</h2>
+                <h2 class="mb-lg fade-in">Ready to Implement What You've Learned?</h2>
                 <p class="text-large mb-2xl fade-in stagger-1" style="max-width: 700px; margin: 0 auto;">
-                    Book a 15-minute demo and we'll show you exactly how the system works with your specific target market.
+                    Stop reading about lead generation and start automating it. Let us handle the prospecting while you focus on closing deals.
                 </p>
                 <div class="flex justify-center gap-md flex-wrap">
-                    <a href="contact.html" class="btn btn-primary btn-lg fade-in stagger-2">Book Free Demo</a>
-                    <a href="pricing.html" class="btn btn-secondary btn-lg fade-in stagger-3">View Pricing</a>
+                    <a href="contact.html" class="btn btn-primary btn-lg fade-in stagger-2">Get Started Today</a>
+                    <a href="how-it-works.html" class="btn btn-secondary btn-lg fade-in stagger-3">See How It Works</a>
                 </div>
                 
                 <div class="text-small text-muted mt-xl fade-in stagger-4">
-                    No commitment required. See results in the first week.
+                    Setup takes 2 weeks. Results start immediately.
                 </div>
             </div>
         </section>
@@ -408,5 +413,108 @@
     </footer>
 
     <script src="js/main.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const blogCards = document.querySelectorAll('.blog-card');
+            const newsletterForm = document.getElementById('newsletterForm');
+
+            // Search functionality
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                blogCards.forEach(card => {
+                    const title = card.querySelector('.blog-title').textContent.toLowerCase();
+                    const excerpt = card.querySelector('.blog-excerpt').textContent.toLowerCase();
+                    const category = card.querySelector('.blog-category').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || excerpt.includes(searchTerm) || category.includes(searchTerm)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            // Category filtering
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const category = this.dataset.category;
+                    
+                    // Filter cards
+                    blogCards.forEach(card => {
+                        if (category === 'all' || card.dataset.category === category) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    
+                    // Clear search when filtering
+                    searchInput.value = '';
+                });
+            });
+
+            // Newsletter form submission
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                
+                // Basic email validation
+                if (email && email.includes('@')) {
+                    alert('Thank you for subscribing! Check your email for confirmation.');
+                    this.reset();
+                } else {
+                    alert('Please enter a valid email address.');
+                }
+            });
+
+            // Add click handlers to blog cards
+            blogCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // In a real implementation, this would navigate to the full article
+                    alert('This would navigate to the full article. For demo purposes, articles are not yet implemented.');
+                });
+                
+                // Add cursor pointer
+                card.style.cursor = 'pointer';
+            });
+        });
+    </script>
 </body>
-</html>
+</html>="blog-card fade-in" data-category="personalization">
+                        <div class="blog-image">🎯</div>
+                        <div class="blog-content">
+                            <div class="blog-category">Personalization</div>
+                            <h3 class="blog-title">The 5 Research Points That Actually Matter for Personalization</h3>
+                            <p class="blog-excerpt">
+                                Most sales teams research the wrong things. Here are the 5 data points that actually drive response rates and how to find them quickly.
+                            </p>
+                            <div class="blog-meta">
+                                <span>March 12, 2025</span>
+                                <span>5 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card fade-in stagger-1" data-category="strategy">
+                        <div class="blog-image">🧠</div>
+                        <div class="blog-content">
+                            <div class="blog-category">Strategy</div>
+                            <h3 class="blog-title">Why Your ICP is Wrong (And How to Fix It)</h3>
+                            <p class="blog-excerpt">
+                                Your Ideal Customer Profile probably focuses on firmographics. Here's why psychographics and behavioral data matter more for lead generation.
+                            </p>
+                            <div class="blog-meta">
+                                <span>March 10, 2025</span>
+                                <span>7 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class
