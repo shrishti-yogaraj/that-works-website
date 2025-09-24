@@ -12,7 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
     <style>
         /* Pricing specific styles */
         .pricing-card {
@@ -196,27 +197,6 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">Lead Gen That Works</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="how-it-works.html">How It Works</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-</ul>
-            <div style="display: flex; align-items: center; gap: 1rem;">
-                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                    <span style="font-size: 0.8rem; color: var(--text-muted);">Dark mode</span>
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
-                </div>
-                <a href="#demo" class="btn btn-primary btn-sm">Get Started</a>
-            </div>
-        </nav>
-    </header>
-
     <main>
         <!-- Hero Section -->
         <section class="hero" style="min-height: 40vh; padding: 8rem 0 4rem;">
@@ -429,13 +409,6 @@
             </div>
         </section>
     </main>
-
-    <footer style="background: var(--primary-bg); border-top: 1px solid var(--border-color); padding: var(--space-2xl) 0; text-align: center;">
-        <div class="container">
-            <p class="text-secondary">&copy; 2024 Lead Gen That Works. Better prospecting through better research.</p>
-        </div>
-    </footer>
-
     <script>
         // Dark Mode Toggle (same as home page)
         const themeToggle = document.getElementById('themeToggle');
