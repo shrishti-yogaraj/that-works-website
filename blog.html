@@ -5,174 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Lead Gen That Works</title>
     
+    <!-- =================== STYLESHEETS =================== -->
     <link rel="stylesheet" href="css/master.css">
     
+    <!-- =================== GOOGLE FONTS =================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Load shared components -->
+    <!-- =================== SHARED COMPONENTS =================== -->
     <script src="js/header.js"></script>
     <script src="js/footer.js"></script>
-    
-    <style>
-        .blog-card {
-            background: var(--accent-bg);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            transition: all var(--transition-normal);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--accent-color);
-        }
-        .blog-image {
-            height: 200px;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-        }
-        .blog-content {
-            padding: var(--space-xl);
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .blog-category {
-            display: inline-block;
-            background: var(--subtle-gradient);
-            color: var(--accent-color);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: var(--space-sm);
-        }
-        .blog-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: var(--space-sm);
-            line-height: 1.3;
-        }
-        .blog-excerpt {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            flex-grow: 1;
-            margin-bottom: var(--space-md);
-        }
-        .blog-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-light);
-            padding-top: var(--space-sm);
-        }
-        .featured-post {
-            background: var(--subtle-gradient);
-            border: 2px solid var(--accent-color);
-            padding: var(--space-2xl);
-            border-radius: var(--radius-xl);
-            margin-bottom: var(--space-2xl);
-            position: relative;
-        }
-        .featured-badge {
-            position: absolute;
-            top: -12px;
-            left: var(--space-xl);
-            background: var(--gradient);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        .search-bar {
-            max-width: 500px;
-            margin: 0 auto 2rem;
-            position: relative;
-        }
-        .search-input {
-            width: 100%;
-            padding: var(--space-md) var(--space-lg);
-            border: 2px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            background: var(--accent-bg);
-            color: var(--text-primary);
-            font-size: 1rem;
-            transition: all var(--transition-normal);
-        }
-        .search-input:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
-        }
-        .category-filters {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-        .filter-button {
-            background: transparent;
-            border: 2px solid var(--border-color);
-            color: var(--text-secondary);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all var(--transition-normal);
-            font-weight: 500;
-        }
-        .filter-button:hover, .filter-button.active {
-            background: var(--gradient);
-            color: white;
-            border-color: transparent;
-        }
-        .newsletter-signup {
-            background: var(--gradient);
-            color: white;
-            padding: var(--space-2xl);
-            border-radius: var(--radius-xl);
-            text-align: center;
-            margin: var(--space-3xl) 0;
-        }
-        .newsletter-form {
-            display: flex;
-            gap: 1rem;
-            max-width: 400px;
-            margin: 0 auto;
-            margin-top: 1.5rem;
-        }
-        .newsletter-input {
-            flex-grow: 1;
-            padding: var(--space-md);
-            border: none;
-            border-radius: var(--radius-md);
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-        }
-        .newsletter-input::placeholder { color: rgba(255, 255, 255, 0.7); }
-        .newsletter-input:focus { outline: none; background: rgba(255, 255, 255, 0.3); }
-        @media (max-width: 768px) {
-            .newsletter-form { flex-direction: column; }
-            .category-filters { gap: 0.5rem; }
-        }
-    </style>
 </head>
 <body>
-    <!-- Header will be automatically inserted here -->
-    
     <main>
+        <!-- =================== HERO SECTION =================== -->
         <section class="hero section-hero">
             <div class="hero-bg-shapes" aria-hidden="true">
                 <div style="top: 20%; right: 10%; width: 90px; height: 90px; background: var(--gradient); border-radius: 50%; opacity: 0.08; animation: float 7s ease-in-out infinite;"></div>
@@ -190,6 +37,7 @@
             </div>
         </section>
 
+        <!-- =================== BLOG CONTENT SECTION =================== -->
         <section class="section">
             <div class="container">
                 <!-- Search Bar -->
@@ -342,6 +190,7 @@
             </div>
         </section>
 
+        <!-- =================== CTA SECTION =================== -->
         <section class="section" style="background: var(--secondary-bg);">
             <div class="container text-center">
                 <h2 class="mb-lg fade-in">Ready to Implement What You've Learned?</h2>
@@ -360,78 +209,7 @@
         </section>
     </main>
     
-    <!-- Footer will be automatically inserted here -->
-
+    <!-- =================== JAVASCRIPT =================== -->
     <script src="js/main.js" defer></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.getElementById('searchInput');
-            const filterButtons = document.querySelectorAll('.filter-button');
-            const blogCards = document.querySelectorAll('.blog-card');
-            const newsletterForm = document.getElementById('newsletterForm');
-
-            // Search functionality
-            searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                
-                blogCards.forEach(card => {
-                    const title = card.querySelector('.blog-title').textContent.toLowerCase();
-                    const excerpt = card.querySelector('.blog-excerpt').textContent.toLowerCase();
-                    const category = card.querySelector('.blog-category').textContent.toLowerCase();
-                    
-                    if (title.includes(searchTerm) || excerpt.includes(searchTerm) || category.includes(searchTerm)) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-
-            // Category filtering
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Update active button
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    const category = this.dataset.category;
-                    
-                    // Filter cards
-                    blogCards.forEach(card => {
-                        if (category === 'all' || card.dataset.category === category) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                    
-                    // Clear search when filtering
-                    searchInput.value = '';
-                });
-            });
-
-            // Newsletter form submission
-            newsletterForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = this.querySelector('input[type="email"]').value;
-                
-                if (email && email.includes('@')) {
-                    alert('Thank you for subscribing! Check your email for confirmation.');
-                    this.reset();
-                } else {
-                    alert('Please enter a valid email address.');
-                }
-            });
-
-            // Add click handlers to blog cards
-            blogCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    alert('This would navigate to the full article. For demo purposes, articles are not yet implemented.');
-                });
-                
-                card.style.cursor = 'pointer';
-            });
-        });
-    </script>
 </body>
 </html>
