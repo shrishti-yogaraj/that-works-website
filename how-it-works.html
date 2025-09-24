@@ -5,124 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How It Works - Lead Gen That Works</title>
     
+    <!-- =================== STYLESHEETS =================== -->
     <link rel="stylesheet" href="css/master.css">
     
+    <!-- =================== GOOGLE FONTS =================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- =================== SHARED COMPONENTS =================== -->
     <script src="js/header.js"></script>
     <script src="js/footer.js"></script>
-    <style>
-        .process-step {
-            background: var(--accent-bg);
-            border: 2px solid var(--border-color);
-            border-radius: var(--radius-xl);
-            padding: var(--space-2xl);
-            position: relative;
-            transition: all var(--transition-normal);
-            height: 100%;
-        }
-        .process-step:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-color);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
-        }
-        .step-number {
-            position: absolute;
-            top: -15px;
-            left: var(--space-xl);
-            background: var(--gradient);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        .step-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--subtle-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin-bottom: var(--space-lg);
-        }
-        .timeline-connector {
-            position: relative;
-        }
-        .timeline-connector::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: -2rem;
-            width: 4rem;
-            height: 2px;
-            background: var(--gradient);
-            transform: translateY(-50%);
-        }
-        .timeline-connector:last-child::after {
-            display: none;
-        }
-        .feature-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        .comparison-column h4 {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        .comparison-column ul {
-            list-style: none;
-            padding: 0;
-        }
-        .comparison-column li {
-            display: flex;
-            align-items: start;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-        .tech-stack {
-            background: var(--subtle-gradient);
-            border-radius: var(--radius-lg);
-            padding: var(--space-xl);
-            text-align: center;
-        }
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        .tech-item {
-            background: var(--accent-bg);
-            padding: var(--space-lg);
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-color);
-        }
-        .tech-item h5 {
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
-        }
-        @media (max-width: 768px) {
-            .timeline-connector::after { display: none; }
-            .feature-comparison { grid-template-columns: 1fr; }
-        }
-    </style>
 </head>
 <body>
     <main>
+        <!-- =================== HERO SECTION =================== -->
         <section class="hero section-hero">
             <div class="hero-bg-shapes" aria-hidden="true">
                 <div style="top: 15%; right: 12%; width: 100px; height: 100px; background: var(--gradient); border-radius: 50%; opacity: 0.08; animation: float 8s ease-in-out infinite;"></div>
@@ -140,6 +37,7 @@
             </div>
         </section>
 
+        <!-- =================== THE COMPLETE PROCESS SECTION =================== -->
         <section class="section">
             <div class="container">
                 <div class="text-center mb-2xl">
@@ -201,6 +99,7 @@
             </div>
         </section>
 
+        <!-- =================== MANUAL VS AUTOMATED COMPARISON =================== -->
         <section class="section" style="background: var(--secondary-bg);">
             <div class="container">
                 <div class="text-center mb-2xl">
@@ -288,6 +187,7 @@
             </div>
         </section>
 
+        <!-- =================== TECHNOLOGY SECTION =================== -->
         <section class="section">
             <div class="container">
                 <div class="text-center mb-2xl">
@@ -332,6 +232,7 @@
             </div>
         </section>
 
+        <!-- =================== WHAT YOU GET SECTION =================== -->
         <section class="section" style="background: var(--secondary-bg);">
             <div class="container text-center">
                 <h2 class="mb-lg fade-in">What You Get Every Week</h2>
@@ -363,6 +264,7 @@
             </div>
         </section>
 
+        <!-- =================== FINAL CTA SECTION =================== -->
         <section class="section">
             <div class="container text-center">
                 <h2 class="mb-lg fade-in">Ready to See It in Action?</h2>
@@ -380,6 +282,8 @@
             </div>
         </section>
     </main>
+    
+    <!-- =================== JAVASCRIPT =================== -->
     <script src="js/main.js" defer></script>
 </body>
 </html>
