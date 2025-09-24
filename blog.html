@@ -11,6 +11,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- Load shared components -->
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+    
     <style>
         .blog-card {
             background: var(--accent-bg);
@@ -156,7 +160,6 @@
             border-radius: var(--radius-md);
             background: rgba(255, 255, 255, 0.2);
             color: white;
-            placeholder-color: rgba(255, 255, 255, 0.7);
         }
         .newsletter-input::placeholder { color: rgba(255, 255, 255, 0.7); }
         .newsletter-input:focus { outline: none; background: rgba(255, 255, 255, 0.3); }
@@ -167,27 +170,8 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">Lead Gen That Works</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="how-it-works.html">How It Works</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-</ul>
-            <div style="display: flex; align-items: center; gap: 1rem;">
-                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                    <span style="font-size: 0.8rem; color: var(--text-muted);">Dark mode</span>
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
-                </div>
-                <a href="#demo" class="btn btn-primary btn-sm">Get Started</a>
-            </div>
-        </nav>
-    </header>
-
+    <!-- Header will be automatically inserted here -->
+    
     <main>
         <section class="hero section-hero">
             <div class="hero-bg-shapes" aria-hidden="true">
@@ -248,6 +232,36 @@
 
                 <!-- Blog Posts Grid -->
                 <div class="grid grid-auto gap-xl" id="blogGrid">
+                    <article class="blog-card fade-in" data-category="personalization">
+                        <div class="blog-image">🎯</div>
+                        <div class="blog-content">
+                            <div class="blog-category">Personalization</div>
+                            <h3 class="blog-title">The 5 Research Points That Actually Matter for Personalization</h3>
+                            <p class="blog-excerpt">
+                                Most sales teams research the wrong things. Here are the 5 data points that actually drive response rates and how to find them quickly.
+                            </p>
+                            <div class="blog-meta">
+                                <span>March 12, 2025</span>
+                                <span>5 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card fade-in stagger-1" data-category="strategy">
+                        <div class="blog-image">🧠</div>
+                        <div class="blog-content">
+                            <div class="blog-category">Strategy</div>
+                            <h3 class="blog-title">Why Your ICP is Wrong (And How to Fix It)</h3>
+                            <p class="blog-excerpt">
+                                Your Ideal Customer Profile probably focuses on firmographics. Here's why psychographics and behavioral data matter more for lead generation.
+                            </p>
+                            <div class="blog-meta">
+                                <span>March 10, 2025</span>
+                                <span>7 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
                     <article class="blog-card fade-in stagger-2" data-category="automation">
                         <div class="blog-image">⚡</div>
                         <div class="blog-content">
@@ -307,66 +321,6 @@
                             </div>
                         </div>
                     </article>
-
-                    <article class="blog-card fade-in stagger-6" data-category="strategy">
-                        <div class="blog-image">🔍</div>
-                        <div class="blog-content">
-                            <div class="blog-category">Strategy</div>
-                            <h3 class="blog-title">How to Identify Automation-Ready Prospects</h3>
-                            <p class="blog-excerpt">
-                                The specific signals that indicate a company is ready to invest in automation solutions, and how to spot them in your research.
-                            </p>
-                            <div class="blog-meta">
-                                <span>February 25, 2025</span>
-                                <span>10 min read</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="blog-card fade-in stagger-7" data-category="case-studies">
-                        <div class="blog-image">🎉</div>
-                        <div class="blog-content">
-                            <div class="blog-category">Case Studies</div>
-                            <h3 class="blog-title">How One Agency Got 47% Response Rates</h3>
-                            <p class="blog-excerpt">
-                                A marketing agency's complete playbook for achieving consistently high response rates through better prospect research and positioning.
-                            </p>
-                            <div class="blog-meta">
-                                <span>February 22, 2025</span>
-                                <span>7 min read</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="blog-card fade-in stagger-8" data-category="automation">
-                        <div class="blog-image">🤖</div>
-                        <div class="blog-content">
-                            <div class="blog-category">Automation</div>
-                            <h3 class="blog-title">AI Prompt Engineering for Better Lead Research</h3>
-                            <p class="blog-excerpt">
-                                The specific prompts and techniques we use to get better research results from AI tools like GPT-4 and Claude.
-                            </p>
-                            <div class="blog-meta">
-                                <span>February 20, 2025</span>
-                                <span>11 min read</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="blog-card fade-in stagger-9" data-category="tools">
-                        <div class="blog-image">📈</div>
-                        <div class="blog-content">
-                            <div class="blog-category">Tools</div>
-                            <h3 class="blog-title">Notion vs. HubSpot vs. Airtable for Lead Management</h3>
-                            <p class="blog-excerpt">
-                                A detailed comparison of popular CRM and database tools for managing your lead generation process and research data.
-                            </p>
-                            <div class="blog-meta">
-                                <span>February 18, 2025</span>
-                                <span>6 min read</span>
-                            </div>
-                        </div>
-                    </article>
                 </div>
 
                 <!-- Newsletter Signup -->
@@ -405,12 +359,8 @@
             </div>
         </section>
     </main>
-
-    <footer style="border-top: 1px solid var(--border-color); padding: var(--space-2xl) 0; text-align: center;">
-        <div class="container">
-            <p class="text-secondary">&copy; 2025 Lead Gen That Works. Better prospecting through better research.</p>
-        </div>
-    </footer>
+    
+    <!-- Footer will be automatically inserted here -->
 
     <script src="js/main.js" defer></script>
     <script>
@@ -465,7 +415,6 @@
                 e.preventDefault();
                 const email = this.querySelector('input[type="email"]').value;
                 
-                // Basic email validation
                 if (email && email.includes('@')) {
                     alert('Thank you for subscribing! Check your email for confirmation.');
                     this.reset();
@@ -477,44 +426,12 @@
             // Add click handlers to blog cards
             blogCards.forEach(card => {
                 card.addEventListener('click', function() {
-                    // In a real implementation, this would navigate to the full article
                     alert('This would navigate to the full article. For demo purposes, articles are not yet implemented.');
                 });
                 
-                // Add cursor pointer
                 card.style.cursor = 'pointer';
             });
         });
     </script>
 </body>
-</html>="blog-card fade-in" data-category="personalization">
-                        <div class="blog-image">🎯</div>
-                        <div class="blog-content">
-                            <div class="blog-category">Personalization</div>
-                            <h3 class="blog-title">The 5 Research Points That Actually Matter for Personalization</h3>
-                            <p class="blog-excerpt">
-                                Most sales teams research the wrong things. Here are the 5 data points that actually drive response rates and how to find them quickly.
-                            </p>
-                            <div class="blog-meta">
-                                <span>March 12, 2025</span>
-                                <span>5 min read</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="blog-card fade-in stagger-1" data-category="strategy">
-                        <div class="blog-image">🧠</div>
-                        <div class="blog-content">
-                            <div class="blog-category">Strategy</div>
-                            <h3 class="blog-title">Why Your ICP is Wrong (And How to Fix It)</h3>
-                            <p class="blog-excerpt">
-                                Your Ideal Customer Profile probably focuses on firmographics. Here's why psychographics and behavioral data matter more for lead generation.
-                            </p>
-                            <div class="blog-meta">
-                                <span>March 10, 2025</span>
-                                <span>7 min read</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class
+</html>
