@@ -11,8 +11,8 @@
 :root {
     /* Colors - Light Mode */
     --primary-bg: #fefdfb;
-    --secondary-bg: #f9f8f6;
-    --accent-bg: #fffffe;
+    --secondary-bg: transparent;
+    --accent-bg: rgba(255, 255, 255, 0.02);
     --text-primary: #1a1a1a;
     --text-secondary: #6b7280;
     --text-muted: #9ca3af;
@@ -63,8 +63,8 @@
 [data-theme="dark"] {
     /* Colors - Dark Mode */
     --primary-bg: #0a0a0a;
-    --secondary-bg: #111111;
-    --accent-bg: #1a1a1a;
+    --secondary-bg: transparent;
+    --accent-bg: rgba(255, 255, 255, 0.02);
     --text-primary: #ffffff;
     --text-secondary: #a0a0a0;
     --text-muted: #6b7280;
@@ -91,6 +91,8 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+    overflow-x: hidden;
 }
 
 /* Headings */
@@ -149,6 +151,7 @@ h6 { font-size: 1rem; }
 
 .section {
     padding: var(--space-3xl) 0;
+    background: transparent !important;
 }
 
 .section-lg {
@@ -431,6 +434,7 @@ nav {
     padding: 8rem 0 var(--space-3xl);
     position: relative;
     overflow: hidden;
+    background: transparent !important;
 }
 
 .hero::before {
