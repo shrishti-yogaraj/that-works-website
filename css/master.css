@@ -1262,3 +1262,84 @@ nav {
 .filter-button:hover {
     transition: transform var(--transition-normal), border-color var(--transition-normal);
 }
+/* =================== GLOBAL ANIMATED BACKGROUND SYSTEM =================== */
+
+/* Animated background glow - now global */
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.06) 0%, var(--primary-bg) 70%);
+    animation: heroGlow 6s ease-in-out infinite;
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* Grid pattern overlay - now global */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 20px 20px, rgba(255, 107, 53, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Dark mode adjustments for background */
+[data-theme="dark"] body::before {
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.08) 0%, var(--primary-bg) 70%);
+}
+
+[data-theme="dark"] body::after {
+    background-image: radial-gradient(circle at 20px 20px, rgba(255, 107, 53, 0.05) 1px, transparent 1px);
+}
+
+/* Global floating shapes container */
+.global-bg-shapes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none !important;
+    z-index: -100 !important;
+}
+
+/* Individual floating shapes */
+.floating-shape {
+    position: absolute;
+    opacity: 0.1;
+    animation: float 6s ease-in-out infinite;
+    pointer-events: none !important;
+    z-index: -100 !important;
+}
+
+.floating-shape:nth-child(1) { animation-delay: 0s; animation-duration: 6s; }
+.floating-shape:nth-child(2) { animation-delay: 1s; animation-duration: 4s; }
+.floating-shape:nth-child(3) { animation-delay: 2s; animation-duration: 5s; }
+.floating-shape:nth-child(4) { animation-delay: 3s; animation-duration: 7s; }
+.floating-shape:nth-child(5) { animation-delay: 4s; animation-duration: 3s; }
+.floating-shape:nth-child(6) { animation-delay: 5s; animation-duration: 8s; }
+
+/* Remove hero background since we're using global */
+.hero::before {
+    display: none !important;
+}
+
+.hero {
+    background: none !important;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 0 var(--space-3xl);
+    position: relative;
+}
