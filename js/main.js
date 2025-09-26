@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.animationPlayState = 'running';
-                animationObserver.unobserve(entry.target);
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
