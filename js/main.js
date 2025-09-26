@@ -17,6 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
             
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
+            
+            //forcing microscroll to make header change
+            window.scrollBy(0, 1);
+            window.scrollBy(0, -1);
         });
     }
 
