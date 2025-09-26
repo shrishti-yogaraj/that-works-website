@@ -23,13 +23,6 @@ const headerHTML = `
         </nav>
     </header>
 `;
-const backgroundHTML = `
-    <div class="floating-bg-1"></div>
-    <div class="floating-bg-2"></div>
-    <div class="floating-bg-3"></div>
-    <div class="floating-bg-4"></div>
-    <div class="grid-pattern"></div>
-`;
 // Function to inject header into page
 function loadHeader() {
     document.body.insertAdjacentHTML('afterbegin', headerHTML);
