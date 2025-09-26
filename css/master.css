@@ -122,10 +122,17 @@ h6 { font-size: 1rem; }
 
 /* Gradient Text */
 .text-gradient {
-    background: var(--gradient);
+    background: linear-gradient(45deg, #ff6b35, #8b5cf6, #ff6b35);
+    background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 /* =================== LAYOUT UTILITIES =================== */
