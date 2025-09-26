@@ -1,7 +1,7 @@
 // =================== LEAD GEN THAT WORKS - MAIN JAVASCRIPT ===================
 // Main JavaScript functionality for all pages
+
 // =================== GLOBAL BACKGROUND SHAPES FUNCTION ===================
-// ADD THIS NEW FUNCTION HERE (before the DOMContentLoaded event)
 function createGlobalBackgroundShapes() {
     // Create container for shapes
     const shapesContainer = document.createElement('div');
@@ -102,8 +102,28 @@ function createGlobalBackgroundShapes() {
     });
 }
 
+// Function to update shapes for theme changes
+function updateShapesForTheme(theme) {
+    const shapes = document.querySelectorAll('.floating-shape');
+    shapes.forEach((shape, index) => {
+        // Reduce opacity in dark mode, restore in light mode
+        const isDark = theme === 'dark';
+        switch(index) {
+            case 0: shape.style.opacity = isDark ? 0.05 : 0.08; break;
+            case 1: shape.style.opacity = isDark ? 0.08 : 0.12; break;
+            case 2: shape.style.opacity = isDark ? 0.1 : 0.15; break;
+            case 3: shape.style.opacity = isDark ? 0.06 : 0.1; break;
+            case 4: shape.style.opacity = isDark ? 0.12 : 0.2; break;
+            case 5: shape.style.opacity = isDark ? 0.1 : 0.15; break;
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+
+    // =================== CREATE GLOBAL BACKGROUND ===================
     createGlobalBackgroundShapes();
+
     // =================== THEME TOGGLE FUNCTIONALITY ===================
     const themeToggle = document.getElementById('themeToggle');
     
@@ -118,6 +138,9 @@ document.addEventListener('DOMContentLoaded', () => {
             
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
+            
+            // Update shapes for the new theme
+            updateShapesForTheme(newTheme);
         });
     }
 
