@@ -374,7 +374,7 @@ header {
     background: rgba(10, 10, 10, 0.9);
 }
 
-/* Scrolled state 
+/* Scrolled state */
 header.scrolled {
     background: rgba(254, 253, 251, 0.95);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
@@ -383,7 +383,7 @@ header.scrolled {
 [data-theme="dark"] header.scrolled {
     background: rgba(10, 10, 10, 0.95);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-}*/
+}
 nav {
     display: flex;
     justify-content: space-between;
