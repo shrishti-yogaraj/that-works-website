@@ -17,6 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
             
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
+
+            // Force a tiny scroll to update header
+            window.scrollBy(0, 1);
+            window.scrollBy(0, -1);
+
         });
     }
     // =================== SMOOTH SCROLLING FOR ANCHOR LINKS ===================
