@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
+            updateHeaderTheme();
         });
     }
 
@@ -53,7 +54,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
+    // Add this function after the scroll event listener
+    function updateHeaderTheme() {
+        const header = document.querySelector('header');
+        if (header) {
+            const currentScroll = window.pageYOffset;
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    
+            if (currentScroll > 50) {
+                header.style.background = isDark ? 'rgba(10, 10, 10, 0.95)' : 'rgba(254, 253, 251, 0.95)';
+                header.style.boxShadow = isDark ? '0 4px 20px rgba(0, 0, 0, 0.4)' : '0 4px 20px rgba(0, 0, 0, 0.05)';
+            } else {
+                header.style.background = isDark ? 'rgba(10, 10, 10, 0.9)' : 'rgba(254, 253, 251, 0.9)';
+                header.style.boxShadow = 'none';
+            }
+        }
+    }
     // =================== ANIMATION ON SCROLL (INTERSECTION OBSERVER) ===================
     const observerOptions = {
         threshold: 0.1,
