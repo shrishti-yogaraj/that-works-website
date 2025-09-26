@@ -1,6 +1,6 @@
 // =================== LEAD GEN THAT WORKS - MAIN JAVASCRIPT ===================
 // Main JavaScript functionality for all pages
-/ =================== GLOBAL BACKGROUND SHAPES FUNCTION ===================
+// =================== GLOBAL BACKGROUND SHAPES FUNCTION ===================
 // ADD THIS NEW FUNCTION HERE (before the DOMContentLoaded event)
 function createGlobalBackgroundShapes() {
     // Create container for shapes
