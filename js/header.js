@@ -33,8 +33,6 @@ const backgroundHTML = `
 // Function to inject header into page
 function loadHeader() {
     document.body.insertAdjacentHTML('afterbegin', headerHTML);
-        document.body.insertAdjacentHTML('afterbegin', backgroundHTML);
-
 }
 
 // Load header when DOM is ready
