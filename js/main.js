@@ -1,8 +1,109 @@
 // =================== LEAD GEN THAT WORKS - MAIN JAVASCRIPT ===================
 // Main JavaScript functionality for all pages
+/ =================== GLOBAL BACKGROUND SHAPES FUNCTION ===================
+// ADD THIS NEW FUNCTION HERE (before the DOMContentLoaded event)
+function createGlobalBackgroundShapes() {
+    // Create container for shapes
+    const shapesContainer = document.createElement('div');
+    shapesContainer.className = 'global-bg-shapes';
+    document.body.appendChild(shapesContainer);
+    
+    // Define shapes with their properties
+    const shapes = [
+        {
+            type: 'circle',
+            size: 120,
+            top: '10%',
+            right: '8%',
+            background: 'linear-gradient(135deg, #ff6b35 0%, #8b5cf6 100%)',
+            opacity: 0.08
+        },
+        {
+            type: 'rounded-square',
+            size: 80,
+            bottom: '25%',
+            left: '12%',
+            background: '#8b5cf6',
+            opacity: 0.12,
+            borderRadius: '30%'
+        },
+        {
+            type: 'square',
+            size: 60,
+            top: '35%',
+            left: '3%',
+            background: '#ff6b35',
+            opacity: 0.15,
+            borderRadius: '12px'
+        },
+        {
+            type: 'circle-outline',
+            size: 100,
+            bottom: '15%',
+            right: '15%',
+            border: '3px solid #ff6b35',
+            opacity: 0.1
+        },
+        {
+            type: 'small-circle',
+            size: 40,
+            top: '60%',
+            right: '25%',
+            background: 'linear-gradient(135deg, #ff8a65 0%, #ffb74d 100%)',
+            opacity: 0.2
+        },
+        {
+            type: 'diamond',
+            size: 30,
+            top: '15%',
+            left: '25%',
+            background: '#8b5cf6',
+            opacity: 0.15,
+            transform: 'rotate(45deg)'
+        }
+    ];
+    
+    // Create each shape
+    shapes.forEach((shape, index) => {
+        const shapeElement = document.createElement('div');
+        shapeElement.className = 'floating-shape';
+        
+        // Set size
+        shapeElement.style.width = shape.size + 'px';
+        shapeElement.style.height = shape.size + 'px';
+        
+        // Set position
+        if (shape.top) shapeElement.style.top = shape.top;
+        if (shape.bottom) shapeElement.style.bottom = shape.bottom;
+        if (shape.left) shapeElement.style.left = shape.left;
+        if (shape.right) shapeElement.style.right = shape.right;
+        
+        // Set appearance
+        if (shape.background) {
+            shapeElement.style.background = shape.background;
+        }
+        if (shape.border) {
+            shapeElement.style.border = shape.border;
+            shapeElement.style.background = 'transparent';
+        }
+        if (shape.borderRadius) {
+            shapeElement.style.borderRadius = shape.borderRadius;
+        } else if (shape.type === 'circle' || shape.type === 'circle-outline' || shape.type === 'small-circle') {
+            shapeElement.style.borderRadius = '50%';
+        }
+        if (shape.transform) {
+            shapeElement.style.transform = shape.transform;
+        }
+        if (shape.opacity) {
+            shapeElement.style.opacity = shape.opacity;
+        }
+        
+        shapesContainer.appendChild(shapeElement);
+    });
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-
+    createGlobalBackgroundShapes();
     // =================== THEME TOGGLE FUNCTIONALITY ===================
     const themeToggle = document.getElementById('themeToggle');
     
