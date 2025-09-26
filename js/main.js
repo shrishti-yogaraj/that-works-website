@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            updateHeaderTheme();
         });
     }
 
@@ -36,31 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // =================== HEADER SCROLL EFFECT ===================
-    const header = document.querySelector('header');
-    if (header) {
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-
-            if (currentScroll > 50) {
-                header.style.background = isDark ? 'rgba(10, 10, 10, 0.95)' : 'rgba(254, 253, 251, 0.95)';
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.05)';
-                if (isDark) {
-                    header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
-                }
-            } else {
-                header.style.background = isDark ? 'rgba(10, 10, 10, 0.9)' : 'rgba(254, 253, 251, 0.9)';
-                header.style.boxShadow = 'none';
-            }
-        });
-    }
-    // Add this function after the scroll event listener
-    function updateHeaderTheme() {
+    function updateHeader() {
         const header = document.querySelector('header');
         if (header) {
             const currentScroll = window.pageYOffset;
             const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    
+
             if (currentScroll > 50) {
                 header.style.background = isDark ? 'rgba(10, 10, 10, 0.95)' : 'rgba(254, 253, 251, 0.95)';
                 header.style.boxShadow = isDark ? '0 4px 20px rgba(0, 0, 0, 0.4)' : '0 4px 20px rgba(0, 0, 0, 0.05)';
@@ -70,17 +50,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
+
+    window.addEventListener('scroll', updateHeader);
+    
+    // Update header when theme changes
+    const observer = new MutationObserver(updateHeader);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
     // =================== ANIMATION ON SCROLL (INTERSECTION OBSERVER) ===================
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const animationObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.animationPlayState = 'running';
-                observer.unobserve(entry.target);
+                animationObserver.unobserve(entry.target);
             }
         });
     }, observerOptions);
@@ -88,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Observe all elements with the .fade-in class
     document.querySelectorAll('.fade-in').forEach(el => {
         el.style.animationPlayState = 'paused';
-        observer.observe(el);
+        animationObserver.observe(el);
     });
 
     // =================== PRICING PAGE FUNCTIONALITY ===================
