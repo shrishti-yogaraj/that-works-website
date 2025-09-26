@@ -1343,3 +1343,148 @@ body::after {
     padding: 8rem 0 var(--space-3xl);
     position: relative;
 }
+/* =================== BAD NEWS SECTION =================== */
+
+.bad-news-section {
+    background: var(--primary-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.bad-news-title {
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.bad-news-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stat-card {
+    background: var(--accent-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    text-align: center;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.15);
+}
+
+.stat-number {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    line-height: 1;
+}
+
+.stat-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+
+.find-out-why-btn {
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    font-size: 0.9rem;
+}
+
+.find-out-why-btn:hover {
+    background: var(--accent-color);
+    color: white;
+    transform: scale(1.05);
+}
+
+.stat-explanation {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, padding 0.3s ease;
+    background: var(--subtle-gradient);
+    border-radius: var(--radius-md);
+    margin-top: 1rem;
+}
+
+.stat-explanation.expanded {
+    max-height: 200px;
+    padding: 1.5rem;
+}
+
+.stat-explanation p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+    font-style: italic;
+}
+
+.plot-twist {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 2rem;
+    background: var(--subtle-gradient);
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--accent-color);
+}
+
+.plot-twist h3 {
+    color: var(--accent-color);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.plot-twist p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .stat-card {
+        padding: 1.5rem;
+    }
+    
+    .plot-twist {
+        margin-top: 3rem;
+        padding: 1.5rem;
+    }
+}
