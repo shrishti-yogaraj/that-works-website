@@ -17,9 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            
-            // Force header update
-            window.dispatchEvent(new Event('scroll'));
+
         });
     }
 
