@@ -34,7 +34,7 @@
     --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
     
     /* Gradients */
-    --gradient: linear-gradient(135deg, #ff6b35 0%, #8b5cf6 100%);
+    --gradient: linear-gradient(135deg, #ff6b35, #8b5cf6, #ff6b35);
     --warm-gradient: linear-gradient(135deg, #ff8a65 0%, #ffb74d 100%);
     --subtle-gradient: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
     
@@ -122,12 +122,18 @@ h6 { font-size: 1rem; }
 
 /* Gradient Text */
 .text-gradient {
-    background: var(--gradient);
+    background: linear-gradient(45deg, #ff6b35, #8b5cf6, #ff6b35);
+    background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: gradientShift 3s ease-in-out infinite;
 }
 
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
 /* =================== LAYOUT UTILITIES =================== */
 .container {
     max-width: 95vw;
@@ -186,6 +192,8 @@ h6 { font-size: 1rem; }
 
 .btn-primary {
     background: var(--gradient);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
     color: white;
     position: relative;
     overflow: hidden;
@@ -264,6 +272,8 @@ h6 { font-size: 1rem; }
     width: 100%;
     height: 2px;
     background: var(--gradient);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
     transform: scaleX(0);
     transition: transform var(--transition-normal);
 }
@@ -348,6 +358,8 @@ h6 { font-size: 1rem; }
     width: 80px;
     height: 80px;
     background: var(--gradient);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
     border-radius: var(--radius-lg);
     display: flex;
     align-items: center;
@@ -385,6 +397,8 @@ nav {
     font-size: 1.5rem;
     font-weight: 700;
     background: var(--gradient);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -584,6 +598,8 @@ nav {
     width: 60px;
     height: 60px;
     background: var(--gradient);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -615,6 +631,8 @@ nav {
 .blog-image {
     height: 200px;
     background: var(--gradient);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -678,6 +696,8 @@ nav {
     top: -12px;
     left: var(--space-xl);
     background: var(--gradient);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 20px;
@@ -729,12 +749,16 @@ nav {
 
 .filter-button:hover, .filter-button.active {
     background: var(--gradient);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
     color: white;
     border-color: transparent;
 }
 
 .newsletter-signup {
     background: var(--gradient);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
     color: white;
     padding: var(--space-2xl);
     border-radius: var(--radius-xl);
@@ -785,6 +809,8 @@ nav {
     top: -15px;
     left: var(--space-xl);
     background: var(--gradient);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
     color: white;
     width: 40px;
     height: 40px;
@@ -820,6 +846,8 @@ nav {
     width: 4rem;
     height: 2px;
     background: var(--gradient);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
     transform: translateY(-50%);
 }
 
@@ -913,6 +941,8 @@ nav {
     left: 50%;
     transform: translateX(-50%);
     background: var(--gradient);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 20px;
@@ -952,6 +982,8 @@ nav {
     width: 20px;
     height: 20px;
     background: var(--gradient);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -988,6 +1020,8 @@ nav {
 
 .switch.active {
     background: var(--gradient);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
 }
 
 .switch-handle {
