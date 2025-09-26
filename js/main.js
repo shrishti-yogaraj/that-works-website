@@ -39,18 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (header) {
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-
             if (currentScroll > 50) {
-                header.style.background = isDark ? 'rgba(10, 10, 10, 0.95)' : 'rgba(254, 253, 251, 0.95)';
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.05)';
-                if (isDark) {
-                    header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
-                }
-            } else {
-                header.style.background = isDark ? 'rgba(10, 10, 10, 0.9)' : 'rgba(254, 253, 251, 0.9)';
-                header.style.boxShadow = 'none';
-            }
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
         });
     }
 
