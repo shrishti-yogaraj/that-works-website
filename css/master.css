@@ -90,7 +90,7 @@ body {
     font-size: 1rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    /* transition: background-color 0.3s ease, color 0.3s ease; */
 }
 
 /* Headings */
@@ -367,7 +367,8 @@ header {
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
-    transition: all var(--transition-normal);
+    /* transition: all var(--transition-normal); replaced this with below*/
+    transition: box-shadow var(--transition-normal), backdrop-filter var(--transition-normal);
 }
 
 [data-theme="dark"] header {
