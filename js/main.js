@@ -170,40 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         });
     }
-    // =================== BAD NEWS SECTION FUNCTIONALITY ===================
-    
-    // Find out why button functionality
-    const findOutWhyButtons = document.querySelectorAll('.find-out-why-btn');
-    findOutWhyButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const target = this.dataset.target;
-            const explanation = document.getElementById(`${target}-explanation`);
-            
-            // Close all other explanations
-            document.querySelectorAll('.stat-explanation').forEach(exp => {
-                if (exp.id !== `${target}-explanation`) {
-                    exp.classList.remove('expanded');
-                }
-            });
-            
-            // Toggle current explanation
-            explanation.classList.toggle('expanded');
-            
-            // Update button text
-            if (explanation.classList.contains('expanded')) {
-                this.textContent = 'Got it';
-            } else {
-                this.textContent = 'Find out why';
-            }
-            
-            // Reset other button texts
-            findOutWhyButtons.forEach(btn => {
-                if (btn !== this) {
-                    btn.textContent = 'Find out why';
-                }
-            });
-        });
-    });
     // =================== ANIMATION ON SCROLL (INTERSECTION OBSERVER) ===================
     const observerOptions = {
         threshold: 0.1,
