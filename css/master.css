@@ -1264,19 +1264,6 @@ nav {
 }
 /* =================== GLOBAL ANIMATED BACKGROUND SYSTEM =================== */
 
-/* Move all background effects to body */
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: var(--primary-bg);
-    color: var(--text-primary);
-    line-height: 1.6;
-    font-size: 1rem;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    position: relative;
-    min-height: 100vh;
-}
-
 /* Animated background glow - now global */
 body::before {
     content: '';
@@ -1285,7 +1272,7 @@ body::before {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(255, 107, 53, 0.06) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.06) 0%, var(--primary-bg) 70%);
     animation: heroGlow 6s ease-in-out infinite;
     z-index: -2;
     pointer-events: none;
@@ -1307,7 +1294,7 @@ body::after {
 
 /* Dark mode adjustments for background */
 [data-theme="dark"] body::before {
-    background: radial-gradient(circle, rgba(255, 107, 53, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.08) 0%, var(--primary-bg) 70%);
 }
 
 [data-theme="dark"] body::after {
@@ -1321,16 +1308,17 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
-    z-index: -1;
+    pointer-events: none !important;
+    z-index: -100 !important;
 }
 
-/* Individual floating shapes - you'll add these via JavaScript */
+/* Individual floating shapes */
 .floating-shape {
     position: absolute;
     opacity: 0.1;
     animation: float 6s ease-in-out infinite;
-    pointer-events: none;
+    pointer-events: none !important;
+    z-index: -100 !important;
 }
 
 .floating-shape:nth-child(1) { animation-delay: 0s; animation-duration: 6s; }
@@ -1340,24 +1328,13 @@ body::after {
 .floating-shape:nth-child(5) { animation-delay: 4s; animation-duration: 3s; }
 .floating-shape:nth-child(6) { animation-delay: 5s; animation-duration: 8s; }
 
-/* REMOVE ALL SECTION BACKGROUNDS */
-.hero {
-    background: none !important;
-    /* Remove the ::before pseudo-element styling */
-}
-
+/* Remove hero background since we're using global */
 .hero::before {
-    display: none;
+    display: none !important;
 }
 
-/* Remove secondary backgrounds from all sections */
-.section[style*="background: var(--secondary-bg)"],
-.section-hero[style*="background: var(--secondary-bg)"] {
-    background: none !important;
-}
-
-/* Update hero to not have overflow hidden so global background shows */
 .hero {
+    background: none !important;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -1365,27 +1342,4 @@ body::after {
     text-align: center;
     padding: 8rem 0 var(--space-3xl);
     position: relative;
-    /* Remove: overflow: hidden; */
-}
-
-/* Keep hero glow animation for reuse */
-@keyframes heroGlow {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.05); }
-}
-
-/* Enhanced float animation */
-@keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    33% { transform: translateY(-20px) rotate(5deg); }
-    66% { transform: translateY(10px) rotate(-3deg); }
-}
-.global-bg-shapes {
-    pointer-events: none !important;
-    z-index: -100 !important;
-}
-
-.floating-shape {
-    pointer-events: none !important;
-    z-index: -100 !important;
 }
