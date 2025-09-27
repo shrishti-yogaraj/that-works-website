@@ -1,0 +1,16 @@
+/* =================== ABOUT PAGE SPECIFIC STYLES =================== */
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+/* =================== ABOUT RESPONSIVE DESIGN =================== */
+
+@media (max-width: 768px) {
+    .comparison-grid { 
+        grid-template-columns: 1fr; 
+    }
+}
