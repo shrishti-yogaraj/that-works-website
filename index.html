@@ -3,181 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lead Gen That Works</title>
+    <title>Lead Gen That Works - Better Than Your Best Prospector</title>
+    
+    <!-- =================== STYLESHEETS =================== -->
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/index.css">
+    
+    <!-- =================== GOOGLE FONTS =================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-bg: #fefdfb;
-            --text-primary: #1a1a1a;
-            --text-secondary: #6b7280;
-        }
-
-        [data-theme="dark"] {
-            --primary-bg: #0a0a0a;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--primary-bg);
-            color: var(--text-primary);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-            transition: background 0.3s ease;
-        }
-
-        .bg-shape {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.08;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .shape-1 {
-            top: 10%;
-            right: 15%;
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, #ff6b35, #8b5cf6);
-        }
-
-        .shape-2 {
-            bottom: 20%;
-            left: 10%;
-            width: 80px;
-            height: 80px;
-            background: #8b5cf6;
-            animation-delay: -2s;
-        }
-
-        .shape-3 {
-            top: 40%;
-            left: 5%;
-            width: 60px;
-            height: 60px;
-            background: #ff6b35;
-            border-radius: 30%;
-            animation-delay: -4s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-20px) rotate(5deg); }
-            66% { transform: translateY(10px) rotate(-3deg); }
-        }
-
-        .container {
-            max-width: 650px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #ff6b35, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 4rem;
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 7vw, 4.5rem);
-            font-weight: 900;
-            line-height: 1;
-            margin-bottom: 1.5rem;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #ff6b35, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        .theme-toggle {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            width: 40px;
-            height: 40px;
-            background: transparent;
-            border: 1px solid rgba(255, 107, 53, 0.2);
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .theme-toggle:hover {
-            border-color: #ff6b35;
-        }
-
-        @media (max-width: 640px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            .subtitle {
-                font-size: 1rem;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- =================== SHARED COMPONENTS =================== -->
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/popup-form.js"></script>
 </head>
 <body>
-    <div class="bg-shape shape-1"></div>
-    <div class="bg-shape shape-2"></div>
-    <div class="bg-shape shape-3"></div>
+    <main>
+        <!-- =================== HERO SECTION =================== -->
+        <section class="hero" style="min-height: 70vh; padding: 8rem 0 4rem;">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="fade-in" style="font-weight: 900; font-size: clamp(3rem, 8vw, 5.5rem); line-height: 0.95; margin-bottom: 2rem;">
+                        Better than your <span class="text-gradient" style="font-weight: 900;">best prospector.</span>
+                    </h1>
+                    <p class="hero-subtitle fade-in stagger-1" style="font-weight: 600; font-size: 1.6rem; color: var(--text-primary); margin-bottom: 1.5rem; line-height: 1.3;">
+                        There are two types of sales teams:<br>
+                        Those who chase leads, and <span class="text-gradient">those who close deals</span>.
+                    </p>
+                    <div class="hero-ctas fade-in stagger-3" style="gap: 1.5rem;">
+                        <button class="btn btn-primary btn-lg popup-trigger" style="padding: 1.25rem 2.5rem; font-size: 1.2rem; font-weight: 700;">Choose Your Side</button>
+                    </div>
+                    
+                    <!-- Social Proof Badges -->
+                    <div class="fade-in stagger-4" style="margin-top: 4rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; opacity: 0.7;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">
+                            <span style="width: 8px; height: 8px; background: var(--success-color); border-radius: 50%;"></span>
+                            Deep prospect intelligence
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">
+                            <span style="width: 8px; height: 8px; background: var(--success-color); border-radius: 50%;"></span>
+                            Live in 48-72 hours
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">
+                            <span style="width: 8px; height: 8px; background: var(--success-color); border-radius: 50%;"></span>
+                            Custom built to fit your business
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">◐</button>
+        <!-- =================== WHAT'S WRONG SECTION =================== -->
+        <section class="section">
+            <div class="container">
+                <div class="text-center mb-2xl">
+                    <h2 class="mb-lg" style="font-weight: 800; font-size: clamp(2rem, 5vw, 3rem);">What's Wrong With This Picture?</h2>
+                    <p class="text-large" style="color: var(--text-primary); font-weight: 500; font-size: 1.3rem;">
+                        <span style="font-weight: 450;">Your closers spend their days googling teams and writing cold emails</span> <span class="text-gradient" style="font-weight: 600;">instead of driving revenue.</span>
+                    </p>
+                </div>
+                
+                <div style="max-width: 1200px; margin: 0 auto;">
+                    <div class="grid" style="grid-template-columns: repeat(4, 1fr); gap: var(--space-lg);">
+                        <div class="flip-card fade-in">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <div class="problem-stat">6 hours</div>
+                                    <h3 class="problem-title">of sales unproductivity every day</h3>
+                                </div>
+                                <div class="flip-card-back">
+                                    <p class="text-small">
+                                        75% of your sales reps' time is spent on research, admin, and busy work instead of closing deals.
+                                    </p>
+                                    <a href="blog.html" class="flip-card-button">Read More</a>
+                                </div>
+                            </div>
+                        </div>
 
-    <div class="container">
-        <div class="logo">Lead Gen That Works</div>
+                        <div class="flip-card fade-in stagger-1">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <div class="problem-stat">91.5%</div>
+                                    <h3 class="problem-title">of cold emails are ignored</h3>
+                                </div>
+                                <div class="flip-card-back">
+                                    <p class="text-small">
+                                        Your carefully crafted outreach is landing in digital trash cans because it feels generic and templated.
+                                    </p>
+                                    <a href="blog.html" class="flip-card-button">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flip-card fade-in stagger-2">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <div class="problem-stat">12%</div>
+                                    <h3 class="problem-title">revenue lost by poor data quality</h3>
+                                </div>
+                                <div class="flip-card-back">
+                                    <p class="text-small">
+                                      Outdated contacts, wrong titles, and incomplete research are literally stealing money from your bottom line.
+                                    </p>
+                                    <a href="blog.html" class="flip-card-button">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flip-card fade-in stagger-3">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <div class="problem-stat">10x</div>
+                                    <h3 class="problem-title">drop in lead qualification in 5 mins</h3>
+                                </div>
+                                <div class="flip-card-back">
+                                    <p class="text-small">
+                                        A response time longer than 5 minutes, and your conversion rate drops 10x. Only 7% of sales teams respond that fast.
+                                    </p>
+                                    <a href="blog.html" class="flip-card-button">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+      
+        <!-- =================== SOLUTION SECTION =================== -->
+        <section class="section" style="padding: 3rem 0;">
+            <div class="container">
+                <div class="text-center fade-in" style="max-width: 1000px; margin: 0 auto;">
+                    <div style="margin-bottom: 2rem;">
+                        <p class="text-large" style="color: var(--text-primary); font-weight: 500; font-size: 1.4rem; margin-bottom: 1.5rem;">
+                            Your competition isn't people. It's smarter processes and deeper intelligence.
+                        </p>
+                        <p class="text-large" style="color: var(--text-primary); font-weight: 700; font-size: 1.8rem; margin-bottom: 1.5rem;">
+                            <span class="text-gradient">So, what's the solution?</span>
+                        </p>
+                        <p class="text-large" style="color: var(--text-primary); font-weight: 500; font-size: 1.4rem;">
+                            It's simple: automate your outbound engine so you can focus on building relationships. <strong>That's where we come in.</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-        <h1>
-            Site <span class="gradient-text">under construction.</span>
-        </h1>
-        
-        <p class="subtitle">
-            Good things take time. We're worth the wait ;)
-        </p>
-    </div>
+        <!-- =================== HOW IT WORKS - 3 STEPS =================== -->
+        <section id="how-it-works" class="section">
+            <div class="container">
+                <div class="text-center mb-2xl">
+                    <h2 class="mb-lg" style="font-weight: 800; font-size: clamp(2rem, 5vw, 3rem);">Turn Prospects Into Conversations</h2>
+                    <p class="text-large" style="color: var(--text-primary); font-weight: 500; font-size: 1.3rem;">
+                        Three simple steps that your team wishes they could do at scale.
+                    </p>
+                </div>
+                
+                <div style="max-width: 900px; margin: 0 auto;">
+                    <div class="process-timeline">
+                        <div class="timeline-step fade-in">
+                            <div class="step-connector"></div>
+                            <div class="step-icon-wrapper">
+                                <div class="step-icon">🎯</div>
+                                <div class="step-number">1</div>
+                            </div>
+                            <div class="step-content">
+                                <h3>Find them.</h3>
+                                <p class="step-description">We find the best haystacks, so you can find the best needles.</p>
+                                <div class="step-details">
+                                    Advanced prospect identification, qualification, and list building that goes way beyond basic demographics.
+                                </div>
+                            </div>
+                        </div>
 
-    <script>
-        const themeToggle = document.getElementById('themeToggle');
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        
-        document.documentElement.setAttribute('data-theme', currentTheme);
+                        <div class="timeline-step fade-in stagger-1">
+                            <div class="step-connector"></div>
+                            <div class="step-icon-wrapper">
+                                <div class="step-icon">🔍</div>
+                                <div class="step-number">2</div>
+                            </div>
+                            <div class="step-content">
+                                <h3>Research them.</h3>
+                                <p class="step-description">Where they take vacations, to how they make decisions.</p>
+                                <div class="step-details">
+                                    Deep intelligence gathering across multiple sources to build comprehensive prospect profiles that inform every message.
+                                </div>
+                            </div>
+                        </div>
 
-        themeToggle.addEventListener('click', () => {
-            const theme = document.documentElement.getAttribute('data-theme');
-            const newTheme = theme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
-    </script>
+                        <div class="timeline-step fade-in stagger-2">
+                            <div class="step-icon-wrapper">
+                                <div class="step-icon">💬</div>
+                                <div class="step-number">3</div>
+                            </div>
+                            <div class="step-content">
+                                <h3>Talk to them.</h3>
+                                <p class="step-description">Messages that feel handwritten, delivered at machine speed.</p>
+                                <div class="step-details">
+                                    Personalized outreach across email and LinkedIn that references specific insights and feels genuinely human.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================== CTA SECTION =================== -->
+        <section class="section">
+            <div class="container text-center">
+                <h2 class="fade-in text-gradient" style="font-weight: 800; font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 2rem;">
+                    Never lift a finger for outreach again
+                </h2>
+                <p class="text-large mb-2xl" style="max-width: 700px; margin-left: auto; margin-right: auto; color: var(--text-primary); font-weight: 500; font-size: 1.3rem;">
+                    Let us handle the prospect research while your team focuses on what they do best: building relationships and closing deals.
+                </p>
+                <div class="flex justify-center gap-md flex-wrap">
+                    <button class="btn btn-primary btn-lg popup-trigger">Book a Demo</button>
+                </div>
+                
+                <div class="text-small text-muted mt-xl">
+                    Setup takes 2 weeks. Results start immediately. No long-term contracts.
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- =================== JAVASCRIPT =================== -->
+    <script src="js/main.js" defer></script>
 </body>
 </html>
