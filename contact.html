@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Lead Gen That Works</title>
+    
+    <!-- =================== STYLESHEETS =================== -->
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/contact.css">
+    
+    <!-- =================== GOOGLE FONTS =================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- =================== SHARED COMPONENTS =================== -->
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+</head>
+<body>
+    <main>
+        <!-- =================== HERO SECTION =================== -->
+        <section class="hero section-hero">
+            <div class="hero-bg-shapes" aria-hidden="true">
+                <div style="top: 20%; right: 8%; width: 90px; height: 90px; background: var(--gradient); border-radius: 50%; opacity: 0.08; animation: float 7s ease-in-out infinite;"></div>
+                <div style="bottom: 30%; left: 10%; width: 60px; height: 60px; background: var(--secondary-accent); border-radius: 30%; opacity: 0.12; animation: float 5s ease-in-out infinite reverse;"></div>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title pricing-hero-title fade-in">
+                        Let's <span class="text-gradient">Talk Business</span>
+                    </h1>
+                    <p class="hero-description fade-in stagger-1">
+                        Ready to 3x your response rates and get your time back? Let's discuss how lead gen automation can transform your sales process.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================== CONTACT FORM SECTION =================== -->
+        <section class="section">
+            <div class="container">
+                <div class="grid grid-2 gap-xl" style="max-width: 1000px; margin: 0 auto;">
+                    <div class="fade-in">
+                        <h2 class="mb-xl">Get Started Today</h2>
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label class="form-label" for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" class="form-input" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="company">Company</label>
+                                <input type="text" id="company" name="company" class="form-input">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-input">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="team-size">Team Size</label>
+                                <select id="team-size" name="team-size" class="form-input">
+                                    <option value="">Select team size</option>
+                                    <option value="1-5">1-5 people</option>
+                                    <option value="6-15">6-15 people</option>
+                                    <option value="16-50">16-50 people</option>
+                                    <option value="51+">51+ people</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="current-process">Current Lead Gen Process</label>
+                                <select id="current-process" name="current-process" class="form-input">
+                                    <option value="">How do you currently generate leads?</option>
+                                    <option value="manual">Manual research and outreach</option>
+                                    <option value="tools">Using tools like Apollo, ZoomInfo, etc.</option>
+                                    <option value="outsourced">Outsourced to VA or agency</option>
+                                    <option value="none">No systematic process</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="biggest-challenge">Biggest Challenge</label>
+                                <select id="biggest-challenge" name="biggest-challenge" class="form-input">
+                                    <option value="">What's your biggest lead gen challenge?</option>
+                                    <option value="time">Takes too much time</option>
+                                    <option value="quality">Low quality prospects</option>
+                                    <option value="personalization">Generic, non-personalized outreach</option>
+                                    <option value="response-rates">Low response rates</option>
+                                    <option value="scaling">Hard to scale the process</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="message">Tell Us More</label>
+                                <textarea id="message" name="message" class="form-textarea" placeholder="What specific results are you hoping to achieve? Any other details we should know?"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                Send Message
+                            </button>
+                            
+                            <p class="text-small text-muted mt-md text-center">
+                                We'll respond within 24 hours. No spam, no pushy sales calls.
+                            </p>
+                        </form>
+                    </div>
+                    
+                    <!-- =================== CONTACT INFORMATION =================== -->
+                    <div class="fade-in stagger-1">
+                        <h3 class="mb-xl">Other Ways to Reach Us</h3>
+                        
+                        <div class="contact-card mb-lg">
+                            <div class="contact-icon">📧</div>
+                            <h4 class="mb-sm">Email Us</h4>
+                            <p class="text-secondary mb-sm">For general inquiries</p>
+                            <a href="mailto:hello@leadgenthatworks.com" class="text-accent">hello@leadgenthatworks.com</a>
+                        </div>
+                        
+                        <div class="contact-card mb-lg">
+                            <div class="contact-icon">📞</div>
+                            <h4 class="mb-sm">Call Us</h4>
+                            <p class="text-secondary mb-sm">For urgent questions</p>
+                            <a href="tel:+1-555-123-4567" class="text-accent">+1 (555) 123-4567</a>
+                        </div>
+                        
+                        <div class="contact-card mb-lg">
+                            <div class="contact-icon">📅</div>
+                            <h4 class="mb-sm">Book a Demo</h4>
+                            <p class="text-secondary mb-sm">See the system in action</p>
+                            <a href="#" class="text-accent">Schedule 15-min call</a>
+                        </div>
+                        
+                        <div class="contact-card" style="background: var(--subtle-gradient); border-color: var(--accent-color);">
+                            <h4 class="mb-sm text-accent">💡 Pro Tip</h4>
+                            <p class="text-secondary">
+                                The more details you share about your current process and challenges, the better we can tailor our recommendation to your specific needs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================== FAQ SECTION =================== -->
+        <section class="section" >
+            <div class="container text-center">
+                <h2 class="mb-lg fade-in">Frequently Asked Questions</h2>
+                <div class="faq-accordion fade-in stagger-1">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>How quickly can we get started?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Most clients are up and running within 2 weeks. We handle the setup, data integration, and initial testing. You just need to provide your target criteria and approval on the messaging.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Do you offer a free trial or demo?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes! We offer a 15-minute demo where we'll show you exactly how the system works and can even run a small test with your target criteria. No commitment required.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>What if we're not satisfied with the results?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We offer a 30-day money-back guarantee. If you're not seeing improved response rates and time savings, we'll refund your first month and help you transition off the platform.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>How does pricing work?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Pricing is based on the number of prospects you want us to research and the level of personalization. Most teams start around $497/month for 200 prospects. <a href="pricing.html" class="text-accent">View full pricing details</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================== FINAL CTA SECTION =================== -->
+        <section class="section">
+            <div class="container text-center">
+                <h2 class="mb-lg fade-in">Ready to Get Your Time Back?</h2>
+                <p class="text-large mb-2xl fade-in stagger-1" style="max-width: 700px; margin: 0 auto;">
+                    Stop spending 40+ hours a week on research. Let us handle the prospecting while you focus on closing deals.
+                </p>
+                <div class="flex justify-center gap-md flex-wrap">
+                    <a href="#contactForm" class="btn btn-primary btn-lg fade-in stagger-2">Start Today</a>
+                    <a href="pricing.html" class="btn btn-secondary btn-lg fade-in stagger-3">View Pricing</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- =================== JAVASCRIPT =================== -->
+    <script src="js/main.js" defer></script>
+</body>
+</html>
