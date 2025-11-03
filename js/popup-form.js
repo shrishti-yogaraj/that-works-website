@@ -93,7 +93,7 @@ const popupFormHTML = `
             <div style="font-size: 4rem; margin-bottom: 1rem;">⚠️</div>
             <h3 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem; color: #ef4444;">Oops!</h3>
             <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem; color: var(--text-light);">
-                Something went wrong submitting your form. Please try again or email us directly at <a href="mailto:hello@leadgenthatworks.com" style="color: var(--primary);">hello@leadgenthatworks.com</a>
+                Something went wrong submitting your form. Please try again or call us directly at <a href="tel:+919538686894" style="color: var(--primary);">+91 9538 6868 94</a>
             </p>
             <button class="btn btn-primary" onclick="
                 document.getElementById('errorMessage').style.display = 'none';
@@ -202,7 +202,7 @@ function initializePopupForm() {
             const timeoutId = setTimeout(() => controller.abort(), 10000);
             
             // Send to your N8N webhook
-            const response = await fetch('YOUR_N8N_WEBHOOK_URL_HERE', {
+            const response = await fetch('https://shrishti-y.app.n8n.cloud/webhook/9a9acb36-360a-4478-8777-0c286ec64c8f', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
