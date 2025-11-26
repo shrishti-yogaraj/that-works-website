@@ -11,7 +11,7 @@ const headerHTML = `
             <li><a href="how-it-works.html">How It Works</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="pricing.html">Plans</a></li>
         </ul>
       <div style="display: flex; align-items: center; gap: 1rem;">
                 <div style="display: flex; align-items: center; gap: 0.5rem;">
