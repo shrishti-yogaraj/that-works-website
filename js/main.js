@@ -193,32 +193,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // =================== PRICING PAGE FUNCTIONALITY ===================
-    
-    // Billing toggle functionality
-    const billingToggle = document.getElementById('billingToggle');
-    if (billingToggle) {
-        const starterPrice = document.getElementById('starter-price');
-        const growthPrice = document.getElementById('growth-price');
-        const enterprisePrice = document.getElementById('enterprise-price');
-
-        billingToggle.addEventListener('click', () => {
-            billingToggle.classList.toggle('active');
-            const isAnnual = billingToggle.classList.contains('active');
-            
-            // Update prices based on toggle
-            if (starterPrice && growthPrice && enterprisePrice) {
-                if (isAnnual) {
-                    starterPrice.textContent = '398';
-                    growthPrice.textContent = '798';
-                    enterprisePrice.textContent = '1,598';
-                } else {
-                    starterPrice.textContent = '497';
-                    growthPrice.textContent = '997';
-                    enterprisePrice.textContent = '1,997';
-                }
-            }
-        });
-    }
 
     // =================== FAQ ACCORDION FUNCTIONALITY ===================
     const faqItems = document.querySelectorAll('.faq-item');
@@ -349,90 +323,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =================== GEO-BASED PRICING (PRICING PAGE) ===================
-    
-    // Geo-based pricing functionality
-    async function updatePricingByLocation() {
-        try {
-            const response = await fetch('https://ipapi.co/json/');
-            const data = await response.json();
-            const country = data.country_name;
-            const countryCode = data.country_code;
-            
-            const geoIndicator = document.getElementById('geoIndicator');
-            if (geoIndicator) {
-                geoIndicator.textContent = `Pricing shown for ${country}`;
-            }
-            
-            // Apply different pricing for different regions
-            const pricingMultiplier = getPricingMultiplier(countryCode);
-            
-            if (pricingMultiplier !== 1) {
-                adjustPrices(pricingMultiplier);
-            }
-        } catch (error) {
-            console.log('Could not determine location, using default pricing');
-        }
-    }
-    
-    function getPricingMultiplier(countryCode) {
-        // Example pricing adjustments
-        const regionalPricing = {
-            'GB': 1.1,   // UK - slightly higher
-            'AU': 1.05,  // Australia - slightly higher  
-            'CA': 0.95,  // Canada - slightly lower
-            'IN': 0.3,   // India - much lower
-            'BR': 0.4,   // Brazil - lower
-        };
-        
-        return regionalPricing[countryCode] || 1;
-    }
-    
-    function adjustPrices(multiplier) {
-        // Adjust all prices by the multiplier
-        const prices = document.querySelectorAll('[data-monthly], [data-annual], [data-onetime]');
-        prices.forEach(priceElement => {
-            const monthly = parseInt(priceElement.dataset.monthly);
-            const annual = parseInt(priceElement.dataset.annual);
-            const onetime = parseInt(priceElement.dataset.onetime);
-            
-            if (monthly) {
-                priceElement.dataset.monthly = Math.round(monthly * multiplier);
-                priceElement.dataset.annual = Math.round(annual * multiplier);
-            }
-            if (onetime) {
-                priceElement.dataset.onetime = Math.round(onetime * multiplier);
-            }
-        });
-        
-        // Update displayed prices
-        const isAnnual = billingToggle && billingToggle.classList.contains('active');
-        const starterPrice = document.getElementById('starter-price');
-        const growthPrice = document.getElementById('growth-price');
-        const enterprisePrice = document.getElementById('enterprise-price');
-        const onetimePrice = document.getElementById('onetime-price');
-        
-        if (starterPrice && growthPrice && enterprisePrice) {
-            if (isAnnual) {
-                starterPrice.textContent = Math.round(398 * multiplier);
-                growthPrice.textContent = Math.round(798 * multiplier);
-                enterprisePrice.textContent = Math.round(1598 * multiplier).toLocaleString();
-            } else {
-                starterPrice.textContent = Math.round(497 * multiplier);
-                growthPrice.textContent = Math.round(997 * multiplier);
-                enterprisePrice.textContent = Math.round(1997 * multiplier).toLocaleString();
-            }
-        }
-        
-        if (onetimePrice) {
-            onetimePrice.textContent = Math.round(9997 * multiplier).toLocaleString();
-        }
-    }
-
-    // Initialize geo-pricing if on pricing page
-    if (document.getElementById('geoIndicator')) {
-        updatePricingByLocation();
-    }
 
     // =================== HOMEPAGE SPECIFIC FUNCTIONALITY ===================
     

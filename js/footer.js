@@ -35,7 +35,7 @@ const footerHTML = `
                         <a href="how-it-works.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='var(--text-secondary)'">How It Works</a>
                     </li>
                     <li style="margin-bottom: 0.5rem;">
-                        <a href="pricing.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='var(--text-secondary)'">Pricing</a>
+                        <a href="pricing.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='var(--text-secondary)'">Plans</a>
                     </li>
                     <li style="margin-bottom: 0.5rem;">
                         <a href="contact.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='var(--text-secondary)'">Contact</a>
