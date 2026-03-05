@@ -1,0 +1,160 @@
+/* ── BRANDING PAGE ── */
+.br-hero {
+  padding: 120px 40px 80px;
+  border-bottom: 1px solid var(--border);
+}
+.br-hero-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+.br-hero-inner h1 {
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 900;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+.br-hero-sub {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-style: italic;
+  font-weight: 700;
+  color: var(--lavender);
+  margin-bottom: 28px;
+}
+.br-hero-body {
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.br-problem {
+  padding: 80px 40px;
+  border-bottom: 1px solid var(--border);
+}
+.br-problem-inner { max-width: 800px; margin: 0 auto; }
+.br-problem-block {
+  border-left: 3px solid var(--orange);
+  padding-left: 36px;
+}
+.br-problem-block h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 900;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+.br-problem-block p {
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.br-included {
+  padding: 100px 40px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+.br-included-inner { max-width: 1100px; margin: 0 auto; }
+.br-included-inner h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 900;
+  margin-bottom: 48px;
+}
+.br-del-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.br-del-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  transition: border-color 0.2s;
+}
+.br-del-card:hover { border-color: var(--lavender); }
+.br-del-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+.br-del-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.br-how {
+  padding: 100px 40px;
+  border-bottom: 1px solid var(--border);
+}
+.br-how-inner { max-width: 1100px; margin: 0 auto; }
+.br-how-inner h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 900;
+  margin-bottom: 56px;
+}
+.br-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.br-step {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 36px;
+}
+.br-step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--border);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.br-step:hover .br-step-num { color: var(--orange); }
+.br-step h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.br-step p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.br-output {
+  padding: 100px 40px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+.br-output-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.br-output-inner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.25;
+  color: var(--text);
+}
+.br-output-inner h2 em {
+  font-style: italic;
+  color: var(--lavender);
+}
+
+@media (max-width: 768px) {
+  .br-del-grid { grid-template-columns: 1fr; }
+  .br-steps { grid-template-columns: 1fr; }
+}

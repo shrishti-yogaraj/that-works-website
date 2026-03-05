@@ -1,0 +1,169 @@
+/* ── BOOK A CALL PAGE ── */
+.bac-section {
+  padding: 100px 40px 120px;
+  min-height: calc(100vh - 64px);
+}
+.bac-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.bac-left h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.bac-subline {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--lavender);
+  margin-bottom: 28px;
+}
+.bac-body {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 40px;
+}
+.bac-points { display: flex; flex-direction: column; gap: 16px; }
+.bac-point {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--text);
+  font-weight: 500;
+}
+.bac-point-icon {
+  color: var(--orange);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+/* Form */
+.bac-form { display: flex; flex-direction: column; gap: 20px; }
+.bac-field { display: flex; flex-direction: column; gap: 6px; }
+.bac-field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+.bac-field input,
+.bac-field select {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.bac-field input::placeholder { color: var(--label); }
+.bac-field input:focus,
+.bac-field select:focus { border-color: var(--orange); }
+.bac-field select {
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%237a7269' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+/* Post submit */
+.bac-post-submit { display: flex; flex-direction: column; gap: 24px; }
+.bac-calendar-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 56px 24px;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  color: var(--label);
+  font-size: 14px;
+  text-align: center;
+}
+.bac-calendar-placeholder span { font-size: 28px; }
+.bac-calendar-placeholder p { margin: 0; }
+
+.bac-quiz-prompt {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+}
+.bac-quiz-text {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0 0 16px;
+}
+
+/* Divider */
+.bac-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 28px 0;
+}
+.bac-divider::before,
+.bac-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.bac-divider span {
+  font-size: 13px;
+  color: var(--label);
+  font-weight: 500;
+}
+
+/* Phone fallback */
+.bac-phone-form { }
+.bac-phone-label {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+.bac-phone-row {
+  display: flex;
+  gap: 10px;
+}
+.bac-phone-row input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.bac-phone-row input::placeholder { color: var(--label); }
+.bac-phone-row input:focus { border-color: var(--orange); }
+.bac-phone-confirm {
+  font-size: 14px;
+  color: var(--lavender);
+  font-weight: 500;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .bac-inner { grid-template-columns: 1fr; gap: 48px; }
+  .bac-phone-row { flex-direction: column; }
+}

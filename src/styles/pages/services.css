@@ -1,0 +1,161 @@
+/* ── SERVICES PAGE ── */
+.svcs-hero {
+  padding: 120px 40px 64px;
+  border-bottom: 1px solid var(--border);
+}
+.svcs-hero-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+.svcs-hero-inner h1 {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 900;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+.svcs-hero-inner p {
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.svcs-map-section {
+  padding: 80px 40px 100px;
+}
+.svcs-map-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.svcs-featured {
+  width: 100%;
+  background: var(--surface2);
+  border: 2px solid var(--orange);
+  border-radius: 14px;
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.svcs-featured .flagship-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.svcs-featured .service-tw {
+  margin-bottom: 12px;
+}
+.svcs-featured-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+.svcs-featured-desc {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto 28px;
+}
+
+/* Connector tree */
+.svcs-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.svcs-connector-line {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+}
+.svcs-connector-branches {
+  display: flex;
+  justify-content: space-between;
+  width: 66%;
+  position: relative;
+}
+.svcs-connector-branches::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border);
+}
+.svcs-branch {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+}
+
+.svcs-sub-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+.svcs-sub-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  transition: border-color 0.2s;
+}
+.svcs-sub-card:hover { border-color: var(--orange); }
+.svcs-sub-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+.svcs-sub-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+.svcs-sub-card-muted {
+  border-color: var(--border);
+  opacity: 0.5;
+}
+.svcs-sub-card-muted:hover { border-color: var(--border); opacity: 0.5; }
+.svcs-sub-card-muted h3 { color: var(--muted); }
+
+.svcs-cta-strip {
+  padding: 80px 40px;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+.svcs-cta-strip-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+.svcs-cta-strip-inner h2 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 900;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+.svcs-cta-strip-inner p {
+  font-size: 17px;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+  .svcs-sub-grid { grid-template-columns: 1fr; }
+  .svcs-connector-branches { width: 90%; }
+}
