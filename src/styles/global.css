@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #12100f;
+  --surface: #1a1816;
+  --surface2: #201e1c;
+  --border: #242220;
+  --orange: #ff5c00;
+  --lavender: #c4b5fd;
+  --yellow: #fbbf24;
+  --text: #f0e6d3;
+  --muted: #6a6460;
+  --label: #4a4642;
+
+  --background: 20 10% 7%;
+  --foreground: 30 50% 92%;
+  --card: 20 10% 10%;
+  --card-foreground: 30 50% 92%;
+  --popover: 20 10% 10%;
+  --popover-foreground: 30 50% 92%;
+  --primary: 20 100% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 20 10% 12%;
+  --secondary-foreground: 30 50% 92%;
+  --muted-tw: 20 8% 14%;
+  --muted-foreground: 25 12% 48%;
+  --accent: 20 100% 50%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border-tw: 20 8% 17%;
+  --input: 20 8% 17%;
+  --ring: 20 100% 50%;
+  --radius: 0.75rem;
+  --sidebar-background: 20 10% 7%;
+  --sidebar-foreground: 30 50% 92%;
+  --sidebar-primary: 20 100% 50%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 20 10% 12%;
+  --sidebar-accent-foreground: 30 50% 92%;
+  --sidebar-border: 20 8% 17%;
+  --sidebar-ring: 20 100% 50%;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.1; margin: 0; }
+h1 { font-weight: 900; color: var(--text); line-height: 1.05; }
+
+/* ── TAG ── */
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 100px;
+  background: var(--surface);
+  color: var(--orange);
+  font-weight: 600;
+  border: 1px solid var(--border);
+}
+
+.section-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--label);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  text-decoration: none;
+}
+.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  text-decoration: none;
+}
+.btn-ghost:hover { border-color: var(--muted); }
+
+.cta-note {
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--label);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
