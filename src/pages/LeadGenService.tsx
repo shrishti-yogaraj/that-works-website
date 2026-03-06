@@ -6,8 +6,12 @@ const intelRows = [
   { category: "Timing triggers", detail: "Product launches, expansions, regulatory changes" },
 ];
 import Nav from "@/components/Nav";
+import { useContactPopup } from "@/contexts/ContactPopupContext";
+import useCanonical from "@/hooks/useCanonical";
 
 const LeadGenService = () => {
+  useCanonical("/services/lead-gen");
+  const { openPopup } = useContactPopup();
   return (
     <>
       <Nav />
@@ -19,7 +23,7 @@ const LeadGenService = () => {
           <h1>Your pipeline. Running itself.</h1>
           <p className="lg-hero-sub">Find them. Research them. Talk to them.</p>
           <p className="lg-hero-body">
-            A custom-built lead generation engine that scrapes, enriches, researches and delivers fully personalised outreach — at scale, without your team lifting a finger.
+            A custom-built lead generation engine that scrapes, enriches, researches and delivers fully personalised outreach, at scale, without your team lifting a finger.
           </p>
         </div>
       </section>
@@ -29,19 +33,19 @@ const LeadGenService = () => {
         <div className="lg-results-inner">
           <div className="lg-stat">
             <div className="lg-stat-num">3x</div>
-            <div className="lg-stat-label">replies — because every prospect feels like your #1 priority</div>
+            <div className="lg-stat-label">replies, because every prospect feels like your #1 priority</div>
           </div>
           <div className="lg-stat">
             <div className="lg-stat-num">$0.2</div>
-            <div className="lg-stat-label">cost-per-lead — so ridiculously low we had to triple-check</div>
+            <div className="lg-stat-label">cost-per-lead, so ridiculously low we had to triple-check</div>
           </div>
           <div className="lg-stat">
             <div className="lg-stat-num">5→50</div>
-            <div className="lg-stat-label">conversations per day — quality conversations, every single day</div>
+            <div className="lg-stat-label">conversations per day. Quality conversations, every single day</div>
           </div>
           <div className="lg-stat">
             <div className="lg-stat-num">100%</div>
-            <div className="lg-stat-label">happiness — all your prospects feel special. Even the ones that say no.</div>
+            <div className="lg-stat-label">happiness. All your prospects feel special. Even the ones that say no.</div>
           </div>
         </div>
       </section>
@@ -167,20 +171,22 @@ const LeadGenService = () => {
         <div className="cta-inner">
           <div className="section-label" style={{ textAlign: 'center' }}>Ready when you are</div>
           <h2>See it working for you.</h2>
-          <p>Book a demo — we'll show you a lightly customised version of the engine running on your actual ICP.</p>
+          <p>Book a demo. We'll show you a lightly customised version of the engine running on your actual ICP.</p>
           <div className="cta-btns">
-            <a href="#" className="btn-primary">Book a Demo →</a>
+            <button className="btn-primary" onClick={() => openPopup("lead-gen-page")}>Book a Demo →</button>
             <a href="#" className="btn-ghost">See Pricing</a>
           </div>
         </div>
-      </section>
-
-      {/* FOOTER */}
+      </section>      {/* FOOTER */}
       <footer className="site-footer">
         <div className="footer-inner">
-          <div>
-            <div className="footer-logo">That Works<span>.</span></div>
+          <div className="footer-brand">
+            <div className="footer-logo"><img src="/logo.svg" alt="That Works" className="footer-logo-img" /></div>
             <p className="footer-tagline">High performance GTM systems. Designed, implemented and handed over.</p>
+            <div className="footer-socials">
+              <a href="#" className="footer-social">LinkedIn</a>
+              <a href="#" className="footer-social">X / Twitter</a>
+            </div>
           </div>
           <div className="footer-col">
             <h4>Company</h4>
@@ -194,22 +200,24 @@ const LeadGenService = () => {
           <div className="footer-col">
             <h4>Services</h4>
             <ul>
-              <li><a href="/services">Marketing OS TW</a></li>
-              <li><a href="/services/lead-gen">Lead Gen TW</a></li>
-              <li><a href="/services/branding">Branding TW</a></li>
+              <li><a href="/services">All Services</a></li>
             </ul>
           </div>
           <div className="footer-col">
-            <h4>Legal</h4>
-            <ul>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms</a></li>
-            </ul>
+            <h4>Newsletter</h4>
+            <p className="footer-newsletter-desc">GTM insights and what's actually working. No fluff.</p>
+            <form className="footer-newsletter-form" onSubmit={(e) => e.preventDefault()}>
+              <input type="email" placeholder="your@email.com" className="footer-newsletter-input" />
+              <button type="submit" className="footer-newsletter-btn">Subscribe →</button>
+            </form>
           </div>
         </div>
         <div className="footer-bottom">
           <p>© 2026 That Works. All rights reserved.</p>
-          <p style={{ color: 'var(--label)' }}>thatworksco.com</p>
+          <div className="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+          </div>
         </div>
       </footer>
     </>

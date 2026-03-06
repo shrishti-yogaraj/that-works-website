@@ -7,7 +7,7 @@
   background: var(--surface);
 }
 .zto-stage-strip-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -95,7 +95,7 @@
 /* Tiers */
 .zto-tiers { padding: 100px 40px; }
 .zto-tiers-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -238,7 +238,7 @@
 /* Deliverables */
 .zto-deliverables { padding: 100px 40px; }
 .zto-deliverables-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   text-align: center;
 }
@@ -315,7 +315,7 @@
   border-top: 1px solid var(--border);
 }
 .fri-diagnosis-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -436,7 +436,7 @@
   border-top: 1px solid var(--border);
 }
 .leader-proof-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   text-align: center;
 }

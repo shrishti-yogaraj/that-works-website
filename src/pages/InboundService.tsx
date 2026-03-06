@@ -3,16 +3,16 @@ import { useContactPopup } from "@/contexts/ContactPopupContext";
 import useCanonical from "@/hooks/useCanonical";
 
 const deliverables = [
-  { name: "Brand Strategy", desc: "Positioning, ICP definition, competitive landscape, why you win." },
-  { name: "Messaging Framework", desc: "Core message, pillars, one-liners, pitch lines, what you never say." },
-  { name: "Tone of Voice", desc: "How you sound, with examples across contexts." },
-  { name: "Visual Identity", desc: "Logo, colour, typography, visual direction." },
-  { name: "Brand Guidebook", desc: "Everything documented, everything usable, nothing left to interpretation." },
-  { name: "Message Bank", desc: "Copy ready to use across channels: website, sales, outreach, social." },
+  { name: "Content Strategy", desc: "Topic clusters, keyword mapping, editorial calendar. Built around what your buyers are actually searching for." },
+  { name: "SEO Foundation", desc: "Technical audit, on-page optimisation, internal linking architecture. The infrastructure search engines reward." },
+  { name: "Lead Magnet System", desc: "High-value content assets that convert visitors into leads. Guides, tools, templates, built to your ICP." },
+  { name: "Nurture Sequences", desc: "Email flows that move leads from interested to ready. Automated, personalised, and mapped to buying intent." },
+  { name: "Distribution Playbook", desc: "Channel-by-channel plan for getting your content in front of the right people. Not just publish and hope." },
+  { name: "Performance Dashboard", desc: "Traffic, conversions, pipeline contribution. You'll know exactly what's working and what to do next." },
 ];
 
-const BrandingService = () => {
-  useCanonical("/services/branding");
+const InboundService = () => {
+  useCanonical("/services/inbound");
   const { openPopup } = useContactPopup();
   return (
     <>
@@ -21,11 +21,11 @@ const BrandingService = () => {
       {/* HERO */}
       <section className="br-hero">
         <div className="br-hero-inner">
-          <div className="section-label">Branding TW</div>
-          <h1>Your brand. Built to last.</h1>
-          <p className="br-hero-sub">Identity. Positioning. Voice. Handed over.</p>
+          <div className="section-label">Inbound TW</div>
+          <h1>The best leads find you.</h1>
+          <p className="br-hero-sub">Content. SEO. Nurture. Compounding.</p>
           <p className="br-hero-body">
-            Most businesses design a logo and call it branding. That Works builds the whole system, from how you think about yourself to how the world talks about you.
+            Most companies create content and hope. That Works builds inbound as infrastructure, a system that attracts the right buyers, captures them, and moves them toward a conversation without your team having to chase.
           </p>
         </div>
       </section>
@@ -34,9 +34,9 @@ const BrandingService = () => {
       <section className="br-problem">
         <div className="br-problem-inner">
           <div className="br-problem-block">
-            <h2>A logo is not a brand.</h2>
+            <h2>Publishing is not a strategy.</h2>
             <p>
-              A brand is a position in someone's mind. It's the reason they choose you over the alternative, the words they use to describe you to a colleague, the feeling they get before you say a word. Most businesses don't have that. They have a colour palette and a font.
+              Content without architecture is just noise. Most businesses produce blog posts, social updates, and the occasional guide with no system connecting any of it. No keyword strategy. No lead capture. No nurture. The content exists but it doesn't work. Inbound done right is a compounding asset, not a content treadmill.
             </p>
           </div>
         </div>
@@ -46,7 +46,7 @@ const BrandingService = () => {
       <section className="br-included">
         <div className="br-included-inner">
           <div className="section-label">What's included</div>
-          <h2>Everything a brand needs. <em style={{ fontStyle: 'italic', color: 'var(--lavender)' }}>Nothing it doesn't.</em></h2>
+          <h2>A system that attracts, captures, <em style={{ fontStyle: 'italic', color: 'var(--lavender)' }}>and converts.</em></h2>
           <div className="br-del-grid">
             {deliverables.map((d, i) => (
               <div key={i} className="br-del-card">
@@ -62,22 +62,27 @@ const BrandingService = () => {
       <section className="br-how">
         <div className="br-how-inner">
           <div className="section-label">How it works</div>
-          <h2>Three steps to a brand that works.</h2>
+          <h2>Four steps to inbound that compounds.</h2>
           <div className="br-steps">
             <div className="br-step">
               <div className="br-step-num">01</div>
-              <h3>Discover</h3>
-              <p>We dig into your business, your market, your competitors and your customers.</p>
+              <h3>Audit</h3>
+              <p>We assess your current content, SEO position, and lead capture setup. Find the gaps and the quick wins.</p>
             </div>
             <div className="br-step">
               <div className="br-step-num">02</div>
-              <h3>Build</h3>
-              <p>We craft the full brand system, from positioning to visual identity.</p>
+              <h3>Architect</h3>
+              <p>We build the full inbound strategy, topic clusters, keywords, lead magnets, nurture flows, all connected.</p>
             </div>
             <div className="br-step">
               <div className="br-step-num">03</div>
+              <h3>Build</h3>
+              <p>We implement the system. Content infrastructure, capture mechanisms, automation, distribution.</p>
+            </div>
+            <div className="br-step">
+              <div className="br-step-num">04</div>
               <h3>Hand over</h3>
-              <p>You leave with a complete, documented brand OS your whole team can use.</p>
+              <p>You leave with a documented inbound engine your team can run, measure, and grow without us.</p>
             </div>
           </div>
         </div>
@@ -86,7 +91,7 @@ const BrandingService = () => {
       {/* THE OUTPUT */}
       <section className="br-output">
         <div className="br-output-inner">
-          <h2><em>You leave knowing exactly who you are, who you're for, and what to say.</em></h2>
+          <h2><em>You leave with an inbound engine that works while you sleep.</em></h2>
         </div>
       </section>
 
@@ -94,10 +99,10 @@ const BrandingService = () => {
       <section className="cta-section">
         <div className="cta-inner">
           <div className="section-label" style={{ textAlign: 'center' }}>Ready when you are</div>
-          <h2>Ready to build something <em>that lasts?</em></h2>
+          <h2>Ready to stop chasing <em>and start attracting?</em></h2>
           <p>Book a diagnostic call. We'll figure out where you are and what you need.</p>
           <div className="cta-btns">
-            <button className="btn-primary" onClick={() => openPopup("branding-page")}>Book a Diagnostic Call →</button>
+            <button className="btn-primary" onClick={() => openPopup("inbound-page")}>Book a Diagnostic Call →</button>
           </div>
           <p className="cta-note">No pitch. No pressure. Just clarity.</p>
         </div>
@@ -148,4 +153,4 @@ const BrandingService = () => {
   );
 };
 
-export default BrandingService;
+export default InboundService;

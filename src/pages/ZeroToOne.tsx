@@ -1,11 +1,7 @@
 import Nav from "@/components/Nav";
-
-const stages = [
-  { label: "0→1", path: "/services/marketing-os/zero-to-one", active: true },
-  { label: "Friction", path: "/services/marketing-os/friction", active: false },
-  { label: "Scale", path: "/services/marketing-os/scale", active: false },
-  { label: "Leader", path: "/services/marketing-os/leader", active: false },
-];
+import StageSwitcher from "@/components/StageSwitcher";
+import { useContactPopup } from "@/contexts/ContactPopupContext";
+import useCanonical from "@/hooks/useCanonical";
 
 const tiers = [
   {
@@ -67,27 +63,13 @@ const deliverableTiles = [
 ];
 
 const ZeroToOne = () => {
+  useCanonical("/services/marketing-os/zero-to-one");
+  const { openPopup } = useContactPopup();
   return (
     <>
       <Nav />
 
-      {/* STAGE INDICATOR */}
-      <div className="zto-stage-strip">
-        <div className="zto-stage-strip-inner">
-          <span className="zto-stage-label">Where are you right now?</span>
-          <div className="zto-stage-pills">
-            {stages.map((s) => (
-              <a
-                key={s.label}
-                href={s.path}
-                className={`zto-stage-pill${s.active ? " active" : ""}`}
-              >
-                {s.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
+      <StageSwitcher active="zero-to-one" />
 
       {/* HERO */}
       <section className="zto-hero">
@@ -95,7 +77,7 @@ const ZeroToOne = () => {
           <h1>You've built something worth talking about.</h1>
           <p className="zto-hero-sub">Now let's make sure the right people hear it.</p>
           <p className="zto-hero-body">
-            Before channels, before content, before campaigns — you need a foundation.
+            Before channels, before content, before campaigns, you need a foundation.
             Most early-stage founders skip this and pay for it later. That Works builds it first.
           </p>
         </div>
@@ -150,7 +132,7 @@ const ZeroToOne = () => {
       <section className="zto-retainer">
         <div className="zto-retainer-inner">
           <p>
-            All engagements include an optional ongoing retainer — <strong>£2,500–£4,000/month</strong>.
+            All engagements include an optional ongoing retainer: <strong>£2,500–£4,000/month</strong>.
             Strategic oversight, not execution. A thinking partner as you grow.
           </p>
         </div>
@@ -174,17 +156,19 @@ const ZeroToOne = () => {
         <div className="zto-cta-inner">
           <h2>Not sure which tier is right?</h2>
           <p className="zto-cta-sub">That's exactly what the diagnostic call is for.</p>
-          <a href="/book-a-call" className="btn-primary">Book a Diagnostic Call</a>
+          <button className="btn-primary" onClick={() => openPopup("marketing-os-zero-to-one")}>Book a Diagnostic Call</button>
           <p className="cta-note">20 minutes. No pitch. You'll leave with clarity regardless.</p>
         </div>
-      </section>
-
-      {/* FOOTER */}
+      </section>      {/* FOOTER */}
       <footer className="site-footer">
         <div className="footer-inner">
-          <div>
-            <div className="footer-logo">That Works<span>.</span></div>
+          <div className="footer-brand">
+            <div className="footer-logo"><img src="/logo.svg" alt="That Works" className="footer-logo-img" /></div>
             <p className="footer-tagline">High performance GTM systems. Designed, implemented and handed over.</p>
+            <div className="footer-socials">
+              <a href="#" className="footer-social">LinkedIn</a>
+              <a href="#" className="footer-social">X / Twitter</a>
+            </div>
           </div>
           <div className="footer-col">
             <h4>Company</h4>
@@ -198,22 +182,24 @@ const ZeroToOne = () => {
           <div className="footer-col">
             <h4>Services</h4>
             <ul>
-              <li><a href="/services">Marketing OS TW</a></li>
-              <li><a href="/services/lead-gen">Lead Gen TW</a></li>
-              <li><a href="/services/branding">Branding TW</a></li>
+              <li><a href="/services">All Services</a></li>
             </ul>
           </div>
           <div className="footer-col">
-            <h4>Legal</h4>
-            <ul>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms</a></li>
-            </ul>
+            <h4>Newsletter</h4>
+            <p className="footer-newsletter-desc">GTM insights and what's actually working. No fluff.</p>
+            <form className="footer-newsletter-form" onSubmit={(e) => e.preventDefault()}>
+              <input type="email" placeholder="your@email.com" className="footer-newsletter-input" />
+              <button type="submit" className="footer-newsletter-btn">Subscribe →</button>
+            </form>
           </div>
         </div>
         <div className="footer-bottom">
           <p>© 2026 That Works. All rights reserved.</p>
-          <p style={{ color: 'var(--label)' }}>thatworksco.com</p>
+          <div className="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+          </div>
         </div>
       </footer>
     </>

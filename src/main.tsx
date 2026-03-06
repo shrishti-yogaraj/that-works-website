@@ -7,6 +7,7 @@ import "./styles/global.css";
 /* Components */
 import "./styles/components/nav.css";
 import "./styles/components/footer.css";
+import "./styles/components/booking-popup.css";
 
 /* Pages */
 import "./styles/pages/index.css";

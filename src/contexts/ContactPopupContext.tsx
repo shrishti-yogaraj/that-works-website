@@ -2,7 +2,8 @@ import { createContext, useContext, useState, ReactNode } from "react";
 
 interface ContactPopupContextType {
   isOpen: boolean;
-  openPopup: () => void;
+  source: string;
+  openPopup: (source?: string) => void;
   closePopup: () => void;
 }
 
@@ -10,12 +11,13 @@ const ContactPopupContext = createContext<ContactPopupContextType | undefined>(u
 
 export const ContactPopupProvider = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [source, setSource] = useState("general");
 
-  const openPopup = () => setIsOpen(true);
+  const openPopup = (src = "general") => { setSource(src); setIsOpen(true); };
   const closePopup = () => setIsOpen(false);
 
   return (
-    <ContactPopupContext.Provider value={{ isOpen, openPopup, closePopup }}>
+    <ContactPopupContext.Provider value={{ isOpen, source, openPopup, closePopup }}>
       {children}
     </ContactPopupContext.Provider>
   );
@@ -23,8 +25,6 @@ export const ContactPopupProvider = ({ children }: { children: ReactNode }) => {
 
 export const useContactPopup = () => {
   const context = useContext(ContactPopupContext);
-  if (!context) {
-    throw new Error("useContactPopup must be used within a ContactPopupProvider");
-  }
+  if (!context) throw new Error("useContactPopup must be used within a ContactPopupProvider");
   return context;
 };

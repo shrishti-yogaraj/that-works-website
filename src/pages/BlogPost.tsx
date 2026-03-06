@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import Nav from "@/components/Nav";
 import { getPostBySlug, getRecentPosts } from "@/data/blogPosts";
+import useCanonical from "@/hooks/useCanonical";
 
 const categoryColor: Record<string, string> = {
   "GTM & Growth": "var(--yellow)",
@@ -220,7 +221,7 @@ const BlogPost = () => {
         <footer className="site-footer">
           <div className="footer-inner">
             <div>
-              <div className="footer-logo">That Works<span>.</span></div>
+              <div className="footer-logo"><img src="/logo.svg" alt="That Works" className="footer-logo-img" /></div>
               <p className="footer-tagline">High performance GTM systems. Designed, implemented and handed over.</p>
             </div>
             <div className="footer-col">
@@ -235,10 +236,8 @@ const BlogPost = () => {
             <div className="footer-col">
               <h4>Services</h4>
               <ul>
-                <li><a href="/services">Marketing OS TW</a></li>
-                <li><a href="/services/lead-gen">Lead Gen TW</a></li>
-                <li><a href="/services/branding">Branding TW</a></li>
-              </ul>
+            <li><a href="/services">All Services</a></li>
+          </ul>
             </div>
             <div className="footer-col">
               <h4>Legal</h4>

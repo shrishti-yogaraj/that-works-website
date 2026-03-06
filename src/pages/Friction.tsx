@@ -1,11 +1,7 @@
 import Nav from "@/components/Nav";
-
-const stages = [
-  { label: "0→1", path: "/services/marketing-os/zero-to-one", active: false },
-  { label: "Friction", path: "/services/marketing-os/friction", active: true },
-  { label: "Scale", path: "/services/marketing-os/scale", active: false },
-  { label: "Leader", path: "/services/marketing-os/leader", active: false },
-];
+import StageSwitcher from "@/components/StageSwitcher";
+import { useContactPopup } from "@/contexts/ContactPopupContext";
+import useCanonical from "@/hooks/useCanonical";
 
 const tiers = [
   {
@@ -13,7 +9,7 @@ const tiers = [
     duration: "4 weeks",
     price: "£8–12k",
     tagline: "Stop funding the fog. Start seeing what works.",
-    whoFor: "Founder or head of marketing where spend is up and results are flat — nobody can explain why.",
+    whoFor: "Founder or head of marketing where spend is up and results are flat, nobody can explain why.",
     deliverables: [
       "Full marketing audit with clear diagnosis",
       "ICP refinement and messaging realignment",
@@ -46,7 +42,7 @@ const tiers = [
     duration: "12 weeks",
     price: "£35–50k",
     tagline: "Burn the patchwork. Build the engine.",
-    whoFor: "Business at £500k–£2M that's been through agencies, freelancers, and internal hires — and none of it has stuck.",
+    whoFor: "Business at £500k–£2M that's been through agencies, freelancers, and internal hires, and none of it has stuck.",
     deliverables: [
       "Complete brand rebuild",
       "Full inbound overhaul",
@@ -77,23 +73,13 @@ const deliverableTiles = [
 ];
 
 const Friction = () => {
+  useCanonical("/services/marketing-os/friction");
+  const { openPopup } = useContactPopup();
   return (
     <>
       <Nav />
 
-      {/* STAGE INDICATOR */}
-      <div className="zto-stage-strip">
-        <div className="zto-stage-strip-inner">
-          <span className="zto-stage-label">Where are you right now?</span>
-          <div className="zto-stage-pills">
-            {stages.map((s) => (
-              <a key={s.label} href={s.path} className={`zto-stage-pill${s.active ? " active" : ""}`}>
-                {s.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
+      <StageSwitcher active="friction" />
 
       {/* HERO */}
       <section className="zto-hero">
@@ -101,7 +87,7 @@ const Friction = () => {
           <h1>Your marketing isn't broken.</h1>
           <p className="zto-hero-sub">It was never built.</p>
           <p className="zto-hero-body">
-            You're spending money. You're producing content. You're running campaigns. And yet — nothing
+            You're spending money. You're producing content. You're running campaigns. And yet, nothing
             is connecting. The problem isn't effort. It's architecture. You can't scale what was never
             properly built.
           </p>
@@ -115,7 +101,7 @@ const Friction = () => {
           <p>
             You know something is wrong but you can't name it. The spend is up, the results are flat,
             and every conversation about marketing ends in frustration. That's not a channel problem.
-            That's a foundation problem — and it has a very specific fix.
+            That's a foundation problem, and it has a very specific fix.
           </p>
         </div>
       </section>
@@ -157,7 +143,7 @@ const Friction = () => {
       <section className="zto-retainer">
         <div className="zto-retainer-inner">
           <p>
-            All engagements include an optional ongoing retainer — <strong>£2,500–£4,000/month</strong>.
+            All engagements include an optional ongoing retainer: <strong>£2,500–£4,000/month</strong>.
             Strategic oversight, not execution. A thinking partner as you grow.
           </p>
         </div>
@@ -175,7 +161,7 @@ const Friction = () => {
             </div>
           </div>
           <div className="fri-diagnosis-right">
-            <p>If you nodded at two or more of these — you're in the right place.</p>
+            <p>If you nodded at two or more of these, you're in the right place.</p>
           </div>
         </div>
       </section>
@@ -198,17 +184,19 @@ const Friction = () => {
         <div className="zto-cta-inner">
           <h2>Let's name what's broken.</h2>
           <p className="zto-cta-sub">And show you exactly how to fix it.</p>
-          <a href="/book-a-call" className="btn-primary">Book a Diagnostic Call</a>
+          <button className="btn-primary" onClick={() => openPopup("marketing-os-friction")}>Book a Diagnostic Call</button>
           <p className="cta-note">20 minutes. No pitch. You'll leave with clarity regardless.</p>
         </div>
-      </section>
-
-      {/* FOOTER */}
+      </section>      {/* FOOTER */}
       <footer className="site-footer">
         <div className="footer-inner">
-          <div>
-            <div className="footer-logo">That Works<span>.</span></div>
+          <div className="footer-brand">
+            <div className="footer-logo"><img src="/logo.svg" alt="That Works" className="footer-logo-img" /></div>
             <p className="footer-tagline">High performance GTM systems. Designed, implemented and handed over.</p>
+            <div className="footer-socials">
+              <a href="#" className="footer-social">LinkedIn</a>
+              <a href="#" className="footer-social">X / Twitter</a>
+            </div>
           </div>
           <div className="footer-col">
             <h4>Company</h4>
@@ -222,22 +210,24 @@ const Friction = () => {
           <div className="footer-col">
             <h4>Services</h4>
             <ul>
-              <li><a href="/services">Marketing OS TW</a></li>
-              <li><a href="/services/lead-gen">Lead Gen TW</a></li>
-              <li><a href="/services/branding">Branding TW</a></li>
+              <li><a href="/services">All Services</a></li>
             </ul>
           </div>
           <div className="footer-col">
-            <h4>Legal</h4>
-            <ul>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms</a></li>
-            </ul>
+            <h4>Newsletter</h4>
+            <p className="footer-newsletter-desc">GTM insights and what's actually working. No fluff.</p>
+            <form className="footer-newsletter-form" onSubmit={(e) => e.preventDefault()}>
+              <input type="email" placeholder="your@email.com" className="footer-newsletter-input" />
+              <button type="submit" className="footer-newsletter-btn">Subscribe →</button>
+            </form>
           </div>
         </div>
         <div className="footer-bottom">
           <p>© 2026 That Works. All rights reserved.</p>
-          <p style={{ color: 'var(--label)' }}>thatworksco.com</p>
+          <div className="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+          </div>
         </div>
       </footer>
     </>

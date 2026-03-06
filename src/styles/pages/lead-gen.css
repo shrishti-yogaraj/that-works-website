@@ -37,7 +37,7 @@
   background: var(--surface);
 }
 .lg-results-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -69,7 +69,7 @@
   padding: 100px 40px;
   border-bottom: 1px solid var(--border);
 }
-.lg-how-inner { max-width: 1100px; margin: 0 auto; }
+.lg-how-inner { max-width: 1200px; margin: 0 auto; }
 .lg-how-inner h2 {
   font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 900;
@@ -152,7 +152,7 @@
   padding: 100px 40px;
   border-bottom: 1px solid var(--border);
 }
-.lg-packages-inner { max-width: 1100px; margin: 0 auto; }
+.lg-packages-inner { max-width: 1200px; margin: 0 auto; }
 .lg-packages-inner h2 {
   font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 900;

@@ -6,12 +6,12 @@
   --bg: #12100f;
   --surface: #1a1816;
   --surface2: #201e1c;
-  --border: #242220;
+  --border: #2a2826;
   --orange: #ff5c00;
   --lavender: #c4b5fd;
   --yellow: #fbbf24;
   --text: #f0e6d3;
-  --muted: #6a6460;
+  --muted: #7a7269;
   --label: #4a4642;
 
   --background: 20 10% 7%;
@@ -44,13 +44,13 @@
   --sidebar-ring: 20 100% 50%;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: #12100f; }
 
 body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Cabinet Grotesk', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
   overflow-x: hidden;
   margin: 0;
@@ -61,6 +61,7 @@ body {
 
 h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.1; margin: 0; }
 h1 { font-weight: 900; color: var(--text); line-height: 1.05; }
+h1 em, h2 em, h3 em, h4 em { font-weight: 700; }
 
 /* ── TAG ── */
 .tag {
@@ -77,10 +78,10 @@ h1 { font-weight: 900; color: var(--text); line-height: 1.05; }
 }
 
 .section-label {
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--label);
+  color: var(--muted);
   font-weight: 600;
   margin-bottom: 16px;
 }

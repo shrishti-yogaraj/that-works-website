@@ -3,16 +3,16 @@ import { useContactPopup } from "@/contexts/ContactPopupContext";
 import useCanonical from "@/hooks/useCanonical";
 
 const deliverables = [
-  { name: "Brand Strategy", desc: "Positioning, ICP definition, competitive landscape, why you win." },
-  { name: "Messaging Framework", desc: "Core message, pillars, one-liners, pitch lines, what you never say." },
-  { name: "Tone of Voice", desc: "How you sound, with examples across contexts." },
-  { name: "Visual Identity", desc: "Logo, colour, typography, visual direction." },
-  { name: "Brand Guidebook", desc: "Everything documented, everything usable, nothing left to interpretation." },
-  { name: "Message Bank", desc: "Copy ready to use across channels: website, sales, outreach, social." },
+  { name: "Customer Lifecycle Map", desc: "Every stage from first touch to advocacy, mapped, measured, and with clear ownership at each step." },
+  { name: "Retention Sequences", desc: "Automated email and in-product flows that keep customers engaged, informed, and growing with you." },
+  { name: "Sales Playbook", desc: "Objection handling, discovery frameworks, talk tracks, and deal guides. Your team closes more with less guesswork." },
+  { name: "Onboarding System", desc: "A structured onboarding flow that gets customers to value fast and sets the tone for the entire relationship." },
+  { name: "Expansion Playbook", desc: "Upsell and cross-sell triggers, timing, and messaging. Revenue from customers you already have." },
+  { name: "Sales Enablement Suite", desc: "Case studies, one-pagers, battle cards, proposal templates. Everything your team needs to win and retain." },
 ];
 
-const BrandingService = () => {
-  useCanonical("/services/branding");
+const RetentionService = () => {
+  useCanonical("/services/retention");
   const { openPopup } = useContactPopup();
   return (
     <>
@@ -21,11 +21,11 @@ const BrandingService = () => {
       {/* HERO */}
       <section className="br-hero">
         <div className="br-hero-inner">
-          <div className="section-label">Branding TW</div>
-          <h1>Your brand. Built to last.</h1>
-          <p className="br-hero-sub">Identity. Positioning. Voice. Handed over.</p>
+          <div className="section-label">Retention TW</div>
+          <h1>Win them once. Keep them forever.</h1>
+          <p className="br-hero-sub">Lifecycle. Sales enablement. Expansion.</p>
           <p className="br-hero-body">
-            Most businesses design a logo and call it branding. That Works builds the whole system, from how you think about yourself to how the world talks about you.
+            Acquisition gets the credit. Retention builds the business. That Works designs the systems that keep customers engaged, equip your sales team to close, and turn happy customers into your best growth channel.
           </p>
         </div>
       </section>
@@ -34,9 +34,9 @@ const BrandingService = () => {
       <section className="br-problem">
         <div className="br-problem-inner">
           <div className="br-problem-block">
-            <h2>A logo is not a brand.</h2>
+            <h2>You're losing revenue you've already earned.</h2>
             <p>
-              A brand is a position in someone's mind. It's the reason they choose you over the alternative, the words they use to describe you to a colleague, the feeling they get before you say a word. Most businesses don't have that. They have a colour palette and a font.
+              Most businesses pour budget into acquisition and treat retention as an afterthought. No onboarding system. No lifecycle sequences. No expansion triggers. Sales teams wing it with whatever collateral exists. The result: churn you could have prevented, expansion revenue left on the table, and a sales process that depends entirely on individual reps being good. That's not a people problem. It's an infrastructure problem.
             </p>
           </div>
         </div>
@@ -46,7 +46,7 @@ const BrandingService = () => {
       <section className="br-included">
         <div className="br-included-inner">
           <div className="section-label">What's included</div>
-          <h2>Everything a brand needs. <em style={{ fontStyle: 'italic', color: 'var(--lavender)' }}>Nothing it doesn't.</em></h2>
+          <h2>Everything that happens <em style={{ fontStyle: 'italic', color: 'var(--lavender)' }}>after the deal.</em></h2>
           <div className="br-del-grid">
             {deliverables.map((d, i) => (
               <div key={i} className="br-del-card">
@@ -62,22 +62,22 @@ const BrandingService = () => {
       <section className="br-how">
         <div className="br-how-inner">
           <div className="section-label">How it works</div>
-          <h2>Three steps to a brand that works.</h2>
+          <h2>Three steps to a retention engine that runs.</h2>
           <div className="br-steps">
             <div className="br-step">
               <div className="br-step-num">01</div>
-              <h3>Discover</h3>
-              <p>We dig into your business, your market, your competitors and your customers.</p>
+              <h3>Diagnose</h3>
+              <p>We map your current lifecycle, identify churn points, and audit your sales enablement assets. Honest picture, no assumptions.</p>
             </div>
             <div className="br-step">
               <div className="br-step-num">02</div>
               <h3>Build</h3>
-              <p>We craft the full brand system, from positioning to visual identity.</p>
+              <p>We design and implement the full system. Onboarding, lifecycle sequences, playbooks, templates, all connected.</p>
             </div>
             <div className="br-step">
               <div className="br-step-num">03</div>
               <h3>Hand over</h3>
-              <p>You leave with a complete, documented brand OS your whole team can use.</p>
+              <p>You leave with a documented retention and sales enablement system your team owns and can run without us.</p>
             </div>
           </div>
         </div>
@@ -86,7 +86,7 @@ const BrandingService = () => {
       {/* THE OUTPUT */}
       <section className="br-output">
         <div className="br-output-inner">
-          <h2><em>You leave knowing exactly who you are, who you're for, and what to say.</em></h2>
+          <h2><em>You leave with a system that keeps customers longer and grows them faster.</em></h2>
         </div>
       </section>
 
@@ -94,10 +94,10 @@ const BrandingService = () => {
       <section className="cta-section">
         <div className="cta-inner">
           <div className="section-label" style={{ textAlign: 'center' }}>Ready when you are</div>
-          <h2>Ready to build something <em>that lasts?</em></h2>
-          <p>Book a diagnostic call. We'll figure out where you are and what you need.</p>
+          <h2>Ready to stop losing <em>what you've already won?</em></h2>
+          <p>Book a diagnostic call. We'll figure out where the gaps are and exactly what it takes to close them.</p>
           <div className="cta-btns">
-            <button className="btn-primary" onClick={() => openPopup("branding-page")}>Book a Diagnostic Call →</button>
+            <button className="btn-primary" onClick={() => openPopup("retention-page")}>Book a Diagnostic Call →</button>
           </div>
           <p className="cta-note">No pitch. No pressure. Just clarity.</p>
         </div>
@@ -148,4 +148,4 @@ const BrandingService = () => {
   );
 };
 
-export default BrandingService;
+export default RetentionService;

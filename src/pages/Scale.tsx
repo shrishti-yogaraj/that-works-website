@@ -1,11 +1,7 @@
 import Nav from "@/components/Nav";
-
-const stages = [
-  { label: "0→1", path: "/services/marketing-os/zero-to-one", active: false },
-  { label: "Friction", path: "/services/marketing-os/friction", active: false },
-  { label: "Scale", path: "/services/marketing-os/scale", active: true },
-  { label: "Leader", path: "/services/marketing-os/leader", active: false },
-];
+import StageSwitcher from "@/components/StageSwitcher";
+import { useContactPopup } from "@/contexts/ContactPopupContext";
+import useCanonical from "@/hooks/useCanonical";
 
 const tiers = [
   {
@@ -16,7 +12,7 @@ const tiers = [
     whoFor: "Growing business where the marketing team is stretched thin, drowning in operational work, with no clear priority.",
     deliverables: [
       "Operations audit identifying highest-impact bottlenecks",
-      "Prioritisation framework — what to keep, cut, automate, delegate",
+      "Prioritisation framework: what to keep, cut, automate, delegate",
       "Workflow redesign for top three time-consuming processes",
       "90-day scaling roadmap",
       "Skill map and gap analysis",
@@ -29,7 +25,7 @@ const tiers = [
     duration: "8 weeks",
     price: "£18–25k",
     tagline: "Scale the system, not the headcount.",
-    whoFor: "Business at £2M–£10M with a marketing team executing daily but no infrastructure underneath — data siloed, processes tribal, scaling means more people not better systems.",
+    whoFor: "Business at £2M–£10M with a marketing team executing daily but no infrastructure underneath. Data siloed, processes tribal, scaling means more people not better systems.",
     deliverables: [
       "Full process audit and SOP library",
       "Centralised reporting dashboard",
@@ -37,7 +33,7 @@ const tiers = [
       "Team skill map and hiring briefs",
       "12-month scaling roadmap with KPIs",
     ],
-    leaveWith: "A documented automated marketing system that runs on process not personalities — ready to scale without proportional headcount.",
+    leaveWith: "A documented automated marketing system that runs on process not personalities, ready to scale without proportional headcount.",
     tier: "popular",
     badge: "Most popular",
   },
@@ -46,7 +42,7 @@ const tiers = [
     duration: "12 weeks",
     price: "£35–50k",
     tagline: "You've outgrown the scrappy phase. Time to operate like it.",
-    whoFor: "Business approaching or past £5M that needs to professionalise its entire marketing operation — they have budget and people but not the infrastructure to operate like a scaled function.",
+    whoFor: "Business approaching or past £5M that needs to professionalise its entire marketing operation. They have budget and people but not the infrastructure to operate like a scaled function.",
     deliverables: [
       "Complete marketing operations overhaul",
       "Full SOP library across all four pillars",
@@ -68,23 +64,13 @@ const deliverableTiles = [
 ];
 
 const Scale = () => {
+  useCanonical("/services/marketing-os/scale");
+  const { openPopup } = useContactPopup();
   return (
     <>
       <Nav />
 
-      {/* STAGE INDICATOR */}
-      <div className="zto-stage-strip">
-        <div className="zto-stage-strip-inner">
-          <span className="zto-stage-label">Where are you right now?</span>
-          <div className="zto-stage-pills">
-            {stages.map((s) => (
-              <a key={s.label} href={s.path} className={`zto-stage-pill${s.active ? " active" : ""}`}>
-                {s.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
+      <StageSwitcher active="scale" />
 
       {/* HERO */}
       <section className="zto-hero">
@@ -93,7 +79,7 @@ const Scale = () => {
           <p className="zto-hero-sub">They need a better system.</p>
           <p className="zto-hero-body">
             You're growing. The team is working flat out. And somehow, the output isn't keeping up
-            with the input. That's not a people problem. That's an infrastructure problem — and
+            with the input. That's not a people problem. That's an infrastructure problem, and
             adding headcount won't fix it.
           </p>
         </div>
@@ -149,7 +135,7 @@ const Scale = () => {
       <section className="zto-retainer">
         <div className="zto-retainer-inner">
           <p>
-            All engagements include an optional ongoing retainer — <strong>£2,500–£4,000/month</strong>.
+            All engagements include an optional ongoing retainer: <strong>£2,500–£4,000/month</strong>.
             Strategic oversight, not execution. A thinking partner as you grow.
           </p>
         </div>
@@ -165,7 +151,7 @@ const Scale = () => {
             briefing the same thing twice, updating spreadsheets nobody reads.
           </p>
           <p className="scale-ops-punchline">
-            That number — that's your <span className="scale-ops-highlight">ops tax</span>. That Works eliminates it.
+            That number? That's your <span className="scale-ops-highlight">ops tax</span>. That Works eliminates it.
           </p>
         </div>
       </section>
@@ -188,17 +174,19 @@ const Scale = () => {
         <div className="zto-cta-inner">
           <h2>Let's find your ceiling.</h2>
           <p className="zto-cta-sub">And show you exactly what's holding it in place.</p>
-          <a href="/book-a-call" className="btn-primary">Book a Diagnostic Call</a>
+          <button className="btn-primary" onClick={() => openPopup("marketing-os-scale")}>Book a Diagnostic Call</button>
           <p className="cta-note">20 minutes. No pitch. You'll leave with clarity regardless.</p>
         </div>
-      </section>
-
-      {/* FOOTER */}
+      </section>      {/* FOOTER */}
       <footer className="site-footer">
         <div className="footer-inner">
-          <div>
-            <div className="footer-logo">That Works<span>.</span></div>
+          <div className="footer-brand">
+            <div className="footer-logo"><img src="/logo.svg" alt="That Works" className="footer-logo-img" /></div>
             <p className="footer-tagline">High performance GTM systems. Designed, implemented and handed over.</p>
+            <div className="footer-socials">
+              <a href="#" className="footer-social">LinkedIn</a>
+              <a href="#" className="footer-social">X / Twitter</a>
+            </div>
           </div>
           <div className="footer-col">
             <h4>Company</h4>
@@ -212,22 +200,24 @@ const Scale = () => {
           <div className="footer-col">
             <h4>Services</h4>
             <ul>
-              <li><a href="/services">Marketing OS TW</a></li>
-              <li><a href="/services/lead-gen">Lead Gen TW</a></li>
-              <li><a href="/services/branding">Branding TW</a></li>
+              <li><a href="/services">All Services</a></li>
             </ul>
           </div>
           <div className="footer-col">
-            <h4>Legal</h4>
-            <ul>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms</a></li>
-            </ul>
+            <h4>Newsletter</h4>
+            <p className="footer-newsletter-desc">GTM insights and what's actually working. No fluff.</p>
+            <form className="footer-newsletter-form" onSubmit={(e) => e.preventDefault()}>
+              <input type="email" placeholder="your@email.com" className="footer-newsletter-input" />
+              <button type="submit" className="footer-newsletter-btn">Subscribe →</button>
+            </form>
           </div>
         </div>
         <div className="footer-bottom">
           <p>© 2026 That Works. All rights reserved.</p>
-          <p style={{ color: 'var(--label)' }}>thatworksco.com</p>
+          <div className="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+          </div>
         </div>
       </footer>
     </>

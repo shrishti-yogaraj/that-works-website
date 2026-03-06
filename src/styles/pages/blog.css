@@ -4,7 +4,7 @@
   border-bottom: 1px solid var(--border);
 }
 .blog-header-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 .blog-header-inner h1 {
@@ -23,7 +23,7 @@
 
 /* Featured */
 .blog-featured { padding: 48px 40px; border-bottom: 1px solid var(--border); }
-.blog-featured-inner { max-width: 1100px; margin: 0 auto; }
+.blog-featured-inner { max-width: 1200px; margin: 0 auto; }
 .blog-featured-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -80,7 +80,7 @@
   padding: 16px 40px;
 }
 .blog-filters-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -124,7 +124,7 @@
 /* Content layout */
 .blog-content { padding: 48px 40px 80px; }
 .blog-content-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 2fr 1fr;

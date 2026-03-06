@@ -1,11 +1,15 @@
 import Nav from "@/components/Nav";
+import { useContactPopup } from "@/contexts/ContactPopupContext";
+import useCanonical from "@/hooks/useCanonical";
 
 const OurApproach = () => {
+  useCanonical("/approach");
+  const { openPopup } = useContactPopup();
   const deliverables = [
     "Brand positioning document",
     "12-month strategic roadmap",
     "Full SOP library",
-    "Tool stack — configured and connected",
+    "Tool stack, configured and connected",
     "Team skill map",
     "Content calendar",
     "Sales playbook",
@@ -25,7 +29,7 @@ const OurApproach = () => {
           <h1>We take care of the whole thing.</h1>
           <p className="approach-hero-sub">Strategy. Infrastructure. Execution. Handed over.</p>
           <p className="approach-hero-body">
-            Most businesses get a piece of the puzzle. A consultant with a deck. A freelancer who builds but doesn't think. An agency that executes but never transfers ownership. That Works does all of it — and leaves you with something that runs without us.
+            Most businesses get a piece of the puzzle. A consultant with a deck. A freelancer who builds but doesn't think. An agency that executes but never transfers ownership. That Works does all of it, and leaves you with something that runs without us.
           </p>
         </div>
       </section>
@@ -51,7 +55,7 @@ const OurApproach = () => {
             <div className="gap-card gap-card-tw">
               <div className="gap-card-label" style={{ color: 'var(--orange)' }}>Option C</div>
               <h3>That Works</h3>
-              <p>Strategy + infrastructure + execution + full handover. You leave with a system your team owns and can run — without us.</p>
+              <p>Strategy + infrastructure + execution + full handover. You leave with a system your team owns and can run, without us.</p>
               <div className="gap-verdict gap-verdict-tw">Strategy ✓ &nbsp; Build ✓ &nbsp; Handover ✓</div>
             </div>
           </div>
@@ -97,18 +101,18 @@ const OurApproach = () => {
           <div className="process-header">
             <div className="section-label">The process</div>
             <h2>Four stages. One outcome: <em style={{ fontStyle: 'italic', color: 'var(--orange)' }}>you own it.</em></h2>
-            <p>Every engagement follows the same proven path — built to leave you stronger than when we arrived.</p>
+            <p>Every engagement follows the same proven path, built to leave you stronger than when we arrived.</p>
           </div>
           <div className="process-steps">
             <div className="process-step">
               <div className="process-step-num">01</div>
               <h3>Diagnose</h3>
-              <p>We map everything — your stack, your team, your gaps, your goals. No assumptions, no shortcuts.</p>
+              <p>We map everything: your stack, your team, your gaps, your goals. No assumptions, no shortcuts.</p>
             </div>
             <div className="process-step">
               <div className="process-step-num">02</div>
               <h3>Design</h3>
-              <p>We architect the full system. Strategy, infrastructure, roadmap — all connected, all sequenced.</p>
+              <p>We architect the full system. Strategy, infrastructure, roadmap, all connected, all sequenced.</p>
             </div>
             <div className="process-step">
               <div className="process-step-num">03</div>
@@ -117,7 +121,7 @@ const OurApproach = () => {
             </div>
             <div className="process-step">
               <div className="process-step-num">04</div>
-              <h3>Hand Over</h3>
+              <h3>Implement</h3>
               <p>You own it. Documentation, SOPs, training complete. The system runs without us.</p>
             </div>
           </div>
@@ -148,7 +152,7 @@ const OurApproach = () => {
         <div className="promise-inner">
           <h2>We build things that outlive us.</h2>
           <p>
-            Dependency is not a business model we believe in. Every engagement is designed to end with you fully capable of running what we've built — no expensive external resource required month to month.
+            Dependency is not a business model we believe in. Every engagement is designed to end with you fully capable of running what we've built. No expensive external resource required month to month.
           </p>
         </div>
       </section>
@@ -158,20 +162,22 @@ const OurApproach = () => {
         <div className="cta-inner">
           <div className="section-label" style={{ textAlign: 'center' }}>Ready when you are</div>
           <h2>Ready to build yours?</h2>
-          <p>Book a 15-minute diagnostic. We'll tell you exactly where you are — and what it takes to get to the next stage.</p>
+          <p>Book a 15-minute diagnostic. We'll tell you exactly where you are, and what it takes to get to the next stage.</p>
           <div className="cta-btns">
-            <a href="#" className="btn-primary">Book a Diagnostic Call →</a>
+            <button className="btn-primary" onClick={() => openPopup("approach-page")}>Book a Diagnostic Call →</button>
           </div>
           <p className="cta-note">No pitch. No pressure. Just clarity.</p>
         </div>
-      </section>
-
-      {/* FOOTER */}
+      </section>      {/* FOOTER */}
       <footer className="site-footer">
         <div className="footer-inner">
-          <div>
-            <div className="footer-logo">That Works<span>.</span></div>
+          <div className="footer-brand">
+            <div className="footer-logo"><img src="/logo.svg" alt="That Works" className="footer-logo-img" /></div>
             <p className="footer-tagline">High performance GTM systems. Designed, implemented and handed over.</p>
+            <div className="footer-socials">
+              <a href="#" className="footer-social">LinkedIn</a>
+              <a href="#" className="footer-social">X / Twitter</a>
+            </div>
           </div>
           <div className="footer-col">
             <h4>Company</h4>
@@ -185,22 +191,24 @@ const OurApproach = () => {
           <div className="footer-col">
             <h4>Services</h4>
             <ul>
-              <li><a href="#">Marketing OS TW</a></li>
-              <li><a href="/services/lead-gen">Lead Gen TW</a></li>
-              <li><a href="/services/branding">Branding TW</a></li>
+              <li><a href="/services">All Services</a></li>
             </ul>
           </div>
           <div className="footer-col">
-            <h4>Legal</h4>
-            <ul>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms</a></li>
-            </ul>
+            <h4>Newsletter</h4>
+            <p className="footer-newsletter-desc">GTM insights and what's actually working. No fluff.</p>
+            <form className="footer-newsletter-form" onSubmit={(e) => e.preventDefault()}>
+              <input type="email" placeholder="your@email.com" className="footer-newsletter-input" />
+              <button type="submit" className="footer-newsletter-btn">Subscribe →</button>
+            </form>
           </div>
         </div>
         <div className="footer-bottom">
           <p>© 2026 That Works. All rights reserved.</p>
-          <p style={{ color: 'var(--label)' }}>thatworksco.com</p>
+          <div className="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+          </div>
         </div>
       </footer>
     </>

@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import Nav from "@/components/Nav";
 import { blogPosts } from "@/data/blogPosts";
+import useCanonical from "@/hooks/useCanonical";
 
 const categories = ["All", "GTM & Growth", "Marketing Systems", "Lead Generation", "Tool Reviews", "Revenue Architecture", "Playbooks", "Hiring & Team Design"] as const;
 
@@ -17,6 +18,7 @@ const categoryColor: Record<string, string> = {
 const POSTS_PER_PAGE = 6;
 
 const Blog = () => {
+  useCanonical("/blog");
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
@@ -172,14 +174,16 @@ const Blog = () => {
             Load more
           </button>
         </div>
-      )}
-
-      {/* FOOTER */}
+      )}      {/* FOOTER */}
       <footer className="site-footer">
         <div className="footer-inner">
-          <div>
-            <div className="footer-logo">That Works<span>.</span></div>
+          <div className="footer-brand">
+            <div className="footer-logo"><img src="/logo.svg" alt="That Works" className="footer-logo-img" /></div>
             <p className="footer-tagline">High performance GTM systems. Designed, implemented and handed over.</p>
+            <div className="footer-socials">
+              <a href="#" className="footer-social">LinkedIn</a>
+              <a href="#" className="footer-social">X / Twitter</a>
+            </div>
           </div>
           <div className="footer-col">
             <h4>Company</h4>
@@ -193,22 +197,24 @@ const Blog = () => {
           <div className="footer-col">
             <h4>Services</h4>
             <ul>
-              <li><a href="/services">Marketing OS TW</a></li>
-              <li><a href="/services/lead-gen">Lead Gen TW</a></li>
-              <li><a href="/services/branding">Branding TW</a></li>
+              <li><a href="/services">All Services</a></li>
             </ul>
           </div>
           <div className="footer-col">
-            <h4>Legal</h4>
-            <ul>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms</a></li>
-            </ul>
+            <h4>Newsletter</h4>
+            <p className="footer-newsletter-desc">GTM insights and what's actually working. No fluff.</p>
+            <form className="footer-newsletter-form" onSubmit={(e) => e.preventDefault()}>
+              <input type="email" placeholder="your@email.com" className="footer-newsletter-input" />
+              <button type="submit" className="footer-newsletter-btn">Subscribe →</button>
+            </form>
           </div>
         </div>
         <div className="footer-bottom">
           <p>© 2026 That Works. All rights reserved.</p>
-          <p style={{ color: 'var(--label)' }}>thatworksco.com</p>
+          <div className="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+          </div>
         </div>
       </footer>
     </>

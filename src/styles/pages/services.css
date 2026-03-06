@@ -22,116 +22,118 @@
   margin: 0 auto;
 }
 
-.svcs-map-section {
+/* Two-path layout */
+.svcs-paths-section {
   padding: 80px 40px 100px;
 }
-.svcs-map-inner {
-  max-width: 900px;
+.svcs-paths-inner {
+  max-width: 1100px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.svcs-featured {
-  width: 100%;
-  background: var(--surface2);
-  border: 2px solid var(--orange);
-  border-radius: 14px;
-  padding: 48px;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-}
-.svcs-featured .flagship-badge {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-.svcs-featured .service-tw {
-  margin-bottom: 12px;
-}
-.svcs-featured-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
-  font-weight: 900;
-  color: var(--text);
-  margin-bottom: 14px;
-}
-.svcs-featured-desc {
-  font-size: 16px;
-  color: var(--muted);
-  line-height: 1.7;
-  max-width: 480px;
-  margin: 0 auto 28px;
-}
-
-/* Connector tree */
-.svcs-connector {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-.svcs-connector-line {
-  width: 1px;
-  height: 40px;
-  background: var(--border);
-}
-.svcs-connector-branches {
-  display: flex;
-  justify-content: space-between;
-  width: 66%;
-  position: relative;
-}
-.svcs-connector-branches::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--border);
-}
-.svcs-branch {
-  width: 1px;
-  height: 40px;
-  background: var(--border);
-}
-
-.svcs-sub-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
 }
-.svcs-sub-card {
+
+.svcs-path-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 32px;
-  transition: border-color 0.2s;
+  border-radius: 16px;
+  padding: 48px;
 }
-.svcs-sub-card:hover { border-color: var(--orange); }
-.svcs-sub-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
+
+.svcs-path-eyebrow {
+  font-size: 11px;
   font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 16px;
+}
+
+.svcs-path-card h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 900;
   margin-bottom: 10px;
   color: var(--text);
 }
-.svcs-sub-card p {
-  font-size: 14px;
+
+.svcs-path-card > p {
+  font-size: 15px;
   color: var(--muted);
-  line-height: 1.6;
-  margin: 0 0 20px;
+  line-height: 1.65;
+  margin-bottom: 36px;
 }
-.svcs-sub-card-muted {
-  border-color: var(--border);
-  opacity: 0.5;
+
+.svcs-path-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
 }
-.svcs-sub-card-muted:hover { border-color: var(--border); opacity: 0.5; }
-.svcs-sub-card-muted h3 { color: var(--muted); }
+
+.svcs-path-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 20px;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s;
+}
+.svcs-path-item:last-child { border-bottom: none; }
+.svcs-path-item:hover { background: var(--surface2); }
+
+.svcs-path-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--border);
+  min-width: 28px;
+  flex-shrink: 0;
+}
+
+.svcs-path-be {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: italic;
+  min-width: 110px;
+  flex-shrink: 0;
+}
+
+.svcs-path-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.svcs-path-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.svcs-path-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.svcs-path-arrow {
+  font-size: 16px;
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: color 0.15s, transform 0.15s;
+}
+.svcs-path-item:hover .svcs-path-arrow {
+  color: var(--orange);
+  transform: translateX(3px);
+}
 
 .svcs-cta-strip {
   padding: 80px 40px;
@@ -156,6 +158,5 @@
 }
 
 @media (max-width: 768px) {
-  .svcs-sub-grid { grid-template-columns: 1fr; }
-  .svcs-connector-branches { width: 90%; }
+  .svcs-paths-inner { grid-template-columns: 1fr; }
 }

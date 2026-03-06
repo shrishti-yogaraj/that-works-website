@@ -16,21 +16,21 @@ export const blogPosts: BlogPost[] = [
     id: "1",
     slug: "why-most-gtm-strategies-fail-before-launch",
     title: "Why Most GTM Strategies Fail Before Launch",
-    excerpt: "The problem isn't the strategy. It's the infrastructure underneath it. Here's what breaks — and how to build a foundation that actually holds.",
+    excerpt: "The problem isn't the strategy. It's the infrastructure underneath it. Here's what breaks, and how to build a foundation that actually holds.",
     content: `# Why Most GTM Strategies Fail Before Launch
 
 Every quarter, thousands of B2B companies launch go-to-market strategies that look brilliant on paper. Polished decks. Clear ICPs. Compelling messaging. And within 90 days, most of them are dead in the water.
 
-The conventional wisdom says the problem is the strategy itself — wrong positioning, bad timing, weak differentiation. Sometimes that's true. But after working with dozens of companies across seed to Series C, we've found that the majority of GTM failures have nothing to do with strategy. They fail because of what's underneath it.
+The conventional wisdom says the problem is the strategy itself, wrong positioning, bad timing, weak differentiation. Sometimes that's true. But after working with dozens of companies across seed to Series C, we've found that the majority of GTM failures have nothing to do with strategy. They fail because of what's underneath it.
 
 ## The Infrastructure Gap
 
-Think of your GTM strategy as a building. The strategy is the architecture — the design, the layout, the vision. But a building doesn't stand on vision. It stands on foundations, plumbing, and electrical. In GTM terms, that means:
+Think of your GTM strategy as a building. The strategy is the architecture, the design, the layout, the vision. But a building doesn't stand on vision. It stands on foundations, plumbing, and electrical. In GTM terms, that means:
 
-- **CRM hygiene** — Is your data clean enough to actually segment and target?
-- **Attribution tracking** — Do you know which channels are producing pipeline, not just clicks?
-- **Lead routing** — When a qualified lead comes in, does it reach the right rep in under five minutes?
-- **Content infrastructure** — Do you have assets mapped to every stage of the buyer journey?
+- **CRM hygiene**: Is your data clean enough to actually segment and target?
+- **Attribution tracking**: Do you know which channels are producing pipeline, not just clicks?
+- **Lead routing**: When a qualified lead comes in, does it reach the right rep in under five minutes?
+- **Content infrastructure**: Do you have assets mapped to every stage of the buyer journey?
 
 Most companies skip straight to "let's run ads" or "let's hire SDRs" without answering these questions. The result? Money flows out. Leads flow in. But pipeline doesn't move.
 
@@ -40,7 +40,7 @@ In our experience, GTM strategies break in three predictable places:
 
 ### 1. The Handoff
 
-Marketing generates leads. Sales ignores them. Or worse — sales works them, but with zero context about what the lead engaged with, what pain they expressed, or where they are in their buying process.
+Marketing generates leads. Sales ignores them. Or worse, sales works them, but with zero context about what the lead engaged with, what pain they expressed, or where they are in their buying process.
 
 This isn't a people problem. It's a systems problem. If your CRM doesn't pass behavioural data from marketing to sales, your reps are flying blind. They default to generic scripts, the prospect feels no continuity, and the deal dies.
 
@@ -50,7 +50,7 @@ This isn't a people problem. It's a systems problem. If your CRM doesn't pass be
 
 "We're doing content marketing." Great. Is it working? "Well, traffic is up 40%." That's not an answer.
 
-The measurement layer is where most GTM strategies reveal their cracks. Companies track vanity metrics — impressions, clicks, open rates — because they're easy. But they tell you almost nothing about whether your strategy is generating revenue.
+The measurement layer is where most GTM strategies reveal their cracks. Companies track vanity metrics, impressions, clicks, open rates, because they're easy. But they tell you almost nothing about whether your strategy is generating revenue.
 
 **The fix:** Instrument your GTM from day one with revenue-connected metrics. That means:
 
@@ -63,11 +63,11 @@ If you can't tie a marketing activity to pipeline within 60 days, question wheth
 
 ### 3. The Feedback Loop
 
-Strategy is not a document. It's a living system. The best GTM operators treat their strategy like software — they ship, measure, learn, and iterate in tight cycles.
+Strategy is not a document. It's a living system. The best GTM operators treat their strategy like software, they ship, measure, learn, and iterate in tight cycles.
 
 Most companies, however, set their strategy in January and don't revisit it until the board meeting in April. By then, the market has moved, competitors have shifted, and the assumptions that underpinned the plan are stale.
 
-**The fix:** Build a fortnightly GTM review cadence. Not a status update — a genuine review of what's working, what's not, and what needs to change. Bring data, not opinions.
+**The fix:** Build a fortnightly GTM review cadence. Not a status update, a genuine review of what's working, what's not, and what needs to change. Bring data, not opinions.
 
 ## Building a Foundation That Holds
 
@@ -101,7 +101,7 @@ Strategy without infrastructure is just a wish. Build the foundation first. The 
 
 Here's a question that should keep every marketing leader up at night: of the money you spent last quarter, how much of it actually generated pipeline?
 
-If you can't answer that with confidence, you have an attribution problem. And attribution problems aren't just analytical inconveniences — they're budget destroyers. They cause you to double down on channels that feel productive but aren't, and quietly defund the ones that are actually driving revenue.
+If you can't answer that with confidence, you have an attribution problem. And attribution problems aren't just analytical inconveniences, they're budget destroyers. They cause you to double down on channels that feel productive but aren't, and quietly defund the ones that are actually driving revenue.
 
 ## What Attribution Actually Means
 
@@ -138,19 +138,19 @@ No model is perfect, but multi-touch attribution gives you a dramatically more a
 
 ## The Real-World Cost
 
-We worked with a Series B SaaS company that was spending 60% of their marketing budget on paid search. Last-touch attribution said it was their best channel — highest conversion rate, lowest cost per lead.
+We worked with a Series B SaaS company that was spending 60% of their marketing budget on paid search. Last-touch attribution said it was their best channel, highest conversion rate, lowest cost per lead.
 
 When we implemented multi-touch attribution, the picture changed completely. Paid search was capturing demand that had been created by LinkedIn content and email nurture campaigns. Those prospects were already warm by the time they Googled the company name and clicked an ad.
 
-The actual demand creation was happening on LinkedIn — a channel they'd been considering cutting because it had a terrible last-touch conversion rate.
+The actual demand creation was happening on LinkedIn, a channel they'd been considering cutting because it had a terrible last-touch conversion rate.
 
-After rebalancing their budget — shifting 30% from paid search to LinkedIn content — they saw a 40% increase in qualified pipeline within two quarters. Same total spend. Radically different allocation.
+After rebalancing their budget, shifting 30% from paid search to LinkedIn content, they saw a 40% increase in qualified pipeline within two quarters. Same total spend. Radically different allocation.
 
 ## How to Fix Your Attribution
 
 ### Step 1: Accept Imperfection
 
-No attribution model will give you perfect accuracy. The goal isn't mathematical precision — it's directional correctness. You want to know which channels are genuinely creating and accelerating pipeline, even if the exact percentages are approximate.
+No attribution model will give you perfect accuracy. The goal isn't mathematical precision, it's directional correctness. You want to know which channels are genuinely creating and accelerating pipeline, even if the exact percentages are approximate.
 
 ### Step 2: Implement UTM Discipline
 
@@ -166,11 +166,11 @@ Start with position-based (U-shaped) if you're new to multi-touch. It gives appr
 
 For every channel, track:
 
-- **Investment** — What are you spending (including time)?
-- **Pipeline influenced** — How much pipeline did this channel touch?
-- **Pipeline created** — How much pipeline did this channel originate?
-- **Revenue influenced** — Same, but for closed-won deals.
-- **Efficiency ratio** — Pipeline per pound spent.
+- **Investment**: What are you spending (including time)?
+- **Pipeline influenced**: How much pipeline did this channel touch?
+- **Pipeline created**: How much pipeline did this channel originate?
+- **Revenue influenced**: Same, but for closed-won deals.
+- **Efficiency ratio**: Pipeline per pound spent.
 
 ### Step 5: Review Monthly, Rebalance Quarterly
 
@@ -197,7 +197,7 @@ Cold email has a reputation problem. And honestly, it deserves it.
 
 The average B2B decision-maker receives 120+ emails per day. Most cold outreach lands somewhere between "instantly deleted" and "marked as spam." The templates are obvious, the personalisation is shallow ("I noticed you're the VP of Marketing at [Company]…"), and the ask is always the same: "Can I get 15 minutes of your time?"
 
-But here's the thing: cold outreach still works. It works extraordinarily well, in fact — when it's done properly. The difference between cold email that converts at 0.5% and cold email that converts at 8%+ isn't volume. It's depth.
+But here's the thing: cold outreach still works. It works extraordinarily well, in fact, when it's done properly. The difference between cold email that converts at 0.5% and cold email that converts at 8%+ isn't volume. It's depth.
 
 ## The Depth Framework
 
@@ -205,7 +205,7 @@ Great cold outreach is built on three layers of depth:
 
 ### Layer 1: Company Intelligence
 
-Before you write a single word, you need to understand the company you're reaching out to. Not surface-level — deeply.
+Before you write a single word, you need to understand the company you're reaching out to. Not surface-level, deeply.
 
 - **What stage are they at?** Seed? Series B? Public? This changes everything about their priorities and pain points.
 - **What's happening right now?** Recent funding round? New product launch? Leadership change? Expansion into a new market?
@@ -219,7 +219,7 @@ This isn't optional research. This is the foundation. Without it, you're guessin
 The company doesn't read your email. A person does. And that person has their own context:
 
 - **How long have they been in role?** Someone who started three months ago has different priorities than someone who's been there three years.
-- **What have they published or shared recently?** LinkedIn posts, podcast appearances, conference talks — these tell you what they care about right now.
+- **What have they published or shared recently?** LinkedIn posts, podcast appearances, conference talks, these tell you what they care about right now.
 - **What's their likely mandate?** A new CMO at a Series B company is almost certainly tasked with building scalable pipeline. A VP of Sales at a public company is probably focused on efficiency and retention.
 
 ### Layer 3: Timing Intelligence
@@ -228,7 +228,7 @@ Even the best email, sent to the right person at the right company, will fail if
 
 - **Job postings:** If they're hiring for roles related to your solution, they have budget and intent.
 - **Tech changes:** If they just adopted or dropped a tool in your category, they're actively evaluating.
-- **Trigger events:** Funding, acquisition, expansion, leadership change — these create windows of openness.
+- **Trigger events:** Funding, acquisition, expansion, leadership change, these create windows of openness.
 
 ## Writing the Email
 
@@ -236,9 +236,9 @@ With deep research done, writing becomes almost easy. The structure we use:
 
 ### The Opening (1-2 sentences)
 
-Reference something specific and recent. Not "I saw your company is doing great things" — something that proves you've done the work.
+Reference something specific and recent. Not "I saw your company is doing great things", something that proves you've done the work.
 
-*"Saw your post about rebuilding your attribution model after the Marketo migration — that's a painful transition, especially mid-quarter."*
+*"Saw your post about rebuilding your attribution model after the Marketo migration, that's a painful transition, especially mid-quarter."*
 
 ### The Insight (2-3 sentences)
 
@@ -256,19 +256,19 @@ Connect your insight to what you do. Lightly. No pitch.
 
 Make it low-friction. Not "Can we schedule a call?" but something that respects their time and gives them an easy yes.
 
-*"Happy to share the framework if it'd be useful — just a one-pager, no strings."*
+*"Happy to share the framework if it'd be useful, just a one-pager, no strings."*
 
 ## Scaling Without Losing Depth
 
 The obvious objection: "This sounds great for 10 emails a day. We need to send 500."
 
-Fair point. This is where AI and automation come in — not to replace the research, but to accelerate it.
+Fair point. This is where AI and automation come in, not to replace the research, but to accelerate it.
 
-**Data enrichment tools** (Clay, Apollo, Clearbit) can pull company intelligence at scale. Revenue data, tech stack, recent funding, job postings — all automated.
+**Data enrichment tools** (Clay, Apollo, Clearbit) can pull company intelligence at scale. Revenue data, tech stack, recent funding, job postings, all automated.
 
 **AI personalisation** can take enriched data and generate the opening line and insight paragraph. The key is training the AI on your best-performing emails so it learns your voice and your angle, not generic ChatGPT-style output.
 
-**Sequencing tools** (Instantly, Smartlead, Outreach) handle the mechanics — sending, follow-ups, A/B testing, deliverability management.
+**Sequencing tools** (Instantly, Smartlead, Outreach) handle the mechanics, sending, follow-ups, A/B testing, deliverability management.
 
 The workflow becomes:
 
@@ -279,7 +279,7 @@ The workflow becomes:
 5. Human review on the top 20% of prospects (your highest-value targets)
 6. Send via sequencing tool with smart follow-ups
 
-This gets you to 200-500 personalised emails per day with a team of two. And because the personalisation is genuine — rooted in real research, not mail-merge tokens — response rates stay high.
+This gets you to 200-500 personalised emails per day with a team of two. And because the personalisation is genuine, rooted in real research, not mail-merge tokens, response rates stay high.
 
 ## The Metrics That Matter
 
@@ -287,16 +287,16 @@ Stop measuring open rates. They're unreliable and largely meaningless since Appl
 
 Instead, track:
 
-- **Positive reply rate** — Replies that express interest or ask questions (target: 4-8%)
-- **Meeting booked rate** — Replies that convert to a scheduled call (target: 2-4%)
-- **Pipeline generated** — Actual pipeline from cold outreach campaigns
-- **Cost per meeting** — Total programme cost divided by meetings booked
+- **Positive reply rate**: Replies that express interest or ask questions (target: 4-8%)
+- **Meeting booked rate**: Replies that convert to a scheduled call (target: 2-4%)
+- **Pipeline generated**: Actual pipeline from cold outreach campaigns
+- **Cost per meeting**: Total programme cost divided by meetings booked
 
 If your positive reply rate is below 3%, the problem is almost always research depth or relevance. If it's above 5% but meetings are low, the problem is your call-to-action or follow-up sequence.
 
 ## The Bottom Line
 
-Cold outreach isn't dead. Lazy outreach is dead. The bar has risen, and the companies that clear it — with genuine research, sharp writing, and intelligent automation — are building pipeline that their competitors can't match.
+Cold outreach isn't dead. Lazy outreach is dead. The bar has risen, and the companies that clear it, with genuine research, sharp writing, and intelligent automation, are building pipeline that their competitors can't match.
 
 The investment in depth pays for itself many times over. One well-researched email that starts a relationship with a £100K+ account is worth more than 10,000 generic blasts that generate nothing but unsubscribes.
 
@@ -315,7 +315,7 @@ Do the work. Write the email. Start the conversation.`,
 
 If you Google "HubSpot vs Salesforce," you'll find approximately 4,000 comparison articles that all say the same thing: HubSpot is easier to use, Salesforce is more powerful, and "it depends on your needs." Helpful.
 
-Let's try something different. After implementing both platforms across companies ranging from pre-seed to £50M+ ARR, here's what actually matters — and what nobody tells you.
+Let's try something different. After implementing both platforms across companies ranging from pre-seed to £50M+ ARR, here's what actually matters, and what nobody tells you.
 
 ## The Real Question
 
@@ -329,7 +329,7 @@ Because the wrong CRM at the wrong stage doesn't just cost money. It costs veloc
 
 **Speed to value.** HubSpot is the fastest CRM to go from zero to functional. A competent ops person can have a working pipeline, automated lead routing, and basic reporting live within a week. With Salesforce, that same setup takes 3-6 weeks.
 
-**Marketing-sales alignment.** If you're running inbound marketing, HubSpot's native integration between marketing and sales tools is genuinely excellent. Contact timelines, content tracking, lead scoring — it all lives in one place with zero integration work.
+**Marketing-sales alignment.** If you're running inbound marketing, HubSpot's native integration between marketing and sales tools is genuinely excellent. Contact timelines, content tracking, lead scoring, it all lives in one place with zero integration work.
 
 **Usability.** Your reps will actually use it. This sounds trivial, but CRM adoption is the #1 predictor of CRM ROI. A CRM that reps avoid is a CRM that produces garbage data. HubSpot's UI is clean enough that reps don't hate it, and that matters more than any feature comparison.
 
@@ -339,7 +339,7 @@ Because the wrong CRM at the wrong stage doesn't just cost money. It costs veloc
 
 **Complex sales processes.** If you have a multi-product, multi-segment, multi-currency sales motion with different pipelines, approval workflows, and territory management, HubSpot starts to creak. It can be configured to handle complexity, but it fights you at every step.
 
-**Custom objects and relationships.** HubSpot's custom object support has improved significantly, but it's still not in the same league as Salesforce. If your data model is non-standard — and most scaling companies' data models are — you'll feel the limitations.
+**Custom objects and relationships.** HubSpot's custom object support has improved significantly, but it's still not in the same league as Salesforce. If your data model is non-standard, and most scaling companies' data models are, you'll feel the limitations.
 
 **Reporting depth.** HubSpot's out-of-the-box reporting is good. Custom reporting is... adequate. If you need multi-dimensional analysis, cohort comparisons, or complex calculated fields, you'll either hit walls or need to pipe data into a BI tool anyway.
 
@@ -349,11 +349,11 @@ Because the wrong CRM at the wrong stage doesn't just cost money. It costs veloc
 
 ### Where It Excels
 
-**Flexibility.** Salesforce can model virtually any business process. Custom objects, custom fields, custom relationships, workflow rules, approval processes, territory management, CPQ — if you can imagine it, Salesforce can build it. This is its superpower.
+**Flexibility.** Salesforce can model virtually any business process. Custom objects, custom fields, custom relationships, workflow rules, approval processes, territory management, CPQ, if you can imagine it, Salesforce can build it. This is its superpower.
 
 **Ecosystem.** The Salesforce AppExchange has integrations for everything. Whatever tool you use, it almost certainly has a Salesforce connector. This reduces integration complexity significantly.
 
-**Reporting and analytics.** Salesforce's reporting engine is powerful. Cross-object reports, custom report types, dashboard flexibility — for data-driven sales organisations, this is a genuine advantage.
+**Reporting and analytics.** Salesforce's reporting engine is powerful. Cross-object reports, custom report types, dashboard flexibility, for data-driven sales organisations, this is a genuine advantage.
 
 **Scale.** Salesforce was built for enterprise. If you know you're heading toward 100+ reps, complex deal structures, and multi-entity operations, Salesforce will grow with you without hitting architectural limits.
 
@@ -405,7 +405,7 @@ And if you do migrate, do it properly. Hire an implementation partner. Clean you
 
 ## The Bottom Line
 
-There's no wrong answer here — only wrong timing. HubSpot at the right stage is a rocket ship. Salesforce at the right stage is a competitive moat. The mistake is choosing either one based on features rather than fit.`,
+There's no wrong answer here, only wrong timing. HubSpot at the right stage is a rocket ship. Salesforce at the right stage is a competitive moat. The mistake is choosing either one based on features rather than fit.`,
     author: "That Works Team",
     publishedAt: "2026-02-07",
     readTime: "8 min read",
@@ -434,11 +434,11 @@ The fundamental flaw in most scoring models is the assumption that activity equa
 
 ### Problem 2: No Negative Scoring
 
-Points go up, but they never come down. A lead who was highly active six months ago but has gone completely silent still shows a high score. This creates a pool of "qualified" leads that are actually dead — wasting sales time and destroying trust in the system.
+Points go up, but they never come down. A lead who was highly active six months ago but has gone completely silent still shows a high score. This creates a pool of "qualified" leads that are actually dead, wasting sales time and destroying trust in the system.
 
 ### Problem 3: Fit Is Ignored
 
-A one-person consultancy that obsessively reads your blog and attends every webinar will outscore a VP at a Fortune 500 company who visited your pricing page once. If your model doesn't account for fit — company size, industry, role, budget — it will consistently prioritise the wrong leads.
+A one-person consultancy that obsessively reads your blog and attends every webinar will outscore a VP at a Fortune 500 company who visited your pricing page once. If your model doesn't account for fit, company size, industry, role, budget, it will consistently prioritise the wrong leads.
 
 ### Problem 4: No Calibration
 
@@ -462,13 +462,13 @@ Fit measures how well a lead matches your Ideal Customer Profile. This is largel
 - Title/seniority (decision-maker = 20 points, influencer = 10, individual contributor = 0)
 - Department (relevant department = 15 points)
 
-Fit scores are relatively static. A company either matches your ICP or it doesn't. This dimension acts as a filter — no amount of engagement should make a poor-fit lead "sales-ready."
+Fit scores are relatively static. A company either matches your ICP or it doesn't. This dimension acts as a filter, no amount of engagement should make a poor-fit lead "sales-ready."
 
 **Threshold:** Leads with a fit score below 50 should never be routed to sales, regardless of their activity.
 
 ### Dimension 2: Intent Score (0-100)
 
-Intent measures buying signals — actions that suggest a lead is actively evaluating solutions like yours. This is where most companies put all their scoring eggs, but the key is weighting actions by their actual correlation with purchase:
+Intent measures buying signals, actions that suggest a lead is actively evaluating solutions like yours. This is where most companies put all their scoring eggs, but the key is weighting actions by their actual correlation with purchase:
 
 **High-intent signals (20-30 points each):**
 - Visited pricing page
@@ -488,7 +488,7 @@ Intent measures buying signals — actions that suggest a lead is actively evalu
 - Followed on social media
 - Visited blog posts
 
-**Critical: Decay.** Intent scores should decay over time. A pricing page visit from yesterday is a strong signal. The same visit from three months ago is meaningless. We typically apply a 30-day half-life — signals lose 50% of their value every 30 days.
+**Critical: Decay.** Intent scores should decay over time. A pricing page visit from yesterday is a strong signal. The same visit from three months ago is meaningless. We typically apply a 30-day half-life, signals lose 50% of their value every 30 days.
 
 ### Dimension 3: Timing Score (0-100)
 
@@ -506,7 +506,7 @@ Timing measures whether the lead is in an active buying window. This is the most
 - Recently adopted complementary technology
 - Competitor of existing customer
 
-Timing data often comes from external sources — funding databases, job boards, technographic tools, news monitoring. Integrating these into your scoring model requires enrichment tools, but the payoff is significant.
+Timing data often comes from external sources, funding databases, job boards, technographic tools, news monitoring. Integrating these into your scoring model requires enrichment tools, but the payoff is significant.
 
 ## Putting It Together
 
@@ -518,11 +518,11 @@ A lead is sales-ready when they meet minimum thresholds across all three dimensi
 | Intent | ≥ 40 | They're showing buying behaviour |
 | Timing | ≥ 30 | They're likely in an active buying window |
 
-A lead with Fit: 80, Intent: 60, Timing: 45 is genuinely hot — they match your profile, they're actively engaged, and the timing is right.
+A lead with Fit: 80, Intent: 60, Timing: 45 is genuinely hot, they match your profile, they're actively engaged, and the timing is right.
 
-A lead with Fit: 30, Intent: 90, Timing: 50 should not go to sales despite high engagement — they don't match your ICP.
+A lead with Fit: 30, Intent: 90, Timing: 50 should not go to sales despite high engagement, they don't match your ICP.
 
-A lead with Fit: 80, Intent: 15, Timing: 60 goes into a nurture sequence — great fit, great timing, but they haven't shown enough interest yet.
+A lead with Fit: 80, Intent: 15, Timing: 60 goes into a nurture sequence, great fit, great timing, but they haven't shown enough interest yet.
 
 ## Calibration: The Ongoing Work
 
@@ -530,14 +530,14 @@ Your scoring model isn't finished when you launch it. It's finished after 3-4 ca
 
 1. **After 30 days:** Review every lead that was routed to sales. Did the rep agree it was qualified? If not, why?
 2. **After 60 days:** Look at conversion rates by score band. Are high-scoring leads actually converting at higher rates? If not, your weights are wrong.
-3. **After 90 days:** Analyse closed-won deals. Work backwards — what did these leads look like before they became opportunities? Use this to validate and adjust your scoring criteria.
+3. **After 90 days:** Analyse closed-won deals. Work backwards, what did these leads look like before they became opportunities? Use this to validate and adjust your scoring criteria.
 4. **Quarterly:** Full model review. Drop signals that don't correlate with conversion. Add new ones based on what you've learned.
 
 ## The Bottom Line
 
-Lead scoring should be your sales team's best friend — a system that consistently surfaces the right leads at the right time. If yours isn't doing that, the model is probably one-dimensional, static, and un-calibrated.
+Lead scoring should be your sales team's best friend, a system that consistently surfaces the right leads at the right time. If yours isn't doing that, the model is probably one-dimensional, static, and un-calibrated.
 
-Build across fit, intent, and timing. Decay old signals. Set hard thresholds. And above all, calibrate relentlessly. A good scoring model isn't built — it's evolved.`,
+Build across fit, intent, and timing. Decay old signals. Set hard thresholds. And above all, calibrate relentlessly. A good scoring model isn't built, it's evolved.`,
     author: "That Works Team",
     publishedAt: "2026-01-31",
     readTime: "6 min read",
@@ -552,7 +552,7 @@ Build across fit, intent, and timing. Decay old signals. Set hard thresholds. An
 
 There's a role that sits at the centre of every high-performing revenue organisation, and most companies either don't have it, don't understand it, or severely underinvest in it. That role is marketing operations.
 
-Marketing ops is not marketing. It's not campaign management, it's not content creation, and it's not demand generation. Marketing ops is the engineering layer of your marketing function — the infrastructure that makes everything else work.
+Marketing ops is not marketing. It's not campaign management, it's not content creation, and it's not demand generation. Marketing ops is the engineering layer of your marketing function, the infrastructure that makes everything else work.
 
 And it might be the most important hire you make this year.
 
@@ -562,23 +562,23 @@ At its core, marketing operations manages three things:
 
 ### 1. The Technology Stack
 
-The average B2B marketing team uses 12-20 tools. CRM, marketing automation, analytics, enrichment, intent data, advertising platforms, content management, project management, ABM tools, conversational marketing — the list grows every quarter.
+The average B2B marketing team uses 12-20 tools. CRM, marketing automation, analytics, enrichment, intent data, advertising platforms, content management, project management, ABM tools, conversational marketing, the list grows every quarter.
 
 Marketing ops owns this ecosystem. They decide which tools to adopt, how they integrate, how data flows between them, and when to consolidate or replace.
 
-Without marketing ops, you get what we call "tool sprawl" — a collection of point solutions that don't talk to each other, creating data silos, duplicate work, and blind spots in your reporting.
+Without marketing ops, you get what we call "tool sprawl", a collection of point solutions that don't talk to each other, creating data silos, duplicate work, and blind spots in your reporting.
 
 ### 2. The Data Layer
 
-Data is the lifeblood of modern marketing. But data quality is abysmal at most companies. Duplicate records, missing fields, inconsistent formatting, outdated information — it's a mess.
+Data is the lifeblood of modern marketing. But data quality is abysmal at most companies. Duplicate records, missing fields, inconsistent formatting, outdated information, it's a mess.
 
 Marketing ops owns data quality. They build and enforce data governance standards. They manage enrichment and hygiene processes. They ensure that when marketing says "we have 50,000 contacts," those contacts are real, current, and usable.
 
-They also own the data model — how objects relate to each other in your CRM, how custom fields are structured, and how segmentation logic works. This sounds technical because it is. And that's exactly why it needs a dedicated function.
+They also own the data model, how objects relate to each other in your CRM, how custom fields are structured, and how segmentation logic works. This sounds technical because it is. And that's exactly why it needs a dedicated function.
 
 ### 3. The Measurement Framework
 
-Marketing ops builds the infrastructure that tells you what's working. Attribution models, funnel stage definitions, conversion tracking, reporting dashboards — all of this is marketing ops territory.
+Marketing ops builds the infrastructure that tells you what's working. Attribution models, funnel stage definitions, conversion tracking, reporting dashboards, all of this is marketing ops territory.
 
 Without this function, you get one of two outcomes: either you have no reliable measurement (and every channel claims credit for every deal), or you have measurement built by individual channel owners (who, unsurprisingly, build reports that make their channel look good).
 
@@ -592,7 +592,7 @@ Most companies make one of three mistakes with marketing ops:
 
 At many companies, marketing ops responsibilities are distributed across the team. The demand gen manager handles Marketo. The content manager handles the CMS. The marketing director handles reporting. Everyone does a little bit, and nobody does it well.
 
-The result is fragile systems, dirty data, and reports that nobody trusts. When something breaks — and it always breaks — there's no one who owns the fix.
+The result is fragile systems, dirty data, and reports that nobody trusts. When something breaks, and it always breaks, there's no one who owns the fix.
 
 ### Mistake 2: It Reports to IT
 
@@ -653,7 +653,7 @@ If you don't have a marketing ops function, you're running your marketing on hop
     excerpt: "You closed the first 50 deals yourself. The next 500 need a system. Here's how to make the transition without losing what made you successful.",
     content: `# The Founder-Led Sales Ceiling
 
-You built something people want. You know because you sold it yourself — on calls, at conferences, over LinkedIn DMs at midnight. The first 20, 30, 50 deals all came through you. Your pitch was sharp because you built the product. Your conviction was unshakeable because you lived the problem.
+You built something people want. You know because you sold it yourself, on calls, at conferences, over LinkedIn DMs at midnight. The first 20, 30, 50 deals all came through you. Your pitch was sharp because you built the product. Your conviction was unshakeable because you lived the problem.
 
 And then you hit the ceiling.
 
@@ -665,15 +665,15 @@ This is the founder-led sales ceiling. And breaking through it is one of the har
 
 Before we talk about moving past it, let's acknowledge why founder-led sales is so effective in the early days:
 
-**Domain credibility.** You understand the problem space better than any sales rep ever will. Prospects sense this immediately. You're not reading from a script — you're speaking from experience.
+**Domain credibility.** You understand the problem space better than any sales rep ever will. Prospects sense this immediately. You're not reading from a script, you're speaking from experience.
 
-**Product flexibility.** When a prospect says "can it do X?", you can say "not yet, but we could build that" — and mean it. You can make roadmap commitments in real-time. No sales rep can do this.
+**Product flexibility.** When a prospect says "can it do X?", you can say "not yet, but we could build that", and mean it. You can make roadmap commitments in real-time. No sales rep can do this.
 
 **Founder energy.** There's a passion and urgency that founders bring to sales conversations that is almost impossible to replicate. Prospects buy from founders partly because they're buying into the founder's vision, not just the product.
 
 **Speed.** No internal approvals, no deal desk, no legal review for a custom term. You can move as fast as the buyer can.
 
-These are genuine advantages. And they're exactly why the transition is so hard — because you're not just handing off a process. You're handing off advantages that are inherently personal.
+These are genuine advantages. And they're exactly why the transition is so hard, because you're not just handing off a process. You're handing off advantages that are inherently personal.
 
 ## The Signs You've Hit the Ceiling
 
@@ -701,7 +701,7 @@ Record your next 10 sales calls. Watch them back and note:
 - When and how do you discuss pricing?
 - What makes you decide a deal is worth pursuing or not?
 
-This exercise is uncomfortable because founders often discover their "process" is actually intuition. That's fine — intuition can be codified. It just takes effort.
+This exercise is uncomfortable because founders often discover their "process" is actually intuition. That's fine, intuition can be codified. It just takes effort.
 
 ### Step 2: Build the Sales Playbook
 
@@ -711,7 +711,7 @@ Take your documented process and structure it into a playbook:
 
 **Positioning guide:** How to position the product for each persona. What to emphasise, what to downplay, what stories to tell.
 
-**Objection handling:** Every objection you've ever heard, with the response that works. Not a script — a framework for thinking about the objection and addressing it.
+**Objection handling:** Every objection you've ever heard, with the response that works. Not a script, a framework for thinking about the objection and addressing it.
 
 **Competitive positioning:** How to handle conversations about competitors. What to acknowledge, what to differentiate on, what to avoid.
 
@@ -748,13 +748,13 @@ Your reps will never have your product knowledge, your domain expertise, or your
 
 - **Product demo environment** with pre-configured use cases so reps don't need to improvise
 - **ROI calculator** or business case template so reps can quantify value without deep financial modelling skills
-- **Executive sponsor programme** where you (the founder) join calls for strategic accounts — but only for the final stage, not every meeting
+- **Executive sponsor programme** where you (the founder) join calls for strategic accounts, but only for the final stage, not every meeting
 - **Weekly deal review** where reps bring their toughest opportunities and you help them strategise
 - **Content library** with case studies, objection responses, and competitive intel they can reference
 
 ### Step 6: Let Go (Gradually)
 
-The hardest part. You need to accept that your reps will close at a lower rate than you — initially. They'll lose deals you would have won. They'll handle objections imperfectly. They'll position the product in ways that make you cringe.
+The hardest part. You need to accept that your reps will close at a lower rate than you, initially. They'll lose deals you would have won. They'll handle objections imperfectly. They'll position the product in ways that make you cringe.
 
 This is normal. The goal isn't to clone yourself. The goal is to build a system that produces 80% of your effectiveness at 10x the scale. Five reps closing at 60% of your rate produce three times the output you could alone.
 
@@ -762,19 +762,19 @@ This is normal. The goal isn't to clone yourself. The goal is to build a system 
 
 Track these weekly during the first 90 days:
 
-- **Discovery-to-demo conversion** — Are reps qualifying properly?
-- **Demo-to-proposal conversion** — Are they selling effectively?
-- **Sales cycle length** — Is it extending without you?
-- **Average deal size** — Are reps discounting more aggressively?
-- **Rep-sourced pipeline** — Are they generating their own opportunities?
+- **Discovery-to-demo conversion**: Are reps qualifying properly?
+- **Demo-to-proposal conversion**: Are they selling effectively?
+- **Sales cycle length**: Is it extending without you?
+- **Average deal size**: Are reps discounting more aggressively?
+- **Rep-sourced pipeline**: Are they generating their own opportunities?
 
 If any metric drops more than 30% from your personal baseline, diagnose and fix before scaling further.
 
 ## The Bottom Line
 
-The founder-led sales ceiling isn't a failure — it's a milestone. It means you've built something valuable enough that demand has outgrown your personal capacity. That's a good problem.
+The founder-led sales ceiling isn't a failure, it's a milestone. It means you've built something valuable enough that demand has outgrown your personal capacity. That's a good problem.
 
-But breaking through requires humility. You have to admit that the thing that got you here — your personal involvement in every deal — is now the thing holding you back. You have to trust a system more than you trust your instincts. And you have to invest the time to build that system properly.
+But breaking through requires humility. You have to admit that the thing that got you here, your personal involvement in every deal, is now the thing holding you back. You have to trust a system more than you trust your instincts. And you have to invest the time to build that system properly.
 
 The founders who make this transition well build companies that scale. The ones who don't build companies that plateau. The choice is yours.`,
     author: "That Works Team",
@@ -789,7 +789,7 @@ The founders who make this transition well build companies that scale. The ones 
     excerpt: "A breakdown of the three major automation platforms and when each one makes sense for B2B lead generation.",
     content: `# Clay vs Make vs Zapier: Which Automation Stack?
 
-The automation tool landscape has exploded. What used to be a simple choice — Zapier or nothing — has become a genuine decision with real trade-offs. Clay, Make, and Zapier each occupy a different niche, and choosing wrong doesn't just waste money. It limits what your GTM operation can do.
+The automation tool landscape has exploded. What used to be a simple choice, Zapier or nothing, has become a genuine decision with real trade-offs. Clay, Make, and Zapier each occupy a different niche, and choosing wrong doesn't just waste money. It limits what your GTM operation can do.
 
 Here's an honest breakdown of all three, based on implementing them across dozens of B2B lead generation programmes.
 
@@ -801,7 +801,7 @@ Zapier is the original no-code automation platform. It connects apps to apps via
 
 ### Where It Excels
 
-**Breadth of integrations.** Zapier connects to 6,000+ apps. If a SaaS tool exists, it almost certainly has a Zapier integration. This is its unbeatable advantage — you'll rarely hit a "this tool isn't supported" wall.
+**Breadth of integrations.** Zapier connects to 6,000+ apps. If a SaaS tool exists, it almost certainly has a Zapier integration. This is its unbeatable advantage, you'll rarely hit a "this tool isn't supported" wall.
 
 **Simplicity.** A non-technical marketer can build a Zap in 15 minutes. The interface is intuitive, the logic is straightforward, and the learning curve is minimal.
 
@@ -813,7 +813,7 @@ Zapier is the original no-code automation platform. It connects apps to apps via
 
 **Complex logic.** Multi-step workflows with conditional branching, loops, and data transformation are possible in Zapier but painful. The interface wasn't designed for complexity, and it shows.
 
-**Cost at scale.** Zapier's pricing is based on tasks (individual actions within a Zap). At high volumes, costs escalate quickly. A workflow that processes 10,000 leads per month with 5 steps each equals 50,000 tasks — that's an expensive plan.
+**Cost at scale.** Zapier's pricing is based on tasks (individual actions within a Zap). At high volumes, costs escalate quickly. A workflow that processes 10,000 leads per month with 5 steps each equals 50,000 tasks, that's an expensive plan.
 
 **Data enrichment.** Zapier can connect to enrichment APIs, but it's not designed for the kind of multi-source, waterfall enrichment that modern lead gen requires.
 
@@ -831,13 +831,13 @@ Make is a visual workflow automation platform that represents workflows as flowc
 
 **Visual workflow design.** Make's canvas-based interface lets you see your entire workflow as a diagram. For complex multi-step processes, this is dramatically easier to understand and debug than Zapier's linear view.
 
-**Data manipulation.** Make has robust built-in functions for parsing, transforming, and restructuring data. JSON parsing, array operations, text manipulation, date calculations — all native, all powerful.
+**Data manipulation.** Make has robust built-in functions for parsing, transforming, and restructuring data. JSON parsing, array operations, text manipulation, date calculations, all native, all powerful.
 
 **HTTP/API module.** Make's generic HTTP module is excellent. You can call any API, handle authentication, parse responses, and use the data downstream. This makes it possible to integrate with tools that don't have a native Make module.
 
 **Cost efficiency.** Make's pricing is based on operations, and it's significantly cheaper than Zapier at volume. The same 50,000-operation workflow that costs hundreds on Zapier might cost £50-80 on Make.
 
-**Error handling.** Make has built-in error handling routes. You can define what happens when a step fails — retry, skip, alert, or route to an alternative path. Zapier's error handling is primitive by comparison.
+**Error handling.** Make has built-in error handling routes. You can define what happens when a step fails, retry, skip, alert, or route to an alternative path. Zapier's error handling is primitive by comparison.
 
 ### Where It Struggles
 
@@ -855,11 +855,11 @@ Complex, multi-step workflows that involve data transformation, conditional logi
 
 ### What It Is
 
-Clay is fundamentally different from Zapier and Make. It's not a general-purpose automation tool — it's a purpose-built platform for B2B data enrichment and outreach automation. Think of it as a spreadsheet that can call 75+ data providers and build outreach sequences.
+Clay is fundamentally different from Zapier and Make. It's not a general-purpose automation tool, it's a purpose-built platform for B2B data enrichment and outreach automation. Think of it as a spreadsheet that can call 75+ data providers and build outreach sequences.
 
 ### Where It Excels
 
-**Data enrichment.** This is Clay's superpower. It integrates with dozens of data providers — Apollo, Clearbit, Hunter, Lusha, LinkedIn, Crunchbase, BuiltWith, and many more. You can run waterfall enrichment (try Provider A, fall back to Provider B, then C) natively.
+**Data enrichment.** This is Clay's superpower. It integrates with dozens of data providers, Apollo, Clearbit, Hunter, Lusha, LinkedIn, Crunchbase, BuiltWith, and many more. You can run waterfall enrichment (try Provider A, fall back to Provider B, then C) natively.
 
 **AI-powered personalisation.** Clay has built-in AI that can take enriched data and generate personalised email copy. Because it has access to the full enrichment context (company data, person data, tech stack, recent news), the personalisation is genuinely good.
 
@@ -871,7 +871,7 @@ Clay is fundamentally different from Zapier and Make. It's not a general-purpose
 
 **Not a general-purpose automation tool.** You can't use Clay to sync your CRM with your billing system or automate your internal workflows. It's specifically for lead gen and outreach.
 
-**Cost.** Clay's pricing includes credits for data provider calls, and costs add up fast. A serious lead gen operation can easily spend £500-1,000/month on Clay alone — before data provider costs.
+**Cost.** Clay's pricing includes credits for data provider calls, and costs add up fast. A serious lead gen operation can easily spend £500-1,000/month on Clay alone, before data provider costs.
 
 **Scale limitations.** Clay works beautifully for hundreds or low thousands of prospects. At tens of thousands, the spreadsheet interface becomes unwieldy and processing times increase significantly.
 
@@ -907,7 +907,7 @@ Here's what we recommend for most B2B companies running outbound:
 
 **Zapier** for simple, reliable connections. Slack notifications when a deal closes. Calendar sync when a meeting is booked. The stuff that just needs to work, every time.
 
-This isn't tool sprawl — it's using each tool for what it's best at. Clay for depth, Make for complexity, Zapier for simplicity.
+This isn't tool sprawl, it's using each tool for what it's best at. Clay for depth, Make for complexity, Zapier for simplicity.
 
 ## The Bottom Line
 
@@ -928,7 +928,7 @@ Know your use case. Choose accordingly. And don't be afraid to use more than one
 
 Open your CRM right now. Look at the total number of contacts. Now look at the number that have been contacted in the last 90 days. If the ratio makes you uncomfortable, you're not alone.
 
-The average B2B CRM is 30-60% dead data. Contacts who've left their companies. Email addresses that bounce. Leads from three years ago that nobody ever followed up with. Duplicates. Triplicates. Records with no email, no phone, no company — just a first name and a prayer.
+The average B2B CRM is 30-60% dead data. Contacts who've left their companies. Email addresses that bounce. Leads from three years ago that nobody ever followed up with. Duplicates. Triplicates. Records with no email, no phone, no company, just a first name and a prayer.
 
 This isn't just messy. It's expensive. You're paying per contact in most CRM and marketing automation platforms. You're making decisions based on inflated numbers. Your sales team is wasting time on leads that will never respond. And your deliverability is suffering because you're emailing addresses that bounce.
 
@@ -944,7 +944,7 @@ Export all contacts with email addresses. Run them through a verification tool (
 
 ### 2. The Ghost Report
 
-Identify contacts with no engagement in the last 12 months. No email opens, no website visits, no form fills, no sales activity. These are ghosts — they exist in your system but not in reality. In most CRMs we audit, ghosts represent 40-60% of the database.
+Identify contacts with no engagement in the last 12 months. No email opens, no website visits, no form fills, no sales activity. These are ghosts, they exist in your system but not in reality. In most CRMs we audit, ghosts represent 40-60% of the database.
 
 ### 3. The Duplicate Report
 
@@ -1017,21 +1017,21 @@ Build automated workflows that:
 
 - Flag contacts with bounced emails for review
 - Move contacts with no engagement for 6+ months to a "re-engagement" segment
-- Archive contacts with no engagement for 12+ months (don't delete — archive)
+- Archive contacts with no engagement for 12+ months (don't delete, archive)
 - Alert reps when a contact's job title changes (potential new opportunity or lost champion)
 
 ### Ownership Rules
 
-Every contact must have an owner. Unowned contacts are invisible contacts. Build automation that assigns ownership based on territory, account, or round-robin. If a rep leaves, reassign their contacts immediately — don't let them sit ownerless.
+Every contact must have an owner. Unowned contacts are invisible contacts. Build automation that assigns ownership based on territory, account, or round-robin. If a rep leaves, reassign their contacts immediately, don't let them sit ownerless.
 
 ## The Revenue Impact
 
 Companies that complete a full CRM resurrection typically see:
 
-- **20-30% improvement in email deliverability** — because you're no longer emailing dead addresses
-- **15-25% increase in sales productivity** — because reps are working real prospects, not ghosts
-- **2-3x improvement in campaign performance** — because your segments are accurate and your messaging is relevant
-- **Significant cost reduction** — because you're paying for fewer contacts in your CRM and marketing automation platforms
+- **20-30% improvement in email deliverability**: because you're no longer emailing dead addresses
+- **15-25% increase in sales productivity**: because reps are working real prospects, not ghosts
+- **2-3x improvement in campaign performance**: because your segments are accurate and your messaging is relevant
+- **Significant cost reduction**: because you're paying for fewer contacts in your CRM and marketing automation platforms
 
 But the biggest impact is strategic. When your CRM data is trustworthy, your forecasts are accurate. Your pipeline reviews are meaningful. Your board reports reflect reality. You make better decisions because you're working with better information.
 
@@ -1041,7 +1041,7 @@ Your CRM should be your company's most valuable asset. Instead, at most companie
 
 The fix isn't complicated. It's just disciplined. Audit, clean, enrich, segment, and build systems to keep it that way. It's not glamorous work, but it's the kind of work that separates companies that scale efficiently from companies that scale painfully.
 
-Stop treating your CRM like a dumping ground. Start treating it like a revenue engine. The data is there — it just needs to be resurrected.`,
+Stop treating your CRM like a dumping ground. Start treating it like a revenue engine. The data is there, it just needs to be resurrected.`,
     author: "That Works Team",
     publishedAt: "2026-01-03",
     readTime: "6 min read",
@@ -1058,7 +1058,7 @@ Every B2B company has an Ideal Customer Profile. Most of them are wrong.
 
 Not wrong in the sense that they describe imaginary customers. Wrong in the sense that they're too broad, too static, and too disconnected from the actual decisions they should inform. They're documents created once during a strategy offsite, referenced in pitch decks, and ignored in practice.
 
-Your ICP should be the single most important filter in your go-to-market operation. Every marketing pound, every sales call, every product decision should pass through it. If it doesn't, you don't have an ICP — you have a wish list.
+Your ICP should be the single most important filter in your go-to-market operation. Every marketing pound, every sales call, every product decision should pass through it. If it doesn't, you don't have an ICP, you have a wish list.
 
 ## The Common Mistakes
 
@@ -1134,7 +1134,7 @@ Look for patterns across your exemplars:
 - **Behavioural:** How they found you, how long the sales cycle was, what content they consumed
 - **Organisational:** Team structure, decision-making process, budget ownership
 
-You'll likely find 2-3 distinct clusters. These become your ICP segments — not one monolithic profile, but a small set of specific, actionable profiles.
+You'll likely find 2-3 distinct clusters. These become your ICP segments, not one monolithic profile, but a small set of specific, actionable profiles.
 
 ### Step 3: Validate With Win/Loss Data
 
@@ -1179,7 +1179,7 @@ The best companies have the courage to walk away from bad-fit revenue. It's coun
 
 ## The Bottom Line
 
-Your ICP isn't a slide in your investor deck. It's the operating system for your entire GTM motion. If it's broad, static, and disconnected from evidence, it's not helping you — it's just making you feel like you have a strategy.
+Your ICP isn't a slide in your investor deck. It's the operating system for your entire GTM motion. If it's broad, static, and disconnected from evidence, it's not helping you, it's just making you feel like you have a strategy.
 
 Do the work. Analyse your best customers. Build specific, evidence-based profiles. Operationalise them across every team. And have the discipline to live by them, even when it means walking away from revenue.
 
@@ -1193,10 +1193,10 @@ That's how you build a GTM motion that compounds. And compounding is how you win
     id: "11",
     slug: "data-enrichment-stack-2026",
     title: "The Data Enrichment Stack for 2026",
-    excerpt: "Apollo, Clay, Clearbit, Lusha — which enrichment tools actually deliver, and how to combine them without burning budget.",
+    excerpt: "Apollo, Clay, Clearbit, Lusha, which enrichment tools actually deliver, and how to combine them without burning budget.",
     content: `# The Data Enrichment Stack for 2026
 
-Data enrichment is the foundation of modern B2B outbound. Without accurate, comprehensive data on your prospects, every downstream activity — personalisation, scoring, routing, outreach — is guesswork.
+Data enrichment is the foundation of modern B2B outbound. Without accurate, comprehensive data on your prospects, every downstream activity, personalisation, scoring, routing, outreach, is guesswork.
 
 But the enrichment landscape is a mess. There are dozens of providers, each claiming the best coverage and accuracy. The reality is that no single provider has it all. Coverage varies by geography, company size, industry, and data type. Accuracy degrades over time. And costs range from "surprisingly affordable" to "are you serious?"
 
@@ -1216,10 +1216,10 @@ Here's our honest assessment of the major players and how to combine them into a
 - Intent data included in higher tiers
 
 **Weaknesses:**
-- Email accuracy is inconsistent — we see 15-25% bounce rates on Apollo-sourced emails without secondary verification
+- Email accuracy is inconsistent, we see 15-25% bounce rates on Apollo-sourced emails without secondary verification
 - Phone number coverage is weak outside enterprise contacts
 - European data coverage is noticeably thinner than US
-- Data freshness varies — job titles and company data can be 6-12 months stale
+- Data freshness varies, job titles and company data can be 6-12 months stale
 
 **Best for:** High-volume prospecting where you need breadth over precision. Ideal as a first-pass enrichment source, supplemented by verification.
 
@@ -1230,14 +1230,14 @@ Here's our honest assessment of the major players and how to combine them into a
 **What it does:** Real-time company and contact enrichment via API. Now integrated into HubSpot as Breeze Intelligence.
 
 **Strengths:**
-- Excellent company data — firmographics, technographics, and employee count are reliably accurate
+- Excellent company data, firmographics, technographics, and employee count are reliably accurate
 - Real-time API enrichment works well for inbound lead processing
 - Strong technographic data (what tools a company uses)
 - Clean, well-structured data output
 
 **Weaknesses:**
 - Contact email coverage has declined since the HubSpot acquisition
-- Increasingly tied to the HubSpot ecosystem — standalone use is less supported
+- Increasingly tied to the HubSpot ecosystem, standalone use is less supported
 - Pricing has become less transparent
 - Phone number coverage is minimal
 
@@ -1254,7 +1254,7 @@ Here's our honest assessment of the major players and how to combine them into a
 - Good compliance posture (GDPR, CCPA)
 
 **Weaknesses:**
-- Company data is limited — Lusha is a contact tool, not a company intelligence tool
+- Company data is limited, Lusha is a contact tool, not a company intelligence tool
 - Credits run out fast if you're doing high-volume enrichment
 - API access requires higher-tier plans
 - No built-in sequencing or outreach
@@ -1266,14 +1266,14 @@ Here's our honest assessment of the major players and how to combine them into a
 **What it does:** Enrichment orchestration platform that connects to 75+ data providers and enables waterfall enrichment.
 
 **Strengths:**
-- Not a data provider itself — it's a platform that lets you query multiple providers and take the best result
+- Not a data provider itself, it's a platform that lets you query multiple providers and take the best result
 - Waterfall enrichment (try Provider A, fall back to B, then C) is native and easy to configure
 - AI-powered data transformation and personalisation
 - Spreadsheet interface is intuitive
 - Growing integrations with sequencing and CRM tools
 
 **Weaknesses:**
-- You're paying Clay's fee PLUS the underlying data provider costs — it adds a layer of expense
+- You're paying Clay's fee PLUS the underlying data provider costs, it adds a layer of expense
 - Can be complex to set up initially
 - Processing speed degrades with large datasets
 - Requires understanding of multiple data providers to use effectively
@@ -1293,7 +1293,7 @@ Here's our honest assessment of the major players and how to combine them into a
 
 **Weaknesses:**
 - Expensive. Enterprise contracts typically start at £15-25K/year and go much higher.
-- Contract structures are rigid — annual commitments with limited flexibility
+- Contract structures are rigid, annual commitments with limited flexibility
 - Overkill for companies with fewer than 10 sales reps
 - Data accuracy, while good, isn't dramatically better than combining Apollo + Lusha for most use cases
 
@@ -1327,7 +1327,7 @@ ZoomInfo as your primary database. Clay for orchestrating enrichment on records 
 
 ## The Waterfall Principle
 
-The key insight in modern enrichment is the waterfall. No single provider has complete coverage. But by querying multiple providers in sequence — taking the first valid result — you can achieve coverage rates of 85-95%.
+The key insight in modern enrichment is the waterfall. No single provider has complete coverage. But by querying multiple providers in sequence, taking the first valid result, you can achieve coverage rates of 85-95%.
 
 A typical email waterfall:
 
@@ -1337,13 +1337,13 @@ A typical email waterfall:
 4. Verify the result through NeverBounce or ZeroBounce
 5. If no valid email found, flag for manual research
 
-This approach costs more per record than using a single provider, but the coverage improvement is dramatic — and in outbound, coverage directly equals pipeline.
+This approach costs more per record than using a single provider, but the coverage improvement is dramatic, and in outbound, coverage directly equals pipeline.
 
 ## The Bottom Line
 
 Don't marry a single data provider. The enrichment landscape is too fragmented and too dynamic for that. Build a stack that combines providers strategically, verify everything before you send, and invest in orchestration tools that make multi-source enrichment manageable.
 
-The companies that treat data enrichment as a strategic capability — not just a line item — build outbound machines that consistently outperform their competitors. In a world where everyone has access to the same automation tools, data quality is the differentiator.`,
+The companies that treat data enrichment as a strategic capability, not just a line item, build outbound machines that consistently outperform their competitors. In a world where everyone has access to the same automation tools, data quality is the differentiator.`,
     author: "That Works Team",
     publishedAt: "2025-12-20",
     readTime: "8 min read",
@@ -1353,14 +1353,14 @@ The companies that treat data enrichment as a strategic capability — not just 
     id: "12",
     slug: "why-we-hand-everything-over",
     title: "Why We Hand Everything Over",
-    excerpt: "Dependency isn't a business model. Here's why every That Works engagement ends with full ownership transfer — and why it makes us better.",
+    excerpt: "Dependency isn't a business model. Here's why every That Works engagement ends with full ownership transfer, and why it makes us better.",
     content: `# Why We Hand Everything Over
 
 Here's something most agencies will never tell you: their business model depends on you staying.
 
-Monthly retainers. Ongoing management fees. "Strategic advisory" contracts that never end. The incentive structure is simple — the longer you need them, the more they earn. So they build systems that require their involvement, use proprietary tools that only they understand, and keep just enough knowledge in their heads that walking away feels risky.
+Monthly retainers. Ongoing management fees. "Strategic advisory" contracts that never end. The incentive structure is simple, the longer you need them, the more they earn. So they build systems that require their involvement, use proprietary tools that only they understand, and keep just enough knowledge in their heads that walking away feels risky.
 
-We do the opposite. Every That Works engagement ends with full ownership transfer. The systems, the playbooks, the automations, the data, the documentation — all of it becomes yours. We leave, and everything keeps running.
+We do the opposite. Every That Works engagement ends with full ownership transfer. The systems, the playbooks, the automations, the data, the documentation, all of it becomes yours. We leave, and everything keeps running.
 
 This isn't altruism. It's strategy. And it makes us better at what we do.
 
@@ -1380,7 +1380,7 @@ That's not a partnership. That's a subscription to someone else's expertise with
 
 Dependency creates perverse incentives. When your revenue depends on ongoing involvement, you're incentivised to build complexity, not simplicity. To create systems that need you, not systems that run independently. To gatekeep knowledge, not transfer it.
 
-The best agency people — the ones who could build genuinely great systems — are constrained by a model that rewards the opposite of what clients actually need.
+The best agency people, the ones who could build genuinely great systems, are constrained by a model that rewards the opposite of what clients actually need.
 
 ## The Ownership Transfer Model
 
@@ -1388,7 +1388,7 @@ Here's how we work:
 
 ### Phase 1: Build (Weeks 1-8)
 
-We design and implement the system — CRM configuration, automation workflows, enrichment pipelines, outreach sequences, reporting dashboards, lead scoring models, whatever the engagement requires.
+We design and implement the system, CRM configuration, automation workflows, enrichment pipelines, outreach sequences, reporting dashboards, lead scoring models, whatever the engagement requires.
 
 Everything is built in the client's accounts, using the client's tools, with the client's data. We never use proprietary tools or platforms that create dependency. If we use Clay, it's in the client's Clay account. If we build automations in Make, it's in the client's Make workspace.
 
@@ -1397,20 +1397,20 @@ Everything is built in the client's accounts, using the client's tools, with the
 Documentation isn't an afterthought. It's a core deliverable. Every system we build comes with:
 
 - **Architecture documentation:** What exists, how it connects, and why it was designed that way
-- **Process documentation:** Step-by-step guides for every recurring task — adding new campaigns, updating lead scoring, troubleshooting common issues
-- **Decision logs:** Why we chose specific tools, configurations, and approaches — so your team can make informed changes later
+- **Process documentation:** Step-by-step guides for every recurring task, adding new campaigns, updating lead scoring, troubleshooting common issues
+- **Decision logs:** Why we chose specific tools, configurations, and approaches, so your team can make informed changes later
 - **Runbooks:** What to do when things break, including common failure modes and their fixes
 
-This documentation is written for the person who will own the system after we leave — not for us. It assumes no prior context and explains the "why" as much as the "how."
+This documentation is written for the person who will own the system after we leave, not for us. It assumes no prior context and explains the "why" as much as the "how."
 
 ### Phase 3: Train (Weeks 8-12)
 
 We train the client's team to own and operate everything we've built. This isn't a two-hour walkthrough. It's structured training:
 
-- **System overview sessions** — understanding the full architecture
-- **Hands-on workshops** — building campaigns, modifying workflows, interpreting reports
-- **Shadowed operation** — the client's team runs the system while we observe and coach
-- **Solo operation with support** — the team operates independently with us available for questions
+- **System overview sessions**: understanding the full architecture
+- **Hands-on workshops**: building campaigns, modifying workflows, interpreting reports
+- **Shadowed operation**: the client's team runs the system while we observe and coach
+- **Solo operation with support**: the team operates independently with us available for questions
 
 By the end of training, the client's team should be able to run, modify, and troubleshoot the system without calling us.
 
@@ -1426,11 +1426,11 @@ And then we leave.
 
 ## Why This Makes Us Better
 
-You might think this model limits our revenue. In a narrow sense, it does — we don't earn ongoing retainer income. But it makes us better in ways that more than compensate:
+You might think this model limits our revenue. In a narrow sense, it does, we don't earn ongoing retainer income. But it makes us better in ways that more than compensate:
 
 ### It Forces Quality
 
-When you know your client will be living with your work after you leave — maintaining it, modifying it, troubleshooting it — you build differently. You build for clarity, not cleverness. You build for maintainability, not impressive complexity. You document properly because someone else will need to understand it.
+When you know your client will be living with your work after you leave, maintaining it, modifying it, troubleshooting it, you build differently. You build for clarity, not cleverness. You build for maintainability, not impressive complexity. You document properly because someone else will need to understand it.
 
 Agencies that manage their own systems can get away with duct tape and workarounds. We can't. Everything we build must be clean enough for someone else to own.
 
@@ -1440,11 +1440,11 @@ We can't hide behind jargon or complexity. If a system doesn't work well, the cl
 
 ### It Generates Referrals
 
-Clients who own their systems and get genuine results become our best marketing channel. They tell other founders "That Works built our entire GTM system, trained our team, and left — and it's been running for six months without issues." That story is more powerful than any case study we could write.
+Clients who own their systems and get genuine results become our best marketing channel. They tell other founders "That Works built our entire GTM system, trained our team, and left, and it's been running for six months without issues." That story is more powerful than any case study we could write.
 
 ### It Attracts Better People
 
-The best operators want to build things that work, not manage retainers. Our model attracts people who take pride in craftsmanship — in building systems so good that they don't need ongoing babysitting.
+The best operators want to build things that work, not manage retainers. Our model attracts people who take pride in craftsmanship, in building systems so good that they don't need ongoing babysitting.
 
 ## The Question We Always Get
 
@@ -1456,7 +1456,7 @@ But the key word is "need." You call us because you have a new challenge, not be
 
 ## The Bottom Line
 
-Dependency isn't a business model. It's a trap — for clients and agencies alike. The best work happens when both parties know the engagement will end, because it forces everyone to focus on what matters: building something that lasts.
+Dependency isn't a business model. It's a trap, for clients and agencies alike. The best work happens when both parties know the engagement will end, because it forces everyone to focus on what matters: building something that lasts.
 
 We hand everything over because it's the right thing to do. But we also hand it over because it makes the work better, the relationships stronger, and the results more durable.
 
@@ -1472,10 +1472,10 @@ That's how you build something that works.`,
     id: "13",
     slug: "the-3-gtm-motions-every-b2b-company-runs",
     title: "The 3 GTM Motions Every B2B Company Runs (Whether They Know It or Not)",
-    excerpt: "Inbound, outbound, and partner-led aren't strategies — they're motions. Most companies run all three badly instead of sequencing them properly.",
+    excerpt: "Inbound, outbound, and partner-led aren't strategies, they're motions. Most companies run all three badly instead of sequencing them properly.",
     content: `# The 3 GTM Motions Every B2B Company Runs (Whether They Know It or Not)
 
-Every B2B company has three go-to-market motions available to them. Not three strategies. Not three channels. Three **motions** — fundamentally different ways of creating pipeline.
+Every B2B company has three go-to-market motions available to them. Not three strategies. Not three channels. Three **motions**: fundamentally different ways of creating pipeline.
 
 The problem is that most companies try to run all three simultaneously from day one, do none of them well, and then conclude that "marketing doesn't work."
 
@@ -1485,7 +1485,7 @@ Here's the framework we use to help founders and GTM leaders sequence their moti
 
 ### 1. Outbound: You Go to Them
 
-Outbound is the motion of **proactive targeting**. You identify accounts, find the right people, and initiate conversations. It's the fastest motion to generate pipeline — and the most fragile.
+Outbound is the motion of **proactive targeting**. You identify accounts, find the right people, and initiate conversations. It's the fastest motion to generate pipeline, and the most fragile.
 
 **What it requires:**
 - A clearly defined ICP with firmographic and technographic filters
@@ -1506,12 +1506,12 @@ Outbound is the motion of **proactive targeting**. You identify accounts, find t
 
 ### 2. Inbound: They Come to You
 
-Inbound is the motion of **attraction**. You create content, build brand, and design systems that pull qualified prospects toward you. It's the slowest motion to produce pipeline — and the most durable.
+Inbound is the motion of **attraction**. You create content, build brand, and design systems that pull qualified prospects toward you. It's the slowest motion to produce pipeline, and the most durable.
 
 **What it requires:**
 - Content that demonstrates expertise, not just awareness
 - A website that converts visitors into leads (not just "looks nice")
-- Lead capture mechanisms tied to real value (tools, frameworks, audits — not PDFs)
+- Lead capture mechanisms tied to real value (tools, frameworks, audits, not PDFs)
 - Nurture sequences that educate rather than sell
 - Patience. Minimum 6 months before compounding effects appear.
 
@@ -1527,7 +1527,7 @@ Inbound is the motion of **attraction**. You create content, build brand, and de
 
 ### 3. Partner-Led: Someone Else Brings Them
 
-Partner-led is the motion of **leverage**. You work with agencies, consultants, technology vendors, and communities to access their audience and trust. It's the most underrated motion — and the hardest to systematise.
+Partner-led is the motion of **leverage**. You work with agencies, consultants, technology vendors, and communities to access their audience and trust. It's the most underrated motion, and the hardest to systematise.
 
 **What it requires:**
 - A product or service that genuinely complements a partner's offering
@@ -1556,10 +1556,10 @@ The right approach is to **sequence by stage:**
 
 | Stage | Primary Motion | Secondary Motion | Avoid |
 | --- | --- | --- | --- |
-| Pre-PMF (£0-500k ARR) | Outbound | None — focus | Partner, Inbound |
+| Pre-PMF (£0-500k ARR) | Outbound | None, focus | Partner, Inbound |
 | Early Traction (£500k-2M) | Outbound | Inbound (start building) | Premature partner program |
 | Growth (£2M-10M) | Inbound + Outbound | Partner (begin formalising) | Spreading too thin |
-| Scale (£10M+) | All three, staffed properly | — | Running any motion understaffed |
+| Scale (£10M+) | All three, staffed properly |, | Running any motion understaffed |
 
 ### Why Outbound First?
 
@@ -1569,7 +1569,7 @@ Outbound gives you the fastest feedback loops. You learn:
 - Which objections come up repeatedly
 - Whether your ICP definition is actually correct
 
-This intelligence then **feeds your inbound strategy**. The blog posts you write, the landing pages you build, the case studies you produce — all of it should be informed by hundreds of outbound conversations.
+This intelligence then **feeds your inbound strategy**. The blog posts you write, the landing pages you build, the case studies you produce, all of it should be informed by hundreds of outbound conversations.
 
 Companies that start with inbound are essentially guessing what their market cares about. Companies that start with outbound **know**.
 
@@ -1584,7 +1584,7 @@ An SDR team without infrastructure is just people making calls with no data, no 
 ### Mistake 3: "Our partner brought us one deal, let's scale it"
 One referral is not a motion. A motion requires process, tracking, enablement, and mutual accountability. Don't confuse a favour with a channel.
 
-### Mistake 4: "Inbound isn't working — it's been 3 months"
+### Mistake 4: "Inbound isn't working, it's been 3 months"
 Inbound takes 6-12 months to compound. If you're measuring it at 90 days, you're measuring the wrong thing. Track leading indicators: search impressions, email list growth, content engagement.
 
 ## How to Audit Your Current Motions
@@ -1594,7 +1594,7 @@ Ask yourself these five questions:
 1. **Which motion generates the most pipeline today?** If you don't know, you have a measurement problem before you have a strategy problem.
 2. **Is each active motion properly staffed?** One person cannot run outbound, content, and partnerships. Pick one.
 3. **Are your motions feeding each other?** Outbound insights should inform content. Content should enable partners. Partners should generate leads that enter your nurture sequences.
-4. **Do you have a motion you're running out of habit?** Many companies keep publishing blog posts or attending events because "we've always done it" — not because it generates pipeline.
+4. **Do you have a motion you're running out of habit?** Many companies keep publishing blog posts or attending events because "we've always done it", not because it generates pipeline.
 5. **What's your next motion?** If you're nailing outbound, it's time to layer in inbound. If inbound is compounding, it's time to formalise partnerships.
 
 ## The Bottom Line
@@ -1620,7 +1620,7 @@ Intent data was supposed to be the silver bullet. Buy a subscription to Bombora,
 
 Except it hasn't worked out that way for most teams. Conversion rates on intent-only outreach are barely better than cold. Sales teams are drowning in "high intent" accounts that don't reply. And marketing is spending more on data than on the campaigns that use it.
 
-The problem isn't intent data itself. It's that intent is just one signal — and one signal isn't enough to build a motion around.
+The problem isn't intent data itself. It's that intent is just one signal, and one signal isn't enough to build a motion around.
 
 ## The Single-Signal Trap
 
@@ -1699,10 +1699,10 @@ Not every signal combination warrants the same response. Build a playbook:
 
 This is where most teams fall apart. They have the data but no operational workflow to act on it. You need:
 
-- **A unified signal dashboard** — One place where signals from all four layers converge at the account level. This could be in your CRM, a tool like Koala or Common Room, or even a well-built spreadsheet.
-- **Routing rules** — When a signal combination hits a threshold, what happens? Who gets notified? What's the expected response time?
-- **Content mapped to signals** — Different signal combinations should trigger different messaging. An account showing intent + engagement needs different outreach than one showing fit + timing.
-- **Feedback loops** — Sales needs to report back on signal quality. Which combinations actually led to meetings? Which were false positives? Without this, you can't improve.
+- **A unified signal dashboard**: One place where signals from all four layers converge at the account level. This could be in your CRM, a tool like Koala or Common Room, or even a well-built spreadsheet.
+- **Routing rules**: When a signal combination hits a threshold, what happens? Who gets notified? What's the expected response time?
+- **Content mapped to signals**: Different signal combinations should trigger different messaging. An account showing intent + engagement needs different outreach than one showing fit + timing.
+- **Feedback loops**: Sales needs to report back on signal quality. Which combinations actually led to meetings? Which were false positives? Without this, you can't improve.
 
 ## The Messaging Problem
 
@@ -1713,7 +1713,7 @@ That's not signal-based selling. That's cold outreach with extra steps.
 Signal-based messaging should demonstrate that you understand their *specific situation* without being creepy about it:
 
 - **Don't say:** "I saw you were researching CRM solutions."
-- **Do say:** "Companies scaling past 50 reps often hit a wall with Salesforce reporting — especially after a funding round when the board wants tighter pipeline visibility."
+- **Do say:** "Companies scaling past 50 reps often hit a wall with Salesforce reporting, especially after a funding round when the board wants tighter pipeline visibility."
 
 The signal informs your hypothesis. The messaging tests that hypothesis. The conversation confirms or denies it.
 
@@ -1725,7 +1725,7 @@ The signal informs your hypothesis. The messaging tests that hypothesis. The con
 
 **3. Not retiring stale signals.** Intent spikes decay. If an account showed high intent 6 weeks ago but hasn't engaged since, they either solved the problem, chose a competitor, or deprioritised the initiative. Stop chasing ghosts.
 
-**4. Ignoring negative signals.** Unsubscribes, meeting no-shows, repeated non-responses — these are signals too. Build decay and disqualification into your model, not just escalation.
+**4. Ignoring negative signals.** Unsubscribes, meeting no-shows, repeated non-responses, these are signals too. Build decay and disqualification into your model, not just escalation.
 
 **5. No feedback loop.** If sales can't tell you which signal-triggered outreach led to pipeline, you're flying blind. Instrument everything.
 
@@ -1743,7 +1743,7 @@ The net effect is almost always more pipeline from less activity. Which is exact
 
 ## The Bottom Line
 
-Intent data isn't broken. But using it in isolation is like trying to navigate with only a compass — you know the general direction, but you'll walk into plenty of walls along the way.
+Intent data isn't broken. But using it in isolation is like trying to navigate with only a compass, you know the general direction, but you'll walk into plenty of walls along the way.
 
 **Stack your signals. Build conviction before you act. And for the love of pipeline, stop sending "I noticed your company is growing" emails.**
 
@@ -1757,22 +1757,22 @@ The companies winning at signal-based selling aren't the ones with the most data
     id: "15",
     slug: "pipeline-math-that-keeps-cfos-up-at-night",
     title: "The Pipeline Math That Keeps CFOs Up at Night",
-    excerpt: "Most pipeline reports are fiction. Here's the math your CFO actually cares about — and how to build a model that doesn't collapse under scrutiny.",
+    excerpt: "Most pipeline reports are fiction. Here's the math your CFO actually cares about, and how to build a model that doesn't collapse under scrutiny.",
     content: `# The Pipeline Math That Keeps CFOs Up at Night
 
 Your CRO says pipeline is 4x target. Your CFO says the company is going to miss the quarter. They're both looking at the same dashboard. How?
 
-Because pipeline math — the way most B2B companies calculate, report, and forecast their revenue pipeline — is fundamentally broken. Not because the tools are bad, but because the assumptions underneath are wrong.
+Because pipeline math, the way most B2B companies calculate, report, and forecast their revenue pipeline, is fundamentally broken. Not because the tools are bad, but because the assumptions underneath are wrong.
 
 ## The 3x Coverage Myth
 
 Somewhere along the way, "3x pipeline coverage" became gospel. Need $1M in bookings? Build $3M in pipeline. Simple.
 
 Except it's not. The 3x rule assumes:
-- **Consistent win rates** — They're not. They vary by segment, source, deal size, and rep.
-- **Consistent deal sizes** — They're not. One enterprise deal can swing the entire quarter.
-- **Consistent cycle times** — They're not. Q4 deals close faster. New segments close slower.
-- **Pipeline quality is uniform** — It absolutely is not.
+- **Consistent win rates**: They're not. They vary by segment, source, deal size, and rep.
+- **Consistent deal sizes**: They're not. One enterprise deal can swing the entire quarter.
+- **Consistent cycle times**: They're not. Q4 deals close faster. New segments close slower.
+- **Pipeline quality is uniform**: It absolutely is not.
 
 A pipeline full of early-stage, poorly qualified opportunities at 3x coverage is worth less than a pipeline of late-stage, champion-confirmed deals at 1.5x coverage. But the dashboard doesn't know the difference.
 
@@ -1782,7 +1782,7 @@ A pipeline full of early-stage, poorly qualified opportunities at 3x coverage is
 
 Raw pipeline is vanity. Weighted pipeline adjusted for stage *and* age is the number that matters.
 
-Here's why age matters: An opportunity that's been in "Discovery" for 90 days is not the same as one that entered Discovery yesterday. The longer a deal sits in a stage without progressing, the lower its actual probability of closing — regardless of what your stage-based probability model says.
+Here's why age matters: An opportunity that's been in "Discovery" for 90 days is not the same as one that entered Discovery yesterday. The longer a deal sits in a stage without progressing, the lower its actual probability of closing, regardless of what your stage-based probability model says.
 
 Build a decay function:
 - **On-pace deals** (within expected stage duration): Use standard probability
@@ -1826,7 +1826,7 @@ If the gap is positive, you're short. And unlike pipeline coverage, this number 
 
 ### 5. Cost Per Pipeline Dollar
 
-Marketing loves to report cost per lead. Finance cares about cost per pipeline dollar — and ultimately cost per revenue dollar.
+Marketing loves to report cost per lead. Finance cares about cost per pipeline dollar, and ultimately cost per revenue dollar.
 
 - **Cost per pipeline dollar** = Total GTM spend / Pipeline generated
 - **Healthy range:** $0.10-0.30 per pipeline dollar for mid-market B2B
@@ -1862,14 +1862,14 @@ Every Monday, update:
 
 Lagging indicators tell you what happened. Leading indicators tell you what's about to happen:
 
-- **Meeting volume this week** — Leading indicator for pipeline creation next month
-- **Stage progression rate** — Leading indicator for close rate this quarter
-- **New logo vs. expansion mix** — Leading indicator for future growth sustainability
-- **Rep activity patterns** — Leading indicator for individual performance
+- **Meeting volume this week**: Leading indicator for pipeline creation next month
+- **Stage progression rate**: Leading indicator for close rate this quarter
+- **New logo vs. expansion mix**: Leading indicator for future growth sustainability
+- **Rep activity patterns**: Leading indicator for individual performance
 
 ### Step 4: Create a Pipeline Council
 
-The best-run revenue organisations hold a weekly pipeline council — not a forecast call, a *pipeline council.*
+The best-run revenue organisations hold a weekly pipeline council, not a forecast call, a *pipeline council.*
 
 Participants: CRO, CMO, VP Sales, VP Marketing, RevOps lead.
 
@@ -1885,16 +1885,16 @@ Agenda:
 
 CFOs don't care about pipeline. They care about predictability. When they push back on pipeline numbers, they're really asking:
 
-1. **"Can I trust these numbers?"** — Show them your methodology: weighted, source-adjusted, age-decayed.
-2. **"Will we hit the quarter?"** — Show them the Commit number, not the total pipeline.
-3. **"What's the risk?"** — Show them the creation rate gap and the deals at risk.
-4. **"What do we need to change?"** — Show them the specific segment or source that's underperforming and the plan to fix it.
+1. **"Can I trust these numbers?"**: Show them your methodology: weighted, source-adjusted, age-decayed.
+2. **"Will we hit the quarter?"**: Show them the Commit number, not the total pipeline.
+3. **"What's the risk?"**: Show them the creation rate gap and the deals at risk.
+4. **"What do we need to change?"**: Show them the specific segment or source that's underperforming and the plan to fix it.
 
 If you can answer those four questions with data every week, your CFO becomes your biggest ally instead of your toughest critic.
 
 ## The Bottom Line
 
-Pipeline math isn't hard. But it requires honesty — about win rates, deal quality, and creation velocity.
+Pipeline math isn't hard. But it requires honesty, about win rates, deal quality, and creation velocity.
 
 **Stop hiding behind 3x coverage ratios. Start measuring what actually predicts revenue: weighted pipeline, source-adjusted win rates, creation velocity, and the gap between where you are and where you need to be.**
 
@@ -1907,17 +1907,17 @@ The companies that forecast accurately aren't the ones with the best tools. They
   {
     id: "16",
     slug: "revops-is-not-a-job-title",
-    title: "RevOps Is Not a Job Title — It's an Operating System",
+    title: "RevOps Is Not a Job Title, It's an Operating System",
     excerpt: "You hired a RevOps manager. Your revenue operations are still broken. Here's why RevOps is a system, not a headcount solution.",
-    content: `# RevOps Is Not a Job Title — It's an Operating System
+    content: `# RevOps Is Not a Job Title, It's an Operating System
 
 The RevOps hire has become the startup equivalent of hiring a project manager when things feel chaotic. Pipeline messy? Hire RevOps. Reporting inconsistent? RevOps. Sales and marketing not aligned? RevOps will fix it.
 
-Except they won't. Not because they're not talented — most RevOps professionals are excellent — but because you're asking one person to solve a systems problem with elbow grease. It's like hiring an electrician to fix a building that doesn't have wiring.
+Except they won't. Not because they're not talented, most RevOps professionals are excellent, but because you're asking one person to solve a systems problem with elbow grease. It's like hiring an electrician to fix a building that doesn't have wiring.
 
 ## What RevOps Actually Is
 
-Revenue Operations isn't a function. It's an operating system — a set of principles, processes, and infrastructure that connects every revenue-generating activity in your company.
+Revenue Operations isn't a function. It's an operating system, a set of principles, processes, and infrastructure that connects every revenue-generating activity in your company.
 
 The three pillars:
 
@@ -1935,20 +1935,20 @@ Most companies have *ad hoc* processes that evolved organically. Someone built a
 ### 2. Data Architecture
 
 This is the foundation everything else sits on:
-- **Object model** — How are accounts, contacts, opportunities, and activities structured?
-- **Data hygiene** — What are the rules for data entry, enrichment, and deduplication?
-- **Integration layer** — How do your tools talk to each other? What's the source of truth?
-- **Taxonomy** — Are your lead sources, stages, loss reasons, and segments consistent?
+- **Object model**: How are accounts, contacts, opportunities, and activities structured?
+- **Data hygiene**: What are the rules for data entry, enrichment, and deduplication?
+- **Integration layer**: How do your tools talk to each other? What's the source of truth?
+- **Taxonomy**: Are your lead sources, stages, loss reasons, and segments consistent?
 
 Bad data architecture is the #1 reason RevOps hires fail. They spend 80% of their time cleaning data instead of building systems.
 
 ### 3. Measurement Architecture
 
 This is how you know whether things are working:
-- **Definitions** — What is an MQL? An SQL? A qualified opportunity? If sales and marketing define these differently, your metrics are meaningless.
-- **Attribution** — How do you credit pipeline and revenue to activities? First-touch? Last-touch? Multi-touch? Pick a model and commit.
-- **Dashboards** — Who sees what? Executive dashboards should show different metrics than team-level dashboards. And both should show different metrics than board decks.
-- **Cadence** — When do you review metrics? Daily, weekly, monthly, quarterly? Each cadence serves a different purpose.
+- **Definitions**: What is an MQL? An SQL? A qualified opportunity? If sales and marketing define these differently, your metrics are meaningless.
+- **Attribution**: How do you credit pipeline and revenue to activities? First-touch? Last-touch? Multi-touch? Pick a model and commit.
+- **Dashboards**: Who sees what? Executive dashboards should show different metrics than team-level dashboards. And both should show different metrics than board decks.
+- **Cadence**: When do you review metrics? Daily, weekly, monthly, quarterly? Each cadence serves a different purpose.
 
 ## The Five Stages of RevOps Maturity
 
@@ -1966,7 +1966,7 @@ The company bought tools to solve problems but didn't design the system. HubSpot
 
 ### Stage 3: Ops-Aware
 
-Someone (usually a marketing or sales ops hire) starts connecting things. They build integrations, clean up the CRM, create consistent reports. But they're reactive — fixing problems rather than designing systems.
+Someone (usually a marketing or sales ops hire) starts connecting things. They build integrations, clean up the CRM, create consistent reports. But they're reactive, fixing problems rather than designing systems.
 
 *Typical company:* Series A, 50-100 employees.
 
@@ -1978,7 +1978,7 @@ A deliberate RevOps function exists. Processes are documented. Data architecture
 
 ### Stage 5: Predictive
 
-RevOps isn't just reporting on what happened — it's predicting what will happen. Models forecast pipeline, identify at-risk deals, and recommend resource allocation. The operating system runs the business, not the other way around.
+RevOps isn't just reporting on what happened, it's predicting what will happen. Models forecast pipeline, identify at-risk deals, and recommend resource allocation. The operating system runs the business, not the other way around.
 
 *Typical company:* Series C+ / growth stage.
 
@@ -2002,40 +2002,40 @@ This audit alone takes 2-4 weeks. Don't skip it.
 Your CRM object model is the foundation of everything. Get it wrong, and every downstream process and report will be compromised.
 
 Key decisions:
-- **Account vs. Contact centric?** — B2B is account-centric. If your CRM is built around contacts, you'll struggle with ABM, multi-threading, and enterprise reporting.
-- **Opportunity structure** — One opportunity per deal? Per product line? Per use case? This decision affects pipeline reporting, forecasting, and comp plans.
-- **Activity tracking** — What gets logged? Calls, emails, meetings, content engagement? How is it associated — to contacts, opportunities, or both?
-- **Custom fields** — Every custom field should answer a question someone actually asks. If no one uses a field in a report or automation, delete it.
+- **Account vs. Contact centric?**: B2B is account-centric. If your CRM is built around contacts, you'll struggle with ABM, multi-threading, and enterprise reporting.
+- **Opportunity structure**: One opportunity per deal? Per product line? Per use case? This decision affects pipeline reporting, forecasting, and comp plans.
+- **Activity tracking**: What gets logged? Calls, emails, meetings, content engagement? How is it associated, to contacts, opportunities, or both?
+- **Custom fields**: Every custom field should answer a question someone actually asks. If no one uses a field in a report or automation, delete it.
 
 ### Step 3: Define Your Lifecycle Stages
 
 The lead-to-revenue lifecycle needs clear, unambiguous definitions:
 
-- **Raw lead** — Contact information captured. No qualification.
-- **MQL** — Meets demographic criteria AND has taken a qualifying action. Define both explicitly.
-- **SAL** — Sales accepted. An SDR or AE has agreed this is worth pursuing.
-- **SQL** — Sales qualified. Discovery completed, BANT (or your framework) confirmed.
-- **Opportunity** — Active deal in pipeline. Must have: identified stakeholders, defined timeline, confirmed budget range.
-- **Closed Won / Lost** — Include mandatory loss reason codes.
+- **Raw lead**: Contact information captured. No qualification.
+- **MQL**: Meets demographic criteria AND has taken a qualifying action. Define both explicitly.
+- **SAL**: Sales accepted. An SDR or AE has agreed this is worth pursuing.
+- **SQL**: Sales qualified. Discovery completed, BANT (or your framework) confirmed.
+- **Opportunity**: Active deal in pipeline. Must have: identified stakeholders, defined timeline, confirmed budget range.
+- **Closed Won / Lost**: Include mandatory loss reason codes.
 
 ### Step 4: Build Your Integration Layer
 
 Your tools need to talk to each other. But not everything should sync everywhere. Design a deliberate integration architecture:
 
-- **Source of truth per object** — Where does the canonical record live?
-- **Sync direction** — Bidirectional syncs cause chaos. Prefer one-way syncs with a clear master.
-- **Sync frequency** — Real-time vs. batch depends on the use case. Lead routing needs real-time. Reporting can batch.
-- **Error handling** — What happens when a sync fails? Who gets notified? How is it resolved?
+- **Source of truth per object**: Where does the canonical record live?
+- **Sync direction**: Bidirectional syncs cause chaos. Prefer one-way syncs with a clear master.
+- **Sync frequency**: Real-time vs. batch depends on the use case. Lead routing needs real-time. Reporting can batch.
+- **Error handling**: What happens when a sync fails? Who gets notified? How is it resolved?
 
 ### Step 5: Implement Measurement
 
 Build dashboards in layers:
-- **Executive layer** — Revenue, pipeline, conversion rates, CAC, LTV. Updated weekly.
-- **Management layer** — Team performance, stage conversion, activity metrics, forecast accuracy. Updated weekly.
-- **Individual layer** — Personal pipeline, activity, and quota attainment. Updated daily.
-- **Diagnostic layer** — Deep-dive reports for specific questions. Built on demand.
+- **Executive layer**: Revenue, pipeline, conversion rates, CAC, LTV. Updated weekly.
+- **Management layer**: Team performance, stage conversion, activity metrics, forecast accuracy. Updated weekly.
+- **Individual layer**: Personal pipeline, activity, and quota attainment. Updated daily.
+- **Diagnostic layer**: Deep-dive reports for specific questions. Built on demand.
 
-Every metric should have an owner — someone responsible for the number and empowered to act on it.
+Every metric should have an owner, someone responsible for the number and empowered to act on it.
 
 ## Common Mistakes
 
@@ -2065,48 +2065,48 @@ The companies with the best revenue operations aren't the ones with the biggest 
     id: "17",
     slug: "30-day-outbound-playbook",
     title: "The 30-Day Outbound Playbook: From Zero to Booked Meetings",
-    excerpt: "A step-by-step playbook for launching outbound from scratch — including targeting, messaging, tooling, and the daily cadence that actually fills calendars.",
+    excerpt: "A step-by-step playbook for launching outbound from scratch, including targeting, messaging, tooling, and the daily cadence that actually fills calendars.",
     content: `# The 30-Day Outbound Playbook: From Zero to Booked Meetings
 
 You've decided to launch outbound. Maybe inbound has plateaued. Maybe the board wants faster pipeline. Maybe you just hired your first SDR and they're staring at an empty CRM wondering what to do.
 
-This is the playbook. Thirty days. Four phases. By the end, you'll have a repeatable system for generating meetings — not a one-off campaign that fizzles after week two.
+This is the playbook. Thirty days. Four phases. By the end, you'll have a repeatable system for generating meetings, not a one-off campaign that fizzles after week two.
 
 ## Before You Start: The Prerequisites
 
 Don't skip this. Every failed outbound program we've seen skipped the prerequisites.
 
-- **ICP definition** — You need a written, specific Ideal Customer Profile. Not "B2B SaaS companies." More like: "Series A-C B2B SaaS companies, 50-300 employees, selling to enterprise, based in US/UK, using HubSpot or Salesforce, with at least 3 SDRs."
-- **Messaging foundation** — What problem do you solve? For whom? Why now? If you can't answer these in one sentence each, you're not ready.
-- **Technical setup** — Email domains warmed, LinkedIn profiles optimised, CRM configured. This takes 2 weeks minimum. Start now.
+- **ICP definition**: You need a written, specific Ideal Customer Profile. Not "B2B SaaS companies." More like: "Series A-C B2B SaaS companies, 50-300 employees, selling to enterprise, based in US/UK, using HubSpot or Salesforce, with at least 3 SDRs."
+- **Messaging foundation**: What problem do you solve? For whom? Why now? If you can't answer these in one sentence each, you're not ready.
+- **Technical setup**: Email domains warmed, LinkedIn profiles optimised, CRM configured. This takes 2 weeks minimum. Start now.
 
 ## Week 1: Build Your Target List (Days 1-7)
 
 ### Day 1-2: Define Your Segments
 
 Don't target one giant list. Create 3-5 micro-segments based on:
-- **Industry vertical** — "B2B SaaS selling to healthcare" is a segment. "B2B SaaS" is not.
-- **Company trigger** — Recently funded, hiring for specific roles, using a competitor tool.
-- **Persona pain** — VP Marketing struggling with lead quality vs. CRO struggling with forecast accuracy.
+- **Industry vertical**: "B2B SaaS selling to healthcare" is a segment. "B2B SaaS" is not.
+- **Company trigger**: Recently funded, hiring for specific roles, using a competitor tool.
+- **Persona pain**: VP Marketing struggling with lead quality vs. CRO struggling with forecast accuracy.
 
 Each segment gets its own messaging. This is non-negotiable.
 
 ### Day 3-5: Build Account Lists
 
 For each segment, build a list of 50-100 target accounts. Use:
-- **LinkedIn Sales Navigator** — Filter by company size, industry, growth rate, technology
-- **Crunchbase / PitchBook** — For funding and growth signals
-- **BuiltWith / Wappalyzer** — For technology stack signals
-- **G2 / TrustRadius** — For competitor usage signals
+- **LinkedIn Sales Navigator**: Filter by company size, industry, growth rate, technology
+- **Crunchbase / PitchBook**: For funding and growth signals
+- **BuiltWith / Wappalyzer**: For technology stack signals
+- **G2 / TrustRadius**: For competitor usage signals
 
 Quality over quantity. 50 well-researched accounts will outperform 500 scraped ones every time.
 
 ### Day 6-7: Build Contact Lists
 
 For each account, identify 2-4 contacts:
-- **Primary persona** — The person who feels the pain you solve (usually a VP or Director)
-- **Secondary persona** — Their boss or a peer who influences the decision
-- **Champion candidate** — A manager or IC who would use your product daily
+- **Primary persona**: The person who feels the pain you solve (usually a VP or Director)
+- **Secondary persona**: Their boss or a peer who influences the decision
+- **Champion candidate**: A manager or IC who would use your product daily
 
 Use LinkedIn, Apollo, or ZoomInfo for contact data. Verify emails before sending.
 
@@ -2116,15 +2116,15 @@ Use LinkedIn, Apollo, or ZoomInfo for contact data. Verify emails before sending
 
 A sequence is a multi-touch, multi-channel cadence. Here's the structure that works:
 
-**Day 1:** Email 1 — Problem-focused, no pitch
-**Day 3:** LinkedIn connection request — No message or short personal note
-**Day 5:** Email 2 — Share relevant insight or content
-**Day 8:** LinkedIn message — Reference something specific about their company
-**Day 10:** Email 3 — Case study or social proof
-**Day 14:** Email 4 — Direct ask + easy out
-**Day 21:** Breakup email — Last touch, leave the door open
+**Day 1:** Email 1, Problem-focused, no pitch
+**Day 3:** LinkedIn connection request, No message or short personal note
+**Day 5:** Email 2, Share relevant insight or content
+**Day 8:** LinkedIn message, Reference something specific about their company
+**Day 10:** Email 3, Case study or social proof
+**Day 14:** Email 4, Direct ask + easy out
+**Day 21:** Breakup email, Last touch, leave the door open
 
-Seven touches over three weeks. Mix email and LinkedIn. Never call without warming up first (unless you're selling to sales leaders — they respect cold calls).
+Seven touches over three weeks. Mix email and LinkedIn. Never call without warming up first (unless you're selling to sales leaders, they respect cold calls).
 
 ### Writing Emails That Get Replies
 
@@ -2149,25 +2149,25 @@ Seven touches over three weeks. Mix email and LinkedIn. Never call without warmi
 
 You can't write a custom email for every prospect. But you can personalise at three levels:
 
-- **Segment level** — Industry-specific pain points and language (built into the template)
-- **Account level** — One sentence about the company: recent news, growth, tech stack (30 seconds of research per account)
-- **Person level** — Reference their LinkedIn post, podcast appearance, or job change (only for top-priority targets)
+- **Segment level**: Industry-specific pain points and language (built into the template)
+- **Account level**: One sentence about the company: recent news, growth, tech stack (30 seconds of research per account)
+- **Person level**: Reference their LinkedIn post, podcast appearance, or job change (only for top-priority targets)
 
 ## Week 3: Launch and Iterate (Days 15-21)
 
 ### Day 15: Launch Segment 1
 
-Start with your strongest segment — the one where you have the most social proof and clearest messaging. Enroll 20-30 prospects.
+Start with your strongest segment, the one where you have the most social proof and clearest messaging. Enroll 20-30 prospects.
 
 Don't launch all segments at once. You need to see early results to calibrate.
 
 ### Day 16-18: Monitor and Adjust
 
 Track these metrics daily:
-- **Open rate** — Below 40%? Subject line problem.
-- **Reply rate** — Below 5%? Messaging problem.
-- **Positive reply rate** — Below 2%? Targeting or value prop problem.
-- **Bounce rate** — Above 5%? Data quality problem.
+- **Open rate**: Below 40%? Subject line problem.
+- **Reply rate**: Below 5%? Messaging problem.
+- **Positive reply rate**: Below 2%? Targeting or value prop problem.
+- **Bounce rate**: Above 5%? Data quality problem.
 
 ### Day 19: Launch Segment 2
 
@@ -2195,7 +2195,7 @@ By now, you should have booked a few meetings (if not, revisit targeting and mes
 ### Day 25-27: Build the Handoff Process
 
 When an SDR books a meeting, what happens?
-- **Pre-meeting:** SDR writes a brief for the AE — company context, why they took the meeting, pain points mentioned
+- **Pre-meeting:** SDR writes a brief for the AE, company context, why they took the meeting, pain points mentioned
 - **Meeting:** AE runs discovery, SDR stays for the first 5 minutes to introduce
 - **Post-meeting:** AE updates the opportunity, SDR gets feedback on lead quality
 
@@ -2230,7 +2230,7 @@ A meeting-to-opportunity conversion of 40-60% is healthy. Below that, your quali
 
 ## The Bottom Line
 
-Outbound works. But it works as a system, not a tactic. The companies that succeed at outbound are the ones that treat it like a product — continuously iterating on targeting, messaging, and process.
+Outbound works. But it works as a system, not a tactic. The companies that succeed at outbound are the ones that treat it like a product, continuously iterating on targeting, messaging, and process.
 
 **Build the list. Write the sequences. Launch small. Measure everything. Iterate weekly. And whatever you do, don't blast 1,000 generic emails and call it outbound.**`,
     author: "That Works",
@@ -2242,14 +2242,14 @@ Outbound works. But it works as a system, not a tactic. The companies that succe
     id: "18",
     slug: "email-deliverability-checklist",
     title: "The Email Deliverability Checklist: Stop Landing in Spam",
-    excerpt: "Your emails aren't being ignored — they're not arriving. Here's the technical and behavioural checklist to fix your deliverability before it kills your pipeline.",
+    excerpt: "Your emails aren't being ignored, they're not arriving. Here's the technical and behavioural checklist to fix your deliverability before it kills your pipeline.",
     content: `# The Email Deliverability Checklist: Stop Landing in Spam
 
 Here's a scenario we see constantly: A company launches an outbound email campaign. They've written great copy. They've built a solid target list. They've set up sequences in their sales engagement tool. And nothing happens. Open rates are below 20%. Reply rates are near zero.
 
 They blame the messaging. They rewrite the emails. Still nothing. They blame the list. They buy new data. Still nothing.
 
-The problem isn't the message or the list. The problem is deliverability. Their emails are landing in spam, promotions tabs, or getting silently rejected — and they have no idea.
+The problem isn't the message or the list. The problem is deliverability. Their emails are landing in spam, promotions tabs, or getting silently rejected, and they have no idea.
 
 ## The Technical Foundation
 
@@ -2263,7 +2263,7 @@ Why? If your outbound domain gets flagged for spam, it doesn't drag down your pr
 - Buy 2-3 secondary domains for outbound
 - Set up Google Workspace or Microsoft 365 on each domain
 - Create individual mailboxes (not aliases) for each sender
-- Set up a simple website on each domain (even a one-page site) — naked domains look suspicious
+- Set up a simple website on each domain (even a one-page site), naked domains look suspicious
 
 ### 2. Authentication Records
 
@@ -2276,7 +2276,7 @@ These are non-negotiable. If any of these are missing, you're starting with a ha
 
 **DKIM (DomainKeys Identified Mail):**
 - A cryptographic signature that proves the email wasn't tampered with in transit
-- Usually set up through your email provider — they give you a TXT record to add to DNS
+- Usually set up through your email provider, they give you a TXT record to add to DNS
 - Check with: mail-tester.com
 
 **DMARC (Domain-based Message Authentication):**
@@ -2290,7 +2290,7 @@ These are non-negotiable. If any of these are missing, you're starting with a ha
 New domains have no reputation. Sending 100 emails on day one from a fresh domain is a guaranteed spam flag.
 
 **The warming schedule:**
-- **Week 1-2:** Send 5-10 personal emails per day to known contacts who will reply. Gmail and Outlook track reply rates — getting replies builds reputation.
+- **Week 1-2:** Send 5-10 personal emails per day to known contacts who will reply. Gmail and Outlook track reply rates, getting replies builds reputation.
 - **Week 3-4:** Increase to 15-25 emails per day. Mix personal and semi-automated.
 - **Week 5-6:** Increase to 30-50 emails per day. Begin light outbound.
 - **Week 7+:** Scale to your target volume (usually 50-80 per mailbox per day max).
@@ -2339,10 +2339,10 @@ Spam filters read your emails. Write like a human, not a marketer.
 Bad data kills deliverability faster than anything else.
 
 - **Verify every email** before sending. Use NeverBounce, ZeroBounce, or Debounce.
-- **Remove catch-all domains** — They accept every email but often don't deliver internally. They also don't bounce, so you never know your emails are going to a dead inbox.
-- **Remove role-based addresses** — info@, sales@, team@ addresses rarely reach individuals.
-- **Deduplicate across sequences** — Sending the same person two different sequences is a fast track to spam reports.
-- **Honour unsubscribes immediately** — Even before legal compliance, each spam report damages your sender reputation.
+- **Remove catch-all domains**: They accept every email but often don't deliver internally. They also don't bounce, so you never know your emails are going to a dead inbox.
+- **Remove role-based addresses**: info@, sales@, team@ addresses rarely reach individuals.
+- **Deduplicate across sequences**: Sending the same person two different sequences is a fast track to spam reports.
+- **Honour unsubscribes immediately**: Even before legal compliance, each spam report damages your sender reputation.
 
 ## The Monitoring Layer
 
@@ -2350,10 +2350,10 @@ Bad data kills deliverability faster than anything else.
 
 Your sales engagement tool shows open and reply rates. But for deliverability, you need more:
 
-- **Inbox placement rate** — What percentage of emails land in the primary inbox vs. spam vs. promotions? Use GlockApps or MailReach monitoring.
-- **Bounce rate** — Keep below 3%. Above 5% indicates list quality issues.
-- **Spam complaint rate** — Keep below 0.1%. Above 0.3% and you're in danger.
-- **Domain health score** — Check Google Postmaster Tools (if sending to Gmail) and Microsoft SNDS (if sending to Outlook).
+- **Inbox placement rate**: What percentage of emails land in the primary inbox vs. spam vs. promotions? Use GlockApps or MailReach monitoring.
+- **Bounce rate**: Keep below 3%. Above 5% indicates list quality issues.
+- **Spam complaint rate**: Keep below 0.1%. Above 0.3% and you're in danger.
+- **Domain health score**: Check Google Postmaster Tools (if sending to Gmail) and Microsoft SNDS (if sending to Outlook).
 
 ### 8. The Weekly Deliverability Audit
 
@@ -2409,10 +2409,10 @@ Print this checklist. Run through it quarterly. Your pipeline depends on it.`,
     id: "19",
     slug: "series-a-to-b-marketing-shift",
     title: "The Series A → B Marketing Shift: What Changes and What Breaks",
-    excerpt: "The marketing that got you to Series A will not get you to Series B. Here's what needs to change — in your team, your systems, and your thinking.",
+    excerpt: "The marketing that got you to Series A will not get you to Series B. Here's what needs to change, in your team, your systems, and your thinking.",
     content: `# The Series A → B Marketing Shift: What Changes and What Breaks
 
-You raised your Series A. The product has traction. You've found some version of product-market fit. Marketing "worked" — maybe through founder-led sales, maybe through a scrappy content play, maybe through sheer hustle.
+You raised your Series A. The product has traction. You've found some version of product-market fit. Marketing "worked", maybe through founder-led sales, maybe through a scrappy content play, maybe through sheer hustle.
 
 Now the board wants 3x growth. You need to go from $2M to $6M ARR, or $5M to $15M. And suddenly, everything that got you here stops working.
 
@@ -2422,11 +2422,11 @@ This isn't a failure of your team or your strategy. It's a natural phase transit
 
 At Series A, marketing is typically characterised by:
 
-- **Founder-led selling** — The CEO or CTO is the primary pipeline source. They network, speak at events, and close deals on reputation.
-- **Single-channel dependence** — One channel drives 60-80% of pipeline. Usually content + SEO, or a strong referral network, or one paid channel that converts.
-- **Generalist team** — One or two marketers who do everything: write blog posts, manage ads, build landing pages, run events, and update the CRM.
-- **Gut-feel decisions** — "We think this is working" replaces "the data shows this is working." And at small scale, gut feel is often right.
-- **Speed over process** — Move fast, ship things, figure it out later. No documentation, no playbooks, no QA.
+- **Founder-led selling**: The CEO or CTO is the primary pipeline source. They network, speak at events, and close deals on reputation.
+- **Single-channel dependence**: One channel drives 60-80% of pipeline. Usually content + SEO, or a strong referral network, or one paid channel that converts.
+- **Generalist team**: One or two marketers who do everything: write blog posts, manage ads, build landing pages, run events, and update the CRM.
+- **Gut-feel decisions**: "We think this is working" replaces "the data shows this is working." And at small scale, gut feel is often right.
+- **Speed over process**: Move fast, ship things, figure it out later. No documentation, no playbooks, no QA.
 
 This works when you're small because the founder's network is large relative to your target, one channel can drive enough volume, and the generalist team can context-switch fast enough.
 
@@ -2441,9 +2441,9 @@ The CEO's network is finite. Every warm introduction has been made. The conferen
 ### 2. Single-Channel Risk
 
 That one channel that drove 80% of your pipeline? It's either:
-- **Saturated** — You've reached everyone who will come through that channel
-- **Fragile** — One algorithm change, one competitor, one policy update, and it's gone
-- **Not scalable** — It produces consistent leads but can't 2x without 4x the spend
+- **Saturated**: You've reached everyone who will come through that channel
+- **Fragile**: One algorithm change, one competitor, one policy update, and it's gone
+- **Not scalable**: It produces consistent leads but can't 2x without 4x the spend
 
 **What needs to change:** Build a multi-channel engine. No single channel should represent more than 40% of pipeline at Series B scale. You need at least three working channels.
 
@@ -2451,13 +2451,13 @@ That one channel that drove 80% of your pipeline? It's either:
 
 Your marketing generalist is amazing. They do everything. But "everything" at 3x scale means three times the work, and the quality of each thing degrades. The blog posts get less thoughtful. The campaigns get less targeted. The CRM gets messier.
 
-**What needs to change:** Transition from generalists to specialists — or at minimum, a generalist supported by specialists. You need dedicated capacity for demand gen, content, and ops.
+**What needs to change:** Transition from generalists to specialists, or at minimum, a generalist supported by specialists. You need dedicated capacity for demand gen, content, and ops.
 
 ### 4. Gut Feel Becomes Guessing
 
 At $2M ARR, the CEO knows every customer and can feel when things are working. At $6M, there are too many deals, too many channels, and too many variables for anyone to hold in their head. Gut feel at scale is just guessing with confidence.
 
-**What needs to change:** Build a measurement and reporting infrastructure. Attribution, pipeline analytics, channel performance, conversion rates. Data doesn't replace judgment — it informs it.
+**What needs to change:** Build a measurement and reporting infrastructure. Attribution, pipeline analytics, channel performance, conversion rates. Data doesn't replace judgment, it informs it.
 
 ## The Transition Playbook
 
@@ -2483,7 +2483,7 @@ Before you change anything, understand what you have:
 ### Phase 2: Build the Engine (Month 3-5)
 
 **Priority 1: Fix attribution.**
-You cannot improve what you cannot measure. Implement multi-touch attribution — even a simple first-touch + last-touch model is better than nothing. Ensure every lead source, every campaign, and every touchpoint is tracked.
+You cannot improve what you cannot measure. Implement multi-touch attribution, even a simple first-touch + last-touch model is better than nothing. Ensure every lead source, every campaign, and every touchpoint is tracked.
 
 **Priority 2: Launch channel #2 (and #3).**
 If inbound/content is your primary channel, launch outbound. If outbound is primary, invest in content/SEO. If both exist, add a partner channel or paid acquisition.
@@ -2495,7 +2495,7 @@ Each new channel needs:
 - Clear success criteria for continuation
 
 **Priority 3: Build the content engine.**
-Content at Series A is reactive — write what seems interesting, publish when you have time. Content at Series B is strategic:
+Content at Series A is reactive, write what seems interesting, publish when you have time. Content at Series B is strategic:
 - Content mapped to buyer journey stages
 - Regular publishing cadence (weekly minimum)
 - SEO-driven topic selection for bottom-of-funnel terms
@@ -2505,22 +2505,22 @@ Content at Series A is reactive — write what seems interesting, publish when y
 
 The hiring sequence matters. Hire in this order:
 
-**1. Demand Gen / Growth lead** — Someone who can own pipeline targets and build multi-channel campaigns. This is your most critical hire.
+**1. Demand Gen / Growth lead**: Someone who can own pipeline targets and build multi-channel campaigns. This is your most critical hire.
 
-**2. Content marketer** — Not a copywriter. A content marketer who understands SEO, buyer psychology, and can produce content that drives pipeline, not just traffic.
+**2. Content marketer**: Not a copywriter. A content marketer who understands SEO, buyer psychology, and can produce content that drives pipeline, not just traffic.
 
-**3. Marketing ops / RevOps** — Someone to build and maintain the infrastructure: CRM, automation, attribution, reporting.
+**3. Marketing ops / RevOps**: Someone to build and maintain the infrastructure: CRM, automation, attribution, reporting.
 
-**4. Designer** — Either a hire or a reliable contractor/agency. Brand consistency matters more as you scale.
+**4. Designer**: Either a hire or a reliable contractor/agency. Brand consistency matters more as you scale.
 
 **Don't hire:** A VP of Marketing before you have the foundation built. A VP without infrastructure will either spend 6 months building what you could have built, or they'll layer strategy on top of a broken foundation.
 
 ### Phase 4: Systematise (Month 6-9)
 
 Build the operating cadence:
-- **Weekly pipeline review** — Marketing + Sales. What was created, what's progressing, what's stuck.
-- **Monthly channel review** — Performance by channel, budget reallocation, experiment results.
-- **Quarterly planning** — Goals, budgets, experiments, hiring.
+- **Weekly pipeline review**: Marketing + Sales. What was created, what's progressing, what's stuck.
+- **Monthly channel review**: Performance by channel, budget reallocation, experiment results.
+- **Quarterly planning**: Goals, budgets, experiments, hiring.
 
 Document everything:
 - Campaign playbooks
@@ -2529,7 +2529,7 @@ Document everything:
 - Qualification criteria
 - Handoff processes
 
-If only one person knows how something works, it's not a system — it's a dependency.
+If only one person knows how something works, it's not a system, it's a dependency.
 
 ## The Budget Shift
 
@@ -2573,12 +2573,12 @@ The companies that navigate this transition well emerge with a marketing engine 
     id: "20",
     slug: "first-marketing-hire-not-content-writer",
     title: "Your First Marketing Hire Should Not Be a Content Writer",
-    excerpt: "Every founder's instinct is to hire a content person first. Here's why that's almost always wrong — and who you should actually hire.",
+    excerpt: "Every founder's instinct is to hire a content person first. Here's why that's almost always wrong, and who you should actually hire.",
     content: `# Your First Marketing Hire Should Not Be a Content Writer
 
 You've been doing marketing yourself. Writing LinkedIn posts between investor calls. Cobbling together landing pages at midnight. Running Google Ads with a tutorial open in the next tab. It's time to hire someone.
 
-Your instinct says: hire a content writer. Someone to write blog posts, manage social media, create the thought leadership pieces you don't have time for. It makes sense — content is the most visible gap, and writing is the hardest thing to do when you're stretched thin.
+Your instinct says: hire a content writer. Someone to write blog posts, manage social media, create the thought leadership pieces you don't have time for. It makes sense, content is the most visible gap, and writing is the hardest thing to do when you're stretched thin.
 
 But it's almost always the wrong first hire. Here's why.
 
@@ -2613,11 +2613,11 @@ Great B2B content comes from deep understanding of the buyer, the market, and th
 
 This is the ideal first hire for most Series A / early-stage companies. This person:
 
-- **Can build campaigns end-to-end** — From targeting to creative to landing page to follow-up sequence
-- **Is comfortable with tools** — CRM, marketing automation, analytics, ad platforms
-- **Thinks in funnels** — Not just "create content" but "create content that drives X to do Y"
-- **Can write well enough** — Not Pulitzer-quality prose, but clear, compelling copy that converts
-- **Is metrics-driven** — They know what to measure and how to optimise
+- **Can build campaigns end-to-end**: From targeting to creative to landing page to follow-up sequence
+- **Is comfortable with tools**: CRM, marketing automation, analytics, ad platforms
+- **Thinks in funnels**: Not just "create content" but "create content that drives X to do Y"
+- **Can write well enough**: Not Pulitzer-quality prose, but clear, compelling copy that converts
+- **Is metrics-driven**: They know what to measure and how to optimise
 
 This person won't write the best blog posts. But they'll build the system that turns blog posts (and every other marketing activity) into pipeline.
 
@@ -2629,11 +2629,11 @@ This person won't write the best blog posts. But they'll build the system that t
 
 If your founder or another team member can handle the creative and content side, your first hire might be more technical:
 
-- **CRM administration** — Building and maintaining your Salesforce or HubSpot instance
-- **Marketing automation** — Email sequences, lead scoring, workflow building
-- **Paid acquisition** — Running and optimising Google, LinkedIn, or Meta campaigns
-- **Analytics and reporting** — Attribution, pipeline reporting, campaign performance
-- **Lead management** — Routing, scoring, lifecycle stage management
+- **CRM administration**: Building and maintaining your Salesforce or HubSpot instance
+- **Marketing automation**: Email sequences, lead scoring, workflow building
+- **Paid acquisition**: Running and optimising Google, LinkedIn, or Meta campaigns
+- **Analytics and reporting**: Attribution, pipeline reporting, campaign performance
+- **Lead management**: Routing, scoring, lifecycle stage management
 
 This person is less glamorous but often more impactful. They build the infrastructure that makes everything else work.
 
@@ -2643,12 +2643,12 @@ This person is less glamorous but often more impactful. They build the infrastru
 
 ## When to Hire the Content Writer
 
-Content writers are essential — just not first. Hire a content writer when:
+Content writers are essential, just not first. Hire a content writer when:
 
-1. **You have distribution figured out** — You know how content will reach your audience (SEO strategy, email list, social following, paid amplification)
-2. **You have infrastructure in place** — CRM is clean, attribution is working, you can track content's impact on pipeline
-3. **You have content strategy defined** — You know what topics to cover, what formats work, and what the content should achieve at each buyer stage
-4. **You have enough pipeline data** — You understand what questions buyers ask, what objections come up, and what content would accelerate deals
+1. **You have distribution figured out**: You know how content will reach your audience (SEO strategy, email list, social following, paid amplification)
+2. **You have infrastructure in place**: CRM is clean, attribution is working, you can track content's impact on pipeline
+3. **You have content strategy defined**: You know what topics to cover, what formats work, and what the content should achieve at each buyer stage
+4. **You have enough pipeline data**: You understand what questions buyers ask, what objections come up, and what content would accelerate deals
 
 This is usually hire #2 or #3, roughly 3-6 months after your first marketing hire.
 
@@ -2688,10 +2688,10 @@ You probably do. But you don't need a full-time hire to get it.
 
 **Options for content before hiring a content writer:**
 
-- **Founder-led content** — The founder writing 1-2 LinkedIn posts per week is often the highest-ROI content activity at early stage. It has built-in authenticity and distribution.
-- **Freelance writers** — A good B2B freelance writer ($200-500 per article) can produce 2-4 pieces per month. Your growth marketer briefs them and handles distribution.
-- **Agency support** — A content agency can produce a steady stream of content while you build in-house capability.
-- **Repurpose sales conversations** — Record sales calls (with permission), extract insights, and turn them into content. Your growth marketer can do this or brief a freelancer.
+- **Founder-led content**: The founder writing 1-2 LinkedIn posts per week is often the highest-ROI content activity at early stage. It has built-in authenticity and distribution.
+- **Freelance writers**: A good B2B freelance writer ($200-500 per article) can produce 2-4 pieces per month. Your growth marketer briefs them and handles distribution.
+- **Agency support**: A content agency can produce a steady stream of content while you build in-house capability.
+- **Repurpose sales conversations**: Record sales calls (with permission), extract insights, and turn them into content. Your growth marketer can do this or brief a freelancer.
 
 The key insight: content production can be outsourced. Content strategy and distribution cannot. Your first hire should own strategy and distribution, and manage outsourced production.
 
@@ -2711,7 +2711,7 @@ When interviewing your first marketing hire, ask these questions:
 
 ## The Bottom Line
 
-Your first marketing hire sets the trajectory for your entire marketing function. Hire someone who builds systems, and everything you add later — content, paid, events, partnerships — plugs into a working machine.
+Your first marketing hire sets the trajectory for your entire marketing function. Hire someone who builds systems, and everything you add later, content, paid, events, partnerships, plugs into a working machine.
 
 **Hire someone who writes, and you'll have great content sitting on a website that nobody visits, measured by metrics that don't connect to revenue, distributed through channels that don't exist yet.**
 
@@ -2738,7 +2738,7 @@ Here's how to build an SDR team that actually scales.
 
 ### Problem 1: Territory Overlap and Account Chaos
 
-With 1-3 SDRs, territory management is simple — everyone works different accounts, the founder referees conflicts, and the CRM is messy but functional. At 5+, without clear territory rules:
+With 1-3 SDRs, territory management is simple, everyone works different accounts, the founder referees conflicts, and the CRM is messy but functional. At 5+, without clear territory rules:
 - Multiple SDRs contact the same accounts
 - Prospects get 3 emails from the same company in a week
 - SDRs cherry-pick the best accounts and ignore the rest
@@ -2754,7 +2754,7 @@ Early SDRs are usually A-players who figured things out independently. As you hi
 
 ### Problem 3: Management Debt
 
-Your first SDRs reported to the VP of Sales or the founder. That worked when there were two of them. At six, the VP doesn't have time to coach, review calls, or manage performance — they're busy closing deals.
+Your first SDRs reported to the VP of Sales or the founder. That worked when there were two of them. At six, the VP doesn't have time to coach, review calls, or manage performance, they're busy closing deals.
 
 ### Problem 4: Tooling Fragmentation
 
@@ -2764,12 +2764,12 @@ Each SDR finds their own workflow. One uses Apollo, another uses Outreach, a thi
 
 ### Structure: Pods, Not Individuals
 
-Stop thinking about SDRs as individual contributors who happen to sit near each other. Think about pods — small, self-contained units with everything they need to generate pipeline.
+Stop thinking about SDRs as individual contributors who happen to sit near each other. Think about pods, small, self-contained units with everything they need to generate pipeline.
 
 **A pod consists of:**
 - 3-4 SDRs
 - 1 SDR Manager (player-coach until you have 8+ SDRs)
-- Shared support (ops, content, data — can serve multiple pods)
+- Shared support (ops, content, data, can serve multiple pods)
 
 **Each pod owns:**
 - A specific segment or territory
@@ -2778,10 +2778,10 @@ Stop thinking about SDRs as individual contributors who happen to sit near each 
 - Its own weekly cadence
 
 **Why pods work:**
-- Clear accountability — Each pod owns its pipeline number
-- Knowledge sharing — SDRs learn from peers in the same segment
-- Healthy competition — Pod vs. pod creates motivation without toxicity
-- Manageable span — One manager coaching 3-4 reps can actually do it well
+- Clear accountability, Each pod owns its pipeline number
+- Knowledge sharing, SDRs learn from peers in the same segment
+- Healthy competition, Pod vs. pod creates motivation without toxicity
+- Manageable span, One manager coaching 3-4 reps can actually do it well
 
 ### Territory Design
 
@@ -2802,11 +2802,11 @@ Territory assignment makes or breaks SDR teams. The three models:
 - Cons: Enterprise accounts need more experience, SMB territories feel like punishment
 - Best for: Companies with wide ACV range
 
-**Our recommendation:** Combine models. Use industry verticals as the primary split, with account tiers as the secondary. A pod owns "Mid-market healthcare" or "Enterprise fintech" — not just "West Coast" or "accounts starting with A-M."
+**Our recommendation:** Combine models. Use industry verticals as the primary split, with account tiers as the secondary. A pod owns "Mid-market healthcare" or "Enterprise fintech", not just "West Coast" or "accounts starting with A-M."
 
 ### The SDR Career Path
 
-SDR burnout is the #1 scaling killer. Average SDR tenure is 14 months. If you don't offer a clear path, your best people leave — and recruiting replacements is expensive and slow.
+SDR burnout is the #1 scaling killer. Average SDR tenure is 14 months. If you don't offer a clear path, your best people leave, and recruiting replacements is expensive and slow.
 
 **The career ladder:**
 
@@ -2826,10 +2826,10 @@ SDR burnout is the #1 scaling killer. Average SDR tenure is 14 months. If you do
 - Comp: $75-90K base + $30-40K variable
 
 **Paths from here:**
-- **AE track** — Promote to closing role (most common)
-- **Management track** — SDR Manager role
-- **Ops track** — Move into RevOps or marketing ops
-- **Customer Success track** — Leverage product and customer knowledge
+- **AE track**: Promote to closing role (most common)
+- **Management track**: SDR Manager role
+- **Ops track**: Move into RevOps or marketing ops
+- **Customer Success track**: Leverage product and customer knowledge
 
 Make the timeline explicit. Tell every new SDR on day one: "Here's where you can be in 12 months, and here's what you need to do to get there."
 
@@ -2882,24 +2882,24 @@ This is not a status report. It's a coaching opportunity. If an SDR says "I have
 
 ### Essential (non-negotiable)
 
-- **CRM** — Salesforce or HubSpot. Every activity, every account, every opportunity lives here.
-- **Sales engagement platform** — Outreach, Salesloft, or Apollo. Sequence management, email tracking, call logging.
-- **Data provider** — Apollo, ZoomInfo, or LinkedIn Sales Navigator. Contact data and account intelligence.
-- **Call recording** — Gong or Chorus. Every call recorded, searchable, and reviewable.
+- **CRM**: Salesforce or HubSpot. Every activity, every account, every opportunity lives here.
+- **Sales engagement platform**: Outreach, Salesloft, or Apollo. Sequence management, email tracking, call logging.
+- **Data provider**: Apollo, ZoomInfo, or LinkedIn Sales Navigator. Contact data and account intelligence.
+- **Call recording**: Gong or Chorus. Every call recorded, searchable, and reviewable.
 
 ### Important (add at 5+ SDRs)
 
-- **Lead routing** — Chili Piper or LeanData. Automatic round-robin or territory-based routing.
-- **Intent data** — Bombora, 6sense, or G2. Prioritise accounts showing buying signals.
-- **Email deliverability** — Mailreach or Warmbox. Protect sender reputation as volume scales.
-- **Reporting** — Build custom dashboards in your CRM or use a tool like Coefficient or Klipfolio.
+- **Lead routing**: Chili Piper or LeanData. Automatic round-robin or territory-based routing.
+- **Intent data**: Bombora, 6sense, or G2. Prioritise accounts showing buying signals.
+- **Email deliverability**: Mailreach or Warmbox. Protect sender reputation as volume scales.
+- **Reporting**: Build custom dashboards in your CRM or use a tool like Coefficient or Klipfolio.
 
 ### Nice to have (add at 10+ SDRs)
 
-- **AI writing assistance** — For personalisation at scale (but always human-reviewed)
-- **Direct dial provider** — For phone-heavy motions
-- **Video messaging** — Vidyard or Loom for personalised outreach
-- **Competitive intelligence** — Klue or Crayon
+- **AI writing assistance**: For personalisation at scale (but always human-reviewed)
+- **Direct dial provider**: For phone-heavy motions
+- **Video messaging**: Vidyard or Loom for personalised outreach
+- **Competitive intelligence**: Klue or Crayon
 
 ## Metrics That Matter
 
@@ -2938,7 +2938,7 @@ This is not a status report. It's a coaching opportunity. If an SDR says "I have
 
 SDR teams don't scale linearly. You can't just add headcount and expect proportional results. The structure, management cadence, tooling, and career development need to evolve at each stage.
 
-**Build pods, not headcount. Design territories, not lists. Manage cadences, not activities. And above all, invest in your people's development — because the SDRs you develop into AEs and managers today are the revenue leaders you'll need tomorrow.**`,
+**Build pods, not headcount. Design territories, not lists. Manage cadences, not activities. And above all, invest in your people's development, because the SDRs you develop into AEs and managers today are the revenue leaders you'll need tomorrow.**`,
     author: "That Works",
     publishedAt: "Dec 2025",
     readTime: "16 min read",

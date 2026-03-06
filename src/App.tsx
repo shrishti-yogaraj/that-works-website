@@ -12,6 +12,8 @@ import Contact from "./pages/Contact";
 import Services from "./pages/Services";
 import LeadGenService from "./pages/LeadGenService";
 import BrandingService from "./pages/BrandingService";
+import InboundService from "./pages/InboundService";
+import RetentionService from "./pages/RetentionService";
 import BookACall from "./pages/BookACall";
 import ZeroToOne from "./pages/ZeroToOne";
 import Friction from "./pages/Friction";
@@ -25,7 +27,7 @@ import { ContactPopupProvider, useContactPopup } from "./contexts/ContactPopupCo
 const queryClient = new QueryClient();
 
 const AppContent = () => {
-  const { isOpen, closePopup } = useContactPopup();
+  const { isOpen, source, closePopup } = useContactPopup();
   
   return (
     <>
@@ -37,7 +39,9 @@ const AppContent = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/lead-gen" element={<LeadGenService />} />
+        <Route path="/services/inbound" element={<InboundService />} />
         <Route path="/services/branding" element={<BrandingService />} />
+        <Route path="/services/retention" element={<RetentionService />} />
         <Route path="/services/marketing-os/zero-to-one" element={<ZeroToOne />} />
         <Route path="/services/marketing-os/friction" element={<Friction />} />
         <Route path="/services/marketing-os/scale" element={<Scale />} />
@@ -48,7 +52,7 @@ const AppContent = () => {
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <ContactFormPopup open={isOpen} onOpenChange={closePopup} />
+      <ContactFormPopup open={isOpen} onOpenChange={closePopup} source={source} />
     </>
   );
 };

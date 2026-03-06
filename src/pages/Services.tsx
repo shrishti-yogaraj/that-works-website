@@ -1,6 +1,11 @@
 import Nav from "@/components/Nav";
+import { useContactPopup } from "@/contexts/ContactPopupContext";
+import { Link } from "react-router-dom";
+import useCanonical from "@/hooks/useCanonical";
 
 const Services = () => {
+  useCanonical("/services");
+  const { openPopup } = useContactPopup();
   return (
     <>
       <Nav />
@@ -9,54 +14,97 @@ const Services = () => {
       <section className="svcs-hero">
         <div className="svcs-hero-inner">
           <div className="section-label">Services</div>
-          <h1>Everything we build.</h1>
-          <p>One system. Three entry points. All roads lead to the same outcome — a marketing function that runs without us.</p>
+          <h1>Find your entry point.</h1>
+          <p>Two ways in. One outcome: a marketing function that runs without us.</p>
         </div>
       </section>
 
-      {/* VISUAL HIERARCHY */}
-      <section className="svcs-map-section">
-        <div className="svcs-map-inner">
+      {/* TWO PATHS */}
+      <section className="svcs-paths-section">
+        <div className="svcs-paths-inner">
 
-          {/* Featured: Marketing OS */}
-          <div className="svcs-featured">
-            <span className="flagship-badge">The full engagement</span>
-            <div className="service-tw">TW</div>
-            <div className="svcs-featured-name">Marketing OS</div>
-            <p className="svcs-featured-desc">Strategy, infrastructure, execution and handover — across every pillar that matters.</p>
-            <a href="#" className="service-link">Explore Marketing OS TW →</a>
+          {/* Path 1: I know where I am */}
+          <div className="svcs-path-card">
+            <div className="svcs-path-eyebrow">I know where I am</div>
+            <h2>Marketing OS</h2>
+            <p>You're at a specific stage of growth. We fix the exact breaking point you're at.</p>
+            <div className="svcs-path-items">
+              <Link to="/services/marketing-os/zero-to-one" className="svcs-path-item">
+                <span className="svcs-path-num">01</span>
+                <div className="svcs-path-text">
+                  <span className="svcs-path-name">0 → 1</span>
+                  <span className="svcs-path-desc">Everything is in your head. Nothing is in a system.</span>
+                </div>
+                <span className="svcs-path-arrow">→</span>
+              </Link>
+              <Link to="/services/marketing-os/friction" className="svcs-path-item">
+                <span className="svcs-path-num">02</span>
+                <div className="svcs-path-text">
+                  <span className="svcs-path-name">Friction</span>
+                  <span className="svcs-path-desc">Growing in every way except revenue.</span>
+                </div>
+                <span className="svcs-path-arrow">→</span>
+              </Link>
+              <Link to="/services/marketing-os/scale" className="svcs-path-item">
+                <span className="svcs-path-num">03</span>
+                <div className="svcs-path-text">
+                  <span className="svcs-path-name">Scale</span>
+                  <span className="svcs-path-desc">Moving, but every step is heavier than the last.</span>
+                </div>
+                <span className="svcs-path-arrow">→</span>
+              </Link>
+              <Link to="/services/marketing-os/leader" className="svcs-path-item">
+                <span className="svcs-path-num">04</span>
+                <div className="svcs-path-text">
+                  <span className="svcs-path-name">Leader</span>
+                  <span className="svcs-path-desc">Steady growth, but you can't see what's driving it.</span>
+                </div>
+                <span className="svcs-path-arrow">→</span>
+              </Link>
+            </div>
           </div>
 
-          {/* Connector */}
-          <div className="svcs-connector">
-            <div className="svcs-connector-line" />
-            <div className="svcs-connector-branches">
-              <div className="svcs-branch" />
-              <div className="svcs-branch" />
-              <div className="svcs-branch" />
+          {/* Path 2: I know what I need */}
+          <div className="svcs-path-card">
+            <div className="svcs-path-eyebrow">I know what I need</div>
+            <h2>Point Solutions</h2>
+            <p>You have a specific gap. We build the exact system to fill it.</p>
+            <div className="svcs-path-items">
+              <Link to="/services/branding" className="svcs-path-item">
+                <span className="svcs-path-be" style={{ color: 'var(--orange)' }}>Be known.</span>
+                <div className="svcs-path-text">
+                  <span className="svcs-path-name">Branding TW</span>
+                  <span className="svcs-path-desc">Identity, positioning and voice.</span>
+                </div>
+                <span className="svcs-path-arrow">→</span>
+              </Link>
+              <Link to="/services/inbound" className="svcs-path-item">
+                <span className="svcs-path-be" style={{ color: 'var(--lavender)' }}>Be found.</span>
+                <div className="svcs-path-text">
+                  <span className="svcs-path-name">Inbound TW</span>
+                  <span className="svcs-path-desc">Content, SEO and nurture infrastructure.</span>
+                </div>
+                <span className="svcs-path-arrow">→</span>
+              </Link>
+              <Link to="/services/lead-gen" className="svcs-path-item">
+                <span className="svcs-path-be" style={{ color: 'var(--yellow)' }}>Be chosen.</span>
+                <div className="svcs-path-text">
+                  <span className="svcs-path-name">Lead Gen TW</span>
+                  <span className="svcs-path-desc">End-to-end outbound engine on autopilot.</span>
+                </div>
+                <span className="svcs-path-arrow">→</span>
+              </Link>
+              <Link to="/services/retention" className="svcs-path-item">
+                <span className="svcs-path-be" style={{ color: 'var(--text)' }}>Be remembered.</span>
+                <div className="svcs-path-text">
+                  <span className="svcs-path-name">Retention TW</span>
+                  <span className="svcs-path-desc">Lifecycle, enablement and expansion.</span>
+                </div>
+                <span className="svcs-path-arrow">→</span>
+              </Link>
             </div>
           </div>
 
-          {/* Sub-services */}
-          <div className="svcs-sub-grid">
-            <div className="svcs-sub-card">
-              <div className="service-tw">TW</div>
-              <h3>Lead Gen</h3>
-              <p>End-to-end lead generation. Scrape, enrich, personalise, deliver — on autopilot.</p>
-              <a href="/services/lead-gen" className="service-link">Explore →</a>
-            </div>
-            <div className="svcs-sub-card">
-              <div className="service-tw">TW</div>
-              <h3>Branding</h3>
-              <p>Brand identity and positioning that does the work before you say a word.</p>
-              <a href="/services/branding" className="service-link">Explore →</a>
-            </div>
-            <div className="svcs-sub-card svcs-sub-card-muted">
-              <div className="service-tw" style={{ color: 'var(--label)' }}>TW</div>
-              <h3>More coming</h3>
-              <p>New service lines in development. Stay tuned.</p>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -65,16 +113,18 @@ const Services = () => {
         <div className="svcs-cta-strip-inner">
           <h2>Not sure where to start?</h2>
           <p>That's what the diagnostic call is for.</p>
-          <a href="#" className="btn-primary">Book a Call →</a>
+          <button className="btn-primary" onClick={() => openPopup("services-page")}>Book a Call →</button>
         </div>
-      </section>
-
-      {/* FOOTER */}
+      </section>      {/* FOOTER */}
       <footer className="site-footer">
         <div className="footer-inner">
-          <div>
-            <div className="footer-logo">That Works<span>.</span></div>
+          <div className="footer-brand">
+            <div className="footer-logo"><img src="/logo.svg" alt="That Works" className="footer-logo-img" /></div>
             <p className="footer-tagline">High performance GTM systems. Designed, implemented and handed over.</p>
+            <div className="footer-socials">
+              <a href="#" className="footer-social">LinkedIn</a>
+              <a href="#" className="footer-social">X / Twitter</a>
+            </div>
           </div>
           <div className="footer-col">
             <h4>Company</h4>
@@ -88,22 +138,24 @@ const Services = () => {
           <div className="footer-col">
             <h4>Services</h4>
             <ul>
-              <li><a href="/services">Marketing OS TW</a></li>
-              <li><a href="/services/lead-gen">Lead Gen TW</a></li>
-              <li><a href="/services/branding">Branding TW</a></li>
+              <li><a href="/services">All Services</a></li>
             </ul>
           </div>
           <div className="footer-col">
-            <h4>Legal</h4>
-            <ul>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms</a></li>
-            </ul>
+            <h4>Newsletter</h4>
+            <p className="footer-newsletter-desc">GTM insights and what's actually working. No fluff.</p>
+            <form className="footer-newsletter-form" onSubmit={(e) => e.preventDefault()}>
+              <input type="email" placeholder="your@email.com" className="footer-newsletter-input" />
+              <button type="submit" className="footer-newsletter-btn">Subscribe →</button>
+            </form>
           </div>
         </div>
         <div className="footer-bottom">
           <p>© 2026 That Works. All rights reserved.</p>
-          <p style={{ color: 'var(--label)' }}>thatworksco.com</p>
+          <div className="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+          </div>
         </div>
       </footer>
     </>

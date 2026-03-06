@@ -1,11 +1,7 @@
 import Nav from "@/components/Nav";
-
-const stages = [
-  { label: "0→1", path: "/services/marketing-os/zero-to-one", active: false },
-  { label: "Friction", path: "/services/marketing-os/friction", active: false },
-  { label: "Scale", path: "/services/marketing-os/scale", active: false },
-  { label: "Leader", path: "/services/marketing-os/leader", active: true },
-];
+import { useContactPopup } from "@/contexts/ContactPopupContext";
+import StageSwitcher from "@/components/StageSwitcher";
+import useCanonical from "@/hooks/useCanonical";
 
 const tiers = [
   {
@@ -13,7 +9,7 @@ const tiers = [
     duration: "4 weeks",
     price: "£8–12k",
     tagline: "The leak you can't see is the one that sinks you.",
-    whoFor: "Established business experiencing invisible churn, declining engagement, or stagnating pipeline — and nobody can pinpoint why.",
+    whoFor: "Established business experiencing invisible churn, declining engagement, or stagnating pipeline, and nobody can pinpoint why.",
     deliverables: [
       "Marketing health diagnostic focused on lifecycle gaps and retention blind spots",
       "Customer lifecycle mapping from acquisition to advocacy",
@@ -37,7 +33,7 @@ const tiers = [
       "Unified customer data architecture",
       "Lifecycle reporting dashboard with cohort analysis and LTV tracking",
     ],
-    leaveWith: "A complete lifecycle marketing engine from first touch to advocacy — with the data, automation and processes to keep customers longer and grow them faster.",
+    leaveWith: "A complete lifecycle marketing engine from first touch to advocacy, with the data, automation and processes to keep customers longer and grow them faster.",
     tier: "popular",
     badge: "Most popular",
   },
@@ -46,7 +42,7 @@ const tiers = [
     duration: "12 weeks",
     price: "£35–50k",
     tagline: "One team. One strategy. One engine.",
-    whoFor: "Established business at £10M+ that needs a complete marketing transformation — not optimisation but a fundamental restructure of how marketing operates, reports, and drives the business.",
+    whoFor: "Established business at £10M+ that needs a complete marketing transformation, not optimisation but a fundamental restructure of how marketing operates, reports, and drives the business.",
     deliverables: [
       "Complete marketing function audit and restructure plan",
       "Unified marketing strategy connecting brand, demand, product and customer marketing",
@@ -76,23 +72,13 @@ const testimonialSlots = [
 ];
 
 const Leader = () => {
+  useCanonical("/services/marketing-os/leader");
+  const { openPopup } = useContactPopup();
   return (
     <>
       <Nav />
 
-      {/* STAGE INDICATOR */}
-      <div className="zto-stage-strip">
-        <div className="zto-stage-strip-inner">
-          <span className="zto-stage-label">Where are you right now?</span>
-          <div className="zto-stage-pills">
-            {stages.map((s) => (
-              <a key={s.label} href={s.path} className={`zto-stage-pill${s.active ? " active" : ""}`}>
-                {s.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
+      <StageSwitcher active="leader" />
 
       {/* HERO */}
       <section className="zto-hero">
@@ -114,7 +100,7 @@ const Leader = () => {
           <p>
             You're winning customers. You're just not keeping them the way you should. Lifecycle
             marketing is an afterthought. Retention has no system. Expansion revenue is accidental.
-            And when leadership asks what marketing is actually contributing — the answer takes three
+            And when leadership asks what marketing is actually contributing, the answer takes three
             people and a week to produce. That's not a team problem. That's an infrastructure problem.
           </p>
         </div>
@@ -158,7 +144,7 @@ const Leader = () => {
       <section className="zto-retainer">
         <div className="zto-retainer-inner">
           <p>
-            All engagements include an optional ongoing retainer — <strong>£2,500–£4,000/month</strong>.
+            All engagements include an optional ongoing retainer: <strong>£2,500–£4,000/month</strong>.
             Strategic oversight, not execution. A thinking partner as you grow.
           </p>
           <p className="leader-retainer-note">
@@ -172,7 +158,7 @@ const Leader = () => {
         <div className="leader-visibility-inner">
           <h2>What does marketing actually contribute to your business?</h2>
           <p>
-            If the honest answer is "we're not entirely sure" — that's the problem. Not your team.
+            If the honest answer is "we're not entirely sure", that's the problem. Not your team.
             Not your budget. Not your channels. The absence of a unified view of marketing's impact
             on revenue, retention and growth is costing you more than any campaign ever could.
           </p>
@@ -215,17 +201,19 @@ const Leader = () => {
         <div className="zto-cta-inner">
           <h2>Let's find what the surface metrics are hiding.</h2>
           <p className="zto-cta-sub">And show you exactly what it's costing you.</p>
-          <a href="/book-a-call" className="btn-primary">Book a Diagnostic Call</a>
+          <button className="btn-primary" onClick={() => openPopup("marketing-os-leader")}>Book a Diagnostic Call</button>
           <p className="cta-note">20 minutes. No pitch. You'll leave with clarity regardless.</p>
         </div>
-      </section>
-
-      {/* FOOTER */}
+      </section>      {/* FOOTER */}
       <footer className="site-footer">
         <div className="footer-inner">
-          <div>
-            <div className="footer-logo">That Works<span>.</span></div>
+          <div className="footer-brand">
+            <div className="footer-logo"><img src="/logo.svg" alt="That Works" className="footer-logo-img" /></div>
             <p className="footer-tagline">High performance GTM systems. Designed, implemented and handed over.</p>
+            <div className="footer-socials">
+              <a href="#" className="footer-social">LinkedIn</a>
+              <a href="#" className="footer-social">X / Twitter</a>
+            </div>
           </div>
           <div className="footer-col">
             <h4>Company</h4>
@@ -239,22 +227,24 @@ const Leader = () => {
           <div className="footer-col">
             <h4>Services</h4>
             <ul>
-              <li><a href="/services">Marketing OS TW</a></li>
-              <li><a href="/services/lead-gen">Lead Gen TW</a></li>
-              <li><a href="/services/branding">Branding TW</a></li>
+              <li><a href="/services">All Services</a></li>
             </ul>
           </div>
           <div className="footer-col">
-            <h4>Legal</h4>
-            <ul>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms</a></li>
-            </ul>
+            <h4>Newsletter</h4>
+            <p className="footer-newsletter-desc">GTM insights and what's actually working. No fluff.</p>
+            <form className="footer-newsletter-form" onSubmit={(e) => e.preventDefault()}>
+              <input type="email" placeholder="your@email.com" className="footer-newsletter-input" />
+              <button type="submit" className="footer-newsletter-btn">Subscribe →</button>
+            </form>
           </div>
         </div>
         <div className="footer-bottom">
           <p>© 2026 That Works. All rights reserved.</p>
-          <p style={{ color: 'var(--label)' }}>thatworksco.com</p>
+          <div className="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+          </div>
         </div>
       </footer>
     </>

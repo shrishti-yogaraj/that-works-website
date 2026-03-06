@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Nav from "@/components/Nav";
+import useCanonical from "@/hooks/useCanonical";
 
 const stageOptions = [
   "Pre-revenue",
@@ -14,10 +15,11 @@ const blockerOptions = [
   "Poor lead quality or volume",
   "Team capacity or resource",
   "Tools that don't talk to each other",
-  "I'm not sure — that's why I'm here",
+  "I'm not sure - that's why I'm here",
 ];
 
 const BookACall = () => {
+  useCanonical("/book-a-call");
   const [form, setForm] = useState({ name: "", email: "", company: "", stage: "", blocker: "" });
   const [submitted, setSubmitted] = useState(false);
   const [phone, setPhone] = useState("");
@@ -46,7 +48,7 @@ const BookACall = () => {
             <h1>Let's figure out what's broken.</h1>
             <p className="bac-subline">And exactly what it takes to fix it.</p>
             <p className="bac-body">
-              This is a 20-minute diagnostic call — not a pitch. We'll tell you where your marketing is stuck and what it would take to fix it. You leave with clarity whether we work together or not.
+              This is a 20-minute diagnostic call, not a pitch. We'll tell you where your marketing is stuck and what it would take to fix it. You leave with clarity whether we work together or not.
             </p>
             <div className="bac-points">
               <div className="bac-point">
@@ -55,7 +57,7 @@ const BookACall = () => {
               </div>
               <div className="bac-point">
                 <span className="bac-point-icon">✦</span>
-                <span>Prepared in advance — we do our homework.</span>
+                <span>Prepared in advance. We do our homework.</span>
               </div>
               <div className="bac-point">
                 <span className="bac-point-icon">✦</span>
