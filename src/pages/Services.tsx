@@ -119,7 +119,7 @@ const Services = () => {
       <footer className="site-footer">
         <div className="footer-inner">
           <div className="footer-brand">
-            <div className="footer-logo"><img src="/logo.svg" alt="That Works" className="footer-logo-img" /></div>
+            <div className="footer-logo"><img src="/logo.svg" alt="That Works" width="678" height="392" className="footer-logo-img" /></div>
             <p className="footer-tagline">High performance GTM systems. Designed, implemented and handed over.</p>
             <div className="footer-socials">
               <a href="#" className="footer-social">LinkedIn</a>
@@ -127,7 +127,7 @@ const Services = () => {
             </div>
           </div>
           <div className="footer-col">
-            <h4>Company</h4>
+            <h3>Company</h3>
             <ul>
               <li><a href="/about">About</a></li>
               <li><a href="/approach">How It Works</a></li>
@@ -136,13 +136,13 @@ const Services = () => {
             </ul>
           </div>
           <div className="footer-col">
-            <h4>Services</h4>
+            <h3>Services</h3>
             <ul>
               <li><a href="/services">All Services</a></li>
             </ul>
           </div>
           <div className="footer-col">
-            <h4>Newsletter</h4>
+            <h3>Newsletter</h3>
             <p className="footer-newsletter-desc">GTM insights and what's actually working. No fluff.</p>
             <form className="footer-newsletter-form" onSubmit={(e) => e.preventDefault()}>
               <input type="email" placeholder="your@email.com" className="footer-newsletter-input" />

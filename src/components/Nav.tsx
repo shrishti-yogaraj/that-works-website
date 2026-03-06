@@ -4,7 +4,7 @@ const Nav = () => {
   return (
     <nav className="site-nav">
       <div className="nav-inner">
-        <Link to="/" className="nav-logo"><img src="/logo.svg" alt="That Works" className="nav-logo-img" /></Link>
+        <Link to="/" className="nav-logo"><img src="/logo.svg" alt="That Works" width="678" height="392" className="nav-logo-img" /></Link>
         <ul className="nav-links">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/approach">How It Works</Link></li>

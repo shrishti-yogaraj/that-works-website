@@ -3,34 +3,36 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import Index from "./pages/Index";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import OurApproach from "./pages/OurApproach";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Services from "./pages/Services";
-import LeadGenService from "./pages/LeadGenService";
-import BrandingService from "./pages/BrandingService";
-import InboundService from "./pages/InboundService";
-import RetentionService from "./pages/RetentionService";
-import BookACall from "./pages/BookACall";
-import ZeroToOne from "./pages/ZeroToOne";
-import Friction from "./pages/Friction";
-import Scale from "./pages/Scale";
-import Leader from "./pages/Leader";
-import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
-import ContactFormPopup from "./components/ContactFormPopup";
 import { ContactPopupProvider, useContactPopup } from "./contexts/ContactPopupContext";
+
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const OurApproach = lazy(() => import("./pages/OurApproach"));
+const About = lazy(() => import("./pages/About"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Services = lazy(() => import("./pages/Services"));
+const LeadGenService = lazy(() => import("./pages/LeadGenService"));
+const BrandingService = lazy(() => import("./pages/BrandingService"));
+const InboundService = lazy(() => import("./pages/InboundService"));
+const RetentionService = lazy(() => import("./pages/RetentionService"));
+const BookACall = lazy(() => import("./pages/BookACall"));
+const ZeroToOne = lazy(() => import("./pages/ZeroToOne"));
+const Friction = lazy(() => import("./pages/Friction"));
+const Scale = lazy(() => import("./pages/Scale"));
+const Leader = lazy(() => import("./pages/Leader"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const ContactFormPopup = lazy(() => import("./components/ContactFormPopup"));
 
 const queryClient = new QueryClient();
 
 const AppContent = () => {
   const { isOpen, source, closePopup } = useContactPopup();
-  
+
   return (
-    <>
+    <Suspense fallback={null}>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Index />} />
@@ -53,7 +55,7 @@ const AppContent = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <ContactFormPopup open={isOpen} onOpenChange={closePopup} source={source} />
-    </>
+    </Suspense>
   );
 };
 

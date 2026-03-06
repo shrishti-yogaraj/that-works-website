@@ -111,18 +111,6 @@
   transition: border-color 0.2s, transform 0.2s;
 }
 .zto-tier-card:hover { transform: translateY(-4px); }
-.zto-tier-entry { border-color: var(--border); }
-.zto-tier-entry:hover { border-color: var(--muted); }
-.zto-tier-popular {
-  border-color: var(--orange);
-  background: var(--surface2);
-  transform: scale(1.02);
-  z-index: 1;
-}
-.zto-tier-popular:hover { transform: scale(1.02) translateY(-4px); }
-.zto-tier-premium { border-color: var(--lavender); }
-.zto-tier-premium:hover { border-color: var(--lavender); }
-
 .zto-tier-badge {
   position: absolute;
   top: -12px;

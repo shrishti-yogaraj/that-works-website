@@ -208,7 +208,7 @@ const Leader = () => {
       <footer className="site-footer">
         <div className="footer-inner">
           <div className="footer-brand">
-            <div className="footer-logo"><img src="/logo.svg" alt="That Works" className="footer-logo-img" /></div>
+            <div className="footer-logo"><img src="/logo.svg" alt="That Works" width="678" height="392" className="footer-logo-img" /></div>
             <p className="footer-tagline">High performance GTM systems. Designed, implemented and handed over.</p>
             <div className="footer-socials">
               <a href="#" className="footer-social">LinkedIn</a>
