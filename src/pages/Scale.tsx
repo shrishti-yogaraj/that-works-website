@@ -1,13 +1,13 @@
 import Nav from "@/components/Nav";
 import StageSwitcher from "@/components/StageSwitcher";
 import { useContactPopup } from "@/contexts/ContactPopupContext";
-import useCanonical from "@/hooks/useCanonical";
+import SEOHead from "@/components/SEOHead";
+import FaqAccordion from "@/components/FaqAccordion";
 
 const tiers = [
   {
     name: "Foundation Sprint",
     duration: "4 weeks",
-    price: "£8–12k",
     tagline: "Your team doesn't need more hours. They need a better system.",
     whoFor: "Growing business where the marketing team is stretched thin, drowning in operational work, with no clear priority.",
     deliverables: [
@@ -23,9 +23,8 @@ const tiers = [
   {
     name: "Engine Build",
     duration: "8 weeks",
-    price: "£18–25k",
     tagline: "Scale the system, not the headcount.",
-    whoFor: "Business at £2M–£10M with a marketing team executing daily but no infrastructure underneath. Data siloed, processes tribal, scaling means more people not better systems.",
+    whoFor: "Scaling business with a marketing team executing daily but no infrastructure underneath. Data siloed, processes tribal, scaling means more people not better systems.",
     deliverables: [
       "Full process audit and SOP library",
       "Centralised reporting dashboard",
@@ -40,9 +39,8 @@ const tiers = [
   {
     name: "Full OS",
     duration: "12 weeks",
-    price: "£35–50k",
     tagline: "You've outgrown the scrappy phase. Time to operate like it.",
-    whoFor: "Business approaching or past £5M that needs to professionalise its entire marketing operation. They have budget and people but not the infrastructure to operate like a scaled function.",
+    whoFor: "Established business that needs to professionalise its entire marketing operation. They have budget and people but not the infrastructure to operate like a scaled function.",
     deliverables: [
       "Complete marketing operations overhaul",
       "Full SOP library across all four pillars",
@@ -63,11 +61,79 @@ const deliverableTiles = [
   "Channel playbook", "Skill map", "Handover session", "30-day check-in",
 ];
 
+const faqs = [
+  {
+    q: "What do we actually own at the end of the engagement?",
+    a: "Everything. Every document, SOP, playbook, tool setup, and strategy is yours. We don't retain access, we don't lock anything behind a retainer, and you don't need us to run what we've built.",
+    slug: "/blog/what-you-own-after-a-marketing-infrastructure-engagement",
+  },
+  {
+    q: "How is That Works different from hiring a fractional CMO?",
+    a: "A fractional CMO advises. We build. You get a complete, documented marketing system — tools configured, processes written, team trained — not strategic guidance that leaves the moment the contract ends.",
+    slug: "/blog/fractional-cmo-vs-marketing-infrastructure-build",
+  },
+  {
+    q: "Do you work with us ongoing, or is this a one-time engagement?",
+    a: "The engagement has a defined end. We're not selling a retainer — we're selling a build. There's an optional Engine Tune-Up retainer for strategic oversight after the engagement closes, but that's your choice, not ours.",
+    slug: "/blog/why-our-engagements-have-a-defined-end",
+  },
+  {
+    q: "What does the handover process look like?",
+    a: "The final week of every engagement is dedicated to handover — a working session with your team, full documentation walkthrough, and a 30-day check-in after we're done.",
+    slug: "/blog/what-a-marketing-infrastructure-handover-actually-looks-like",
+  },
+  {
+    q: "We're moving but every step feels heavier. How do you fix that without slowing us down?",
+    a: "The weight usually comes from manual processes that haven't been systematised, team members doing work that should be automated, and decisions being made reactively instead of from a clear playbook. We identify the highest-friction points first and build relief there — so the system gets lighter as you grow, not heavier.",
+    slug: "/blog/why-scaling-feels-harder-than-it-should",
+  },
+  {
+    q: "We're firefighting constantly. How do we stop without dropping everything?",
+    a: "Firefighting is a systems problem, not a people problem. We build the SOPs, decision frameworks, and role clarity that let your team handle recurring situations without escalating everything. The goal is a marketing function that runs on process, not on founder availability.",
+    slug: "/blog/how-to-stop-firefighting-in-your-marketing-team",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+
 const Scale = () => {
-  useCanonical("/services/marketing-os/scale");
   const { openPopup } = useContactPopup();
   return (
     <>
+      <SEOHead
+        title="Marketing OS: Scale — Systemise for Growth — That Works"
+        description="Your team is stretched thin with no clear priority. We streamline operations, eliminate bottlenecks, and build the systems that turn a busy team into a productive one."
+        canonical="/services/marketing-os/scale"
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Marketing OS: Scale",
+            "serviceType": "Marketing Operations & Systems",
+            "provider": { "@type": "Organization", "name": "That Works", "url": "https://thatworksco.com" },
+            "description": "Operations audit, prioritisation framework, workflow redesign, and a 90-day scaling roadmap for growing businesses.",
+            "url": "https://thatworksco.com/services/marketing-os/scale"
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thatworksco.com" },
+              { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://thatworksco.com/services" },
+              { "@type": "ListItem", "position": 3, "name": "Marketing OS: Scale", "item": "https://thatworksco.com/services/marketing-os/scale" }
+            ]
+          },
+          faqJsonLd,
+        ]}
+      />
       <Nav />
 
       <StageSwitcher active="scale" />
@@ -85,19 +151,6 @@ const Scale = () => {
         </div>
       </section>
 
-      {/* THE PROBLEM */}
-      <section className="fri-problem">
-        <div className="fri-problem-inner">
-          <h2>Scaling the team is not the same as scaling the system.</h2>
-          <p>
-            Every new hire inherits the same broken processes. Every new channel adds more manual work.
-            Every week, more of your best people's time disappears into operational overhead instead of
-            actual marketing. The ceiling isn't your team's capacity. It's the absence of infrastructure
-            underneath them.
-          </p>
-        </div>
-      </section>
-
       {/* TIER CARDS */}
       <section className="zto-tiers">
         <div className="zto-tiers-inner">
@@ -107,7 +160,6 @@ const Scale = () => {
               <h3>{t.name}</h3>
               <div className="zto-tier-meta">
                 <span>{t.duration}</span>
-                <span className="zto-tier-price">{t.price}</span>
               </div>
               <p className="zto-tier-tagline">{t.tagline}</p>
               <div className="zto-tier-section">
@@ -128,16 +180,6 @@ const Scale = () => {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* RETAINER STRIP */}
-      <section className="zto-retainer">
-        <div className="zto-retainer-inner">
-          <p>
-            All engagements include an optional ongoing retainer: <strong>£2,500–£4,000/month</strong>.
-            Strategic oversight, not execution. A thinking partner as you grow.
-          </p>
         </div>
       </section>
 
@@ -177,7 +219,18 @@ const Scale = () => {
           <button className="btn-primary" onClick={() => openPopup("marketing-os-scale")}>Book a Diagnostic Call</button>
           <p className="cta-note">20 minutes. No pitch. You'll leave with clarity regardless.</p>
         </div>
-      </section>      {/* FOOTER */}
+      </section>
+
+      {/* FAQ */}
+      <section className="mos-faq">
+        <div className="mos-faq-inner">
+          <div className="section-label">Common questions</div>
+          <h2>Everything you need to know</h2>
+          <FaqAccordion faqs={faqs} />
+        </div>
+      </section>
+
+      {/* FOOTER */}
       <footer className="site-footer">
         <div className="footer-inner">
           <div className="footer-brand">

@@ -1,6 +1,7 @@
 import Nav from "@/components/Nav";
 import { useContactPopup } from "@/contexts/ContactPopupContext";
-import useCanonical from "@/hooks/useCanonical";
+import SEOHead from "@/components/SEOHead";
+import FaqAccordion from "@/components/FaqAccordion";
 
 const deliverables = [
   { name: "Brand Strategy", desc: "Positioning, ICP definition, competitive landscape, why you win." },
@@ -11,11 +12,74 @@ const deliverables = [
   { name: "Message Bank", desc: "Copy ready to use across channels: website, sales, outreach, social." },
 ];
 
+const faqs = [
+  {
+    q: "We already have a logo. Do we still need brand infrastructure?",
+    a: "A logo is the surface. Brand infrastructure is everything underneath — positioning, messaging, tone of voice, the way you describe what you do and why it matters. Most B2B businesses have a visual identity and no strategic foundation. That's why their marketing feels inconsistent and their sales conversations feel hard.",
+    slug: "/blog/b2b-brand-infrastructure-vs-visual-identity",
+  },
+  {
+    q: "How does brand work connect to pipeline? We need leads, not aesthetics.",
+    a: "Brand is what makes every other channel work harder. Clear positioning shortens sales cycles. A strong message makes cold outreach land better. Consistent tone makes content more recognisable. The businesses that scale fastest aren't the ones with the best ads — they're the ones with the clearest story.",
+    slug: "/blog/how-b2b-brand-strategy-directly-drives-pipeline",
+  },
+  {
+    q: "What do we actually receive as brand deliverables?",
+    a: "A positioning document, a full messaging framework with pillars and proof points, a tone of voice guide with examples, core content templates, and a visual direction brief for your designer. Everything is documented, handed over, and built to be used — not filed and forgotten.",
+    slug: "/blog/what-do-you-actually-get-from-a-b2b-brand-strategy-engagement",
+  },
+  {
+    q: "Our founder is the brand right now. How do we systematise that?",
+    a: "This is one of the most common situations we work with. Founder-led brand is powerful — but it only scales if you extract the thinking behind it into a documented system. We do that: positioning, messaging pillars, tone of voice, and content templates that let anyone on your team communicate with the same clarity and energy as the founder.",
+    slug: "/blog/how-to-systematise-founder-led-brand-for-b2b-scale",
+  },
+  {
+    q: "How do you make sure the brand stays consistent after you hand it over?",
+    a: "Consistency comes from documentation, not supervision. Every brand engagement ends with a tone of voice guide, messaging framework, and content templates your team can use independently. We train whoever needs to use it before we leave.",
+    slug: "/blog/how-to-maintain-brand-consistency-without-an-agency",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+
 const BrandingService = () => {
-  useCanonical("/services/branding");
   const { openPopup } = useContactPopup();
   return (
     <>
+      <SEOHead
+        title="Brand System & Positioning — That Works"
+        description="Your brand. Built to last. We build the whole brand system — identity, positioning, voice and a full message bank — and hand it over so it runs without us."
+        canonical="/services/branding"
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Brand System & Positioning",
+            "serviceType": "Branding",
+            "provider": { "@type": "Organization", "name": "That Works", "url": "https://thatworksco.com" },
+            "description": "We build the whole brand system — identity, positioning, voice and a full message bank — handed over to you.",
+            "url": "https://thatworksco.com/services/branding"
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thatworksco.com" },
+              { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://thatworksco.com/services" },
+              { "@type": "ListItem", "position": 3, "name": "Branding", "item": "https://thatworksco.com/services/branding" }
+            ]
+          },
+          faqJsonLd,
+        ]}
+      />
       <Nav />
 
       {/* HERO */}
@@ -27,18 +91,6 @@ const BrandingService = () => {
           <p className="br-hero-body">
             Most businesses design a logo and call it branding. That Works builds the whole system, from how you think about yourself to how the world talks about you.
           </p>
-        </div>
-      </section>
-
-      {/* THE PROBLEM */}
-      <section className="br-problem">
-        <div className="br-problem-inner">
-          <div className="br-problem-block">
-            <h2>A logo is not a brand.</h2>
-            <p>
-              A brand is a position in someone's mind. It's the reason they choose you over the alternative, the words they use to describe you to a colleague, the feeling they get before you say a word. Most businesses don't have that. They have a colour palette and a font.
-            </p>
-          </div>
         </div>
       </section>
 
@@ -101,7 +153,18 @@ const BrandingService = () => {
           </div>
           <p className="cta-note">No pitch. No pressure. Just clarity.</p>
         </div>
-      </section>      {/* FOOTER */}
+      </section>
+
+      {/* FAQ */}
+      <section className="mos-faq">
+        <div className="mos-faq-inner">
+          <div className="section-label">Common questions</div>
+          <h2>Everything you need to know</h2>
+          <FaqAccordion faqs={faqs} />
+        </div>
+      </section>
+
+      {/* FOOTER */}
       <footer className="site-footer">
         <div className="footer-inner">
           <div className="footer-brand">

@@ -7,13 +7,77 @@ const intelRows = [
 ];
 import Nav from "@/components/Nav";
 import { useContactPopup } from "@/contexts/ContactPopupContext";
-import useCanonical from "@/hooks/useCanonical";
+import SEOHead from "@/components/SEOHead";
+import FaqAccordion from "@/components/FaqAccordion";
+
+const faqs = [
+  {
+    q: "We've never done structured outbound before. Where do we even start?",
+    a: "That's exactly the situation we're built for. We start with your ICP — who you're actually selling to — and build everything from there. By the time we hand over, you have a defined target list, working sequences, a configured CRM pipeline, and a prospecting SOP your team can run without us.",
+    slug: "/blog/how-to-build-b2b-outbound-from-scratch",
+  },
+  {
+    q: "What tools do you use, and do we own them?",
+    a: "We design the stack around your situation. At minimum: a CRM (HubSpot, Pipedrive, or similar), an email sequencing tool (Instantly, Lemlist, or similar), a prospecting data source (Apollo, Clay, or similar), and custom-built automation workflows connecting them. Depending on your volume and channels, we also consider LinkedIn outreach tools, signal-based enrichment, and intent data integrations. Every tool is set up in your name, paid by you, owned by you.",
+    slug: "/blog/the-b2b-outbound-tool-stack-explained",
+  },
+  {
+    q: "How long before outbound starts generating pipeline?",
+    a: "The build takes 2–4 weeks. Realistic first results — replies, booked meetings — typically appear within 2–6 weeks of the system going live. We build for consistency, not quick wins that burn your domain reputation.",
+    slug: "/blog/b2b-outbound-timeline-what-to-expect",
+  },
+  {
+    q: "We've tried cold email before and got blacklisted. How do you avoid that?",
+    a: "Domain health, sending limits, warm-up protocol, and copy that doesn't trigger spam filters — all built into the infrastructure from day one, not bolted on after something breaks. Most blacklisting happens because people skip setup. We don't.",
+    slug: "/blog/why-cold-email-gets-blacklisted-and-how-to-avoid-it",
+  },
+  {
+    q: "How do you define who we should be targeting?",
+    a: "ICP definition is the first thing we do — before any outreach is built. We validate against your existing customers, your market, and your positioning. A system built on a vague ICP produces vague results. Most outbound failures are an ICP problem, not a copy problem.",
+    slug: "/blog/why-your-outbound-isnt-working-its-your-icp",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
 
 const LeadGenService = () => {
-  useCanonical("/services/lead-gen");
   const { openPopup } = useContactPopup();
   return (
     <>
+      <SEOHead
+        title="B2B Lead Generation Systems — That Works"
+        description="A custom-built lead generation engine that scrapes, enriches, researches and delivers fully personalised outreach at scale, without your team lifting a finger."
+        canonical="/services/lead-gen"
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "B2B Lead Generation System",
+            "serviceType": "Lead Generation",
+            "provider": { "@type": "Organization", "name": "That Works", "url": "https://thatworksco.com" },
+            "description": "A custom-built lead generation engine that scrapes, enriches, researches and delivers fully personalised outreach at scale, without your team lifting a finger.",
+            "url": "https://thatworksco.com/services/lead-gen"
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thatworksco.com" },
+              { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://thatworksco.com/services" },
+              { "@type": "ListItem", "position": 3, "name": "Lead Generation", "item": "https://thatworksco.com/services/lead-gen" }
+            ]
+          },
+          faqJsonLd,
+        ]}
+      />
       <Nav />
 
       {/* HERO */}
@@ -25,28 +89,6 @@ const LeadGenService = () => {
           <p className="lg-hero-body">
             A custom-built lead generation engine that scrapes, enriches, researches and delivers fully personalised outreach, at scale, without your team lifting a finger.
           </p>
-        </div>
-      </section>
-
-      {/* RESULTS STRIP */}
-      <section className="lg-results">
-        <div className="lg-results-inner">
-          <div className="lg-stat">
-            <div className="lg-stat-num">3x</div>
-            <div className="lg-stat-label">replies, because every prospect feels like your #1 priority</div>
-          </div>
-          <div className="lg-stat">
-            <div className="lg-stat-num">$0.2</div>
-            <div className="lg-stat-label">cost-per-lead, so ridiculously low we had to triple-check</div>
-          </div>
-          <div className="lg-stat">
-            <div className="lg-stat-num">5→50</div>
-            <div className="lg-stat-label">conversations per day. Quality conversations, every single day</div>
-          </div>
-          <div className="lg-stat">
-            <div className="lg-stat-num">100%</div>
-            <div className="lg-stat-label">happiness. All your prospects feel special. Even the ones that say no.</div>
-          </div>
         </div>
       </section>
 
@@ -177,7 +219,18 @@ const LeadGenService = () => {
             <a href="#" className="btn-ghost">See Pricing</a>
           </div>
         </div>
-      </section>      {/* FOOTER */}
+      </section>
+
+      {/* FAQ */}
+      <section className="mos-faq">
+        <div className="mos-faq-inner">
+          <div className="section-label">Common questions</div>
+          <h2>Everything you need to know</h2>
+          <FaqAccordion faqs={faqs} />
+        </div>
+      </section>
+
+      {/* FOOTER */}
       <footer className="site-footer">
         <div className="footer-inner">
           <div className="footer-brand">

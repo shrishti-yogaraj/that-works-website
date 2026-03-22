@@ -1,13 +1,13 @@
 import Nav from "@/components/Nav";
 import { useContactPopup } from "@/contexts/ContactPopupContext";
 import StageSwitcher from "@/components/StageSwitcher";
-import useCanonical from "@/hooks/useCanonical";
+import SEOHead from "@/components/SEOHead";
+import FaqAccordion from "@/components/FaqAccordion";
 
 const tiers = [
   {
     name: "Foundation Sprint",
     duration: "4 weeks",
-    price: "£8–12k",
     tagline: "The leak you can't see is the one that sinks you.",
     whoFor: "Established business experiencing invisible churn, declining engagement, or stagnating pipeline, and nobody can pinpoint why.",
     deliverables: [
@@ -23,9 +23,8 @@ const tiers = [
   {
     name: "Engine Build",
     duration: "8 weeks",
-    price: "£18–25k",
     tagline: "You're brilliant at winning them. Now stop losing them.",
-    whoFor: "Business at £5M–£20M where acquisition is optimised but retention, expansion and advocacy have no system behind them.",
+    whoFor: "Established business where acquisition is optimised but retention, expansion and advocacy have no system behind them.",
     deliverables: [
       "Full customer lifecycle audit and segmentation framework",
       "Retention marketing infrastructure with health scoring and churn triggers",
@@ -40,9 +39,8 @@ const tiers = [
   {
     name: "Full OS",
     duration: "12 weeks",
-    price: "£35–50k",
     tagline: "One team. One strategy. One engine.",
-    whoFor: "Established business at £10M+ that needs a complete marketing transformation, not optimisation but a fundamental restructure of how marketing operates, reports, and drives the business.",
+    whoFor: "Established business that needs a complete marketing transformation, not optimisation but a fundamental restructure of how marketing operates, reports, and drives the business.",
     deliverables: [
       "Complete marketing function audit and restructure plan",
       "Unified marketing strategy connecting brand, demand, product and customer marketing",
@@ -71,11 +69,79 @@ const testimonialSlots = [
   { name: "[Client Name]", title: "[Title]", company: "[Company]", quote: "\"Populate with real testimonial when collected.\"" },
 ];
 
+const faqs = [
+  {
+    q: "What do we actually own at the end of the engagement?",
+    a: "Everything. Every document, SOP, playbook, tool setup, and strategy is yours. We don't retain access, we don't lock anything behind a retainer, and you don't need us to run what we've built.",
+    slug: "/blog/what-you-own-after-a-marketing-infrastructure-engagement",
+  },
+  {
+    q: "How is That Works different from hiring a fractional CMO?",
+    a: "A fractional CMO advises. We build. You get a complete, documented marketing system — tools configured, processes written, team trained — not strategic guidance that leaves the moment the contract ends.",
+    slug: "/blog/fractional-cmo-vs-marketing-infrastructure-build",
+  },
+  {
+    q: "Do you work with us ongoing, or is this a one-time engagement?",
+    a: "The engagement has a defined end. We're not selling a retainer — we're selling a build. There's an optional Engine Tune-Up retainer for strategic oversight after the engagement closes, but that's your choice, not ours.",
+    slug: "/blog/why-our-engagements-have-a-defined-end",
+  },
+  {
+    q: "What does the handover process look like?",
+    a: "The final week of every engagement is dedicated to handover — a working session with your team, full documentation walkthrough, and a 30-day check-in after we're done.",
+    slug: "/blog/what-a-marketing-infrastructure-handover-actually-looks-like",
+  },
+  {
+    q: "Growth is happening but we can't explain what's driving it. Is that actually a problem?",
+    a: "Yes — because what you can't explain, you can't protect, replicate, or scale. If your growth is driven by factors you don't understand, you have no way of doubling down on what's working or catching the early signs of what's about to stop. Visibility is infrastructure too.",
+    slug: "/blog/why-unexplained-growth-is-a-risk-not-a-success",
+  },
+  {
+    q: "How do you build a marketing function that doesn't depend on one person to run it?",
+    a: "By replacing person-dependent knowledge with documented systems. Every process, decision framework, and playbook lives in a place the whole team can access and follow. When the person changes, the system stays. That's what we build — and it's exactly what most growing companies are missing.",
+    slug: "/blog/how-to-build-a-marketing-function-that-doesnt-depend-on-one-person",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+
 const Leader = () => {
-  useCanonical("/services/marketing-os/leader");
   const { openPopup } = useContactPopup();
   return (
     <>
+      <SEOHead
+        title="Marketing OS: Leader — Close the Lifecycle Gaps — That Works"
+        description="Established business with invisible churn or stagnating pipeline? We map your full customer lifecycle, identify exactly where customers drop off, and close the gaps."
+        canonical="/services/marketing-os/leader"
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Marketing OS: Leader",
+            "serviceType": "Customer Lifecycle & Retention",
+            "provider": { "@type": "Organization", "name": "That Works", "url": "https://thatworksco.com" },
+            "description": "Marketing health diagnostic, customer lifecycle mapping, churn risk identification, and a retention recovery roadmap for established businesses.",
+            "url": "https://thatworksco.com/services/marketing-os/leader"
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thatworksco.com" },
+              { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://thatworksco.com/services" },
+              { "@type": "ListItem", "position": 3, "name": "Marketing OS: Leader", "item": "https://thatworksco.com/services/marketing-os/leader" }
+            ]
+          },
+          faqJsonLd,
+        ]}
+      />
       <Nav />
 
       <StageSwitcher active="leader" />
@@ -93,19 +159,6 @@ const Leader = () => {
         </div>
       </section>
 
-      {/* THE PROBLEM */}
-      <section className="fri-problem">
-        <div className="fri-problem-inner">
-          <h2>High volume and low visibility is not a success story.</h2>
-          <p>
-            You're winning customers. You're just not keeping them the way you should. Lifecycle
-            marketing is an afterthought. Retention has no system. Expansion revenue is accidental.
-            And when leadership asks what marketing is actually contributing, the answer takes three
-            people and a week to produce. That's not a team problem. That's an infrastructure problem.
-          </p>
-        </div>
-      </section>
-
       {/* TIER CARDS */}
       <section className="zto-tiers">
         <div className="zto-tiers-inner leader-tiers">
@@ -116,7 +169,6 @@ const Leader = () => {
               <h3>{t.name}</h3>
               <div className="zto-tier-meta">
                 <span>{t.duration}</span>
-                <span className="zto-tier-price">{t.price}</span>
               </div>
               <p className="zto-tier-tagline">{t.tagline}</p>
               <div className="zto-tier-section">
@@ -137,19 +189,6 @@ const Leader = () => {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* RETAINER STRIP */}
-      <section className="zto-retainer">
-        <div className="zto-retainer-inner">
-          <p>
-            All engagements include an optional ongoing retainer: <strong>£2,500–£4,000/month</strong>.
-            Strategic oversight, not execution. A thinking partner as you grow.
-          </p>
-          <p className="leader-retainer-note">
-            Particularly valuable for Leaders who want a senior strategic voice without the cost of a full-time CMO.
-          </p>
         </div>
       </section>
 
@@ -204,7 +243,18 @@ const Leader = () => {
           <button className="btn-primary" onClick={() => openPopup("marketing-os-leader")}>Book a Diagnostic Call</button>
           <p className="cta-note">20 minutes. No pitch. You'll leave with clarity regardless.</p>
         </div>
-      </section>      {/* FOOTER */}
+      </section>
+
+      {/* FAQ */}
+      <section className="mos-faq">
+        <div className="mos-faq-inner">
+          <div className="section-label">Common questions</div>
+          <h2>Everything you need to know</h2>
+          <FaqAccordion faqs={faqs} />
+        </div>
+      </section>
+
+      {/* FOOTER */}
       <footer className="site-footer">
         <div className="footer-inner">
           <div className="footer-brand">

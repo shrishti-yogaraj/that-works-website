@@ -1,6 +1,7 @@
 import Nav from "@/components/Nav";
 import { useContactPopup } from "@/contexts/ContactPopupContext";
-import useCanonical from "@/hooks/useCanonical";
+import SEOHead from "@/components/SEOHead";
+import FaqAccordion from "@/components/FaqAccordion";
 
 const deliverables = [
   { name: "Customer Lifecycle Map", desc: "Every stage from first touch to advocacy, mapped, measured, and with clear ownership at each step." },
@@ -11,11 +12,74 @@ const deliverables = [
   { name: "Sales Enablement Suite", desc: "Case studies, one-pagers, battle cards, proposal templates. Everything your team needs to win and retain." },
 ];
 
+const faqs = [
+  {
+    q: "We're focused on acquiring new customers — why should we invest in retention now?",
+    a: "Because every customer you lose makes acquisition more expensive. If your retention rate is poor, you're filling a leaky bucket — every pound you spend on growth is partially funding churn. Fixing retention at the system level is almost always a higher ROI investment than spending more on acquisition, and most businesses leave it too late.",
+    slug: "/blog/why-b2b-retention-investment-outperforms-acquisition-spend",
+  },
+  {
+    q: "What does a retention marketing system actually look like?",
+    a: "It's the infrastructure that keeps customers engaged, informed, and expanding after they've signed. That includes onboarding sequences, lifecycle email flows, adoption touchpoints, renewal and expansion triggers, NPS feedback loops, and the reporting that tells you where customers are dropping off before they churn.",
+    slug: "/blog/what-does-a-b2b-retention-marketing-system-look-like",
+  },
+  {
+    q: "How do you reduce churn without just adding more touchpoints?",
+    a: "More touchpoints without better signals is just noise. We start by identifying where in the customer journey churn is actually happening — then build interventions that address the real cause. Sometimes that's an onboarding gap. Sometimes it's a product adoption problem. The system targets the root cause, not the symptom.",
+    slug: "/blog/how-to-reduce-b2b-churn-without-adding-more-touchpoints",
+  },
+  {
+    q: "How do you measure whether retention is working?",
+    a: "The primary metrics are net revenue retention (NRR), churn rate, and expansion revenue. Below those, you're tracking product or service adoption rates, NPS trends, and engagement signals in your lifecycle flows. We build the reporting dashboard into the retention system so you always know where you stand.",
+    slug: "/blog/how-to-measure-b2b-retention-marketing-performance",
+  },
+  {
+    q: "At what stage does it make sense to build a retention system?",
+    a: "As soon as you have customers worth keeping — which for most B2B businesses is earlier than they think. If you have 10+ active clients and no systematic way of measuring their health, engaging them, or identifying expansion opportunities, you already need this.",
+    slug: "/blog/when-should-b2b-companies-build-a-retention-marketing-system",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+
 const RetentionService = () => {
-  useCanonical("/services/retention");
   const { openPopup } = useContactPopup();
   return (
     <>
+      <SEOHead
+        title="Customer Retention Systems — That Works"
+        description="Acquisition gets the credit. Retention builds the business. We design the systems that keep customers engaged, equip your sales team to close, and drive net revenue retention."
+        canonical="/services/retention"
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Customer Retention System",
+            "serviceType": "Retention Marketing",
+            "provider": { "@type": "Organization", "name": "That Works", "url": "https://thatworksco.com" },
+            "description": "Systems that keep customers engaged, equip your sales team to close, and turn happy customers into your best growth channel.",
+            "url": "https://thatworksco.com/services/retention"
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thatworksco.com" },
+              { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://thatworksco.com/services" },
+              { "@type": "ListItem", "position": 3, "name": "Retention", "item": "https://thatworksco.com/services/retention" }
+            ]
+          },
+          faqJsonLd,
+        ]}
+      />
       <Nav />
 
       {/* HERO */}
@@ -27,18 +91,6 @@ const RetentionService = () => {
           <p className="br-hero-body">
             Acquisition gets the credit. Retention builds the business. That Works designs the systems that keep customers engaged, equip your sales team to close, and turn happy customers into your best growth channel.
           </p>
-        </div>
-      </section>
-
-      {/* THE PROBLEM */}
-      <section className="br-problem">
-        <div className="br-problem-inner">
-          <div className="br-problem-block">
-            <h2>You're losing revenue you've already earned.</h2>
-            <p>
-              Most businesses pour budget into acquisition and treat retention as an afterthought. No onboarding system. No lifecycle sequences. No expansion triggers. Sales teams wing it with whatever collateral exists. The result: churn you could have prevented, expansion revenue left on the table, and a sales process that depends entirely on individual reps being good. That's not a people problem. It's an infrastructure problem.
-            </p>
-          </div>
         </div>
       </section>
 
@@ -101,7 +153,18 @@ const RetentionService = () => {
           </div>
           <p className="cta-note">No pitch. No pressure. Just clarity.</p>
         </div>
-      </section>      {/* FOOTER */}
+      </section>
+
+      {/* FAQ */}
+      <section className="mos-faq">
+        <div className="mos-faq-inner">
+          <div className="section-label">Common questions</div>
+          <h2>Everything you need to know</h2>
+          <FaqAccordion faqs={faqs} />
+        </div>
+      </section>
+
+      {/* FOOTER */}
       <footer className="site-footer">
         <div className="footer-inner">
           <div className="footer-brand">

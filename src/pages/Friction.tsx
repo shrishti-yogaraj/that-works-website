@@ -1,13 +1,13 @@
 import Nav from "@/components/Nav";
 import StageSwitcher from "@/components/StageSwitcher";
 import { useContactPopup } from "@/contexts/ContactPopupContext";
-import useCanonical from "@/hooks/useCanonical";
+import SEOHead from "@/components/SEOHead";
+import FaqAccordion from "@/components/FaqAccordion";
 
 const tiers = [
   {
     name: "Foundation Sprint",
     duration: "4 weeks",
-    price: "£8–12k",
     tagline: "Stop funding the fog. Start seeing what works.",
     whoFor: "Founder or head of marketing where spend is up and results are flat, nobody can explain why.",
     deliverables: [
@@ -23,9 +23,8 @@ const tiers = [
   {
     name: "Engine Build",
     duration: "8 weeks",
-    price: "£18–25k",
     tagline: "Your marketing isn't broken. It was never built.",
-    whoFor: "Business doing £200k–£1M with disconnected tools, inconsistent messaging, and unpredictable pipeline.",
+    whoFor: "Early-stage business with disconnected tools, inconsistent messaging, and unpredictable pipeline.",
     deliverables: [
       "Full marketing audit and gap analysis",
       "Rebuilt messaging framework",
@@ -40,9 +39,8 @@ const tiers = [
   {
     name: "Full OS",
     duration: "12 weeks",
-    price: "£35–50k",
     tagline: "Burn the patchwork. Build the engine.",
-    whoFor: "Business at £500k–£2M that's been through agencies, freelancers, and internal hires, and none of it has stuck.",
+    whoFor: "Growing business that's been through agencies, freelancers, and internal hires, and none of it has stuck.",
     deliverables: [
       "Complete brand rebuild",
       "Full inbound overhaul",
@@ -72,11 +70,79 @@ const deliverableTiles = [
   "Skill map", "Handover session", "30-day check-in",
 ];
 
+const faqs = [
+  {
+    q: "What do we actually own at the end of the engagement?",
+    a: "Everything. Every document, SOP, playbook, tool setup, and strategy is yours. We don't retain access, we don't lock anything behind a retainer, and you don't need us to run what we've built.",
+    slug: "/blog/what-you-own-after-a-marketing-infrastructure-engagement",
+  },
+  {
+    q: "How is That Works different from hiring a fractional CMO?",
+    a: "A fractional CMO advises. We build. You get a complete, documented marketing system — tools configured, processes written, team trained — not strategic guidance that leaves the moment the contract ends.",
+    slug: "/blog/fractional-cmo-vs-marketing-infrastructure-build",
+  },
+  {
+    q: "Do you work with us ongoing, or is this a one-time engagement?",
+    a: "The engagement has a defined end. We're not selling a retainer — we're selling a build. There's an optional Engine Tune-Up retainer for strategic oversight after the engagement closes, but that's your choice, not ours.",
+    slug: "/blog/why-our-engagements-have-a-defined-end",
+  },
+  {
+    q: "What does the handover process look like?",
+    a: "The final week of every engagement is dedicated to handover — a working session with your team, full documentation walkthrough, and a 30-day check-in after we're done.",
+    slug: "/blog/what-a-marketing-infrastructure-handover-actually-looks-like",
+  },
+  {
+    q: "We have a team, budget, and activity — but revenue isn't growing. How do you diagnose that?",
+    a: "The Friction stage almost always points to one of three root causes: the wrong ICP, a broken conversion layer, or activity without a system connecting it to revenue. We start with a full audit — what exists, what's broken, what's missing — before recommending anything. We fix the right thing, not the most visible thing.",
+    slug: "/blog/why-marketing-activity-doesnt-always-produce-revenue",
+  },
+  {
+    q: "We already have tools and processes in place. Do we start again or work with what we have?",
+    a: "We audit what exists first. If it's working, we keep it. If it's creating friction, we replace it. We never rip out infrastructure for the sake of it — but we also won't leave a broken system in place just because it's familiar. You'll know exactly what stays, what changes, and why before we touch anything.",
+    slug: "/blog/how-to-fix-marketing-infrastructure-without-starting-from-scratch",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+
 const Friction = () => {
-  useCanonical("/services/marketing-os/friction");
   const { openPopup } = useContactPopup();
   return (
     <>
+      <SEOHead
+        title="Marketing OS: Friction — Fix What's Breaking — That Works"
+        description="Marketing spend up, results flat, pipeline unpredictable? We run a full audit, diagnose exactly where the break is, and rebuild from the ground up."
+        canonical="/services/marketing-os/friction"
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Marketing OS: Friction",
+            "serviceType": "GTM Audit & Rebuild",
+            "provider": { "@type": "Organization", "name": "That Works", "url": "https://thatworksco.com" },
+            "description": "Full marketing audit, ICP refinement, attribution framework, and a recovery roadmap for businesses where spend is up but results are flat.",
+            "url": "https://thatworksco.com/services/marketing-os/friction"
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thatworksco.com" },
+              { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://thatworksco.com/services" },
+              { "@type": "ListItem", "position": 3, "name": "Marketing OS: Friction", "item": "https://thatworksco.com/services/marketing-os/friction" }
+            ]
+          },
+          faqJsonLd,
+        ]}
+      />
       <Nav />
 
       <StageSwitcher active="friction" />
@@ -94,18 +160,6 @@ const Friction = () => {
         </div>
       </section>
 
-      {/* THE PROBLEM */}
-      <section className="fri-problem">
-        <div className="fri-problem-inner">
-          <h2>Stop funding the fog.</h2>
-          <p>
-            You know something is wrong but you can't name it. The spend is up, the results are flat,
-            and every conversation about marketing ends in frustration. That's not a channel problem.
-            That's a foundation problem, and it has a very specific fix.
-          </p>
-        </div>
-      </section>
-
       {/* TIER CARDS */}
       <section className="zto-tiers">
         <div className="zto-tiers-inner">
@@ -115,7 +169,6 @@ const Friction = () => {
               <h3>{t.name}</h3>
               <div className="zto-tier-meta">
                 <span>{t.duration}</span>
-                <span className="zto-tier-price">{t.price}</span>
               </div>
               <p className="zto-tier-tagline">{t.tagline}</p>
               <div className="zto-tier-section">
@@ -136,16 +189,6 @@ const Friction = () => {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* RETAINER STRIP */}
-      <section className="zto-retainer">
-        <div className="zto-retainer-inner">
-          <p>
-            All engagements include an optional ongoing retainer: <strong>£2,500–£4,000/month</strong>.
-            Strategic oversight, not execution. A thinking partner as you grow.
-          </p>
         </div>
       </section>
 
@@ -187,7 +230,18 @@ const Friction = () => {
           <button className="btn-primary" onClick={() => openPopup("marketing-os-friction")}>Book a Diagnostic Call</button>
           <p className="cta-note">20 minutes. No pitch. You'll leave with clarity regardless.</p>
         </div>
-      </section>      {/* FOOTER */}
+      </section>
+
+      {/* FAQ */}
+      <section className="mos-faq">
+        <div className="mos-faq-inner">
+          <div className="section-label">Common questions</div>
+          <h2>Everything you need to know</h2>
+          <FaqAccordion faqs={faqs} />
+        </div>
+      </section>
+
+      {/* FOOTER */}
       <footer className="site-footer">
         <div className="footer-inner">
           <div className="footer-brand">
