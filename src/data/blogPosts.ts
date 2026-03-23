@@ -298,7 +298,7 @@ If your positive reply rate is below 3%, the problem is almost always research d
 
 Cold outreach isn't dead. Lazy outreach is dead. The bar has risen, and the companies that clear it, with genuine research, sharp writing, and intelligent automation, are building pipeline that their competitors can't match.
 
-The investment in depth pays for itself many times over. One well-researched email that starts a relationship with a £100K+ account is worth more than 10,000 generic blasts that generate nothing but unsubscribes.
+The investment in depth pays for itself many times over. One well-researched email that starts a relationship with a $100K+ account is worth more than 10,000 generic blasts that generate nothing but unsubscribes.
 
 Do the work. Write the email. Start the conversation.`,
     author: "That Works Team",
@@ -315,7 +315,7 @@ Do the work. Write the email. Start the conversation.`,
 
 If you Google "HubSpot vs Salesforce," you'll find approximately 4,000 comparison articles that all say the same thing: HubSpot is easier to use, Salesforce is more powerful, and "it depends on your needs." Helpful.
 
-Let's try something different. After implementing both platforms across companies ranging from pre-seed to £50M+ ARR, here's what actually matters, and what nobody tells you.
+Let's try something different. After implementing both platforms across companies ranging from pre-seed to $50M+ ARR, here's what actually matters, and what nobody tells you.
 
 ## The Real Question
 
@@ -333,7 +333,7 @@ Because the wrong CRM at the wrong stage doesn't just cost money. It costs veloc
 
 **Usability.** Your reps will actually use it. This sounds trivial, but CRM adoption is the #1 predictor of CRM ROI. A CRM that reps avoid is a CRM that produces garbage data. HubSpot's UI is clean enough that reps don't hate it, and that matters more than any feature comparison.
 
-**Cost at early stage.** HubSpot's free tier is legitimate. Starter plans are affordable. You can run a solid GTM operation for a 10-person sales team for under £1,000/month.
+**Cost at early stage.** HubSpot's free tier is legitimate. Starter plans are affordable. You can run a solid GTM operation for a 10-person sales team for under $1,000/month.
 
 ### Where It Struggles
 
@@ -359,7 +359,7 @@ Because the wrong CRM at the wrong stage doesn't just cost money. It costs veloc
 
 ### Where It Struggles
 
-**Implementation complexity.** Salesforce is not a product you "set up." It's a product you "implement." That means consultants, architects, and ongoing admin resources. Budget 3-6 months and £20-50K for a proper initial implementation. Budget £50-100K+/year for ongoing admin and optimisation.
+**Implementation complexity.** Salesforce is not a product you "set up." It's a product you "implement." That means consultants, architects, and ongoing admin resources. Budget 3-6 months and $20-50K for a proper initial implementation. Budget $50-100K+/year for ongoing admin and optimisation.
 
 **Usability.** Let's be honest: most Salesforce instances are a mess. Not because the platform is bad, but because it's so flexible that companies create overly complex configurations that reps hate using. The result: poor adoption, dirty data, and a CRM that costs a fortune but delivers mediocre insight.
 
@@ -453,7 +453,7 @@ Effective lead scoring operates across three dimensions: **Fit**, **Intent**, an
 Fit measures how well a lead matches your Ideal Customer Profile. This is largely demographic and firmographic:
 
 **Company attributes:**
-- Revenue range (e.g., £5M-£50M = 25 points, outside range = 0)
+- Revenue range (e.g., $5M-$50M = 25 points, outside range = 0)
 - Employee count (e.g., 50-500 = 20 points)
 - Industry (target industries = 20 points, adjacent = 10, irrelevant = 0)
 - Geography (serviceable markets = 15 points)
@@ -608,11 +608,11 @@ This person burns out within 18 months, the systems decay, and the company wonde
 
 Here's what we recommend:
 
-**At £1-5M ARR (1 person):** A senior marketing ops manager who owns the tech stack, data model, and core reporting. They should spend 50% of their time on infrastructure and 50% on campaign operations support.
+**At $1-5M ARR (1 person):** A senior marketing ops manager who owns the tech stack, data model, and core reporting. They should spend 50% of their time on infrastructure and 50% on campaign operations support.
 
-**At £5-20M ARR (2-3 people):** A marketing ops lead plus a marketing automation specialist and a data/analytics specialist. The lead focuses on strategy and architecture. The specialists handle execution.
+**At $5-20M ARR (2-3 people):** A marketing ops lead plus a marketing automation specialist and a data/analytics specialist. The lead focuses on strategy and architecture. The specialists handle execution.
 
-**At £20M+ ARR (4-6+ people):** A full team with dedicated roles for marketing automation, data management, analytics, and systems administration. Led by a Director or VP of Marketing Operations who sits in marketing leadership.
+**At $20M+ ARR (4-6+ people):** A full team with dedicated roles for marketing automation, data management, analytics, and systems administration. Led by a Director or VP of Marketing Operations who sits in marketing leadership.
 
 ## The Skills to Look For
 
@@ -835,7 +835,7 @@ Make is a visual workflow automation platform that represents workflows as flowc
 
 **HTTP/API module.** Make's generic HTTP module is excellent. You can call any API, handle authentication, parse responses, and use the data downstream. This makes it possible to integrate with tools that don't have a native Make module.
 
-**Cost efficiency.** Make's pricing is based on operations, and it's significantly cheaper than Zapier at volume. The same 50,000-operation workflow that costs hundreds on Zapier might cost £50-80 on Make.
+**Cost efficiency.** Make's pricing is based on operations, and it's significantly cheaper than Zapier at volume. The same 50,000-operation workflow that costs hundreds on Zapier might cost $50-80 on Make.
 
 **Error handling.** Make has built-in error handling routes. You can define what happens when a step fails, retry, skip, alert, or route to an alternative path. Zapier's error handling is primitive by comparison.
 
@@ -871,7 +871,7 @@ Clay is fundamentally different from Zapier and Make. It's not a general-purpose
 
 **Not a general-purpose automation tool.** You can't use Clay to sync your CRM with your billing system or automate your internal workflows. It's specifically for lead gen and outreach.
 
-**Cost.** Clay's pricing includes credits for data provider calls, and costs add up fast. A serious lead gen operation can easily spend £500-1,000/month on Clay alone, before data provider costs.
+**Cost.** Clay's pricing includes credits for data provider calls, and costs add up fast. A serious lead gen operation can easily spend $500-1,000/month on Clay alone, before data provider costs.
 
 **Scale limitations.** Clay works beautifully for hundreds or low thousands of prospects. At tens of thousands, the spreadsheet interface becomes unwieldy and processing times increase significantly.
 
@@ -1071,7 +1071,7 @@ That's not an ICP. That's a market. An ICP should be specific enough that your t
 A useful ICP adds layers of specificity:
 
 - **Industry vertical:** Not just "SaaS" but "vertical SaaS in healthcare, fintech, or logistics"
-- **Growth stage:** Not just "50-500 employees" but "Series A-C companies that have raised £5M-£50M and are growing headcount 20%+ YoY"
+- **Growth stage:** Not just "50-500 employees" but "Series A-C companies that have raised $5M-$50M and are growing headcount 20%+ YoY"
 - **Organisational maturity:** "Has at least one dedicated marketing hire but no marketing ops function"
 - **Technology indicators:** "Uses HubSpot or Salesforce, has implemented at least one marketing automation tool"
 - **Pain signals:** "Currently running outbound manually, experiencing declining response rates"
@@ -1086,7 +1086,7 @@ Run this analysis:
 2. Find the common attributes across these customers
 3. That cluster of attributes is your ICP
 
-If your best customers are £5-20M revenue professional services firms, but your ICP says "enterprise technology companies with 1,000+ employees," you have a disconnect. Your ICP is aspirational, not evidential.
+If your best customers are $5-20M revenue professional services firms, but your ICP says "enterprise technology companies with 1,000+ employees," you have a disconnect. Your ICP is aspirational, not evidential.
 
 ### Mistake 3: No Negative Definition
 
@@ -1292,7 +1292,7 @@ Here's our honest assessment of the major players and how to combine them into a
 - Enterprise-grade compliance and security
 
 **Weaknesses:**
-- Expensive. Enterprise contracts typically start at £15-25K/year and go much higher.
+- Expensive. Enterprise contracts typically start at $15-25K/year and go much higher.
 - Contract structures are rigid, annual commitments with limited flexibility
 - Overkill for companies with fewer than 10 sales reps
 - Data accuracy, while good, isn't dramatically better than combining Apollo + Lusha for most use cases
@@ -1305,7 +1305,7 @@ Here's our honest assessment of the major players and how to combine them into a
 
 **Apollo** (free/starter) + **NeverBounce** (email verification)
 
-Total cost: £50-150/month
+Total cost: $50-150/month
 
 Apollo gives you breadth. NeverBounce catches the 15-25% of emails that would bounce. Simple, affordable, effective enough.
 
@@ -1313,7 +1313,7 @@ Apollo gives you breadth. NeverBounce catches the 15-25% of emails that would bo
 
 **Clay** + **Apollo** + **Lusha** + **NeverBounce**
 
-Total cost: £500-1,200/month
+Total cost: $500-1,200/month
 
 Clay orchestrates waterfall enrichment: try Apollo first for email and company data, fall back to Lusha for direct dials and missing emails. Verify all emails through NeverBounce. This combination gives you 80-90% coverage at a fraction of ZoomInfo's cost.
 
@@ -1321,7 +1321,7 @@ Clay orchestrates waterfall enrichment: try Apollo first for email and company d
 
 **ZoomInfo** + **Clay** + **Clearbit**
 
-Total cost: £2,000-5,000/month
+Total cost: $2,000-5,000/month
 
 ZoomInfo as your primary database. Clay for orchestrating enrichment on records ZoomInfo misses. Clearbit for real-time inbound enrichment and technographic data. This is the premium stack, and it delivers premium results.
 
@@ -1372,7 +1372,7 @@ The agency dependency model is broken for everyone involved, even the agency.
 
 When your marketing infrastructure lives inside an agency's accounts, managed by their team, documented in their systems, you're hostage. You can't change agencies without rebuilding everything. You can't bring capabilities in-house without a painful knowledge transfer. You can't even evaluate whether the agency is doing good work, because you don't fully understand what they've built.
 
-We've taken over from agencies where the client had been paying £15,000/month for two years and couldn't explain what they were getting. The agency ran campaigns, sent reports, and joined monthly calls. But the client had no idea how the systems worked, what data was being used, or why certain decisions were being made.
+We've taken over from agencies where the client had been paying $15,000/month for two years and couldn't explain what they were getting. The agency ran campaigns, sent reports, and joined monthly calls. But the client had no idea how the systems worked, what data was being used, or why certain decisions were being made.
 
 That's not a partnership. That's a subscription to someone else's expertise with no equity building in your own.
 
@@ -1496,7 +1496,7 @@ Outbound is the motion of **proactive targeting**. You identify accounts, find t
 
 **When it works best:**
 - You're pre-product-market fit and need fast feedback loops
-- Your ACV is above £5k and the buying committee is identifiable
+- Your ACV is above $5k and the buying committee is identifiable
 - You have fewer than 5,000 total addressable accounts
 
 **When it breaks:**
@@ -1556,10 +1556,10 @@ The right approach is to **sequence by stage:**
 
 | Stage | Primary Motion | Secondary Motion | Avoid |
 | --- | --- | --- | --- |
-| Pre-PMF (£0-500k ARR) | Outbound | None, focus | Partner, Inbound |
-| Early Traction (£500k-2M) | Outbound | Inbound (start building) | Premature partner program |
-| Growth (£2M-10M) | Inbound + Outbound | Partner (begin formalising) | Spreading too thin |
-| Scale (£10M+) | All three, staffed properly |, | Running any motion understaffed |
+| Pre-PMF ($0-500k ARR) | Outbound | None, focus | Partner, Inbound |
+| Early Traction ($500k-2M) | Outbound | Inbound (start building) | Premature partner program |
+| Growth ($2M-10M) | Inbound + Outbound | Partner (begin formalising) | Spreading too thin |
+| Scale ($10M+) | All three, staffed properly |, | Running any motion understaffed |
 
 ### Why Outbound First?
 
@@ -2076,7 +2076,7 @@ This is the playbook. Thirty days. Four phases. By the end, you'll have a repeat
 
 Don't skip this. Every failed outbound program we've seen skipped the prerequisites.
 
-- **ICP definition**: You need a written, specific Ideal Customer Profile. Not "B2B SaaS companies." More like: "Series A-C B2B SaaS companies, 50-300 employees, selling to enterprise, based in US/UK, using HubSpot or Salesforce, with at least 3 SDRs."
+- **ICP definition**: You need a written, specific Ideal Customer Profile. Not "B2B SaaS companies." More like: "Series A-C B2B SaaS companies, 50-300 employees, selling to enterprise, using HubSpot or Salesforce, with at least 3 SDRs."
 - **Messaging foundation**: What problem do you solve? For whom? Why now? If you can't answer these in one sentence each, you're not ready.
 - **Technical setup**: Email domains warmed, LinkedIn profiles optimised, CRM configured. This takes 2 weeks minimum. Start now.
 

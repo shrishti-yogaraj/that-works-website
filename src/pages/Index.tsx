@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import Nav from "@/components/Nav";
 import { useContactPopup } from "@/contexts/ContactPopupContext";
-import useCanonical from "@/hooks/useCanonical";
+import SEOHead from "@/components/SEOHead";
 
 const testimonials = [
   {
@@ -15,7 +15,7 @@ const testimonials = [
     accent: "var(--orange)",
   },
   {
-    quote: "We were a £3M business behaving like a £300k startup. No systems, no attribution, no idea what was working. The Scale engagement gave us the infrastructure we should have built two years ago.",
+    quote: "We were a fast-growing business behaving like an early-stage startup. No systems, no attribution, no idea what was working. The Scale engagement gave us the infrastructure we should have built two years ago.",
     highlight: "Revenue reporting alone saved us 12 hours a week.",
     name: "Rohan Kapoor",
     role: "CEO",
@@ -69,8 +69,8 @@ const testimonials = [
     accent: "var(--yellow)",
   },
   {
-    quote: "We're a £15M business. Marketing was producing output but nobody could prove what it contributed. That Works rebuilt the entire operation from attribution to lifecycle to board reporting.",
-    highlight: "We now operate like a £50M company.",
+    quote: "We're a large business. Marketing was producing output but nobody could prove what it contributed. That Works rebuilt the entire operation from attribution to lifecycle to board reporting.",
+    highlight: "We now operate like a business twice our size.",
     name: "Tom Bassett",
     role: "CRO",
     company: "Harlow Ventures",
@@ -134,7 +134,6 @@ const extended = [...testimonials.slice(-PREPEND), ...testimonials, ...testimoni
 const GAP = 24;
 
 const Index = () => {
-  useCanonical("/");
   const [activeStage, setActiveStage] = useState(0);
   const [tIndex, setTIndex] = useState(PREPEND);
   const [noTransition, setNoTransition] = useState(false);
@@ -179,6 +178,32 @@ const Index = () => {
 
   return (
     <>
+      <SEOHead
+        title="High Performance GTM Systems for B2B — That Works"
+        description="We design and implement full-funnel marketing infrastructure for B2B companies. Strategy, infrastructure, execution — designed, implemented, yours forever."
+        canonical="/"
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": [
+              { "@type": "Service", "position": 1, "provider": { "@type": "Organization", "name": "That Works" }, "name": "Brand System & Positioning", "description": "We build the whole brand system — identity, positioning, voice and a full message bank — and hand it over.", "url": "https://thatworksco.com/services/branding" },
+              { "@type": "Service", "position": 2, "provider": { "@type": "Organization", "name": "That Works" }, "name": "Inbound Marketing Infrastructure", "description": "An inbound system that attracts the right buyers, captures them, and moves them toward a conversation without your team having to chase.", "url": "https://thatworksco.com/services/inbound" },
+              { "@type": "Service", "position": 3, "provider": { "@type": "Organization", "name": "That Works" }, "name": "B2B Lead Generation System", "description": "A custom-built lead generation engine that scrapes, enriches, researches and delivers fully personalised outreach at scale.", "url": "https://thatworksco.com/services/lead-gen" },
+              { "@type": "Service", "position": 4, "provider": { "@type": "Organization", "name": "That Works" }, "name": "Customer Retention System", "description": "Systems that keep customers engaged, equip your sales team to close, and turn happy customers into your best growth channel.", "url": "https://thatworksco.com/services/retention" }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              { "@type": "Question", "name": "What does That Works do?", "acceptedAnswer": { "@type": "Answer", "text": "That Works builds full-funnel GTM and lead generation systems for B2B companies — designed, implemented, and handed over to you." } },
+              { "@type": "Question", "name": "Who is That Works for?", "acceptedAnswer": { "@type": "Answer", "text": "We work with B2B companies from 0 to 1 through to scale — typically founders and marketing leads who need systems, not just strategy." } },
+              { "@type": "Question", "name": "How do I get started?", "acceptedAnswer": { "@type": "Answer", "text": "Book a 20-minute diagnostic call at thatworksco.com. We'll figure out where you are and what you need." } }
+            ]
+          }
+        ]}
+      />
       <Nav />
 
       {/* HERO */}

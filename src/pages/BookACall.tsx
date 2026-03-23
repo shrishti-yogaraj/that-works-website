@@ -1,12 +1,12 @@
 import { useState } from "react";
 import Nav from "@/components/Nav";
-import useCanonical from "@/hooks/useCanonical";
+import SEOHead from "@/components/SEOHead";
 
 const stageOptions = [
   "Pre-revenue",
-  "Early revenue (under £500k)",
-  "Growing (£500k–£2M)",
-  "Scaling (£2M+)",
+  "Early revenue",
+  "Growing",
+  "Scaling",
   "I just need pipeline fast",
 ];
 
@@ -19,7 +19,6 @@ const blockerOptions = [
 ];
 
 const BookACall = () => {
-  useCanonical("/book-a-call");
   const [form, setForm] = useState({ name: "", email: "", company: "", stage: "", blocker: "" });
   const [submitted, setSubmitted] = useState(false);
   const [phone, setPhone] = useState("");
@@ -39,6 +38,19 @@ const BookACall = () => {
 
   return (
     <>
+      <SEOHead
+        title="Book a Diagnostic Call — That Works"
+        description="Book a free 20-minute diagnostic call with That Works. We'll figure out exactly where you are, what's breaking, and what you need to build a marketing function that runs."
+        canonical="/book-a-call"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thatworksco.com" },
+            { "@type": "ListItem", "position": 2, "name": "Book a Call", "item": "https://thatworksco.com/book-a-call" }
+          ]
+        }}
+      />
       <Nav />
 
       <section className="bac-section">
@@ -165,7 +177,7 @@ const BookACall = () => {
                     type="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    placeholder="+44 7700 000000"
+                    placeholder="+91 98765 43210"
                     maxLength={20}
                     required
                   />

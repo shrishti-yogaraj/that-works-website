@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import Nav from "@/components/Nav";
 import { getPostBySlug, getRecentPosts } from "@/data/blogPosts";
-import useCanonical from "@/hooks/useCanonical";
+import SEOHead from "@/components/SEOHead";
 
 const categoryColor: Record<string, string> = {
   "GTM & Growth": "var(--yellow)",
@@ -175,6 +175,32 @@ const BlogPost = () => {
 
   return (
     <>
+      <SEOHead
+        title={`${post.title} — That Works`}
+        description={post.excerpt}
+        canonical={`/blog/${post.slug}`}
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": post.title,
+            "description": post.excerpt,
+            "author": { "@type": "Organization", "name": "That Works" },
+            "publisher": { "@type": "Organization", "name": "That Works", "logo": { "@type": "ImageObject", "url": "https://thatworksco.com/logo.svg" } },
+            "datePublished": post.publishedAt,
+            "url": `https://thatworksco.com/blog/${post.slug}`
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thatworksco.com" },
+              { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://thatworksco.com/blog" },
+              { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://thatworksco.com/blog/${post.slug}` }
+            ]
+          }
+        ]}
+      />
       <Nav />
       <article className="blogpost-page">
         <header className="blogpost-header">

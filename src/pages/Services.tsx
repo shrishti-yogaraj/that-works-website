@@ -1,13 +1,25 @@
 import Nav from "@/components/Nav";
 import { useContactPopup } from "@/contexts/ContactPopupContext";
 import { Link } from "react-router-dom";
-import useCanonical from "@/hooks/useCanonical";
+import SEOHead from "@/components/SEOHead";
 
 const Services = () => {
-  useCanonical("/services");
   const { openPopup } = useContactPopup();
   return (
     <>
+      <SEOHead
+        title="GTM Services — Find Your Entry Point — That Works"
+        description="Two ways in. One outcome: a marketing function that runs without us. Choose Marketing OS for your growth stage, or a standalone specialist service."
+        canonical="/services"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thatworksco.com" },
+            { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://thatworksco.com/services" }
+          ]
+        }}
+      />
       <Nav />
 
       {/* HERO */}

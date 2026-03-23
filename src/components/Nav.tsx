@@ -10,6 +10,7 @@ const Nav = () => {
           <li><Link to="/approach">How It Works</Link></li>
           <li><Link to="/services">Services</Link></li>
           <li><Link to="/blog">Blog</Link></li>
+          <li><Link to="/faq">FAQ</Link></li>
         </ul>
         <Link to="/book-a-call" className="nav-cta">Book a Call</Link>
       </div>
