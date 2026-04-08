@@ -308,10 +308,11 @@ export const blockContent = defineType({
       title: "Divider",
       fields: [
         {
-          name: "_placeholder",
+          name: "style",
+          title: "Style",
           type: "string",
           hidden: true,
-          initialValue: "divider",
+          initialValue: "default",
         },
       ],
       preview: {
@@ -362,7 +363,5 @@ export const blockContent = defineType({
       },
     }),
 
-    // ── Table ─────────────────────────────────────────────────────────────────
-    defineArrayMember({ type: "table" }),
   ],
 });
