@@ -1,6 +1,12 @@
 import { ViteReactSSG } from "vite-react-ssg";
 import { routes } from "./routes";
+import sanityPostsRaw from "./data/sanityPosts.json";
 import { blogPosts } from "./data/blogPosts";
+
+// Use Sanity posts if available (populated by prebuild), else fall back to static data
+const activePosts = (sanityPostsRaw as Array<{ slug: string; title: string; excerpt: string; publishedAt: string; featured?: boolean }>).length > 0
+  ? (sanityPostsRaw as Array<{ slug: string; title: string; excerpt: string; publishedAt: string; featured?: boolean }>)
+  : blogPosts.map((p) => ({ slug: p.slug, title: p.title, excerpt: p.excerpt, publishedAt: p.publishedAt, featured: p.featured ?? false }));
 
 /* Global: variables, fonts, base typography, shared utilities */
 import "./styles/global.css";
@@ -179,7 +185,7 @@ function getMetaForPath(path: string): RouteMeta | null {
   // Dynamic blog post routes
   if (path.startsWith("/blog/")) {
     const slug = path.replace("/blog/", "");
-    const post = blogPosts.find((p) => p.slug === slug);
+    const post = activePosts.find((p) => p.slug === slug);
     if (post) {
       return {
         title: `${post.title} — That Works`,
@@ -245,7 +251,7 @@ function buildHeadTags(meta: RouteMeta): string {
 export const includedRoutes = (paths: string[]) => {
   return paths.flatMap((path) => {
     if (path === "/blog/:slug") {
-      return blogPosts.map((post) => `/blog/${post.slug}`);
+      return activePosts.map((post) => `/blog/${post.slug}`);
     }
     return [path];
   });

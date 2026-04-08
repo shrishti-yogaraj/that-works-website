@@ -5,4 +5,8 @@ public/.DS_Store
 src/.DS_Store
 *.local
 .env
-.env.*
+.env.local
+.env.*.local
+!.env.example
+studio/node_modules/
+studio/dist/

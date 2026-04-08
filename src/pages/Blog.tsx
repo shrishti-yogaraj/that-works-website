@@ -1,7 +1,17 @@
 import { useState, useMemo } from "react";
 import Nav from "@/components/Nav";
-import { blogPosts } from "@/data/blogPosts";
+import { blogPosts as staticPosts } from "@/data/blogPosts";
+import sanityPostsRaw from "@/data/sanityPosts.json";
 import SEOHead from "@/components/SEOHead";
+
+// Use Sanity posts when available, fall back to static data
+type PostShape = {
+  slug: string; title: string; excerpt: string; category: string;
+  readTime: number | string; publishedAt: string; featured?: boolean;
+};
+const blogPosts: PostShape[] = (sanityPostsRaw as PostShape[]).length > 0
+  ? (sanityPostsRaw as PostShape[])
+  : staticPosts.map((p) => ({ ...p, readTime: parseInt(p.readTime, 10) || 5 }));
 
 const categories = ["All", "GTM & Growth", "Marketing Systems", "Lead Generation", "Tool Reviews", "Revenue Architecture", "Playbooks", "Hiring & Team Design"] as const;
 
@@ -76,7 +86,7 @@ const Blog = () => {
                 <h2>{featured.title}</h2>
                 <p className="blog-featured-excerpt">{featured.excerpt}</p>
                 <div className="blog-meta">
-                  {featured.author} · {featured.readTime} · {featured.publishedAt}
+                  {(featured as { author?: string }).author} · {typeof featured.readTime === "number" ? `${featured.readTime} min read` : featured.readTime} · {featured.publishedAt}
                 </div>
               </div>
               <div className="blog-featured-img" style={{ background: 'var(--orange)' }}>
@@ -125,7 +135,7 @@ const Blog = () => {
                 </span>
                 <h3>{post.title}</h3>
                 <p>{post.excerpt}</p>
-                <div className="blog-meta">{post.readTime} · {post.publishedAt}</div>
+                <div className="blog-meta">{typeof post.readTime === "number" ? `${post.readTime} min read` : post.readTime} · {post.publishedAt}</div>
               </a>
             ))}
           </div>

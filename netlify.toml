@@ -2,6 +2,18 @@
   command = "npm run build"
   publish = "dist"
 
+# ── Environment variables ──────────────────────────────────────────────────────
+# Set these in Netlify UI → Site settings → Environment variables:
+#
+#   SANITY_READ_TOKEN   — Sanity API token with "Viewer" role
+#                         (needed if your dataset is private)
+#   VITE_SANITY_DATASET — Sanity dataset name (default: "production")
+#
+# To trigger a rebuild when a post is published in Sanity:
+#   1. Netlify UI → Site settings → Build hooks → Add build hook
+#   2. Copy the URL and add it as a webhook in Sanity:
+#      Sanity manage → your project → API → Webhooks
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
