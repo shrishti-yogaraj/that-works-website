@@ -58,27 +58,6 @@ const BrandingService = () => {
         title="Brand System & Positioning — That Works"
         description="Your brand. Built to last. We build the whole brand system — identity, positioning, voice and a full message bank — and hand it over so it runs without us."
         canonical="/services/branding"
-        jsonLd={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Brand System & Positioning",
-            "serviceType": "Branding",
-            "provider": { "@type": "Organization", "name": "That Works", "url": "https://thatworksco.com" },
-            "description": "We build the whole brand system — identity, positioning, voice and a full message bank — handed over to you.",
-            "url": "https://thatworksco.com/services/branding"
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thatworksco.com" },
-              { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://thatworksco.com/services" },
-              { "@type": "ListItem", "position": 3, "name": "Branding", "item": "https://thatworksco.com/services/branding" }
-            ]
-          },
-          faqJsonLd,
-        ]}
       />
       <Nav />
 

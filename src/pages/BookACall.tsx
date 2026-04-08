@@ -42,14 +42,6 @@ const BookACall = () => {
         title="Book a Diagnostic Call — That Works"
         description="Book a free 20-minute diagnostic call with That Works. We'll figure out exactly where you are, what's breaking, and what you need to build a marketing function that runs."
         canonical="/book-a-call"
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thatworksco.com" },
-            { "@type": "ListItem", "position": 2, "name": "Book a Call", "item": "https://thatworksco.com/book-a-call" }
-          ]
-        }}
       />
       <Nav />
 

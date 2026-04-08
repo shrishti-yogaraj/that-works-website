@@ -58,27 +58,6 @@ const RetentionService = () => {
         title="Customer Retention Systems — That Works"
         description="Acquisition gets the credit. Retention builds the business. We design the systems that keep customers engaged, equip your sales team to close, and drive net revenue retention."
         canonical="/services/retention"
-        jsonLd={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Customer Retention System",
-            "serviceType": "Retention Marketing",
-            "provider": { "@type": "Organization", "name": "That Works", "url": "https://thatworksco.com" },
-            "description": "Systems that keep customers engaged, equip your sales team to close, and turn happy customers into your best growth channel.",
-            "url": "https://thatworksco.com/services/retention"
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thatworksco.com" },
-              { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://thatworksco.com/services" },
-              { "@type": "ListItem", "position": 3, "name": "Retention", "item": "https://thatworksco.com/services/retention" }
-            ]
-          },
-          faqJsonLd,
-        ]}
       />
       <Nav />
 

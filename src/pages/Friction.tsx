@@ -121,27 +121,6 @@ const Friction = () => {
         title="Marketing OS: Friction — Fix What's Breaking — That Works"
         description="Marketing spend up, results flat, pipeline unpredictable? We run a full audit, diagnose exactly where the break is, and rebuild from the ground up."
         canonical="/services/marketing-os/friction"
-        jsonLd={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Marketing OS: Friction",
-            "serviceType": "GTM Audit & Rebuild",
-            "provider": { "@type": "Organization", "name": "That Works", "url": "https://thatworksco.com" },
-            "description": "Full marketing audit, ICP refinement, attribution framework, and a recovery roadmap for businesses where spend is up but results are flat.",
-            "url": "https://thatworksco.com/services/marketing-os/friction"
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thatworksco.com" },
-              { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://thatworksco.com/services" },
-              { "@type": "ListItem", "position": 3, "name": "Marketing OS: Friction", "item": "https://thatworksco.com/services/marketing-os/friction" }
-            ]
-          },
-          faqJsonLd,
-        ]}
       />
       <Nav />
 

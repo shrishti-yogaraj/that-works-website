@@ -23,14 +23,6 @@ const OurApproach = () => {
         title="How It Works — Strategy, Infrastructure & Handover — That Works"
         description="Strategy. Infrastructure. Execution. Handed over. We take care of the whole thing and leave you with a marketing function that runs without us."
         canonical="/approach"
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thatworksco.com" },
-            { "@type": "ListItem", "position": 2, "name": "How It Works", "item": "https://thatworksco.com/approach" }
-          ]
-        }}
       />
       <Nav />
 

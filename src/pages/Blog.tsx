@@ -52,14 +52,6 @@ const Blog = () => {
         title="GTM Insights & Resources — That Works"
         description="Practical insight on GTM strategy, marketing systems, lead generation, and revenue architecture for B2B companies. Written by practitioners, not theorists."
         canonical="/blog"
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thatworksco.com" },
-            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://thatworksco.com/blog" }
-          ]
-        }}
       />
       <Nav />
 

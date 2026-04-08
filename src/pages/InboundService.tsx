@@ -58,27 +58,6 @@ const InboundService = () => {
         title="Inbound Marketing Infrastructure — That Works"
         description="The best leads find you. We build inbound as infrastructure — a system that attracts the right buyers, captures them, and moves them toward a conversation."
         canonical="/services/inbound"
-        jsonLd={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Inbound Marketing Infrastructure",
-            "serviceType": "Inbound Marketing",
-            "provider": { "@type": "Organization", "name": "That Works", "url": "https://thatworksco.com" },
-            "description": "An inbound system that attracts the right buyers, captures them, and moves them toward a conversation without your team having to chase.",
-            "url": "https://thatworksco.com/services/inbound"
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thatworksco.com" },
-              { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://thatworksco.com/services" },
-              { "@type": "ListItem", "position": 3, "name": "Inbound Marketing", "item": "https://thatworksco.com/services/inbound" }
-            ]
-          },
-          faqJsonLd,
-        ]}
       />
       <Nav />
 

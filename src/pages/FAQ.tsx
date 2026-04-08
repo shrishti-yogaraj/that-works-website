@@ -159,17 +159,6 @@ const FAQ = () => {
         title="Frequently Asked Questions — That Works"
         description="Everything you need to know about That Works — what we do, how the model works, who we're built for, and what to expect from an engagement."
         canonical="/faq"
-        jsonLd={[
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "https://thatworksco.com" },
-              { "@type": "ListItem", position: 2, name: "FAQ", item: "https://thatworksco.com/faq" },
-            ],
-          },
-          faqJsonLd,
-        ]}
       />
       <Nav />
 

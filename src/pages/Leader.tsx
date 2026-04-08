@@ -120,27 +120,6 @@ const Leader = () => {
         title="Marketing OS: Leader — Close the Lifecycle Gaps — That Works"
         description="Established business with invisible churn or stagnating pipeline? We map your full customer lifecycle, identify exactly where customers drop off, and close the gaps."
         canonical="/services/marketing-os/leader"
-        jsonLd={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Marketing OS: Leader",
-            "serviceType": "Customer Lifecycle & Retention",
-            "provider": { "@type": "Organization", "name": "That Works", "url": "https://thatworksco.com" },
-            "description": "Marketing health diagnostic, customer lifecycle mapping, churn risk identification, and a retention recovery roadmap for established businesses.",
-            "url": "https://thatworksco.com/services/marketing-os/leader"
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thatworksco.com" },
-              { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://thatworksco.com/services" },
-              { "@type": "ListItem", "position": 3, "name": "Marketing OS: Leader", "item": "https://thatworksco.com/services/marketing-os/leader" }
-            ]
-          },
-          faqJsonLd,
-        ]}
       />
       <Nav />
 

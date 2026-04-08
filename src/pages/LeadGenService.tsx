@@ -56,27 +56,6 @@ const LeadGenService = () => {
         title="B2B Lead Generation Systems — That Works"
         description="A custom-built lead generation engine that scrapes, enriches, researches and delivers fully personalised outreach at scale, without your team lifting a finger."
         canonical="/services/lead-gen"
-        jsonLd={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "B2B Lead Generation System",
-            "serviceType": "Lead Generation",
-            "provider": { "@type": "Organization", "name": "That Works", "url": "https://thatworksco.com" },
-            "description": "A custom-built lead generation engine that scrapes, enriches, researches and delivers fully personalised outreach at scale, without your team lifting a finger.",
-            "url": "https://thatworksco.com/services/lead-gen"
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thatworksco.com" },
-              { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://thatworksco.com/services" },
-              { "@type": "ListItem", "position": 3, "name": "Lead Generation", "item": "https://thatworksco.com/services/lead-gen" }
-            ]
-          },
-          faqJsonLd,
-        ]}
       />
       <Nav />
 

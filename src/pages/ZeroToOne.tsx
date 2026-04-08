@@ -111,27 +111,6 @@ const ZeroToOne = () => {
         title="Marketing OS: Zero to One — Build Your First GTM Engine — That Works"
         description="Building your first marketing engine. ICP, positioning, CRM setup and a 90-day roadmap — built for founders with a product ready to sell but zero marketing infrastructure."
         canonical="/services/marketing-os/zero-to-one"
-        jsonLd={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Marketing OS: Zero to One",
-            "serviceType": "GTM System Build",
-            "provider": { "@type": "Organization", "name": "That Works", "url": "https://thatworksco.com" },
-            "description": "Building your first marketing engine from scratch. ICP definition, positioning, CRM setup and a 90-day roadmap.",
-            "url": "https://thatworksco.com/services/marketing-os/zero-to-one"
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thatworksco.com" },
-              { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://thatworksco.com/services" },
-              { "@type": "ListItem", "position": 3, "name": "Marketing OS: Zero to One", "item": "https://thatworksco.com/services/marketing-os/zero-to-one" }
-            ]
-          },
-          faqJsonLd,
-        ]}
       />
       <Nav />
 

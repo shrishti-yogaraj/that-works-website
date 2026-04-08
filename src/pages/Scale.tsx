@@ -112,27 +112,6 @@ const Scale = () => {
         title="Marketing OS: Scale — Systemise for Growth — That Works"
         description="Your team is stretched thin with no clear priority. We streamline operations, eliminate bottlenecks, and build the systems that turn a busy team into a productive one."
         canonical="/services/marketing-os/scale"
-        jsonLd={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Marketing OS: Scale",
-            "serviceType": "Marketing Operations & Systems",
-            "provider": { "@type": "Organization", "name": "That Works", "url": "https://thatworksco.com" },
-            "description": "Operations audit, prioritisation framework, workflow redesign, and a 90-day scaling roadmap for growing businesses.",
-            "url": "https://thatworksco.com/services/marketing-os/scale"
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thatworksco.com" },
-              { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://thatworksco.com/services" },
-              { "@type": "ListItem", "position": 3, "name": "Marketing OS: Scale", "item": "https://thatworksco.com/services/marketing-os/scale" }
-            ]
-          },
-          faqJsonLd,
-        ]}
       />
       <Nav />
 
