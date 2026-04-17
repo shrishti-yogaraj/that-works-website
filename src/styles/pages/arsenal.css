@@ -1,0 +1,487 @@
+/* ── ARSENAL PAGE ─────────────────────────────────────────────────────────── */
+
+.arsenal-board {
+  min-height: 150vh;
+  width: 100%;
+  background-color: #f5f0e8;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><defs><clipPath id='c'><rect x='26' y='15' width='12' height='34' rx='6'/></clipPath></defs><rect x='26' y='15' width='12' height='34' rx='6' fill='%23b0aaa6'/><rect x='30' y='19' width='12' height='34' rx='6' fill='%23807c78' clip-path='url(%23c)'/></svg>");
+  background-size: 52px 52px;
+  background-position: 0 0;
+  position: relative;
+}
+
+.arsenal-board-inner {
+  padding: 48px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.arsenal-back {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(28, 17, 5, 0.45);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.arsenal-back:hover {
+  color: rgba(28, 17, 5, 0.8);
+}
+
+/* ── Pegs layer — sits over the board, absolutely positioned ── */
+.ar-pegs-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ── Single peg+card unit ──
+   left/top in inline style point to the hole centre (26 + col*52, 26 + row*52).
+   translateX(-50%) centres the assembly horizontally on that point.
+   The knob gets margin-top: -17px so its centre sits exactly on the hole. ── */
+.ar-peg-item {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-50%);
+  pointer-events: all;
+}
+
+/* The hook knob — vertical pill matching the pegboard hole shape, 20% larger.
+   margin-top: -17px pulls it up so its centre sits exactly on the hole centre. */
+.ar-hook-knob {
+  width: 22px;
+  height: 34px;
+  border-radius: 11px;
+  margin-top: -17px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.ar-hook-knob--orange   { background: #ff5c00; box-shadow: 4px 4px 0 0 #b33e00; }
+.ar-hook-knob--lavender { background: #a78bfa; box-shadow: 4px 4px 0 0 #6d3fcf; }
+.ar-hook-knob--yellow   { background: #fbbf24; box-shadow: 4px 4px 0 0 #c47f00; }
+.ar-hook-knob--green    { background: #34d399; box-shadow: 4px 4px 0 0 #059669; }
+
+/* The wire */
+.ar-hook-wire {
+  width: 1.5px;
+  height: 14px;
+  background: linear-gradient(to bottom, #726a60, rgba(114,106,96,0.2));
+}
+
+/* ── The card ── */
+.ar-card {
+  width: 270px;
+  background: #fffcf8;
+  border-radius: 13px;
+  padding: 24px 24px 20px;
+  box-shadow: 5px 6px 0 0 #b8a898;
+  border: 1px solid rgba(28,17,5,0.07);
+}
+
+/* Coloured accent strip at top of card */
+.ar-card-accent {
+  height: 3px;
+  border-radius: 100px;
+  margin-bottom: 14px;
+}
+.ar-card-accent--orange   { background: #ff5c00; }
+.ar-card-accent--lavender { background: #a78bfa; }
+.ar-card-accent--yellow   { background: #fbbf24; }
+.ar-card-accent--green    { background: #34d399; }
+
+/* Type label */
+.ar-card-type {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #a8998c;
+  margin-bottom: 8px;
+}
+
+/* Name */
+.ar-card-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1c1917;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+/* Description */
+.ar-card-desc {
+  font-size: 14px;
+  color: #7a6a60;
+  line-height: 1.65;
+  margin-bottom: 18px;
+}
+
+/* Action button */
+.ar-card-btn {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s;
+}
+.ar-card-btn:hover { opacity: 0.7; }
+.ar-card-btn--orange   { color: #ff5c00; }
+.ar-card-btn--lavender { color: #7c5cbf; }
+.ar-card-btn--yellow   { color: #b45309; }
+.ar-card-btn--green    { color: #059669; }
+
+/* Solid-colour card backgrounds */
+.ar-card--orange   { background: #ff6b2b; box-shadow: 5px 6px 0 0 #b8a898; border-color: rgba(0,0,0,0.1); }
+.ar-card--lavender { background: #9b77f5; box-shadow: 5px 6px 0 0 #b8a898; border-color: rgba(0,0,0,0.1); }
+.ar-card--yellow   { background: #f5bf20; box-shadow: 5px 6px 0 0 #b8a898; border-color: rgba(0,0,0,0.1); }
+.ar-card--green    { background: #22c78a; box-shadow: 5px 6px 0 0 #b8a898; border-color: rgba(0,0,0,0.1); }
+
+/* Text on coloured cards goes white */
+.ar-card--orange .ar-card-type,
+.ar-card--lavender .ar-card-type,
+.ar-card--yellow .ar-card-type,
+.ar-card--green .ar-card-type  { color: rgba(255,255,255,0.65); }
+
+.ar-card--orange .ar-card-name,
+.ar-card--lavender .ar-card-name,
+.ar-card--yellow .ar-card-name,
+.ar-card--green .ar-card-name  { color: #fff; }
+
+.ar-card--orange .ar-card-desc,
+.ar-card--lavender .ar-card-desc,
+.ar-card--yellow .ar-card-desc,
+.ar-card--green .ar-card-desc  { color: rgba(255,255,255,0.82); }
+
+.ar-card--orange .ar-card-btn,
+.ar-card--lavender .ar-card-btn,
+.ar-card--yellow .ar-card-btn,
+.ar-card--green .ar-card-btn   { color: #fff; }
+
+/* Hide the accent strip on coloured cards — background IS the colour */
+.ar-card--orange .ar-card-accent,
+.ar-card--lavender .ar-card-accent,
+.ar-card--yellow .ar-card-accent,
+.ar-card--green .ar-card-accent { display: none; }
+
+/* Wide card variant */
+.ar-card--wide {
+  width: 675px;
+}
+
+/* ── Clipboard ── */
+.ar-clipboard {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ar-clipboard-clip {
+  width: 68px;
+  height: 22px;
+  border-radius: 4px;
+  position: relative;
+  z-index: 3;
+  margin-bottom: -6px;
+  flex-shrink: 0;
+}
+
+.ar-clipboard-clip--orange   { background: #cc4900; box-shadow: 3px 3px 0 0 #8b3100; }
+.ar-clipboard-clip--lavender { background: #7c5cbf; box-shadow: 3px 3px 0 0 #4a3085; }
+.ar-clipboard-clip--yellow   { background: #d4a000; box-shadow: 3px 3px 0 0 #9a7200; }
+.ar-clipboard-clip--green    { background: #059669; box-shadow: 3px 3px 0 0 #034d36; }
+
+/* ── Drag label ── */
+.ar-drag-label {
+  position: absolute;
+  top: -26px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1c1917;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* ── Filter dial ── */
+.ar-filter-panel {
+  position: relative;
+  width: 210px;
+  background: #f0ecff;
+  border-radius: 10px;
+  padding: 20px 16px 16px;
+  box-shadow: 5px 6px 0 0 #b8a898;
+  border: 1px solid rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s;
+  pointer-events: all;
+}
+.ar-filter-panel:hover { transform: translateY(-2px); }
+.ar-filter-panel:active { transform: translateY(0); }
+
+.ar-filter-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(28,17,5,0.3);
+  align-self: flex-start;
+}
+
+.ar-screw {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #5a5550;
+  box-shadow: 1px 1px 0 0 #2e2a27;
+}
+.ar-screw--tl { top: 8px; left: 8px; }
+.ar-screw--tr { top: 8px; right: 8px; }
+.ar-screw--bl { bottom: 8px; left: 8px; }
+.ar-screw--br { bottom: 8px; right: 8px; }
+
+/* ── Counter panel ── */
+.ar-counter-panel {
+  position: relative;
+  width: 180px;
+  background: #ff6b2b;
+  border-radius: 10px;
+  padding: 20px 20px 18px;
+  box-shadow: 5px 6px 0 0 #b8a898;
+  border: 1px solid rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ar-counter-panel .ar-counter-label { color: rgba(255,255,255,0.65); }
+.ar-counter-panel .ar-counter-total { color: #fff; }
+.ar-counter-panel .ar-counter-cat   { color: rgba(255,255,255,0.9) !important; }
+.ar-counter-panel .ar-counter-num   { color: #fff; }
+.ar-counter-panel .ar-counter-rows  { border-top-color: rgba(255,255,255,0.2); }
+
+.ar-counter-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(28,17,5,0.3);
+}
+
+.ar-counter-total {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: #1c1917;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.ar-counter-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  border-top: 1px solid rgba(28,17,5,0.07);
+  padding-top: 12px;
+}
+
+.ar-counter-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ar-counter-cat {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ar-counter-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 900;
+  color: #1c1917;
+}
+
+/* ── Recently added ticker ── */
+.ar-ticker-panel {
+  position: relative;
+  width: 520px;
+  background: #1c1917;
+  border-radius: 8px;
+  padding: 16px 24px 18px;
+  box-shadow: 5px 6px 0 0 #0a0807;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.ar-ticker-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+}
+
+.ar-ticker-track {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ar-ticker-scroll {
+  display: inline-flex;
+  animation: ar-ticker 14s linear infinite;
+}
+
+.ar-ticker-item {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fbbf24;
+  letter-spacing: 0.04em;
+}
+
+.ar-ticker-sep {
+  color: rgba(251,191,36,0.35);
+  padding: 0 16px;
+}
+
+@keyframes ar-ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+
+
+/* ── Alternative peg shapes ── */
+
+/* Drawing pin */
+.ar-pin-head {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-top: -18px;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+.ar-pin-head--orange   { background: #ff5c00; box-shadow: 3px 3px 0 0 #b33e00; }
+.ar-pin-head--lavender { background: #a78bfa; box-shadow: 3px 3px 0 0 #6d3fcf; }
+.ar-pin-head--yellow   { background: #fbbf24; box-shadow: 3px 3px 0 0 #c47f00; }
+.ar-pin-head--green    { background: #34d399; box-shadow: 3px 3px 0 0 #059669; }
+
+.ar-pin-neck {
+  width: 7px;
+  height: 14px;
+  background: #b8a898;
+  border-radius: 0 0 3px 3px;
+}
+
+/* Binder ring */
+.ar-ring {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 7px solid;
+  background: transparent;
+  margin-top: -17px;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+.ar-ring--orange   { border-color: #ff5c00; box-shadow: 3px 3px 0 0 #b33e00; }
+.ar-ring--lavender { border-color: #a78bfa; box-shadow: 3px 3px 0 0 #6d3fcf; }
+.ar-ring--yellow   { border-color: #fbbf24; box-shadow: 3px 3px 0 0 #c47f00; }
+.ar-ring--green    { border-color: #34d399; box-shadow: 3px 3px 0 0 #059669; }
+
+/* Bulldog clip */
+.ar-bulldog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -24px;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+.ar-bulldog-arms {
+  display: flex;
+  gap: 8px;
+  margin-bottom: -1px;
+}
+.ar-bulldog-arm {
+  width: 10px;
+  height: 22px;
+  border-radius: 3px 3px 0 0;
+}
+.ar-bulldog-arm--lavender { background: #7c5cbf; box-shadow: 2px 2px 0 0 #4a3085; }
+.ar-bulldog-arm--orange   { background: #cc4900; box-shadow: 2px 2px 0 0 #8b3100; }
+.ar-bulldog-body {
+  width: 40px;
+  height: 12px;
+  border-radius: 3px;
+}
+.ar-bulldog-body--lavender { background: #a78bfa; box-shadow: 3px 3px 0 0 #6d3fcf; }
+.ar-bulldog-body--orange   { background: #ff5c00; box-shadow: 3px 3px 0 0 #b33e00; }
+
+/* J-hook */
+.ar-j-hook {
+  width: 20px;
+  height: 28px;
+  border-left: 5px solid;
+  border-bottom: 5px solid;
+  border-right: 5px solid;
+  border-top: none;
+  border-radius: 0 0 13px 13px;
+  background: transparent;
+  margin-top: -14px;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+.ar-j-hook--yellow   { border-color: #fbbf24; }
+.ar-j-hook--orange   { border-color: #ff5c00; }
+.ar-j-hook--lavender { border-color: #a78bfa; }
+.ar-j-hook--green    { border-color: #34d399; }
+
+.ar-clipboard-board {
+  width: 100%;
+  background: #f5bf20;
+  border-radius: 4px 4px 10px 10px;
+  padding: 24px 20px 20px;
+  box-shadow: 5px 6px 0 0 #b8a898;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.ar-clipboard-board .ar-card-type { color: rgba(255,255,255,0.65); }
+.ar-clipboard-board .ar-card-name { color: #fff; }
+.ar-clipboard-board .ar-card-desc { color: rgba(255,255,255,0.82); }
+.ar-clipboard-board .ar-card-btn  { color: #fff; }

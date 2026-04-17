@@ -1,3 +1,15 @@
+/* ── BLOG PAGE — light reading theme ────────────────────────────────────────── */
+.blog-page {
+  background: #f5f0e8;
+  --bg:       #f5f0e8;
+  --surface:  #f5f0e8;
+  --surface2: #ede8df;
+  --border:   #dad4c8;
+  --text:     #1c1917;
+  --muted:    #6b6360;
+  --label:    #9a9088;
+}
+
 /* ── BLOG PAGE ── */
 .blog-header {
   padding: 100px 40px 48px;

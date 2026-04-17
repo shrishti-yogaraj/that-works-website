@@ -1,6 +1,14 @@
 import { useState } from "react";
 import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
+
+const WEBHOOK_URL = "https://shrishti-y.app.n8n.cloud/webhook/that-works-default-lead-form";
+
+// ── FILL THESE IN ──────────────────────────────────────────────────────────────
+const CONTACT_EMAIL = "support@thatworksco.com";
+const CLEO_PHONE    = "+91 96116 27878";
+// ──────────────────────────────────────────────────────────────────────────────
 
 const stageOptions = [
   "Pre-revenue",
@@ -18,61 +26,83 @@ const blockerOptions = [
   "I'm not sure - that's why I'm here",
 ];
 
+type Status = "idle" | "submitting" | "success" | "error";
+
 const BookACall = () => {
-  const [form, setForm] = useState({ name: "", email: "", company: "", stage: "", blocker: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const [phone, setPhone] = useState("");
-  const [phoneSent, setPhoneSent] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", stage: "", blocker: "", notes: "" });
+  const [status, setStatus] = useState<Status>("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name.trim() || !form.email.trim() || !form.company.trim()) return;
-    setSubmitted(true);
-  };
-
-  const handlePhoneSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!phone.trim()) return;
-    setPhoneSent(true);
+    if (status === "submitting" || status === "success") return;
+    setStatus("submitting");
+    try {
+      await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ source: "contact-page", ...form }),
+      });
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
     <>
       <SEOHead
-        title="Book a Diagnostic Call — That Works"
-        description="Book a free 20-minute diagnostic call with That Works. We'll figure out exactly where you are, what's breaking, and what you need to build a marketing function that runs."
-        canonical="/book-a-call"
+        title="Contact — That Works"
+        description="Get in touch with That Works. Send us a message or reach out directly — we'll figure out exactly where you are and what you need."
+        canonical="/contact"
       />
       <Nav />
 
       <section className="bac-section">
         <div className="bac-inner">
-          {/* LEFT */}
+
+          {/* LEFT — contact details */}
           <div className="bac-left">
-            <h1>Let's figure out what's broken.</h1>
-            <p className="bac-subline">And exactly what it takes to fix it.</p>
+            <p className="bac-eyebrow">Get in touch</p>
+            <h1>We're easy to reach.</h1>
             <p className="bac-body">
-              This is a 20-minute diagnostic call, not a pitch. We'll tell you where your marketing is stuck and what it would take to fix it. You leave with clarity whether we work together or not.
+              Drop us a message using the form, or reach out directly. We read everything and reply within one business day.
             </p>
+
+            <div className="bac-contact-details">
+              <div className="bac-contact-item">
+                <span className="bac-contact-label">Email</span>
+                <a href={`mailto:${CONTACT_EMAIL}`} className="bac-contact-value">{CONTACT_EMAIL}</a>
+              </div>
+              <div className="bac-contact-item">
+                <span className="bac-contact-label">Phone — Cleo</span>
+                <a href={`tel:${CLEO_PHONE.replace(/\s/g, "")}`} className="bac-contact-value">{CLEO_PHONE}</a>
+              </div>
+            </div>
+
             <div className="bac-points">
               <div className="bac-point">
                 <span className="bac-point-icon">✦</span>
-                <span>No pitch. Just honest diagnosis.</span>
+                <span>No pitch. Just honest conversation.</span>
               </div>
               <div className="bac-point">
                 <span className="bac-point-icon">✦</span>
-                <span>Prepared in advance. We do our homework.</span>
+                <span>We reply within one business day.</span>
               </div>
               <div className="bac-point">
                 <span className="bac-point-icon">✦</span>
-                <span>You'll leave with something useful regardless.</span>
+                <span>Not sure what you need? That's fine — just say so.</span>
               </div>
             </div>
           </div>
 
-          {/* RIGHT */}
+          {/* RIGHT — form */}
           <div className="bac-right">
-            {!submitted ? (
+            {status === "success" ? (
+              <div className="bac-post-submit">
+                <p className="bac-success-hed">Got it — we'll be in touch.</p>
+                <p className="bac-success-body">We've received your message and will reply within one business day.</p>
+              </div>
+            ) : (
               <form className="bac-form" onSubmit={handleSubmit}>
                 <div className="bac-field">
                   <label>Full name</label>
@@ -83,6 +113,7 @@ const BookACall = () => {
                     placeholder="Jane Smith"
                     maxLength={100}
                     required
+                    disabled={status === "submitting"}
                   />
                 </div>
                 <div className="bac-field">
@@ -94,6 +125,19 @@ const BookACall = () => {
                     placeholder="jane@company.com"
                     maxLength={255}
                     required
+                    disabled={status === "submitting"}
+                  />
+                </div>
+                <div className="bac-field">
+                  <label>Phone number</label>
+                  <input
+                    type="tel"
+                    value={form.phone}
+                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                    placeholder="+1 555 000 0000"
+                    maxLength={30}
+                    required
+                    disabled={status === "submitting"}
                   />
                 </div>
                 <div className="bac-field">
@@ -105,6 +149,7 @@ const BookACall = () => {
                     placeholder="Acme Inc."
                     maxLength={100}
                     required
+                    disabled={status === "submitting"}
                   />
                 </div>
                 <div className="bac-field">
@@ -112,6 +157,7 @@ const BookACall = () => {
                   <select
                     value={form.stage}
                     onChange={(e) => setForm({ ...form, stage: e.target.value })}
+                    disabled={status === "submitting"}
                   >
                     <option value="">Select…</option>
                     {stageOptions.map((opt) => (
@@ -124,6 +170,7 @@ const BookACall = () => {
                   <select
                     value={form.blocker}
                     onChange={(e) => setForm({ ...form, blocker: e.target.value })}
+                    disabled={status === "submitting"}
                   >
                     <option value="">Select…</option>
                     {blockerOptions.map((opt) => (
@@ -131,57 +178,35 @@ const BookACall = () => {
                     ))}
                   </select>
                 </div>
-                <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                  Book My Call
+                <div className="bac-field">
+                  <label>Anything else you want us to know? <span className="bac-optional">Optional</span></label>
+                  <textarea
+                    value={form.notes}
+                    onChange={(e) => setForm({ ...form, notes: e.target.value })}
+                    placeholder="Context, questions, or anything that would help us prepare…"
+                    rows={4}
+                    maxLength={1000}
+                    disabled={status === "submitting"}
+                  />
+                </div>
+                {status === "error" && (
+                  <p className="bac-error">Something went wrong — please try again or email us directly.</p>
+                )}
+                <button
+                  type="submit"
+                  className="btn-primary"
+                  style={{ width: "100%", justifyContent: "center" }}
+                  disabled={status === "submitting"}
+                >
+                  {status === "submitting" ? "Sending…" : "Send Message →"}
                 </button>
               </form>
-            ) : (
-              <div className="bac-post-submit">
-                {/* Calendar placeholder */}
-                <div className="bac-calendar-placeholder">
-                  <span>📅</span>
-                  <p>Calendar embed goes here</p>
-                  <p style={{ fontSize: 12, color: 'var(--label)' }}>Calendly / Cal.com integration</p>
-                </div>
-
-                {/* Post-calendar prompt */}
-                <div className="bac-quiz-prompt">
-                  <p className="bac-quiz-text">
-                    Want to make this call even more valuable? Take our 3-minute pre-call quiz and we'll personalise your audit before we even meet.
-                  </p>
-                  <a href="#" className="btn-ghost" style={{ width: '100%', justifyContent: 'center', textAlign: 'center' }}>
-                    Take the Quiz →
-                  </a>
-                </div>
-              </div>
-            )}
-
-            {/* OR DIVIDER + PHONE FALLBACK */}
-            <div className="bac-divider">
-              <span>or</span>
-            </div>
-
-            {!phoneSent ? (
-              <form className="bac-phone-form" onSubmit={handlePhoneSubmit}>
-                <p className="bac-phone-label">Prefer we reach out?</p>
-                <div className="bac-phone-row">
-                  <input
-                    type="tel"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="+91 98765 43210"
-                    maxLength={20}
-                    required
-                  />
-                  <button type="submit" className="btn-ghost">Call me instead →</button>
-                </div>
-              </form>
-            ) : (
-              <p className="bac-phone-confirm">Got it. We'll be in touch within one business day.</p>
             )}
           </div>
+
         </div>
       </section>
+      <Footer />
     </>
   );
 };

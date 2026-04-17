@@ -1,12 +1,8 @@
 import { ViteReactSSG } from "vite-react-ssg";
 import { routes } from "./routes";
 import sanityPostsRaw from "./data/sanityPosts.json";
-import { blogPosts } from "./data/blogPosts";
 
-// Use Sanity posts if available (populated by prebuild), else fall back to static data
-const activePosts = (sanityPostsRaw as Array<{ slug: string; title: string; excerpt: string; publishedAt: string; featured?: boolean }>).length > 0
-  ? (sanityPostsRaw as Array<{ slug: string; title: string; excerpt: string; publishedAt: string; featured?: boolean }>)
-  : blogPosts.map((p) => ({ slug: p.slug, title: p.title, excerpt: p.excerpt, publishedAt: p.publishedAt, featured: p.featured ?? false }));
+const activePosts = sanityPostsRaw as Array<{ slug: string; title: string; excerpt: string; publishedAt: string; featured?: boolean }>;
 
 /* Global: variables, fonts, base typography, shared utilities */
 import "./styles/global.css";
@@ -27,6 +23,7 @@ import "./styles/pages/services.css";
 import "./styles/pages/approach.css";
 import "./styles/pages/marketing-os.css";
 import "./styles/pages/faq.css";
+import "./styles/pages/hub.css";
 
 const BASE = "https://thatworksco.com";
 const OG_IMG = `${BASE}/logo.svg`;

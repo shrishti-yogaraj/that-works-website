@@ -1,6 +1,8 @@
 import Nav from "@/components/Nav";
 import { useContactPopup } from "@/contexts/ContactPopupContext";
+import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
+import Footer from "@/components/Footer";
 
 const OurApproach = () => {
   const { openPopup } = useContactPopup();
@@ -77,22 +79,22 @@ const OurApproach = () => {
           <div className="pillars-grid">
             <div className="pillar-card">
               <div className="pillar-num">01</div>
-              <h3>Brand</h3>
+              <h3><Link to="/services/branding">Brand</Link></h3>
               <p>Positioning, messaging, visual identity. The foundation every other channel is built on top of.</p>
             </div>
             <div className="pillar-card">
               <div className="pillar-num">02</div>
-              <h3>Inbound</h3>
+              <h3><Link to="/services/inbound">Inbound</Link></h3>
               <p>Content strategy, SEO, lead magnets, nurture flows. The engine that compounds over time.</p>
             </div>
             <div className="pillar-card">
               <div className="pillar-num">03</div>
-              <h3>Outbound</h3>
+              <h3><Link to="/services/lead-gen">Outbound</Link></h3>
               <p>Prospecting infrastructure, enrichment, sequencing, personalisation at scale. Predictable pipeline.</p>
             </div>
             <div className="pillar-card">
               <div className="pillar-num">04</div>
-              <h3>Sales Enablement</h3>
+              <h3><Link to="/services/retention">Sales Enablement</Link></h3>
               <p>Playbooks, objection handling, collateral, CRM workflows. Your team closes more with less effort.</p>
             </div>
           </div>
@@ -173,48 +175,7 @@ const OurApproach = () => {
           <p className="cta-note">No pitch. No pressure. Just clarity.</p>
         </div>
       </section>      {/* FOOTER */}
-      <footer className="site-footer">
-        <div className="footer-inner">
-          <div className="footer-brand">
-            <div className="footer-logo"><img src="/logo.svg" alt="That Works" width="678" height="392" className="footer-logo-img" /></div>
-            <p className="footer-tagline">High performance GTM systems. Designed, implemented and handed over.</p>
-            <div className="footer-socials">
-              <a href="#" className="footer-social">LinkedIn</a>
-              <a href="#" className="footer-social">X / Twitter</a>
-            </div>
-          </div>
-          <div className="footer-col">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="/about">About</a></li>
-              <li><a href="/approach">How It Works</a></li>
-              <li><a href="/blog">Blog</a></li>
-              <li><a href="/contact">Contact</a></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h4>Services</h4>
-            <ul>
-              <li><a href="/services">All Services</a></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h4>Newsletter</h4>
-            <p className="footer-newsletter-desc">GTM insights and what's actually working. No fluff.</p>
-            <form className="footer-newsletter-form" onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="your@email.com" className="footer-newsletter-input" />
-              <button type="submit" className="footer-newsletter-btn">Subscribe →</button>
-            </form>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <p>© 2026 That Works. All rights reserved.</p>
-          <div className="footer-bottom-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 };

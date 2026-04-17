@@ -1,3 +1,10 @@
+import Nav from "@/components/Nav";
+import { Link } from "react-router-dom";
+import { useContactPopup } from "@/contexts/ContactPopupContext";
+import SEOHead from "@/components/SEOHead";
+import FaqAccordion from "@/components/FaqAccordion";
+import Footer from "@/components/Footer";
+
 const intelRows = [
   { category: "Company intelligence", detail: "Business model, market positioning, competitive landscape, tech stack" },
   { category: "Growth & financial signals", detail: "Funding rounds, revenue indicators, budget cycles" },
@@ -5,10 +12,6 @@ const intelRows = [
   { category: "Decision-maker context", detail: "LinkedIn activity, thought leadership, career trajectory" },
   { category: "Timing triggers", detail: "Product launches, expansions, regulatory changes" },
 ];
-import Nav from "@/components/Nav";
-import { useContactPopup } from "@/contexts/ContactPopupContext";
-import SEOHead from "@/components/SEOHead";
-import FaqAccordion from "@/components/FaqAccordion";
 
 const faqs = [
   {
@@ -166,7 +169,7 @@ const LeadGenService = () => {
             <div className="lg-phase">
               <div className="lg-phase-num">01</div>
               <h3>Kickoff + Scope Mapping</h3>
-              <p>ICP criteria, research priorities, brand voice.</p>
+              <p>ICP criteria, research priorities, <Link to="/services/branding">brand voice</Link>.</p>
             </div>
             <div className="lg-phase">
               <div className="lg-phase-num">02</div>
@@ -210,48 +213,7 @@ const LeadGenService = () => {
       </section>
 
       {/* FOOTER */}
-      <footer className="site-footer">
-        <div className="footer-inner">
-          <div className="footer-brand">
-            <div className="footer-logo"><img src="/logo.svg" alt="That Works" width="678" height="392" className="footer-logo-img" /></div>
-            <p className="footer-tagline">High performance GTM systems. Designed, implemented and handed over.</p>
-            <div className="footer-socials">
-              <a href="#" className="footer-social">LinkedIn</a>
-              <a href="#" className="footer-social">X / Twitter</a>
-            </div>
-          </div>
-          <div className="footer-col">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="/about">About</a></li>
-              <li><a href="/approach">How It Works</a></li>
-              <li><a href="/blog">Blog</a></li>
-              <li><a href="/contact">Contact</a></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h4>Services</h4>
-            <ul>
-              <li><a href="/services">All Services</a></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h4>Newsletter</h4>
-            <p className="footer-newsletter-desc">GTM insights and what's actually working. No fluff.</p>
-            <form className="footer-newsletter-form" onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="your@email.com" className="footer-newsletter-input" />
-              <button type="submit" className="footer-newsletter-btn">Subscribe →</button>
-            </form>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <p>© 2026 That Works. All rights reserved.</p>
-          <div className="footer-bottom-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 };

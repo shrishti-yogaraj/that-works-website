@@ -1,3 +1,4 @@
+// NOTE: When adding a new static route here, also add it to STATIC_ROUTES in scripts/generate-sitemap.mjs
 import type { RouteObject } from "react-router-dom";
 import RootLayout from "./RootLayout";
 import Index from "./pages/Index";
@@ -15,6 +16,10 @@ import Scale from "./pages/Scale";
 import Leader from "./pages/Leader";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import Articles from "./pages/Articles";
+import { Lab } from "./pages/CardGridPage";
+import Join from "./pages/Join2";
+import JoinRole from "./pages/JoinRole";
 import BookACall from "./pages/BookACall";
 import FAQ from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
@@ -26,7 +31,7 @@ export const routes: RouteObject[] = [
       { path: "/", element: <Index /> },
       { path: "/approach", element: <OurApproach /> },
       { path: "/about", element: <About /> },
-      { path: "/contact", element: <Contact /> },
+      { path: "/contact", element: <BookACall /> },
       { path: "/services", element: <Services /> },
       { path: "/services/lead-gen", element: <LeadGenService /> },
       { path: "/services/inbound", element: <InboundService /> },
@@ -38,7 +43,10 @@ export const routes: RouteObject[] = [
       { path: "/services/marketing-os/leader", element: <Leader /> },
       { path: "/blog", element: <Blog /> },
       { path: "/blog/:slug", element: <BlogPost /> },
-      { path: "/book-a-call", element: <BookACall /> },
+      { path: "/articles", element: <Articles /> },
+      { path: "/lab", element: <Lab /> },
+      { path: "/join", element: <Join /> },
+      { path: "/join/:slug", element: <JoinRole /> },
       { path: "/faq", element: <FAQ /> },
       { path: "*", element: <NotFound /> },
     ],

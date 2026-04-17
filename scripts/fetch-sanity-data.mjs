@@ -29,7 +29,7 @@ const client = createClient({
   token: TOKEN,
 });
 
-const QUERY = /* groq */ `
+const POSTS_QUERY = /* groq */ `
   *[_type == "post" && status == "published"] | order(publishedAt desc) {
     _id,
     title,
@@ -42,9 +42,6 @@ const QUERY = /* groq */ `
     featured,
     "category": categories[0]->title,
     "categoryColor": categories[0]->color,
-    "author": author->name,
-    "authorRole": author->role,
-    "authorPhoto": author->photo.asset._ref,
     "featuredImage": featuredImage{
       "ref": asset._ref,
       alt,
@@ -65,27 +62,69 @@ const QUERY = /* groq */ `
   }
 `;
 
+// Fetches everything the hub page (/blog) needs in a single request
+const HUB_QUERY = /* groq */ `{
+  "featuredPost": *[_type == "post" && status == "published"] | order(featured desc, publishedAt desc) [0] {
+    title,
+    "slug": slug.current,
+    excerpt,
+    readTime,
+    publishedAt,
+    "category": categories[0]->title,
+    "categoryColor": categories[0]->color
+  },
+  "recentPosts": *[_type == "post" && status == "published"] | order(publishedAt desc) [0..4] {
+    title,
+    "slug": slug.current,
+    "category": categories[0]->title,
+    "categoryColor": categories[0]->color,
+    "featuredImage": featuredImage{ "ref": asset._ref, alt }
+  },
+  "labItems": *[_type == "labItem" && isLive == true] | order(publishedAt desc) [0..1] {
+    title,
+    "slug": slug.current,
+    tagline,
+    category,
+    timeToComplete,
+    outputDescription,
+    useCases,
+    icon
+  },
+  "latestDissection": *[_type == "dissection" && status == "published"] | order(publishedAt desc) [0] {
+    title,
+    "slug": slug.current,
+    company,
+    eyebrow,
+    excerpt,
+    stats,
+    readTime
+  }
+}`;
+
 async function main() {
-  console.log(`[fetch-sanity] Fetching posts from Sanity (${PROJECT_ID}/${DATASET})…`);
+  console.log(`[fetch-sanity] Fetching from Sanity (${PROJECT_ID}/${DATASET})…`);
+
+  const postsPath = join(__dirname, "../src/data/sanityPosts.json");
+  const hubPath = join(__dirname, "../src/data/sanityHubData.json");
 
   let posts = [];
+  let hubData = null;
 
   try {
-    posts = await client.fetch(QUERY);
+    [posts, hubData] = await Promise.all([
+      client.fetch(POSTS_QUERY),
+      client.fetch(HUB_QUERY),
+    ]);
     console.log(`[fetch-sanity] Fetched ${posts.length} published posts.`);
   } catch (err) {
     console.error("[fetch-sanity] Failed to fetch from Sanity:", err.message);
 
-    // On failure, preserve existing data so the build doesn't break
-    const outPath = join(__dirname, "../src/data/sanityPosts.json");
+    // On failure, preserve existing cached data so the build doesn't break
     try {
       const { readFileSync } = await import("fs");
-      const existing = readFileSync(outPath, "utf-8");
-      const existingPosts = JSON.parse(existing);
+      const existingPosts = JSON.parse(readFileSync(postsPath, "utf-8"));
       if (existingPosts.length > 0) {
-        console.warn(
-          `[fetch-sanity] Using cached ${existingPosts.length} posts from previous build.`
-        );
+        console.warn(`[fetch-sanity] Using cached ${existingPosts.length} posts from previous build.`);
         process.exit(0);
       }
     } catch {
@@ -94,9 +133,11 @@ async function main() {
     process.exit(1);
   }
 
-  const outPath = join(__dirname, "../src/data/sanityPosts.json");
-  writeFileSync(outPath, JSON.stringify(posts, null, 2));
+  writeFileSync(postsPath, JSON.stringify(posts, null, 2));
   console.log(`[fetch-sanity] Written to src/data/sanityPosts.json`);
+
+  writeFileSync(hubPath, JSON.stringify(hubData, null, 2));
+  console.log(`[fetch-sanity] Written to src/data/sanityHubData.json`);
 }
 
 main();

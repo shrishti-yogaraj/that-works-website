@@ -1,8 +1,10 @@
 import Nav from "@/components/Nav";
 import { useContactPopup } from "@/contexts/ContactPopupContext";
+import { Link } from "react-router-dom";
 import StageSwitcher from "@/components/StageSwitcher";
 import SEOHead from "@/components/SEOHead";
 import FaqAccordion from "@/components/FaqAccordion";
+import Footer from "@/components/Footer";
 
 const tiers = [
   {
@@ -27,7 +29,7 @@ const tiers = [
     whoFor: "Established business where acquisition is optimised but retention, expansion and advocacy have no system behind them.",
     deliverables: [
       "Full customer lifecycle audit and segmentation framework",
-      "Retention marketing infrastructure with health scoring and churn triggers",
+      <><Link to="/services/retention">Retention marketing infrastructure</Link> with health scoring and churn triggers</>,
       "Customer advocacy and referral programme design",
       "Unified customer data architecture",
       "Lifecycle reporting dashboard with cohort analysis and LTV tracking",
@@ -43,9 +45,9 @@ const tiers = [
     whoFor: "Established business that needs a complete marketing transformation, not optimisation but a fundamental restructure of how marketing operates, reports, and drives the business.",
     deliverables: [
       "Complete marketing function audit and restructure plan",
-      "Unified marketing strategy connecting brand, demand, product and customer marketing",
+      <>Unified marketing strategy connecting <Link to="/services/branding">brand</Link>, demand, product and customer marketing</>,
       "Cross-functional data architecture and executive reporting framework",
-      "Full lifecycle marketing build",
+      <><Link to="/services/retention">Full lifecycle marketing build</Link></>,
       "Marketing leadership playbook with OKRs, quarterly cadence and board reporting",
     ],
     leaveWith: "A unified marketing operation with shared strategy, connected data, cross-functional workflows, and leadership-grade reporting. Marketing that drives the business, not just supports it.",
@@ -157,8 +159,8 @@ const Leader = () => {
               <div className="zto-tier-section">
                 <span className="zto-tier-section-label">Deliverables</span>
                 <ul>
-                  {t.deliverables.map((d) => (
-                    <li key={d}>{d}</li>
+                  {t.deliverables.map((d, i) => (
+                    <li key={i}>{d}</li>
                   ))}
                 </ul>
               </div>
@@ -234,48 +236,7 @@ const Leader = () => {
       </section>
 
       {/* FOOTER */}
-      <footer className="site-footer">
-        <div className="footer-inner">
-          <div className="footer-brand">
-            <div className="footer-logo"><img src="/logo.svg" alt="That Works" width="678" height="392" className="footer-logo-img" /></div>
-            <p className="footer-tagline">High performance GTM systems. Designed, implemented and handed over.</p>
-            <div className="footer-socials">
-              <a href="#" className="footer-social">LinkedIn</a>
-              <a href="#" className="footer-social">X / Twitter</a>
-            </div>
-          </div>
-          <div className="footer-col">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="/about">About</a></li>
-              <li><a href="/approach">How It Works</a></li>
-              <li><a href="/blog">Blog</a></li>
-              <li><a href="/contact">Contact</a></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h4>Services</h4>
-            <ul>
-              <li><a href="/services">All Services</a></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h4>Newsletter</h4>
-            <p className="footer-newsletter-desc">GTM insights and what's actually working. No fluff.</p>
-            <form className="footer-newsletter-form" onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="your@email.com" className="footer-newsletter-input" />
-              <button type="submit" className="footer-newsletter-btn">Subscribe →</button>
-            </form>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <p>© 2026 That Works. All rights reserved.</p>
-          <div className="footer-bottom-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 };

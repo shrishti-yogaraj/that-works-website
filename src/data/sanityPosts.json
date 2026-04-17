@@ -1,1 +1,343 @@
-[]
+[
+  {
+    "_id": "preview-all-blocks",
+    "slug": "design-preview-all-blocks",
+    "title": "Design Preview: Every Content Block",
+    "excerpt": "A dev-only post showing every block type available in the blog layout — paragraphs, headings, callouts, pull quotes, stats, tables, code, CTAs, and more.",
+    "publishedAt": "2026-04-09",
+    "readTime": 2,
+    "category": "GTM & Growth",
+    "categoryColor": "var(--yellow)",
+    "author": "That Works Team",
+    "featured": false,
+    "content": [
+      {
+        "_type": "block",
+        "_key": "p1",
+        "style": "normal",
+        "children": [
+          { "_type": "span", "_key": "s1", "text": "This is a standard paragraph. Use it for body copy throughout the post. You can include " },
+          { "_type": "span", "_key": "s2", "text": "bold text", "marks": ["strong"] },
+          { "_type": "span", "_key": "s3", "text": ", " },
+          { "_type": "span", "_key": "s4", "text": "italic text", "marks": ["em"] },
+          { "_type": "span", "_key": "s5", "text": ", or " },
+          { "_type": "span", "_key": "s6", "text": "inline code", "marks": ["code"] },
+          { "_type": "span", "_key": "s7", "text": " inline within paragraphs." }
+        ],
+        "markDefs": []
+      },
+      {
+        "_type": "block",
+        "_key": "h2-1",
+        "style": "h2",
+        "children": [{ "_type": "span", "_key": "s1", "text": "This Is a Heading 2" }],
+        "markDefs": []
+      },
+      {
+        "_type": "block",
+        "_key": "p2",
+        "style": "normal",
+        "children": [{ "_type": "span", "_key": "s1", "text": "Paragraph following an H2. Heading 2 is the primary section divider — it has the orange left-border accent and bold weight. Use it to break up major sections of a long post." }],
+        "markDefs": []
+      },
+      {
+        "_type": "block",
+        "_key": "h3-1",
+        "style": "h3",
+        "children": [{ "_type": "span", "_key": "s1", "text": "This Is a Heading 3" }],
+        "markDefs": []
+      },
+      {
+        "_type": "block",
+        "_key": "p3",
+        "style": "normal",
+        "children": [{ "_type": "span", "_key": "s1", "text": "Heading 3 is a sub-section header within an H2 section. Lighter weight than H2, no accent border." }],
+        "markDefs": []
+      },
+      {
+        "_type": "block",
+        "_key": "h4-1",
+        "style": "h4",
+        "children": [{ "_type": "span", "_key": "s1", "text": "Heading 4 — Small Label Style" }],
+        "markDefs": []
+      },
+      {
+        "_type": "block",
+        "_key": "p4",
+        "style": "normal",
+        "children": [{ "_type": "span", "_key": "s1", "text": "H4 is uppercase, tracked out — works well as a label for a sub-section that doesn't need the full weight of an H3." }],
+        "markDefs": []
+      },
+      {
+        "_type": "block",
+        "_key": "bq1",
+        "style": "blockquote",
+        "children": [{ "_type": "span", "_key": "s1", "text": "This is a standard blockquote. Use it for short citations, a client quote, or a line you want to call out without the full pull-quote treatment." }],
+        "markDefs": []
+      },
+      {
+        "_type": "block",
+        "_key": "h2-lists",
+        "style": "h2",
+        "children": [{ "_type": "span", "_key": "s1", "text": "Lists" }],
+        "markDefs": []
+      },
+      {
+        "_type": "block",
+        "_key": "bl1",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [{ "_type": "span", "_key": "s1", "text": "Bullet list item one" }],
+        "markDefs": []
+      },
+      {
+        "_type": "block",
+        "_key": "bl2",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          { "_type": "span", "_key": "s1", "text": "Bullet item two with " },
+          { "_type": "span", "_key": "s2", "text": "bold text", "marks": ["strong"] },
+          { "_type": "span", "_key": "s3", "text": " inline" }
+        ],
+        "markDefs": []
+      },
+      {
+        "_type": "block",
+        "_key": "bl3",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [{ "_type": "span", "_key": "s1", "text": "Bullet item three" }],
+        "markDefs": []
+      },
+      {
+        "_type": "block",
+        "_key": "ol1",
+        "style": "normal",
+        "listItem": "number",
+        "level": 1,
+        "children": [{ "_type": "span", "_key": "s1", "text": "Ordered list item one" }],
+        "markDefs": []
+      },
+      {
+        "_type": "block",
+        "_key": "ol2",
+        "style": "normal",
+        "listItem": "number",
+        "level": 1,
+        "children": [{ "_type": "span", "_key": "s1", "text": "Ordered list item two" }],
+        "markDefs": []
+      },
+      {
+        "_type": "block",
+        "_key": "ol3",
+        "style": "normal",
+        "listItem": "number",
+        "level": 1,
+        "children": [{ "_type": "span", "_key": "s1", "text": "Ordered list item three" }],
+        "markDefs": []
+      },
+      {
+        "_type": "block",
+        "_key": "h2-callouts",
+        "style": "h2",
+        "children": [{ "_type": "span", "_key": "s1", "text": "Callout Boxes — Four Variants" }],
+        "markDefs": []
+      },
+      {
+        "_type": "calloutBox",
+        "_key": "cb-tip",
+        "type": "tip",
+        "text": "TIP: Use this for actionable advice or a quick win the reader can apply right now."
+      },
+      {
+        "_type": "calloutBox",
+        "_key": "cb-info",
+        "type": "info",
+        "text": "INFO: Use this for contextual notes, definitions, or background information."
+      },
+      {
+        "_type": "calloutBox",
+        "_key": "cb-warning",
+        "type": "warning",
+        "text": "WARNING: Use this for caveats, common mistakes, or things the reader should watch out for."
+      },
+      {
+        "_type": "calloutBox",
+        "_key": "cb-success",
+        "type": "success",
+        "text": "SUCCESS: Use this to highlight a positive outcome, a win, or a result worth celebrating."
+      },
+      {
+        "_type": "block",
+        "_key": "h2-pullquote",
+        "style": "h2",
+        "children": [{ "_type": "span", "_key": "s1", "text": "Pull Quote" }],
+        "markDefs": []
+      },
+      {
+        "_type": "pullQuote",
+        "_key": "pq1",
+        "quote": "Strategy without infrastructure is just a wish. Build the foundation first.",
+        "attribution": "That Works"
+      },
+      {
+        "_type": "block",
+        "_key": "h2-stats",
+        "style": "h2",
+        "children": [{ "_type": "span", "_key": "s1", "text": "Stats Block" }],
+        "markDefs": []
+      },
+      {
+        "_type": "statsBlock",
+        "_key": "sb1",
+        "number": "83%",
+        "label": "of GTM strategies fail in year one",
+        "description": "The root cause is almost never the strategy itself — it's the infrastructure underneath it."
+      },
+      {
+        "_type": "divider",
+        "_key": "div1"
+      },
+      {
+        "_type": "block",
+        "_key": "h2-table",
+        "style": "h2",
+        "children": [{ "_type": "span", "_key": "s1", "text": "Table" }],
+        "markDefs": []
+      },
+      {
+        "_type": "table",
+        "_key": "tbl1",
+        "rows": [
+          { "cells": ["Channel", "Cost per SQL", "Win Rate", "Notes"] },
+          { "cells": ["Outbound", "$420", "28%", "High intent, longer cycle"] },
+          { "cells": ["Content", "$210", "34%", "Lower volume, better fit"] },
+          { "cells": ["Referral", "$80", "52%", "Best economics, hard to scale"] },
+          { "cells": ["Paid", "$680", "19%", "Fast to spin up, expensive at scale"] }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "h2-code",
+        "style": "h2",
+        "children": [{ "_type": "span", "_key": "s1", "text": "Code Block" }],
+        "markDefs": []
+      },
+      {
+        "_type": "codeBlock",
+        "_key": "code1",
+        "language": "javascript",
+        "code": "// Example: Lead scoring logic\nconst scoreLead = (lead) => {\n  let points = 0;\n  if (lead.title.includes('VP')) points += 20;\n  if (lead.title.includes('Director')) points += 15;\n  if (lead.pageViews > 5) points += 10;\n  if (lead.demoRequested) points += 30;\n  return points;\n};"
+      },
+      {
+        "_type": "block",
+        "_key": "h2-cta",
+        "style": "h2",
+        "children": [{ "_type": "span", "_key": "s1", "text": "CTA Buttons" }],
+        "markDefs": []
+      },
+      {
+        "_type": "ctaButton",
+        "_key": "cta1",
+        "text": "Book a Diagnostic Call →",
+        "url": "/book-a-call",
+        "style": "primary"
+      },
+      {
+        "_type": "ctaButton",
+        "_key": "cta2",
+        "text": "View Services",
+        "url": "/services",
+        "style": "secondary"
+      }
+    ]
+  },
+  {
+    "_id": "placeholder-1",
+    "slug": "cold-outreach-that-doesnt-feel-cold",
+    "title": "Cold Outreach That Doesn't Feel Cold",
+    "excerpt": "Personalisation at scale isn't a contradiction. Here's the system that makes it possible without burning your team out.",
+    "publishedAt": "2026-03-10",
+    "readTime": 5,
+    "category": "Lead Generation",
+    "categoryColor": "var(--orange)",
+    "author": "That Works Team",
+    "featured": false,
+    "content": [
+      { "_type": "block", "_key": "p1", "style": "normal", "markDefs": [],
+        "children": [{ "_type": "span", "_key": "s1", "text": "The word 'cold' in cold outreach is a misnomer. The best outreach doesn't feel cold at all — it feels like someone did their homework. The problem is that doing your homework on 500 prospects a month sounds impossible. It isn't." }] },
+      { "_type": "block", "_key": "h2-1", "style": "h2", "markDefs": [],
+        "children": [{ "_type": "span", "_key": "s1", "text": "The Research Stack" }] },
+      { "_type": "block", "_key": "p2", "style": "normal", "markDefs": [],
+        "children": [{ "_type": "span", "_key": "s1", "text": "Most SDRs spend 70% of their time on research and 30% on outreach. Flip that ratio and you've built yourself a machine. The key is knowing exactly what signals to look for — and automating the collection of those signals." }] },
+      { "_type": "calloutBox", "_key": "cb1", "type": "tip",
+        "text": "Hiring signals, funding announcements, new product launches, and leadership changes are the triggers that make outreach feel timely rather than random. Build a signal stack before you build a sequence." },
+      { "_type": "block", "_key": "h2-2", "style": "h2", "markDefs": [],
+        "children": [{ "_type": "span", "_key": "s1", "text": "The Template That Isn't One" }] },
+      { "_type": "block", "_key": "p3", "style": "normal", "markDefs": [],
+        "children": [{ "_type": "span", "_key": "s1", "text": "A good outreach framework has three parts: a specific hook (the signal you noticed), a clear connection to their world, and a single low-friction ask. It should read like it took 10 minutes to write. It should actually take 90 seconds." }] },
+      { "_type": "pullQuote", "_key": "pq1", "quote": "The best cold email is one the recipient isn't sure is cold.", "attribution": "That Works" },
+      { "_type": "block", "_key": "p4", "style": "normal", "markDefs": [],
+        "children": [{ "_type": "span", "_key": "s1", "text": "The goal isn't to trick anyone. It's to demonstrate, quickly, that you actually understand their situation. Most vendors don't bother. That's the gap you're filling." }] }
+    ]
+  },
+  {
+    "_id": "placeholder-2",
+    "slug": "marketing-ops-is-not-marketing",
+    "title": "Marketing Ops Is Not Marketing",
+    "excerpt": "The distinction matters more than you think, and conflating the two is costing you pipeline you don't know you're losing.",
+    "publishedAt": "2026-03-05",
+    "readTime": 4,
+    "category": "Marketing Systems",
+    "categoryColor": "var(--lavender)",
+    "author": "That Works Team",
+    "featured": false,
+    "content": [
+      { "_type": "block", "_key": "p1", "style": "normal", "markDefs": [],
+        "children": [{ "_type": "span", "_key": "s1", "text": "Ask ten marketers what marketing ops does and you'll get ten different answers. That's the problem. When a function doesn't have a clear definition, it gets asked to do everything — and ends up owning nothing." }] },
+      { "_type": "block", "_key": "h2-1", "style": "h2", "markDefs": [],
+        "children": [{ "_type": "span", "_key": "s1", "text": "What Ops Actually Owns" }] },
+      { "_type": "block", "_key": "p2", "style": "normal", "markDefs": [],
+        "children": [{ "_type": "span", "_key": "s1", "text": "Marketing ops owns the infrastructure that makes marketing possible: the CRM, the MAP, the attribution model, the data governance, the reporting layer. It is not a support function. It is a systems function." }] },
+      { "_type": "calloutBox", "_key": "cb1", "type": "info",
+        "text": "If your marketing ops team spends more than 20% of their time on campaign execution, you have a resourcing problem — not an ops problem." },
+      { "_type": "block", "_key": "h2-2", "style": "h2", "markDefs": [],
+        "children": [{ "_type": "span", "_key": "s1", "text": "The Handoff Problem" }] },
+      { "_type": "block", "_key": "p3", "style": "normal", "markDefs": [],
+        "children": [{ "_type": "span", "_key": "s1", "text": "Ops builds a sophisticated lead scoring model, marketing celebrates, and then nobody tells sales how to use it. Pipeline sits untouched because the handoff layer was never designed. Ops owns the model. Marketing owns the content. Sales owns the conversation. When each team knows its lane, the whole system accelerates." }] }
+    ]
+  },
+  {
+    "_id": "placeholder-3",
+    "slug": "the-founder-led-sales-ceiling",
+    "title": "The Founder-Led Sales Ceiling",
+    "excerpt": "Every founder hits it. Revenue stalls, the pipeline feels personal, and hiring a sales team doesn't fix it. Here's what does.",
+    "publishedAt": "2026-02-20",
+    "readTime": 7,
+    "category": "GTM & Growth",
+    "categoryColor": "var(--yellow)",
+    "author": "That Works Team",
+    "featured": true,
+    "content": [
+      { "_type": "block", "_key": "p1", "style": "normal", "markDefs": [],
+        "children": [{ "_type": "span", "_key": "s1", "text": "You built something people want. You know because you sold it yourself — on calls, at conferences, over LinkedIn DMs at midnight. The first 30, 50, maybe 80 customers all came through you. Your pitch was sharp because you built the product. Your conviction was unshakeable because you lived the problem." }] },
+      { "_type": "block", "_key": "h2-1", "style": "h2", "markDefs": [],
+        "children": [{ "_type": "span", "_key": "s1", "text": "Why Founder-Led Sales Works (At First)" }] },
+      { "_type": "block", "_key": "p2", "style": "normal", "markDefs": [],
+        "children": [{ "_type": "span", "_key": "s1", "text": "Founder-led sales works because you carry something no hire ever will: absolute belief in the thing you built. Prospects feel it. It shortcuts trust. It compensates for a lot of process gaps." }] },
+      { "_type": "statsBlock", "_key": "sb1", "number": "73%", "label": "of founder-led deals close on relationship alone",
+        "description": "That number drops to 31% when a sales hire takes over the same pipeline without a documented playbook." },
+      { "_type": "block", "_key": "h2-2", "style": "h2", "markDefs": [],
+        "children": [{ "_type": "span", "_key": "s1", "text": "What Breaks When You Scale" }] },
+      { "_type": "block", "_key": "p3", "style": "normal", "markDefs": [],
+        "children": [{ "_type": "span", "_key": "s1", "text": "The ceiling isn't a people problem. It's a systems problem. Your sales motion lived in your head — in your instincts about which prospects to prioritise, which objections to push through, which deals to walk away from. A new hire can't inherit instinct. They can inherit a playbook." }] },
+      { "_type": "pullQuote", "_key": "pq1",
+        "quote": "Document the way you sell before you hand it to someone else. Otherwise you're not scaling — you're starting over.",
+        "attribution": "That Works" }
+    ]
+  }
+]

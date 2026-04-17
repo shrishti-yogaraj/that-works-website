@@ -1,236 +1,489 @@
-import { useState, useMemo } from "react";
-import Nav from "@/components/Nav";
-import { blogPosts as staticPosts } from "@/data/blogPosts";
-import sanityPostsRaw from "@/data/sanityPosts.json";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
+import CleoSearch from "@/components/CleoSearch";
+import HubBanner from "@/components/HubBanner";
+import { useNewsletterSubscribe } from "@/hooks/useNewsletterSubscribe";
+import sanityPostsRaw from "@/data/sanityPosts.json";
+import hubDataRaw from "@/data/sanityHubData.json";
 
-// Use Sanity posts when available, fall back to static data
-type PostShape = {
-  slug: string; title: string; excerpt: string; category: string;
-  readTime: number | string; publishedAt: string; featured?: boolean;
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+interface FeaturedPost {
+  title: string;
+  slug: string;
+  excerpt: string;
+  readTime?: number;
+  publishedAt?: string;
+  category?: string;
+  categoryColor?: string;
+}
+
+interface RecentPost {
+  title: string;
+  slug: string;
+  category?: string;
+  categoryColor?: string;
+  featuredImage?: { ref?: string; alt?: string } | null;
+}
+
+interface LabItem {
+  title: string;
+  slug: string;
+  tagline?: string;
+  category?: string;
+  timeToComplete?: string;
+  outputDescription?: string;
+  useCases?: string[];
+  icon?: string;
+}
+
+interface Dissection {
+  title: string;
+  slug: string;
+  company: string;
+  eyebrow?: string;
+  excerpt?: string;
+  stats?: Array<{ value: string; label?: string }>;
+  readTime?: number;
+}
+
+interface HubData {
+  featuredPost: FeaturedPost | null;
+  recentPosts: RecentPost[];
+  labItems: LabItem[];
+  latestDissection: Dissection | null;
+}
+
+// ─── Data ─────────────────────────────────────────────────────────────────────
+
+const hubData = hubDataRaw as HubData;
+const articleCount = (sanityPostsRaw as { slug: string }[]).filter((p) => p.slug).length;
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+const CATEGORY_COLORS: Record<string, string> = {
+  "GTM & Growth":         "var(--orange)",
+  "Marketing Systems":    "var(--lav)",
+  "Lead Generation":      "var(--orange)",
+  "Playbooks":            "var(--amber)",
+  "Revenue Architecture": "#34d399",
+  "Tool Reviews":         "var(--muted)",
+  "Strategy":             "#fbbf24",
+  "Positioning":          "#60a5fa",
+  "Hiring & Team Design": "#fb7185",
 };
-const blogPosts: PostShape[] = (sanityPostsRaw as PostShape[]).length > 0
-  ? (sanityPostsRaw as PostShape[])
-  : staticPosts.map((p) => ({ ...p, readTime: parseInt(p.readTime, 10) || 5 }));
 
-const categories = ["All", "GTM & Growth", "Marketing Systems", "Lead Generation", "Tool Reviews", "Revenue Architecture", "Playbooks", "Hiring & Team Design"] as const;
-
-const categoryColor: Record<string, string> = {
-  "GTM & Growth": "var(--yellow)",
-  "Marketing Systems": "var(--lavender)",
-  "Lead Generation": "var(--orange)",
-  "Tool Reviews": "var(--muted)",
-  "Revenue Architecture": "var(--green, #4ade80)",
-  "Playbooks": "var(--cyan, #22d3ee)",
-  "Hiring & Team Design": "var(--rose, #fb7185)",
+const CATEGORY_GRADIENTS: Record<string, string> = {
+  "GTM & Growth":         "linear-gradient(135deg, #1c1917 0%, #ff5c00 60%, #fbbf24 100%)",
+  "Marketing Systems":    "linear-gradient(135deg, #1c1916 0%, #c4b5fd 100%)",
+  "Lead Generation":      "linear-gradient(135deg, #1c1917 0%, #ff5c00 100%)",
+  "Playbooks":            "linear-gradient(135deg, #2d1f14 0%, #fbbf24 100%)",
+  "Revenue Architecture": "linear-gradient(135deg, #1c1816 0%, #34d399 100%)",
+  "Tool Reviews":         "linear-gradient(135deg, #1c1917 0%, #9a9088 100%)",
+  "Strategy":             "linear-gradient(135deg, #1c1816 0%, #fbbf24 100%)",
+  "Positioning":          "linear-gradient(135deg, #1c1816 0%, #60a5fa 100%)",
+  "Hiring & Team Design": "linear-gradient(135deg, #1c1816 0%, #fb7185 100%)",
 };
 
-const POSTS_PER_PAGE = 6;
+function getCategoryColor(category?: string | null, fallback = "var(--orange)"): string {
+  if (!category) return fallback;
+  return CATEGORY_COLORS[category] ?? fallback;
+}
+
+function getCategoryGradient(category?: string | null): string {
+  if (!category) return "linear-gradient(135deg, #1c1917 0%, #9a9088 100%)";
+  return CATEGORY_GRADIENTS[category] ?? "linear-gradient(135deg, #1c1917 0%, #9a9088 100%)";
+}
+
+function getLabCta(category?: string | null): string {
+  switch (category) {
+    case "diagnostic":  return "Run the diagnostic →";
+    case "calculator":  return "Open the calculator →";
+    case "scorecard":   return "Run the scorecard →";
+    case "generator":   return "Try the generator →";
+    case "planner":     return "Open the planner →";
+    default:            return "Open the tool →";
+  }
+}
+
+function formatLabCategory(category?: string | null): string {
+  if (!category) return "Tool";
+  return category.charAt(0).toUpperCase() + category.slice(1);
+}
+
+function formatPublishedAt(iso?: string | null): string {
+  if (!iso) return "";
+  return new Date(iso).toLocaleDateString("en-GB", { month: "long", year: "numeric" });
+}
+
+// ─── Component ────────────────────────────────────────────────────────────────
 
 const Blog = () => {
-  const [activeCategory, setActiveCategory] = useState<string>("All");
-  const [search, setSearch] = useState("");
-  const [page, setPage] = useState(1);
+  const [comingSoonPopup, setComingSoonPopup] = useState<string | null>(null);
+  const exitShownRef = useRef(false);
+  const { email: popupEmail, setEmail: setPopupEmail, status: popupStatus, errorMessage: popupError, subscribe: popupSubscribe } = useNewsletterSubscribe();
 
-  const featured = blogPosts.find((p) => p.featured);
-  const rest = blogPosts.filter((p) => !p.featured);
+  const { featuredPost, recentPosts, labItems, latestDissection } = hubData;
 
-  const filtered = useMemo(() => {
-    let posts = rest;
-    if (activeCategory !== "All") {
-      posts = posts.filter((p) => p.category === activeCategory);
-    }
-    if (search.trim()) {
-      const q = search.toLowerCase();
-      posts = posts.filter(
-        (p) =>
-          p.title.toLowerCase().includes(q) ||
-          p.excerpt.toLowerCase().includes(q)
-      );
-    }
-    return posts;
-  }, [activeCategory, search, rest]);
+  useEffect(() => {
+    const btn = document.querySelector<HTMLElement>(".back-to-site");
+    const footer = document.querySelector<HTMLElement>(".site-footer");
+    if (!btn || !footer) return;
 
-  const totalPages = Math.ceil(filtered.length / POSTS_PER_PAGE);
-  const visible = filtered.slice(0, page * POSTS_PER_PAGE);
+    const handleScroll = () => {
+      const footerTop = footer.getBoundingClientRect().top;
+      const btnHeight = btn.offsetHeight;
+      const gap = 12;
+      const defaultBottom = 28;
+      const clearance = window.innerHeight - footerTop;
 
-  const mostRead = blogPosts.slice(0, 5);
+      if (clearance > defaultBottom + btnHeight) {
+        btn.style.bottom = `${clearance + gap}px`;
+      } else {
+        btn.style.bottom = `${defaultBottom}px`;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const overlay = document.getElementById("exitOverlay");
+    const closeBtn = document.getElementById("exitClose");
+
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (e.clientY <= 0 && !exitShownRef.current) {
+        exitShownRef.current = true;
+        overlay?.classList.add("visible");
+      }
+    };
+
+    const handleClose = () => {
+      overlay?.classList.remove("visible");
+    };
+
+    const handleOverlayClick = (e: MouseEvent) => {
+      if (e.target === e.currentTarget) {
+        (e.currentTarget as HTMLElement).classList.remove("visible");
+      }
+    };
+
+    document.addEventListener("mouseleave", handleMouseLeave);
+    closeBtn?.addEventListener("click", handleClose);
+    overlay?.addEventListener("click", handleOverlayClick as EventListener);
+
+    return () => {
+      document.removeEventListener("mouseleave", handleMouseLeave);
+      closeBtn?.removeEventListener("click", handleClose);
+      overlay?.removeEventListener("click", handleOverlayClick as EventListener);
+    };
+  }, []);
 
   return (
     <>
       <SEOHead
-        title="GTM Insights & Resources — That Works"
-        description="Practical insight on GTM strategy, marketing systems, lead generation, and revenue architecture for B2B companies. Written by practitioners, not theorists."
+        title="The Hub — That Works"
+        description="GTM insights, tools, dissections and diagnostics — all in one place."
         canonical="/blog"
       />
-      <Nav />
+      <div className="hub-page">
 
-      {/* HEADER */}
-      <section className="blog-header">
-        <div className="blog-header-inner">
-          <div className="section-label">Resources</div>
-          <h1>The Library.</h1>
-          <p>Frameworks, breakdowns and honest opinions on GTM, lead generation, marketing systems and automation.</p>
-        </div>
-      </section>
+        {/* ═══════════════════════
+             SUBSCRIPTION BANNER
+        ═══════════════════════ */}
+        <HubBanner />
 
-      {/* FEATURED */}
-      {featured && (
-        <section className="blog-featured">
-          <div className="blog-featured-inner">
-            <a href={`/blog/${featured.slug}`} className="blog-featured-card">
-              <div className="blog-featured-content">
-                <span className="blog-cat-tag" style={{ color: categoryColor[featured.category] }}>
-                  {featured.category}
-                </span>
-                <h2>{featured.title}</h2>
-                <p className="blog-featured-excerpt">{featured.excerpt}</p>
-                <div className="blog-meta">
-                  {(featured as { author?: string }).author} · {typeof featured.readTime === "number" ? `${featured.readTime} min read` : featured.readTime} · {featured.publishedAt}
+        {/* ═══════════════════════
+             MASTHEAD
+        ═══════════════════════ */}
+        <header>
+          <div className="mast">
+            <div className="mast-top">
+              <span className="mast-top-left">That Works · Resource Hub</span>
+              <div className="mast-search">
+                <input
+                  type="text"
+                  placeholder="What are you trying to build or fix?"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && e.currentTarget.value.trim()) {
+                      window.location.href = `/articles?q=${encodeURIComponent(e.currentTarget.value.trim())}`;
+                    }
+                  }}
+                />
+                <span className="mast-search-ic">↵</span>
+              </div>
+            </div>
+            <div className="mast-title">The Anatomy of Scale.</div>
+            <div className="mast-rule-double"></div>
+            <div className="mast-tagline">Frameworks, diagnostics and honest opinions on GTM, lead generation, and the systems behind B2B growth.</div>
+          </div>
+        </header>
+
+        {/* ═══════════════════════
+             LEAD SECTION
+        ═══════════════════════ */}
+        <section className="above-fold">
+
+          {/* Left: lab tools */}
+          <div className="left-col">
+            {labItems[0] && (
+              <Link className="left-col-tool" to={`/lab/${labItems[0].slug}`}>
+                <div className="left-col-tool-top">
+                  <span className="left-col-tool-tag">Tool of the week</span>
+                  <span className="left-col-tool-type">{formatLabCategory(labItems[0].category)}</span>
                 </div>
-              </div>
-              <div className="blog-featured-img" style={{ background: 'var(--orange)' }}>
-                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.4rem', fontWeight: 900, color: 'var(--text)', opacity: 0.2 }}>TW</span>
-              </div>
-            </a>
+                <div className="left-col-tool-body">
+                  <div className="left-col-tool-hed">{labItems[0].title}</div>
+                  {labItems[0].tagline && (
+                    <p className="left-col-tool-dek">{labItems[0].tagline}</p>
+                  )}
+                  {labItems[0].useCases && labItems[0].useCases.length > 0 && (
+                    <ul className="outcome-list">
+                      {labItems[0].useCases.map((uc, i) => (
+                        <li key={i}>{uc}</li>
+                      ))}
+                    </ul>
+                  )}
+                  <div className="left-col-tool-cta">{getLabCta(labItems[0].category)}</div>
+                </div>
+              </Link>
+            )}
+            {labItems[1] && (
+              <Link className="left-col-resource-week" to={`/lab/${labItems[1].slug}`}>
+                <div className="left-col-resource-week-top">
+                  <span className="left-col-resource-week-tag">Also in the Lab</span>
+                  <span className="left-col-resource-week-type">{formatLabCategory(labItems[1].category)}</span>
+                </div>
+                <div className="left-col-resource-week-body">
+                  <div className="left-col-resource-week-hed">{labItems[1].title}</div>
+                  {labItems[1].tagline && (
+                    <p className="left-col-resource-week-dek">{labItems[1].tagline}</p>
+                  )}
+                  {labItems[1].useCases && labItems[1].useCases.length > 0 && (
+                    <ul className="outcome-list">
+                      {labItems[1].useCases.map((uc, i) => (
+                        <li key={i}>{uc}</li>
+                      ))}
+                    </ul>
+                  )}
+                  <div className="left-col-resource-week-cta">{getLabCta(labItems[1].category)}</div>
+                </div>
+              </Link>
+            )}
           </div>
-        </section>
-      )}
 
-      {/* FILTERS */}
-      <div className="blog-filters">
-        <div className="blog-filters-inner">
-          <div className="blog-filter-pills">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                className={`blog-pill${activeCategory === cat ? " active" : ""}`}
-                onClick={() => { setActiveCategory(cat); setPage(1); }}
-              >
-                {cat}
-              </button>
-            ))}
+          {/* spacer */}
+          <div></div>
+
+          {/* Centre: featured article */}
+          <div className="lead-col">
+            {featuredPost && (
+              <>
+                <div className="lead-graphic">
+                  <div className="lead-graphic-inner"></div>
+                </div>
+                <div className="lead-overline">
+                  ★ Featured{featuredPost.category ? ` · ${featuredPost.category}` : ""}
+                </div>
+                <Link to={`/blog/${featuredPost.slug}`} className="lead-hed-link">
+                  <div className="lead-hed">{featuredPost.title}</div>
+                </Link>
+                <div className="lead-rule"></div>
+                <p className="lead-dek">{featuredPost.excerpt}</p>
+                <div className="lead-meta">
+                  {[
+                    formatPublishedAt(featuredPost.publishedAt),
+                    featuredPost.readTime ? `${featuredPost.readTime} min read` : null,
+                    "That Works",
+                  ].filter(Boolean).join(" · ")}
+                </div>
+              </>
+            )}
           </div>
-          <input
-            type="text"
-            className="blog-search"
-            placeholder="Search posts…"
-            value={search}
-            onChange={(e) => { setSearch(e.target.value); setPage(1); }}
-          />
+
+          {/* spacer */}
+          <div></div>
+
+          {/* Right: new & hot */}
+          <div className="right-col">
+            {recentPosts.length > 0 && (
+              <>
+                <span className="right-col-label">New &amp; Hot</span>
+                {recentPosts.map((post) => (
+                  <Link className="brief" key={post.slug} to={`/blog/${post.slug}`}>
+                    <div className="brief-thumb">
+                      <div
+                        className="brief-thumb-inner"
+                        style={{ background: getCategoryGradient(post.category) }}
+                      ></div>
+                    </div>
+                    <div className="brief-body">
+                      <span className="brief-cat" style={{ color: getCategoryColor(post.category) }}>
+                        {post.category ?? "GTM & Growth"}
+                      </span>
+                      <div className="brief-hed">{post.title}</div>
+                    </div>
+                  </Link>
+                ))}
+              </>
+            )}
+          </div>
+
+        </section>
+
+        {/* ═══════════════════════
+             CONTENT PILLARS
+        ═══════════════════════ */}
+        <section className="pillar-row">
+
+          <Link className="pillar pillar-articles" to="/articles">
+            <span className="pillar-eyebrow">Long reads</span>
+            <div className="pillar-name">Articles</div>
+            <p className="pillar-desc">Frameworks and honest opinions on GTM, lead generation, and the systems behind B2B growth.</p>
+            <span className="pillar-cta">{articleCount > 0 ? `${articleCount} articles →` : "Browse articles →"}</span>
+          </Link>
+
+          <Link className="pillar pillar-lab" to="/lab">
+            <span className="pillar-eyebrow">Interactive tools</span>
+            <div className="pillar-name">The Lab</div>
+            <p className="pillar-desc">Diagnostics and calculators that give you a scored output — not a framework to figure out yourself.</p>
+            <span className="pillar-cta">Explore the Lab →</span>
+          </Link>
+
+          <button className="pillar pillar-arsenal" onClick={() => setComingSoonPopup("The Arsenal")}>
+            <span className="pillar-eyebrow">Ready to use</span>
+            <div className="pillar-name">The Arsenal</div>
+            <p className="pillar-desc">Templates, canvases and worksheets built from real implementations. Download and run.</p>
+            <span className="pillar-cta">Coming soon →</span>
+          </button>
+
+          <button className="pillar pillar-dis" onClick={() => setComingSoonPopup("Dissections")}>
+            <span className="pillar-eyebrow">Forensic breakdowns</span>
+            <div className="pillar-name">Dissections</div>
+            <p className="pillar-desc">We reverse-engineer how the best B2B companies built their GTM motion — system by system.</p>
+            <span className="pillar-cta">Coming soon →</span>
+          </button>
+
+        </section>
+
+        {/* ═══════════════════════
+             DISSECTION BANNER
+        ═══════════════════════ */}
+        {latestDissection && (
+          <Link className="dis-opt-a" to={`/dissections/${latestDissection.slug}`}>
+            <div className="dis-opt-a-left">
+              <div className="dis-badge">★ Dissection</div>
+              <div className="dis-co">{latestDissection.company}</div>
+            </div>
+            <div className="dis-opt-a-right">
+              {latestDissection.eyebrow && (
+                <div className="dis-eyebrow">{latestDissection.eyebrow}</div>
+              )}
+              <div className="dis-hed">{latestDissection.title}</div>
+              {((latestDissection.stats && latestDissection.stats.length > 0) || latestDissection.readTime) && (
+                <div className="dis-stats-row">
+                  {latestDissection.stats?.map((s, i) => (
+                    <span key={i}>
+                      {i > 0 && <span className="sep">·</span>}
+                      {s.label ? `${s.value} ${s.label}` : s.value}
+                    </span>
+                  ))}
+                  {latestDissection.readTime && (
+                    <span>
+                      {latestDissection.stats && latestDissection.stats.length > 0 && <span className="sep">·</span>}
+                      {latestDissection.readTime} min read
+                    </span>
+                  )}
+                </div>
+              )}
+              {latestDissection.excerpt && (
+                <p className="dis-dek">{latestDissection.excerpt}</p>
+              )}
+              <span className="dis-cta">Read the dissection →</span>
+            </div>
+          </Link>
+        )}
+
+        {/* ═══════════════════════
+             AI SEARCH
+        ═══════════════════════ */}
+        <CleoSearch />
+
+        {/* ═══════════════════════
+             EXIT INTENT POPUP
+        ═══════════════════════ */}
+        <div className="exit-overlay" id="exitOverlay">
+          <div className="exit-popup">
+            <button className="exit-popup-close" id="exitClose">×</button>
+            <span className="exit-popup-eyebrow">Free · Weekly</span>
+            <div className="exit-popup-hed">Before you go —<br /><em>stay in the loop.</em></div>
+            <p className="exit-popup-dek">One essay every week. The frameworks and honest opinions that help B2B operators build smarter. No noise.</p>
+            <form className="exit-popup-form" onSubmit={popupSubscribe}>
+              <input
+                className="exit-popup-input"
+                type="email"
+                placeholder="your@email.com"
+                value={popupEmail}
+                onChange={(e) => setPopupEmail(e.target.value)}
+                required
+                disabled={popupStatus === "loading" || popupStatus === "success"}
+              />
+              <button
+                className="exit-popup-btn"
+                type="submit"
+                disabled={popupStatus === "loading" || popupStatus === "success"}
+              >
+                {popupStatus === "loading" ? "Subscribing…" : popupStatus === "success" ? "You're in ✓" : "Subscribe →"}
+              </button>
+            </form>
+            {popupStatus === "error" && (
+              <p style={{ fontSize: "12px", color: "#f87171", marginTop: "8px" }}>{popupError}</p>
+            )}
+            <p className="exit-popup-note">Free. No spam. Unsubscribe anytime. Read by 1,400+ B2B operators.</p>
+          </div>
         </div>
+
+        {/* Floating back-to-site button */}
+        <Link to="/" className="back-to-site">
+          <span className="bts-top">
+            <span className="bts-arrow">←</span>
+            That Works
+          </span>
+          <span className="bts-cta">Go to the website</span>
+        </Link>
+
+        <Footer />
       </div>
 
-      {/* CONTENT: GRID + SIDEBAR */}
-      <section className="blog-content">
-        <div className="blog-content-inner">
-          <div className="blog-grid">
-            {visible.length === 0 && (
-              <p style={{ color: 'var(--muted)', gridColumn: '1 / -1' }}>No posts found.</p>
-            )}
-            {visible.map((post) => (
-              <a key={post.id} href={`/blog/${post.slug}`} className="blog-card">
-                <span className="blog-cat-tag" style={{ color: categoryColor[post.category] }}>
-                  {post.category}
-                </span>
-                <h3>{post.title}</h3>
-                <p>{post.excerpt}</p>
-                <div className="blog-meta">{typeof post.readTime === "number" ? `${post.readTime} min read` : post.readTime} · {post.publishedAt}</div>
-              </a>
-            ))}
-          </div>
-
-          <aside className="blog-sidebar">
-            <div className="blog-sidebar-section">
-              <h4>Most read</h4>
-              <ol className="blog-most-read">
-                {mostRead.map((post, i) => (
-                  <li key={post.id}>
-                    <a href={`/blog/${post.slug}`}>
-                      <span className="blog-mr-num">{String(i + 1).padStart(2, "0")}</span>
-                      {post.title}
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            </div>
-
-            <div className="blog-sidebar-section">
-              <h4>Browse by topic</h4>
-              <div className="blog-sidebar-pills">
-                {categories.slice(1).map((cat) => (
-                  <button
-                    key={cat}
-                    className={`blog-pill${activeCategory === cat ? " active" : ""}`}
-                    onClick={() => { setActiveCategory(cat); setPage(1); }}
-                  >
-                    {cat}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="blog-sidebar-section">
-              <h4>Get posts in your inbox</h4>
-              <form className="blog-subscribe" onSubmit={(e) => e.preventDefault()}>
-                <input type="email" placeholder="you@company.com" className="blog-search" />
-                <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Subscribe</button>
-              </form>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      {/* PAGINATION */}
-      {visible.length < filtered.length && (
-        <div className="blog-pagination">
-          <button className="btn-primary" onClick={() => setPage((p) => p + 1)}>
-            Load more
-          </button>
-        </div>
-      )}      {/* FOOTER */}
-      <footer className="site-footer">
-        <div className="footer-inner">
-          <div className="footer-brand">
-            <div className="footer-logo"><img src="/logo.svg" alt="That Works" width="678" height="392" className="footer-logo-img" /></div>
-            <p className="footer-tagline">High performance GTM systems. Designed, implemented and handed over.</p>
-            <div className="footer-socials">
-              <a href="#" className="footer-social">LinkedIn</a>
-              <a href="#" className="footer-social">X / Twitter</a>
-            </div>
-          </div>
-          <div className="footer-col">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="/about">About</a></li>
-              <li><a href="/approach">How It Works</a></li>
-              <li><a href="/blog">Blog</a></li>
-              <li><a href="/contact">Contact</a></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h4>Services</h4>
-            <ul>
-              <li><a href="/services">All Services</a></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h4>Newsletter</h4>
-            <p className="footer-newsletter-desc">GTM insights and what's actually working. No fluff.</p>
-            <form className="footer-newsletter-form" onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="your@email.com" className="footer-newsletter-input" />
-              <button type="submit" className="footer-newsletter-btn">Subscribe →</button>
+      {comingSoonPopup && (
+        <div className="cs-popup-overlay" onClick={() => setComingSoonPopup(null)}>
+          <div className="cs-popup" onClick={e => e.stopPropagation()}>
+            <button className="cs-popup-close" onClick={() => setComingSoonPopup(null)}>✕</button>
+            <div className="cs-popup-eyebrow">In the works</div>
+            <h2 className="cs-popup-title">{comingSoonPopup}</h2>
+            <p className="cs-popup-body">This one's being built properly — not just thrown together. We'll let you know as soon as it's ready.</p>
+            <div className="cs-popup-divider" />
+            <p className="cs-popup-sub-label">Get notified when it drops</p>
+            <form className="cs-popup-form" onSubmit={e => { e.preventDefault(); popupSubscribe(e); }}>
+              <input
+                className="cs-popup-input"
+                type="email"
+                placeholder="your@email.com"
+                value={popupEmail}
+                onChange={e => setPopupEmail(e.target.value)}
+                required
+              />
+              <button className="cs-popup-btn" type="submit">
+                {popupStatus === "loading" ? "Subscribing…" : popupStatus === "success" ? "You're in ✓" : "Subscribe free →"}
+              </button>
             </form>
+            {popupError && <p className="cs-popup-error">{popupError}</p>}
           </div>
         </div>
-        <div className="footer-bottom">
-          <p>© 2026 That Works. All rights reserved.</p>
-          <div className="footer-bottom-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms</a>
-          </div>
-        </div>
-      </footer>
+      )}
     </>
   );
 };

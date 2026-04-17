@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Nav from "@/components/Nav";
 import SEOHead from "@/components/SEOHead";
 import { useContactPopup } from "@/contexts/ContactPopupContext";
+import Footer from "@/components/Footer";
 
 const sections = [
   {
@@ -19,10 +21,12 @@ const sections = [
       {
         q: "What's the difference between Marketing OS and Point Solutions?",
         a: "Two ways into That Works. Marketing OS is for businesses that know what stage of growth they're at and need the full infrastructure built for that stage. Point Solutions are for businesses that know exactly what gap they need filled — brand, inbound, outbound, or retention — and want that specific system built. Both end with a full handover. Both are one-time builds, not ongoing retainers.",
+        aJsx: <>Two ways into That Works. Marketing OS is for businesses that know what stage of growth they're at and need the full infrastructure built for that stage. Point Solutions are for businesses that know exactly what gap they need filled — <Link to="/services/branding">brand</Link>, <Link to="/services/inbound">inbound</Link>, <Link to="/services/lead-gen">outbound</Link>, or <Link to="/services/retention">retention</Link> — and want that specific system built. Both end with a full handover. Both are one-time builds, not ongoing retainers.</>,
       },
       {
         q: "What category does That Works sit in?",
         a: "We call it 0→1 Marketing Infrastructure. It's an emerging category that sits between fractional CMO (advisory, no build) and marketing agency (execution, no foundation). We do the foundational work that makes everything else work — and then we leave.",
+        aJsx: <>We call it <Link to="/services/marketing-os/zero-to-one">0→1</Link> Marketing Infrastructure. It's an emerging category that sits between fractional CMO (advisory, no build) and marketing agency (execution, no foundation). We do the foundational work that makes everything else work — and then we leave.</>,
       },
     ],
   },
@@ -190,17 +194,17 @@ const FAQ = () => {
             <div className="faq-section-inner">
               <h2 className="faq-section-heading">{heading}</h2>
               <div className="faq-list">
-                {items.map(({ q, a }) => (
-                  <div key={q} className={`faq-item${openKey === q ? " faq-item--open" : ""}`}>
+                {items.map((item) => (
+                  <div key={item.q} className={`faq-item${openKey === item.q ? " faq-item--open" : ""}`}>
                     <button
                       className="faq-trigger"
-                      onClick={() => setOpenKey(openKey === q ? null : q)}
-                      aria-expanded={openKey === q}
+                      onClick={() => setOpenKey(openKey === item.q ? null : item.q)}
+                      aria-expanded={openKey === item.q}
                     >
-                      <span>{q}</span>
-                      <span className="faq-trigger-icon" aria-hidden="true">{openKey === q ? "−" : "+"}</span>
+                      <span>{item.q}</span>
+                      <span className="faq-trigger-icon" aria-hidden="true">{openKey === item.q ? "−" : "+"}</span>
                     </button>
-                    {openKey === q && <p className="faq-answer">{a}</p>}
+                    {openKey === item.q && <p className="faq-answer">{(item as any).aJsx ?? item.a}</p>}
                   </div>
                 ))}
               </div>
@@ -219,48 +223,7 @@ const FAQ = () => {
       </section>
 
       {/* FOOTER */}
-      <footer className="site-footer">
-        <div className="footer-inner">
-          <div className="footer-brand">
-            <div className="footer-logo"><img src="/logo.svg" alt="That Works" width="678" height="392" className="footer-logo-img" /></div>
-            <p className="footer-tagline">High performance GTM systems. Designed, implemented and handed over.</p>
-            <div className="footer-socials">
-              <a href="#" className="footer-social">LinkedIn</a>
-              <a href="#" className="footer-social">X / Twitter</a>
-            </div>
-          </div>
-          <div className="footer-col">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="/about">About</a></li>
-              <li><a href="/approach">How It Works</a></li>
-              <li><a href="/blog">Blog</a></li>
-              <li><a href="/contact">Contact</a></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h4>Services</h4>
-            <ul>
-              <li><a href="/services">All Services</a></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h4>Newsletter</h4>
-            <p className="footer-newsletter-desc">GTM insights and what's actually working. No fluff.</p>
-            <form className="footer-newsletter-form" onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="your@email.com" className="footer-newsletter-input" />
-              <button type="submit" className="footer-newsletter-btn">Subscribe →</button>
-            </form>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <p>© 2026 That Works. All rights reserved.</p>
-          <div className="footer-bottom-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 };

@@ -1,0 +1,233 @@
+/* ── JOIN 2 — exact colour swap (dark ↔ cream) ───────────────────────────── */
+
+/* 3-column grid layout */
+.join2-page {
+  background: #f0e6d3;
+  --bg:      #f0e6d3;
+  --surface: #e4d8c4;
+  --border:  #cfc3af;
+  --text:    #12100f;
+  --muted:   #6b5a48;
+
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  align-items: start;
+}
+
+/* ✦ Stars */
+.j2-star {
+  position: absolute;
+  line-height: 1;
+  color: rgba(28, 17, 5, 0.2);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ● Circles */
+.j2-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(28, 17, 5, 0.18);
+  pointer-events: none;
+}
+
+/* — Lines */
+.j2-line {
+  position: absolute;
+  height: 2px;
+  background: rgba(28, 17, 5, 0.2);
+  pointer-events: none;
+  transform-origin: left center;
+}
+
+/* ~ Arcs */
+.j2-arc {
+  position: absolute;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* Dot grid — patches only where illustrations sit */
+.join2-page::before,
+.join2-page::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 30%;
+  background-image: radial-gradient(circle, rgba(28,17,5,0.3) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Left column: patches around woman (top ~50px) and man (top ~1100px) */
+.join2-page::before {
+  left: 0;
+  mask-image:
+    radial-gradient(ellipse 90% 380px at 50% 430px, black 20%, transparent 80%),
+    radial-gradient(ellipse 90% 380px at 50% 1480px, black 20%, transparent 80%);
+}
+
+/* Right column: patch around desk (top ~500px) */
+.join2-page::after {
+  right: 0;
+  mask-image:
+    radial-gradient(ellipse 90% 380px at 50% 880px, black 20%, transparent 80%);
+}
+
+/* Nav spans all 3 columns */
+.join2-page .site-nav {
+  grid-column: 1 / -1;
+}
+
+/* All content sections occupy the center column */
+.join2-page .join-hero,
+.join2-page .join-who,
+.join2-page .join-how,
+.join2-page .join-roles,
+.join2-page .join-open {
+  grid-column: 2;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.join2-page .join-who {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+/* Remove inner max-width constraints — the column handles width */
+.join2-page .join-hero-inner,
+.join2-page .join-who-inner,
+.join2-page .join-how-list {
+  max-width: 100%;
+}
+
+.join2-page .join-roles,
+.join2-page .join-open {
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Illustrations: bring above solid bg, blend into cream */
+.join2-illus-layer {
+  z-index: 3;
+  position: absolute;
+  overflow: visible;
+  height: 100%;
+}
+.join2-illus-layer .join-illus {
+  opacity: 1;
+  will-change: auto;
+  transform: none;
+}
+
+/* Illustrations — positioned within their gutter columns using vw */
+.join2-illus-layer .join-illus--woman {
+  left: 0;
+  right: auto;
+  top: 50px;
+  width: 30vw;
+}
+
+.join2-illus-layer .join-illus--desk {
+  right: 0;
+  left: auto;
+  top: 500px;
+  width: 30vw;
+}
+
+.join2-illus-layer .join-illus--man {
+  left: 0;
+  right: auto;
+  top: 1100px;
+  width: 28.5vw;
+}
+
+
+/* Deepen purple accent */
+.join2-page .join-how-title,
+.join2-page .join-roles-group-label,
+.join2-page .join-open-title,
+.join2-page .join-popup-title,
+.join2-page .join-sub strong {
+  color: #a78bfa;
+}
+
+/* ── Text colours that are hardcoded ── */
+
+/* role card text: was cream (#f0e6d3) → now dark */
+.join2-page .join-role-card-box {
+  color: #12100f;
+  background: #faf5ed;
+  border-color: #eedfd0;
+}
+
+/* muted role tagline: was rgba(240,230,211,0.55) → rgba(18,16,15,0.55) */
+.join2-page .join-role-tagline {
+  color: rgba(18, 16, 15, 0.55);
+}
+
+/* badge borders/text: were rgba(240,230,211,...) → rgba(18,16,15,...) */
+.join2-page .join-role-badge {
+  border-color: rgba(18, 16, 15, 0.15);
+  color: rgba(18, 16, 15, 0.5);
+}
+
+/* open call box */
+.join2-page .join-open-inner {
+  background: #faf5ed;
+  border: 1px solid #e8ddd0;
+}
+
+.join2-page .join-open-body {
+  color: rgba(18, 16, 15, 0.55);
+}
+
+/* popup: was #1a1816 (dark) → light */
+.join2-page .join-popup {
+  background: #f0e6d3;
+}
+
+.join2-page .join-popup-close {
+  color: #6b5a48;
+}
+.join2-page .join-popup-close:hover {
+  color: #12100f;
+}
+
+/* popup optional text: was rgba(240,230,211,0.3) → rgba(18,16,15,0.3) */
+.join2-page .join-popup-optional {
+  color: rgba(18, 16, 15, 0.3);
+}
+
+/* popup select placeholder: was rgba(240,230,211,0.25) → rgba(18,16,15,0.25) */
+.join2-page .join-popup-select--placeholder {
+  color: rgba(18, 16, 15, 0.25);
+}
+
+/* input focus: was rgba(240,230,211,0.3) → rgba(18,16,15,0.3) */
+.join2-page .join-popup-input:focus {
+  border-color: rgba(18, 16, 15, 0.3);
+}
+
+/* file upload area: was rgba(240,230,211,...) → rgba(18,16,15,...) */
+.join2-page .join-popup-field--file {
+  background: rgba(18, 16, 15, 0.03);
+  border-color: rgba(18, 16, 15, 0.12);
+}
+
+/* popup file btn */
+.join2-page .join-popup-file-label:hover .join-popup-file-btn {
+  border-color: rgba(18, 16, 15, 0.3);
+}
+
+/* overlay: was rgba(12,10,8,0.75) dark → light cream */
+.join2-page ~ .join-popup-overlay,
+.join-popup-overlay {
+  background: rgba(240, 230, 211, 0.75);
+}

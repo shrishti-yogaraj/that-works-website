@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/fetch-sanity-data.mjs && vite-react-ssg build && node scripts/inject-meta.mjs",
+    "build": "node scripts/fetch-sanity-data.mjs && node scripts/generate-sitemap.mjs && vite-react-ssg build && node scripts/inject-meta.mjs",
     "build:dev": "vite build --mode development",
     "fetch-sanity": "node scripts/fetch-sanity-data.mjs",
     "migrate": "bun scripts/migrate-to-sanity.ts",
@@ -49,6 +49,8 @@
     "cmdk": "^1.1.1",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.6.0",
+    "framer-motion": "^12.38.0",
+    "gsap": "^3.14.2",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.462.0",
     "next-themes": "^0.3.0",

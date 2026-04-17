@@ -1,9 +1,9 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { PortableText } from "@portabletext/react";
 import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import { portableTextComponents } from "@/lib/portableTextComponents";
-import { blogPosts as staticPosts } from "@/data/blogPosts";
 import sanityPostsRaw from "@/data/sanityPosts.json";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -34,22 +34,7 @@ interface SanityPost {
 
 // ─── Data source ──────────────────────────────────────────────────────────────
 
-const sanityPosts = sanityPostsRaw as SanityPost[];
-const useSanity = sanityPosts.length > 0;
-
-const allPosts: SanityPost[] = useSanity
-  ? sanityPosts
-  : staticPosts.map((p) => ({
-      slug: p.slug,
-      title: p.title,
-      excerpt: p.excerpt,
-      content: p.content,
-      publishedAt: p.publishedAt,
-      readTime: p.readTime,
-      category: p.category,
-      author: p.author,
-      featured: p.featured,
-    }));
+const allPosts: SanityPost[] = sanityPostsRaw as SanityPost[];
 
 // ─── Category colours ─────────────────────────────────────────────────────────
 
@@ -195,18 +180,20 @@ const BlogPost = () => {
             <Link to="/blog" className="blogpost-back">← Back to Blog</Link>
 
             {post.category && (
-              <span className="blog-cat-tag" style={{ color: catColor }}>
-                {post.category}
-              </span>
+              <div className="blogpost-cat-row">
+                <span className="blog-cat-tag" style={{ color: catColor }}>
+                  {post.category}
+                </span>
+              </div>
             )}
 
             <h1>{post.title}</h1>
 
             <div className="blogpost-meta-row">
-              {post.author && <span className="blogpost-author">{post.author}</span>}
-              {readTimeStr && <span className="blogpost-read-time">{readTimeStr}</span>}
+              {readTimeStr && <span>{readTimeStr}</span>}
+              {readTimeStr && post.publishedAt && <span className="blogpost-meta-sep">·</span>}
               {post.publishedAt && (
-                <time dateTime={post.publishedAt} className="blogpost-date">
+                <time dateTime={post.publishedAt}>
                   {new Date(post.publishedAt).toLocaleDateString("en-AU", {
                     year: "numeric", month: "long", day: "numeric",
                   })}
@@ -235,84 +222,47 @@ const BlogPost = () => {
           )}
         </header>
 
-        {/* ── Body ─────────────────────────────────────────────────────── */}
-        <div className="blogpost-body">
-          <div className="blogpost-content">
-            {useSanity && Array.isArray(post.content) ? (
-              <PortableText value={post.content as Parameters<typeof PortableText>[0]["value"]} components={portableTextComponents} />
-            ) : (
-              renderMarkdown(typeof post.content === "string" ? post.content : "")
+        {/* ── Body + Sidebar ───────────────────────────────────────────── */}
+        <div className="blogpost-body-section">
+          <div className="blogpost-body-section-inner">
+            <div className="blogpost-body">
+              <div className="blogpost-content">
+                {Array.isArray(post.content) && (
+                  <PortableText value={post.content as Parameters<typeof PortableText>[0]["value"]} components={portableTextComponents} />
+                )}
+              </div>
+
+              {post.ctaText && post.ctaLink && (
+                <div className="blogpost-end-cta">
+                  <p>Ready to build a system that actually works?</p>
+                  <a href={post.ctaLink} className="btn-primary">{post.ctaText}</a>
+                </div>
+              )}
+            </div>
+
+            {recentPosts.length > 0 && (
+              <aside className="blogpost-sidebar">
+                <div className="blogpost-sidebar-sticky">
+                  <p className="blogpost-sidebar-label">Keep reading</p>
+                  {recentPosts.map((p) => (
+                    <Link key={p.slug} to={`/blog/${p.slug}`} className="blog-card blogpost-sidebar-card">
+                      <span className="blog-cat-tag" style={{ color: DEFAULT_CATEGORY_COLORS[p.category ?? ""] ?? "var(--muted)" }}>
+                        {p.category}
+                      </span>
+                      <h3>{p.title}</h3>
+                      <p>{p.excerpt}</p>
+                      <div className="blog-meta">
+                        {typeof p.readTime === "number" ? `${p.readTime} min read` : p.readTime} · {p.publishedAt}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </aside>
             )}
           </div>
         </div>
-
-        {/* ── End CTA ──────────────────────────────────────────────────── */}
-        {post.ctaText && post.ctaLink && (
-          <div className="blogpost-end-cta">
-            <p>Ready to build a system that actually works?</p>
-            <a href={post.ctaLink} className="btn-primary">{post.ctaText}</a>
-          </div>
-        )}
-
-        {/* ── Related posts ─────────────────────────────────────────────── */}
-        {recentPosts.length > 0 && (
-          <section className="blogpost-related">
-            <div className="blogpost-related-inner">
-              <h2>Keep reading</h2>
-              <div className="blogpost-related-grid">
-                {recentPosts.map((p) => (
-                  <Link key={p.slug} to={`/blog/${p.slug}`} className="blog-card">
-                    <span className="blog-cat-tag" style={{ color: DEFAULT_CATEGORY_COLORS[p.category ?? ""] ?? "var(--muted)" }}>
-                      {p.category}
-                    </span>
-                    <h3>{p.title}</h3>
-                    <p>{p.excerpt}</p>
-                    <div className="blog-meta">
-                      {typeof p.readTime === "number" ? `${p.readTime} min read` : p.readTime} · {p.publishedAt}
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* ── Footer ───────────────────────────────────────────────────── */}
-        <footer className="site-footer">
-          <div className="footer-inner">
-            <div>
-              <div className="footer-logo">
-                <img src="/logo.svg" alt="That Works" width="678" height="392" className="footer-logo-img" />
-              </div>
-              <p className="footer-tagline">High performance GTM systems. Designed, implemented and handed over.</p>
-            </div>
-            <div className="footer-col">
-              <h4>Company</h4>
-              <ul>
-                <li><a href="/about">About</a></li>
-                <li><a href="/approach">How It Works</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/contact">Contact</a></li>
-              </ul>
-            </div>
-            <div className="footer-col">
-              <h4>Services</h4>
-              <ul><li><a href="/services">All Services</a></li></ul>
-            </div>
-            <div className="footer-col">
-              <h4>Legal</h4>
-              <ul>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <p>© 2026 That Works. All rights reserved.</p>
-            <p style={{ color: "var(--label)" }}>thatworksco.com</p>
-          </div>
-        </footer>
       </article>
+      <Footer />
     </>
   );
 };

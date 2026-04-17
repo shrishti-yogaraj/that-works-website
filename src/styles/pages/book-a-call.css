@@ -46,6 +46,95 @@
   flex-shrink: 0;
 }
 
+/* Eyebrow */
+.bac-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 16px;
+  display: block;
+}
+
+/* Contact details block */
+.bac-contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.bac-contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.bac-contact-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+.bac-contact-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.bac-contact-value:hover { color: var(--orange); }
+
+/* Success state */
+.bac-success-hed {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0 0 8px;
+}
+.bac-success-body {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Error */
+.bac-error {
+  font-size: 13px;
+  color: #f87171;
+  margin: 0;
+}
+
+/* Optional label */
+.bac-optional {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--label);
+  margin-left: 4px;
+}
+
+/* Textarea */
+.bac-field textarea {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 15px;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.2s;
+  line-height: 1.6;
+}
+.bac-field textarea::placeholder { color: var(--label); }
+.bac-field textarea:focus { border-color: var(--orange); }
+
 /* Form */
 .bac-form { display: flex; flex-direction: column; gap: 20px; }
 .bac-field { display: flex; flex-direction: column; gap: 6px; }

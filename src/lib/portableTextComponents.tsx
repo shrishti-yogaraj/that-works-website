@@ -72,10 +72,10 @@ function getEmbedUrl(url: string): string {
 // ─── Callout colours ─────────────────────────────────────────────────────────
 
 const calloutStyles: Record<string, { bg: string; border: string; icon: string }> = {
-  info:    { bg: "rgba(99,102,241,0.08)",  border: "var(--lavender, #818cf8)", icon: "ℹ️" },
-  warning: { bg: "rgba(251,191,36,0.10)",  border: "var(--yellow, #fbbf24)",   icon: "⚠️" },
-  success: { bg: "rgba(74,222,128,0.10)",  border: "var(--green, #4ade80)",    icon: "✅" },
-  tip:     { bg: "rgba(34,211,238,0.10)",  border: "var(--cyan, #22d3ee)",     icon: "💡" },
+  tip:     { bg: "rgba(255,92,0,0.07)",    border: "var(--orange)",   icon: "" },
+  warning: { bg: "rgba(251,191,36,0.08)",  border: "var(--yellow)",   icon: "" },
+  info:    { bg: "rgba(196,181,253,0.08)", border: "var(--lavender)", icon: "" },
+  success: { bg: "rgba(240,230,211,0.06)", border: "var(--muted)",    icon: "" },
 };
 
 // ─── Components ───────────────────────────────────────────────────────────────
@@ -131,7 +131,7 @@ export const portableTextComponents: PortableTextComponents = {
           className="blogpost-callout"
           style={{ background: style.bg, borderLeft: `3px solid ${style.border}` }}
         >
-          <span className="blogpost-callout-icon">{icon}</span>
+          {icon && <span className="blogpost-callout-icon">{icon}</span>}
           <p className="blogpost-callout-text">{value.text}</p>
         </div>
       );
@@ -139,7 +139,7 @@ export const portableTextComponents: PortableTextComponents = {
 
     pullQuote: ({ value }: { value: PullQuote }) => (
       <figure className="blogpost-pullquote">
-        <blockquote>"{value.quote}"</blockquote>
+        <blockquote>{value.quote}</blockquote>
         {value.attribution && <figcaption>— {value.attribution}</figcaption>}
       </figure>
     ),

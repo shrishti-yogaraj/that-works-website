@@ -1,8 +1,10 @@
 import Nav from "@/components/Nav";
 import StageSwitcher from "@/components/StageSwitcher";
 import { useContactPopup } from "@/contexts/ContactPopupContext";
+import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import FaqAccordion from "@/components/FaqAccordion";
+import Footer from "@/components/Footer";
 
 const tiers = [
   {
@@ -26,7 +28,7 @@ const tiers = [
     tagline: "From blank page to built engine. Before you make your first marketing hire.",
     whoFor: "Founder who needs the full machine built before they hire anyone.",
     deliverables: [
-      "Complete brand foundation",
+      <><Link to="/services/branding">Complete brand foundation</Link></>,
       "Full tool stack implementation",
       "12-month roadmap",
       "Two channel playbooks",
@@ -43,9 +45,9 @@ const tiers = [
     whoFor: "Funded founder who wants to build the entire marketing function properly from the start.",
     deliverables: [
       "End-to-end brand identity",
-      "Full inbound strategy across 3+ channels",
-      "Outbound prospecting playbook",
-      "Complete sales enablement suite",
+      <><Link to="/services/inbound">Full inbound strategy</Link> across 3+ channels</>,
+      <><Link to="/services/lead-gen">Outbound prospecting playbook</Link></>,
+      <><Link to="/services/retention">Complete sales enablement suite</Link></>,
       "Full org design",
     ],
     leaveWith: "A complete professional marketing function that looks like it's been running for years.",
@@ -146,8 +148,8 @@ const ZeroToOne = () => {
               <div className="zto-tier-section">
                 <span className="zto-tier-section-label">Deliverables</span>
                 <ul>
-                  {t.deliverables.map((d) => (
-                    <li key={d}>{d}</li>
+                  {t.deliverables.map((d, i) => (
+                    <li key={i}>{d}</li>
                   ))}
                 </ul>
               </div>
@@ -193,48 +195,7 @@ const ZeroToOne = () => {
       </section>
 
       {/* FOOTER */}
-      <footer className="site-footer">
-        <div className="footer-inner">
-          <div className="footer-brand">
-            <div className="footer-logo"><img src="/logo.svg" alt="That Works" width="678" height="392" className="footer-logo-img" /></div>
-            <p className="footer-tagline">High performance GTM systems. Designed, implemented and handed over.</p>
-            <div className="footer-socials">
-              <a href="#" className="footer-social">LinkedIn</a>
-              <a href="#" className="footer-social">X / Twitter</a>
-            </div>
-          </div>
-          <div className="footer-col">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="/about">About</a></li>
-              <li><a href="/approach">How It Works</a></li>
-              <li><a href="/blog">Blog</a></li>
-              <li><a href="/contact">Contact</a></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h4>Services</h4>
-            <ul>
-              <li><a href="/services">All Services</a></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h4>Newsletter</h4>
-            <p className="footer-newsletter-desc">GTM insights and what's actually working. No fluff.</p>
-            <form className="footer-newsletter-form" onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="your@email.com" className="footer-newsletter-input" />
-              <button type="submit" className="footer-newsletter-btn">Subscribe →</button>
-            </form>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <p>© 2026 That Works. All rights reserved.</p>
-          <div className="footer-bottom-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 };
