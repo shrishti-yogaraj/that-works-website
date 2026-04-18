@@ -6,7 +6,7 @@ import { useNewsletterSubscribe } from "@/hooks/useNewsletterSubscribe";
 import { useContactPopup } from "@/contexts/ContactPopupContext";
 
 const HubBanner = () => {
-  const { email, setEmail, status, errorMessage, subscribe } = useNewsletterSubscribe();
+  const { email, setEmail, status, errorMessage, subscribe } = useNewsletterSubscribe("hub-banner");
   const { openPopup } = useContactPopup();
 
   return (

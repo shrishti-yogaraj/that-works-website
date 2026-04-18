@@ -123,7 +123,7 @@ function formatPublishedAt(iso?: string | null): string {
 const Blog = () => {
   const [comingSoonPopup, setComingSoonPopup] = useState<string | null>(null);
   const exitShownRef = useRef(false);
-  const { email: popupEmail, setEmail: setPopupEmail, status: popupStatus, errorMessage: popupError, subscribe: popupSubscribe } = useNewsletterSubscribe();
+  const { email: popupEmail, setEmail: setPopupEmail, status: popupStatus, errorMessage: popupError, subscribe: popupSubscribe } = useNewsletterSubscribe("exit-popup");
 
   const { featuredPost, recentPosts, labItems, latestDissection } = hubData;
 

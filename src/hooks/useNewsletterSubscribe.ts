@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { trackNewsletter } from "@/lib/analytics";
 
 const WEBHOOK_URL = "https://shrishti-y.app.n8n.cloud/webhook/newsletter-subscription";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export function useNewsletterSubscribe() {
+export function useNewsletterSubscribe(source = "general") {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -20,13 +21,14 @@ export function useNewsletterSubscribe() {
       const res = await fetch(WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, source }),
       });
 
       if (!res.ok) throw new Error("Something went wrong");
 
       setStatus("success");
       setEmail("");
+      trackNewsletter(source);
     } catch {
       setStatus("error");
       setErrorMessage("Something went wrong — please try again.");

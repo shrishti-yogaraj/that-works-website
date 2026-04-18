@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import type { PopupMode } from "@/contexts/ContactPopupContext";
 import { isValidEmail, isConsumerEmail, isValidPhone } from "@/lib/validation";
+import { trackLead } from "@/lib/analytics";
 
 const WEBHOOK_URL = "https://shrishti-y.app.n8n.cloud/webhook/that-works-default-lead-form";
 const CAL_BASE = "https://calendly.com/thatworks-shrishti/20-min-diagnostic?background_color=12100f&text_color=f0e6d3&primary_color=fbbf24";
@@ -64,6 +65,7 @@ const ContactFormPopup = ({ open, onOpenChange, source = "general", mode = "book
       });
       if (!res.ok) throw new Error();
       setStatus("success");
+      trackLead(isGuide ? "guide" : "booking", source);
     } catch {
       setStatus("error");
     }

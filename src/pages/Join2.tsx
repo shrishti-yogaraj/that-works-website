@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { isValidEmail, isValidPhone, isValidLinkedIn } from "@/lib/validation";
+import { trackJobApplication } from "@/lib/analytics";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
@@ -137,6 +138,7 @@ const OpenCallPopup = ({ onClose }: { onClose: () => void }) => {
 
       await fetch(OPEN_CALL_WEBHOOK, { method: "POST", body });
       setStatus("success");
+      trackJobApplication("Open Call");
     } catch {
       setStatus("error");
     }

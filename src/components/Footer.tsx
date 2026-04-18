@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useNewsletterSubscribe } from "@/hooks/useNewsletterSubscribe";
 
 const Footer = () => {
-  const { email, setEmail, status, errorMessage, subscribe } = useNewsletterSubscribe();
+  const { email, setEmail, status, errorMessage, subscribe } = useNewsletterSubscribe("footer");
 
   return (
   <footer className="site-footer">

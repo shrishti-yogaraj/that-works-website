@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import { isValidEmail, isValidPhone, isValidLinkedIn } from "@/lib/validation";
+import { trackJobApplication } from "@/lib/analytics";
 import "@/styles/pages/join-role.css";
 
 const WEBHOOK = "https://shrishti-y.app.n8n.cloud/webhook/job-application-form";
@@ -359,6 +360,7 @@ const JoinRole = () => {
       const res = await fetch(WEBHOOK, { method: "POST", body: fd });
       if (!res.ok) throw new Error();
       setStatus("success");
+      trackJobApplication(role.title);
     } catch {
       setStatus("error");
       setErrorMsg("Something went wrong. Please try again or email us directly.");
