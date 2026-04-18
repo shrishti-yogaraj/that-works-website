@@ -168,7 +168,7 @@ const OurApproach = () => {
         <div className="cta-inner">
           <div className="section-label" style={{ textAlign: 'center' }}>Ready when you are</div>
           <h2>Ready to build yours?</h2>
-          <p>Book a 15-minute diagnostic. We'll tell you exactly where you are, and what it takes to get to the next stage.</p>
+          <p>Book a 20-minute diagnostic. We'll tell you exactly where you are, and what it takes to get to the next stage.</p>
           <div className="cta-btns">
             <button className="btn-primary" onClick={() => openPopup("approach-page")}>Book a Diagnostic Call →</button>
           </div>

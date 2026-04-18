@@ -2,11 +2,12 @@
  * HubBanner — the subscription + book a call strip shown at the top of all
  * /blog-family pages. Handles its own newsletter state internally.
  */
-import { Link } from "react-router-dom";
 import { useNewsletterSubscribe } from "@/hooks/useNewsletterSubscribe";
+import { useContactPopup } from "@/contexts/ContactPopupContext";
 
 const HubBanner = () => {
   const { email, setEmail, status, errorMessage, subscribe } = useNewsletterSubscribe();
+  const { openPopup } = useContactPopup();
 
   return (
     <div className="sub-banner" id="subBanner">
@@ -34,9 +35,9 @@ const HubBanner = () => {
       {status === "error" && (
         <span className="sub-banner-note" style={{ color: "#f87171" }}>{errorMessage}</span>
       )}
-      <Link to="/book-a-call" className="sub-banner-btn sub-banner-consult-btn">
+      <button className="sub-banner-btn sub-banner-consult-btn" onClick={() => openPopup("hub-banner")}>
         Book a consultation →
-      </Link>
+      </button>
     </div>
   );
 };

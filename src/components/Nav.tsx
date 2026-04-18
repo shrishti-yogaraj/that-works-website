@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useContactPopup } from "@/contexts/ContactPopupContext";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -12,6 +13,7 @@ const navLinks = [
 const Nav = ({ variant }: { variant?: "light" } = {}) => {
   const { pathname } = useLocation();
   const [scrolled, setScrolled] = useState(false);
+  const { openPopup } = useContactPopup();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -39,7 +41,7 @@ const Nav = ({ variant }: { variant?: "light" } = {}) => {
           ))}
         </ul>
 
-        <Link to="/book-a-call" className="nav-cta">Book a Call</Link>
+        <button className="nav-cta" onClick={() => openPopup("nav")}>Book a Call</button>
       </div>
     </nav>
   );

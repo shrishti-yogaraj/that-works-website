@@ -351,7 +351,7 @@ const Index = () => {
         <div className="cta-inner">
           <div className="section-label" style={{ textAlign: 'center' }}>Ready when you are</div>
           <h2>Every stage of growth has a<br /><em>different breaking point.</em></h2>
-          <p>Book a 15-minute diagnostic. We'll tell you exactly where yours is, and what it takes to get past it.</p>
+          <p>Book a 20-minute diagnostic. We'll tell you exactly where yours is, and what it takes to get past it.</p>
           <div className="cta-btns">
             <button className="btn-primary" onClick={() => openPopup("homepage-cta")}>Book a Diagnostic Call →</button>
             <a href="#" className="btn-ghost">Download the Guide</a>
