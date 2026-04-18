@@ -1,9 +1,12 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 
+export type PopupMode = "booking" | "guide";
+
 interface ContactPopupContextType {
   isOpen: boolean;
   source: string;
-  openPopup: (source?: string) => void;
+  mode: PopupMode;
+  openPopup: (source?: string, mode?: PopupMode) => void;
   closePopup: () => void;
 }
 
@@ -12,12 +15,17 @@ const ContactPopupContext = createContext<ContactPopupContextType | undefined>(u
 export const ContactPopupProvider = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [source, setSource] = useState("general");
+  const [mode, setMode] = useState<PopupMode>("booking");
 
-  const openPopup = (src = "general") => { setSource(src); setIsOpen(true); };
+  const openPopup = (src = "general", m: PopupMode = "booking") => {
+    setSource(src);
+    setMode(m);
+    setIsOpen(true);
+  };
   const closePopup = () => setIsOpen(false);
 
   return (
-    <ContactPopupContext.Provider value={{ isOpen, source, openPopup, closePopup }}>
+    <ContactPopupContext.Provider value={{ isOpen, source, mode, openPopup, closePopup }}>
       {children}
     </ContactPopupContext.Provider>
   );

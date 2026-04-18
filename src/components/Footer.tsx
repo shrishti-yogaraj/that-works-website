@@ -13,8 +13,8 @@ const Footer = () => {
         </div>
         <p className="footer-tagline">High performance GTM systems. Designed, implemented and handed over.</p>
         <div className="footer-socials">
-          <a href="#" className="footer-social">LinkedIn</a>
-          <a href="#" className="footer-social">X / Twitter</a>
+          <a href="https://www.linkedin.com/company/that-works-co/" target="_blank" rel="noopener noreferrer" className="footer-social">LinkedIn</a>
+          <a href="https://x.com/ThatWorksCo" target="_blank" rel="noopener noreferrer" className="footer-social">X / Twitter</a>
         </div>
       </div>
       <div className="footer-col">
@@ -62,8 +62,8 @@ const Footer = () => {
     <div className="footer-bottom">
       <p>© 2026 That Works. All rights reserved.</p>
       <div className="footer-bottom-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms</a>
+        <Link to="/privacy">Privacy Policy</Link>
+        <Link to="/terms">Terms</Link>
       </div>
     </div>
   </footer>

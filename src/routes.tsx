@@ -22,6 +22,8 @@ import Join from "./pages/Join2";
 import JoinRole from "./pages/JoinRole";
 import BookACall from "./pages/BookACall";
 import FAQ from "./pages/FAQ";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 
 export const routes: RouteObject[] = [
@@ -48,6 +50,8 @@ export const routes: RouteObject[] = [
       { path: "/join", element: <Join /> },
       { path: "/join/:slug", element: <JoinRole /> },
       { path: "/faq", element: <FAQ /> },
+      { path: "/privacy", element: <Privacy /> },
+      { path: "/terms", element: <Terms /> },
       { path: "*", element: <NotFound /> },
     ],
   },

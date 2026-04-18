@@ -27,10 +27,10 @@ const GA4RouteTracker = () => {
 };
 
 const ContactPopupController = () => {
-  const { isOpen, source, closePopup } = useContactPopup();
+  const { isOpen, source, mode, closePopup } = useContactPopup();
   return (
     <Suspense fallback={null}>
-      <ContactFormPopup open={isOpen} onOpenChange={closePopup} source={source} />
+      <ContactFormPopup open={isOpen} onOpenChange={closePopup} source={source} mode={mode} />
     </Suspense>
   );
 };
