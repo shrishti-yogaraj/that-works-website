@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { isValidEmail, isValidPhone, isValidLinkedIn } from "@/lib/validation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
@@ -88,13 +89,13 @@ const RoleCard = ({ role }: { role: typeof internRoles[0] }) => (
 
 // ─── Open call popup ──────────────────────────────────────────────────────────
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const EXPAND_OPTIONS = new Set(["not-sure", "not-listed"]);
 
 const OpenCallPopup = ({ onClose }: { onClose: () => void }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [emailTouched, setEmailTouched] = useState(false);
+  const [phone, setPhone] = useState("");
+  const [linkedin, setLinkedin] = useState("");
   const [workInterest, setWorkInterest] = useState("");
   const [workExpand, setWorkExpand] = useState("");
   const [proudOf, setProudOf] = useState("");
@@ -102,19 +103,31 @@ const OpenCallPopup = ({ onClose }: { onClose: () => void }) => {
   const [anythingElse, setAnythingElse] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const [submitAttempted, setSubmitAttempted] = useState(false);
 
-  const emailInvalid = emailTouched && !EMAIL_RE.test(email);
   const showWorkExpand = EXPAND_OPTIONS.has(workInterest);
+  const show = (f: string) => touched[f] || submitAttempted;
+  const handleBlur = (f: string) => setTouched(prev => ({ ...prev, [f]: true }));
+
+  const fieldErrors = {
+    email:    !isValidEmail(email)    ? "Please enter a valid email address." : null,
+    phone:    !isValidPhone(phone)    ? "Please enter a valid phone number (e.g. +61 400 000 000)." : null,
+    linkedin: !isValidLinkedIn(linkedin) ? "Please enter a valid LinkedIn URL (e.g. linkedin.com/in/yourprofile)." : null,
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!EMAIL_RE.test(email)) { setEmailTouched(true); return; }
+    setSubmitAttempted(true);
+    if (Object.values(fieldErrors).some(Boolean)) return;
     setStatus("loading");
     try {
       const body = new FormData();
       body.append("type", "open_call");
       body.append("name", name);
       body.append("email", email);
+      body.append("phone", phone);
+      body.append("linkedin", linkedin);
       body.append("workInterest", workInterest);
       if (showWorkExpand) body.append("workInterestDetail", workExpand);
       body.append("proudOf", proudOf);
@@ -143,7 +156,7 @@ const OpenCallPopup = ({ onClose }: { onClose: () => void }) => {
             <div className="join-popup-eyebrow">Open call</div>
             <h2 className="join-popup-title">Tell us about yourself.</h2>
             <p className="join-popup-body">No CV required, no cover letter template. We'd just love to get to know you a little!</p>
-            <form className="join-popup-form" onSubmit={handleSubmit}>
+            <form className="join-popup-form" onSubmit={handleSubmit} noValidate>
 
               <div className="join-popup-row">
                 <div className="join-popup-field">
@@ -160,15 +173,50 @@ const OpenCallPopup = ({ onClose }: { onClose: () => void }) => {
                 <div className="join-popup-field">
                   <label className="join-popup-label">Your email</label>
                   <input
-                    className={`join-popup-input${emailInvalid ? " join-popup-input--error" : ""}`}
+                    className={`join-popup-input${show("email") && fieldErrors.email ? " join-popup-input--error" : ""}`}
                     type="email"
                     placeholder="your@email.com"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
-                    onBlur={() => setEmailTouched(true)}
+                    onBlur={() => handleBlur("email")}
                     required
                   />
-                  {emailInvalid && <span className="join-popup-field-error">Please enter a valid email address.</span>}
+                  {show("email") && fieldErrors.email && (
+                    <span className="join-popup-field-error">{fieldErrors.email}</span>
+                  )}
+                </div>
+              </div>
+
+              <div className="join-popup-row">
+                <div className="join-popup-field">
+                  <label className="join-popup-label">Phone number</label>
+                  <input
+                    className={`join-popup-input${show("phone") && fieldErrors.phone ? " join-popup-input--error" : ""}`}
+                    type="tel"
+                    placeholder="+61 400 000 000"
+                    value={phone}
+                    onChange={e => setPhone(e.target.value)}
+                    onBlur={() => handleBlur("phone")}
+                    required
+                  />
+                  {show("phone") && fieldErrors.phone && (
+                    <span className="join-popup-field-error">{fieldErrors.phone}</span>
+                  )}
+                </div>
+                <div className="join-popup-field">
+                  <label className="join-popup-label">LinkedIn URL</label>
+                  <input
+                    className={`join-popup-input${show("linkedin") && fieldErrors.linkedin ? " join-popup-input--error" : ""}`}
+                    type="url"
+                    placeholder="linkedin.com/in/yourprofile"
+                    value={linkedin}
+                    onChange={e => setLinkedin(e.target.value)}
+                    onBlur={() => handleBlur("linkedin")}
+                    required
+                  />
+                  {show("linkedin") && fieldErrors.linkedin && (
+                    <span className="join-popup-field-error">{fieldErrors.linkedin}</span>
+                  )}
                 </div>
               </div>
 

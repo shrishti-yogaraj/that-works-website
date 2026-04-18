@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
+import { isValidEmail, isValidPhone, isValidLinkedIn } from "@/lib/validation";
 import "@/styles/pages/join-role.css";
 
 const WEBHOOK = "https://shrishti-y.app.n8n.cloud/webhook/job-application-form";
@@ -294,11 +295,11 @@ const roleData: Record<string, {
 // ── Form fields ────────────────────────────────────────────────────────────────
 
 type FormState = {
-  name: string; email: string; linkedin: string;
+  name: string; email: string; phone: string; linkedin: string;
   q1: string; q2: string; q3: string; q4: string; q5: string; q6: string;
 };
 
-const emptyForm: FormState = { name: "", email: "", linkedin: "", q1: "", q2: "", q3: "", q4: "", q5: "", q6: "" };
+const emptyForm: FormState = { name: "", email: "", phone: "", linkedin: "", q1: "", q2: "", q3: "", q4: "", q5: "", q6: "" };
 const qKeys = ["q1", "q2", "q3", "q4", "q5", "q6"] as const;
 
 // ── Page ───────────────────────────────────────────────────────────────────────
@@ -311,6 +312,17 @@ const JoinRole = () => {
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const [submitAttempted, setSubmitAttempted] = useState(false);
+
+  const fieldErrors = {
+    email:    !isValidEmail(form.email)    ? "Please enter a valid email address." : null,
+    phone:    !isValidPhone(form.phone)    ? "Please enter a valid phone number (e.g. +61 400 000 000)." : null,
+    linkedin: !isValidLinkedIn(form.linkedin) ? "Please enter a valid LinkedIn URL (e.g. linkedin.com/in/yourprofile)." : null,
+  };
+
+  const show = (field: string) => touched[field] || submitAttempted;
+  const handleBlur = (field: string) => setTouched(prev => ({ ...prev, [field]: true }));
 
   if (!role) {
     return (
@@ -332,6 +344,9 @@ const JoinRole = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitAttempted(true);
+    if (Object.values(fieldErrors).some(Boolean)) return;
+
     setStatus("loading");
     setErrorMsg("");
 
@@ -464,7 +479,7 @@ const JoinRole = () => {
                 <p className="jr-success-body">We read every application personally and we'll be in touch, either way.</p>
               </div>
             ) : (
-              <form className="jr-form" onSubmit={handleSubmit}>
+              <form className="jr-form" onSubmit={handleSubmit} noValidate>
 
                 <div className="jr-form-row">
                   <div className="jr-field">
@@ -473,13 +488,54 @@ const JoinRole = () => {
                   </div>
                   <div className="jr-field">
                     <label className="jr-label">Email</label>
-                    <input className="jr-input" type="email" name="email" value={form.email} onChange={handleChange} required placeholder="your@email.com" />
+                    <input
+                      className={`jr-input${show("email") && fieldErrors.email ? " jr-input--error" : ""}`}
+                      type="email"
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      onBlur={() => handleBlur("email")}
+                      required
+                      placeholder="your@email.com"
+                    />
+                    {show("email") && fieldErrors.email && (
+                      <span className="jr-field-error">{fieldErrors.email}</span>
+                    )}
                   </div>
                 </div>
 
-                <div className="jr-field">
-                  <label className="jr-label">LinkedIn URL</label>
-                  <input className="jr-input" name="linkedin" value={form.linkedin} onChange={handleChange} required placeholder="linkedin.com/in/yourprofile" />
+                <div className="jr-form-row">
+                  <div className="jr-field">
+                    <label className="jr-label">Phone number</label>
+                    <input
+                      className={`jr-input${show("phone") && fieldErrors.phone ? " jr-input--error" : ""}`}
+                      type="tel"
+                      name="phone"
+                      value={form.phone}
+                      onChange={handleChange}
+                      onBlur={() => handleBlur("phone")}
+                      required
+                      placeholder="+61 400 000 000"
+                    />
+                    {show("phone") && fieldErrors.phone && (
+                      <span className="jr-field-error">{fieldErrors.phone}</span>
+                    )}
+                  </div>
+                  <div className="jr-field">
+                    <label className="jr-label">LinkedIn URL</label>
+                    <input
+                      className={`jr-input${show("linkedin") && fieldErrors.linkedin ? " jr-input--error" : ""}`}
+                      name="linkedin"
+                      value={form.linkedin}
+                      onChange={handleChange}
+                      onBlur={() => handleBlur("linkedin")}
+                      required
+                      placeholder="linkedin.com/in/yourprofile"
+                    />
+                    {show("linkedin") && fieldErrors.linkedin && (
+                      <span className="jr-field-error">{fieldErrors.linkedin}</span>
+                    )}
+                  </div>
                 </div>
 
                 {role.questions.map((qObj, i) => (
