@@ -17,7 +17,7 @@ const CleoSearch = () => (
       <p className="ai-search-sub">Ask in plain English — our AI searches across articles, playbooks, tools and dissections.</p>
 
       <div className="ai-search-bar">
-        <input type="text" placeholder="e.g. how do I fix my pipeline if I'm pre-product-market fit?" />
+        <textarea className="ai-search-textarea" placeholder="e.g. how do I fix my pipeline if I'm pre-product-market fit?" rows={2} />
         <button className="ai-search-bar-btn">✦ Search →</button>
       </div>
 
