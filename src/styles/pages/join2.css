@@ -231,3 +231,31 @@
 .join-popup-overlay {
   background: rgba(240, 230, 211, 0.75);
 }
+
+@media (max-width: 768px) {
+  /* Collapse to single column — illustrations move to hidden side gutters */
+  .join2-page {
+    grid-template-columns: 1fr;
+  }
+  .join2-page .site-nav {
+    grid-column: 1;
+  }
+  .join2-page .join-hero,
+  .join2-page .join-who,
+  .join2-page .join-how,
+  .join2-page .join-roles,
+  .join2-page .join-open {
+    grid-column: 1;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  /* Restore vertical padding overridden by join.css mobile query */
+  .join2-page .join-hero { padding-top: 80px; padding-bottom: 40px; }
+  .join2-page .join-how { padding-top: 24px; padding-bottom: 40px; }
+  .join2-page .join-roles { padding-top: 60px; padding-bottom: 60px; }
+  .join2-page .join-open { padding-top: 24px; padding-bottom: 60px; }
+  /* Hide illustrations — they're sized as vw % of gutter columns that no longer exist */
+  .join2-illus-layer { display: none; }
+  .join2-page::before,
+  .join2-page::after { display: none; }
+}

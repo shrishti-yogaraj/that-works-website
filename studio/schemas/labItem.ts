@@ -34,7 +34,7 @@ export const labItem = defineType({
       title: "Tagline",
       type: "string",
       group: "content",
-      description: "One punchy line shown on the card. E.g. "Surfaces your top 3 gaps in 8 minutes."",
+      description: "One punchy line shown on the card. E.g. 'Surfaces your top 3 gaps in 8 minutes.'",
       validation: (Rule) => Rule.required().max(100),
     }),
     defineField({

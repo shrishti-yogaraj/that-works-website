@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Post Preview — That Works</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Variables ── */
+    :root {
+      --bg: #12100f;
+      --surface: #1a1816;
+      --surface2: #201e1c;
+      --border: #2a2826;
+      --orange: #ff5c00;
+      --lavender: #c4b5fd;
+      --yellow: #fbbf24;
+      --text: #f0e6d3;
+      --muted: #9a9088;
+      --label: #4a4642;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { background: #12100f; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ── Nav placeholder ── */
+    .nav {
+      height: 64px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    /* ── Blog post styles ── */
+    .blogpost-page {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .blogpost-header {
+      padding: 60px 40px 0;
+      background: var(--bg);
+    }
+    .blogpost-header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding-bottom: 48px;
+    }
+    .blogpost-back {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .blogpost-back:hover { color: var(--text); }
+    .blogpost-cat-row { margin-bottom: 16px; }
+    .blog-cat-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .blogpost-header-inner h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0 0 24px;
+      color: var(--text);
+    }
+    .blogpost-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .blogpost-meta-sep { color: var(--border); }
+    .blogpost-author { font-weight: 600; color: var(--text); }
+    .blogpost-lede {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin: 0;
+      font-style: italic;
+      max-width: 680px;
+      border-left: 2px solid var(--border);
+      padding-left: 20px;
+    }
+
+    /* Body */
+    .blogpost-body {
+      background: var(--surface);
+      padding: 56px 40px 80px;
+      border-top: 1px solid var(--border);
+    }
+    .blogpost-content {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Typography */
+    .blogpost-h2 {
+      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+      font-weight: 900;
+      margin: 56px 0 20px;
+      color: var(--text);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      padding-left: 16px;
+      border-left: 3px solid var(--orange);
+    }
+    .blogpost-h3 {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-weight: 700;
+      margin: 40px 0 14px;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .blogpost-p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--text);
+      margin: 0 0 24px;
+    }
+    .blogpost-p strong { color: var(--text); font-weight: 700; }
+
+    /* Lists */
+    .blogpost-list {
+      margin: 0 0 28px;
+      padding-left: 24px;
+    }
+    .blogpost-list li {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .blogpost-list li strong { font-weight: 700; }
+
+    /* Divider */
+    .blogpost-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
+
+    /* Callout */
+    .blogpost-callout {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      border-radius: 8px;
+      margin: 32px 0;
+    }
+    .blogpost-callout-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .blogpost-callout-text { font-size: 15px; line-height: 1.7; color: var(--text); margin: 0; }
+
+    /* Pull quote */
+    .blogpost-pullquote {
+      margin: 48px 0;
+      padding: 0;
+      text-align: center;
+    }
+    .blogpost-pullquote blockquote {
+      font-size: clamp(1.25rem, 2.5vw, 1.7rem);
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--text);
+      margin: 0 0 12px;
+    }
+    .blogpost-pullquote figcaption {
+      font-size: 13px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Related */
+    .blogpost-related {
+      padding: 60px 40px 80px;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+    .blogpost-related-inner { max-width: 1200px; margin: 0 auto; }
+    .blogpost-related-inner h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      margin-bottom: 28px;
+      color: var(--text);
+    }
+    .blogpost-related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .blog-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      text-decoration: none;
+      display: block;
+    }
+    .blog-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 8px 0 8px;
+      line-height: 1.3;
+    }
+    .blog-card p { font-size: 13px; color: var(--muted); line-height: 1.5; margin: 0 0 12px; }
+    .blog-meta { font-size: 12px; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<!-- Nav placeholder -->
+<div class="nav">That Works.</div>
+
+<article class="blogpost-page">
+
+  <!-- Header -->
+  <header class="blogpost-header">
+    <div class="blogpost-header-inner">
+      <a href="#" class="blogpost-back">← Back to Blog</a>
+
+      <div class="blogpost-cat-row">
+        <span class="blog-cat-tag" style="color: var(--yellow)">GTM & Growth</span>
+      </div>
+
+      <h1>Why Most GTM Strategies Fail Before Launch</h1>
+
+      <div class="blogpost-meta-row">
+        <span class="blogpost-author">That Works Team</span>
+        <span class="blogpost-meta-sep">·</span>
+        <span>6 min read</span>
+        <span class="blogpost-meta-sep">·</span>
+        <time>28 February 2026</time>
+      </div>
+
+      <p class="blogpost-lede">
+        The problem isn't the strategy. It's the infrastructure underneath it. Here's what breaks, and how to build a foundation that actually holds.
+      </p>
+    </div>
+  </header>
+
+  <!-- Body -->
+  <div class="blogpost-body">
+    <div class="blogpost-content">
+
+      <p class="blogpost-p">Every quarter, thousands of B2B companies launch go-to-market strategies that look brilliant on paper. Polished decks. Clear ICPs. Compelling messaging. And within 90 days, most of them are dead in the water.</p>
+
+      <p class="blogpost-p">The conventional wisdom says the problem is the strategy itself — wrong positioning, bad timing, weak differentiation. Sometimes that's true. But after working with dozens of companies across seed to Series C, we've found that the majority of GTM failures have nothing to do with strategy. They fail because of what's underneath it.</p>
+
+      <h2 class="blogpost-h2">The Infrastructure Gap</h2>
+
+      <p class="blogpost-p">Think of your GTM strategy as a building. The strategy is the architecture — the design, the layout, the vision. But a building doesn't stand on vision. It stands on foundations, plumbing, and electrical. In GTM terms, that means:</p>
+
+      <ul class="blogpost-list">
+        <li><strong>CRM hygiene</strong> — Is your data clean enough to actually segment and target?</li>
+        <li><strong>Attribution tracking</strong> — Do you know which channels are producing pipeline, not just clicks?</li>
+        <li><strong>Lead routing</strong> — When a qualified lead comes in, does it reach the right rep in under five minutes?</li>
+        <li><strong>Content infrastructure</strong> — Do you have assets mapped to every stage of the buyer journey?</li>
+      </ul>
+
+      <!-- Callout example -->
+      <div class="blogpost-callout" style="background: rgba(251,191,36,0.10); border-left: 3px solid var(--yellow);">
+        <span class="blogpost-callout-icon">💡</span>
+        <p class="blogpost-callout-text">Most companies skip straight to "let's run ads" or "let's hire SDRs" without answering these questions. The result? Money flows out. Leads flow in. But pipeline doesn't move.</p>
+      </div>
+
+      <h2 class="blogpost-h2">The Three Breaks</h2>
+
+      <p class="blogpost-p">In our experience, GTM strategies break in three predictable places.</p>
+
+      <h3 class="blogpost-h3">1. The Handoff</h3>
+
+      <p class="blogpost-p">Marketing generates leads. Sales ignores them. Or worse, sales works them, but with zero context about what the lead engaged with, what pain they expressed, or where they are in their buying process.</p>
+
+      <!-- Pull quote example -->
+      <figure class="blogpost-pullquote">
+        <blockquote>"This isn't a people problem. It's a systems problem."</blockquote>
+        <figcaption>— That Works</figcaption>
+      </figure>
+
+      <h3 class="blogpost-h3">2. The Measurement Layer</h3>
+
+      <p class="blogpost-p">"We're doing content marketing." Great. Is it working? "Well, traffic is up 40%." That's not an answer. The measurement layer is where most GTM strategies reveal their cracks.</p>
+
+      <hr class="blogpost-divider" />
+
+      <h2 class="blogpost-h2">Building a Foundation That Holds</h2>
+
+      <p class="blogpost-p">If you're about to launch a new GTM motion, resist the urge to start with tactics. Start with infrastructure. The companies that win at GTM aren't the ones with the cleverest positioning or the biggest ad budgets. They're the ones with the cleanest data, the tightest processes, and the discipline to measure what matters.</p>
+
+      <p class="blogpost-p">Strategy without infrastructure is just a wish. Build the foundation first. The strategy will thank you.</p>
+
+    </div>
+  </div>
+
+  <!-- Related posts -->
+  <section class="blogpost-related">
+    <div class="blogpost-related-inner">
+      <h2>Keep reading</h2>
+      <div class="blogpost-related-grid">
+        <a href="#" class="blog-card">
+          <span class="blog-cat-tag" style="color: var(--orange); font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">Lead Generation</span>
+          <h3>Cold Outreach That Doesn't Feel Cold</h3>
+          <p>Personalisation at scale isn't a contradiction. Here's the system that makes it possible.</p>
+          <div class="blog-meta">5 min read · 2026-03-10</div>
+        </a>
+        <a href="#" class="blog-card">
+          <span class="blog-cat-tag" style="color: var(--lavender); font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">Marketing Systems</span>
+          <h3>Marketing Ops Is Not Marketing</h3>
+          <p>The distinction matters more than you think. Here's what ops actually owns.</p>
+          <div class="blog-meta">4 min read · 2026-03-05</div>
+        </a>
+        <a href="#" class="blog-card">
+          <span class="blog-cat-tag" style="color: var(--yellow); font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">GTM & Growth</span>
+          <h3>The Founder-Led Sales Ceiling</h3>
+          <p>Every founder hits it. The ones who break through have one thing in common.</p>
+          <div class="blog-meta">7 min read · 2026-02-20</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</article>
+
+</body>
+</html>

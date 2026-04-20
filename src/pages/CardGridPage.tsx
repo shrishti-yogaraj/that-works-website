@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
@@ -13,7 +14,9 @@ interface ToolCard {
   name: string;
   desc?: string;
   color: string;
+  mobileColor?: string;
   lightText?: boolean;
+  mobileLightText?: boolean;
   rows?: number;
   cols?: number;
   cta?: string;
@@ -23,6 +26,7 @@ interface ToolCard {
 interface DecoCard {
   kind: "deco";
   color: string;
+  mobileColor?: string;
   glyph?: string;
   rows?: number;
   cols?: number;
@@ -73,16 +77,117 @@ const renderCard = (card: Card, key: number, toolNum = 1) => {
 
 // ─── Layout ───────────────────────────────────────────────────────────────────
 
-const STAGGER_COLS = 8;
-// Varied offsets so no two adjacent columns align — breaks the checkerboard
-const COL_OFFSETS = [0, 160, 80, -80, 40, 180, 110, -40];
+const COL_CONFIGS: Record<number, number[]> = {
+  8: [0, 160, 80, -80, 40, 180, 110, -40],
+  6: [0, 100, 50, -50, 25, 110],
+  3: [0, 60, 30],
+};
+
+function getColCount(width: number) {
+  if (width >= 1800) return 8;
+  if (width >= 700) return 6;
+  return 3;
+}
 
 const CardGridPage = ({ name, eyebrow, slug, description, cards, showHeader = true, showBanner = true, staggered = false }: Props) => {
-  // Group cards into columns (column-major)
+  const [windowWidth, setWindowWidth] = useState(() => typeof window !== "undefined" ? window.innerWidth : 1440);
+  const [stagCols, setStagCols] = useState(() => getColCount(typeof window !== "undefined" ? window.innerWidth : 1440));
+  const [mainHeight, setMainHeight] = useState<number | null>(null);
+  const [mobileHeight, setMobileHeight] = useState<number | null>(null);
+  const mainRef = useRef<HTMLElement>(null);
+  const mobileRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handler = () => {
+      const w = window.innerWidth;
+      setWindowWidth(w);
+      setStagCols(getColCount(w));
+    };
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, []);
+
+  // After each render, measure column bottoms and set cg-main height dynamically.
+  // Height = bottom of shortest last-card − ¼ of that card's height.
+  useEffect(() => {
+    if (!staggered || !mainRef.current) return;
+    const measure = () => {
+      const main = mainRef.current!;
+      const mainTop = main.getBoundingClientRect().top;
+      const cols = main.querySelectorAll<HTMLElement>(".cg-col");
+      let minBottom = Infinity;
+      let cardH = 0;
+      cols.forEach(col => {
+        const children = col.children;
+        if (!children.length) return;
+        const last = children[children.length - 1] as HTMLElement;
+        const rect = last.getBoundingClientRect();
+        const bottom = rect.bottom - mainTop;
+        if (bottom < minBottom) {
+          minBottom = bottom;
+          cardH = rect.height;
+        }
+      });
+      if (minBottom !== Infinity) {
+        const trim = stagCols === 6 ? cardH * 0.75 : cardH / 4;
+        setMainHeight(minBottom - trim);
+      }
+    };
+    // Use rAF to ensure layout has settled after render
+    const id = requestAnimationFrame(measure);
+    return () => cancelAnimationFrame(id);
+  }, [staggered, stagCols, windowWidth]);
+
+  // Mobile height: cut halfway through the last card of the shortest column
+  useEffect(() => {
+    if (!staggered || !mobileRef.current || windowWidth >= 700) return;
+    const measure = () => {
+      const mob = mobileRef.current!;
+      const mobTop = mob.getBoundingClientRect().top;
+      const cols = mob.querySelectorAll<HTMLElement>(".cg-m-col");
+      // Cut at the top of card 26 = col 2 (index 2), row 7 (index 7)
+      const targetCol = cols[2];
+      if (!targetCol) return;
+      const targetCard = targetCol.children[7] as HTMLElement | undefined;
+      if (!targetCard) return;
+      const cutoff = targetCard.getBoundingClientRect().top - mobTop;
+      setMobileHeight(cutoff);
+    };
+    const id = requestAnimationFrame(measure);
+    return () => cancelAnimationFrame(id);
+  }, [staggered, windowWidth]);
+
+  const colOffsets = COL_CONFIGS[stagCols];
+
+  const colWidth = (windowWidth * (1 - 0.054) - (stagCols - 1) * 7) / stagCols;
+
+  // Group cards into columns (column-major).
+  // For 6-col: keep the 8-col arrangement for cols 1–6, then append
+  // the overflow cards from cols 7 & 8 to the bottom round-robin.
   const columns: Card[][] = staggered
-    ? Array.from({ length: STAGGER_COLS }, (_, ci) =>
-        cards.filter((_, i) => i % STAGGER_COLS === ci)
-      )
+    ? (() => {
+        const eightCols = Array.from({ length: 8 }, (_, ci) =>
+          cards.filter((_, i) => i % 8 === ci)
+        );
+        if (stagCols === 8) return eightCols;
+        if (stagCols === 6) {
+          const result = eightCols.slice(0, 6).map(col => [...col]);
+          const overflow = [...eightCols[6], ...eightCols[7]];
+          const tools = overflow.filter(c => c.kind === "tool");
+          const decos = overflow.filter(c => c.kind === "deco");
+          // First overflow tool → append to col 0 (6th slot)
+          if (tools[0]) result[3].splice(4, 0, tools[0]);
+          // Second overflow tool → insert at 4th position of col 1 (visible mid-column)
+          if (tools[1]) result[1].splice(3, 0, tools[1]);
+          // Deco overflow → append starting from col 2
+          decos.forEach((card, i) => result[(i + 2) % 6].push(card));
+          return result;
+        }
+        // 3-col fallback
+        return Array.from({ length: 3 }, (_, ci) =>
+          cards.filter((_, i) => i % 3 === ci)
+        );
+      })()
     : [];
 
   return (
@@ -100,7 +205,73 @@ const CardGridPage = ({ name, eyebrow, slug, description, cards, showHeader = tr
           </header>
         )}
 
-        <main className="cg-main">
+        {/* ── Mobile layout (staggered Lab page only, <700px) ── */}
+        {staggered && windowWidth < 700 && (() => {
+          const toolCards = cards.filter(c => c.kind === "tool");
+          const decoPool  = cards.filter(c => c.kind === "deco");
+          // [colIndex, rowIndex] for each tool in order 1–8
+          // maps to mobile positions: 29→(2,1) 3→(0,2) 17→(1,2) 5→(0,4) 32→(2,4) 20→(1,5) 7→(0,6) 34→(2,6)
+          const toolSlots: [number, number][] = [
+            [2, 1], [0, 2], [1, 2], [0, 4], [2, 3], [1, 4], [0, 6], [2, 5],
+          ];
+          const colLens = [10, 8, 10];
+          const grid: (Card | null)[][] = colLens.map(len => new Array(len).fill(null));
+          toolSlots.forEach(([ci, ri], ti) => { grid[ci][ri] = toolCards[ti]; });
+          let di = 0;
+          const mob3: Card[][] = grid.map(col =>
+            col.map(cell => cell ?? decoPool[di++ % decoPool.length])
+          );
+          const mobOffsets = [0, 80, 25];
+          let mToolCount = 0;
+          return (
+            <div className="cg-mobile" ref={mobileRef} style={mobileHeight !== null ? { height: mobileHeight, overflow: "hidden" } : undefined}>
+              <div className="cg-m-wall-box">
+                <Link to="/blog" className="cg-m-wall-back">← Back to hub</Link>
+                <h1 className="cg-m-wall-title">{name}</h1>
+              </div>
+              <div className="cg-m-grid">
+                {mob3.map((col, ci) => (
+                  <div key={ci} className="cg-m-col" style={{ marginTop: mobOffsets[ci] }}>
+                    {col.map((card, j) => {
+                      const cardIdx = ci * 100 + j;
+                      if (card.kind === "tool") mToolCount++;
+                      const num = String(mToolCount).padStart(2, "0");
+                      if (card.kind === "tool") {
+                        const mc = card.mobileColor ?? card.color;
+                        return (
+                          <div
+                            key={cardIdx}
+                            className="cg-m-tool-card"
+                            style={{ "--cc": mc, "--ct": "#1c1917" } as React.CSSProperties}
+                          >
+                            <div className="cg-m-tool-top">
+                              <span className="cg-m-tool-badge">{card.badge}</span>
+                              <h3 className="cg-m-tool-name">
+                                {card.name.split(" ").map((word, wi) => <span key={wi}>{word}</span>)}
+                              </h3>
+                            </div>
+                            <span className="cg-m-tool-cta">{card.cta ?? "Coming soon"} →</span>
+                            <span className="cg-m-tool-bg-num">{num}</span>
+                          </div>
+                        );
+                      }
+                      return (
+                        <div
+                          key={cardIdx}
+                          className="cg-m-deco-card"
+                          style={{ background: card.mobileColor ?? card.color }}
+                        />
+                      );
+                    })}
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
+
+        {(!staggered || windowWidth >= 700) && (
+        <main className="cg-main" ref={mainRef} style={mainHeight !== null ? { height: mainHeight } : undefined}>
           {staggered && (
             <div className="cg-wall-box">
               <Link to="/blog" className="cg-wall-back">← Back to hub</Link>
@@ -112,7 +283,7 @@ const CardGridPage = ({ name, eyebrow, slug, description, cards, showHeader = tr
               {(() => {
                 let toolCount = 0;
                 return columns.map((col, ci) => (
-                  <div key={ci} className="cg-col" style={{ marginTop: COL_OFFSETS[ci] }}>
+                  <div key={ci} className="cg-col" style={{ marginTop: colOffsets[ci] }}>
                     {col.map((card, j) => {
                       if (card.kind === "tool") toolCount++;
                       return renderCard(card, ci * 100 + j, toolCount);
@@ -151,6 +322,7 @@ const CardGridPage = ({ name, eyebrow, slug, description, cards, showHeader = tr
             </div>
           )}
         </main>
+        )}
 
         <CleoSearch />
         <Footer />
@@ -212,11 +384,11 @@ export const Lab = () => (
       { kind: "deco",  color: "#ff5c00"  }, // (1,1) orange
       { kind: "deco",  color: "#c4b5fd"  }, // (2,1) lavender
       { kind: "deco",  color: "#34d399"  }, // (3,1) green
-      { kind: "deco",  color: "#ff5c00"  }, // (4,1) orange
+      { kind: "deco",  color: "#ff5c00", mobileColor: "#60a5fa"  }, // (4,1) orange / mobile: blue
       { kind: "deco",  color: "#fb7185"  }, // (5,1) pink
       { kind: "deco",  color: "#fbbf24"  }, // (6,1) yellow
       { kind: "deco",  color: "#fb7185"  }, // (7,1) pink
-      { kind: "deco",  color: "#c4b5fd"  }, // (8,1) purple
+      { kind: "deco",  color: "#c4b5fd", mobileColor: "#34d399"  }, // (8,1) purple / mobile: green
       // Row 2 (indices 8–15)
       { kind: "deco",  color: "#fb7185"  }, // (1,2) pink
       { kind: "tool",  badge: "Diagnostic",  name: "GTM Readiness Score",     desc: "Find out if you're actually ready to go to market — or just think you are.",  color: "#fbbf24", lightText: false, variant: 1 }, // (2,2)
@@ -224,21 +396,21 @@ export const Lab = () => (
       { kind: "tool",  badge: "Calculator",  name: "Revenue Leak Calculator",  desc: "Spot where your pipeline springs a leak before it costs you.",  color: "#fbbf24", lightText: false, variant: 2 }, // (4,2)
       { kind: "deco",  color: "#c4b5fd"  }, // (5,2) lavender
       { kind: "tool",  badge: "Calculator",  name: "Growth Lever Identifier",  desc: "Know which lever actually moves the needle before you start pulling things.",  color: "#c4b5fd", lightText: true,  variant: 3 }, // (6,2)
-      { kind: "deco",  color: "#ff5c00"  }, // (7,2) orange
-      { kind: "tool",  badge: "Diagnostic",  name: "Churn Risk Diagnostic",    desc: "Catch the customers who are quietly packing their bags before they ghost you.",  color: "#fbbf24", lightText: true,  variant: 4 }, // (8,2)
+      { kind: "deco",  color: "#ff5c00", mobileColor: "#fbbf24"  }, // (7,2) orange / mobile: yellow
+      { kind: "tool",  badge: "Diagnostic",  name: "Churn Risk Diagnostic",    desc: "Catch the customers who are quietly packing their bags before they ghost you.",  color: "#ff5c00", mobileColor: "#c4b5fd", lightText: true,  variant: 4 }, // (8,2)
       // Row 3 (indices 16–23)
-      { kind: "tool",  badge: "Diagnostic",  name: "Pipeline Health Check",    desc: "A full body scan for your revenue pipeline. No waiting room required.",  color: "#c4b5fd", lightText: false, variant: 5 }, // (1,3)
+      { kind: "tool",  badge: "Diagnostic",  name: "Pipeline Health Check",    desc: "A full body scan for your revenue pipeline. No waiting room required.",  color: "#c4b5fd", mobileColor: "#fb7185", lightText: false, variant: 5 }, // (1,3)
       { kind: "deco",  color: "#60a5fa"  }, // (2,3) blue
-      { kind: "tool",  badge: "Diagnostic",  name: "Attribution Audit",        desc: "Find out what's actually driving revenue — and what's just taking the credit.",  color: "#fb7185", lightText: true,  variant: 6 }, // (3,3)
-      { kind: "deco",  color: "#34d399"  }, // (4,3) green
-      { kind: "deco",  color: "#fbbf24"  }, // (5,3) yellow
-      { kind: "deco",  color: "#fb7185"  }, // (6,3) pink
-      { kind: "deco",  color: "#34d399"  }, // (7,3) green
-      { kind: "deco",  color: "#60a5fa"  }, // (8,3) blue
+      { kind: "tool",  badge: "Diagnostic",  name: "Attribution Audit",        desc: "Find out what's actually driving revenue — and what's just taking the credit.",  color: "#fb7185", mobileColor: "#34d399", lightText: true,  variant: 6 }, // (3,3)
+      { kind: "deco",  color: "#34d399", mobileColor: "#60a5fa"  }, // (4,3) green / mobile: blue
+      { kind: "deco",  color: "#fbbf24", mobileColor: "#ff5c00"  }, // (5,3) yellow / mobile: orange
+      { kind: "deco",  color: "#fb7185", mobileColor: "#c4b5fd"  }, // (6,3) pink / mobile: purple
+      { kind: "deco",  color: "#34d399", mobileColor: "#60a5fa"  }, // (7,3) green / mobile: blue
+      { kind: "deco",  color: "#fbbf24", mobileColor: "#ff5c00"  }, // (8,3) yellow / mobile: orange
       // Row 4 (indices 24–31)
       { kind: "deco",  color: "#34d399"  }, // (1,4) green
       { kind: "deco",  color: "#ff5c00"  }, // (2,4) orange
-      { kind: "deco",  color: "#fbbf24"  }, // (3,4) yellow
+      { kind: "deco",  color: "#34d399"  }, // (3,4) green
       { kind: "deco",  color: "#c4b5fd"  }, // (4,4) lavender
       { kind: "tool",  badge: "Diagnostic",  name: "ICP Fit Scorer",           desc: "Stop chasing the wrong accounts. Score your fit before you pitch.",  color: "#ff5c00", lightText: false, variant: 7 }, // (5,4)
       { kind: "deco",  color: "#60a5fa"  }, // (6,4) blue
@@ -250,7 +422,7 @@ export const Lab = () => (
       { kind: "deco",  color: "#c4b5fd"  }, // (3,5) lavender
       { kind: "deco",  color: "#60a5fa"  }, // (4,5) blue
       { kind: "deco",  color: "#fb7185"  }, // (5,5) pink
-      { kind: "deco",  color: "#f5f0e8"  }, // (6,5)
+      { kind: "deco",  color: "#c4b5fd"  }, // (6,5) purple
       { kind: "deco",  color: "#c4b5fd"  }, // (7,5) purple
       { kind: "deco",  color: "#fb7185"  }, // (8,5) pink
     ]}

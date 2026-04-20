@@ -14,11 +14,42 @@ export default defineConfig({
         S.list()
           .title("Content")
           .items([
+            // ── Hub control ──────────────────────────────────────────────────
             S.listItem()
-              .title("Blog Posts")
-              .schemaType("post")
-              .child(S.documentTypeList("post").title("Blog Posts")),
+              .title("Hub Settings")
+              .id("hubSettings")
+              .child(
+                S.document()
+                  .schemaType("hubSettings")
+                  .documentId("hubSettings")
+                  .title("Hub Settings")
+              ),
             S.divider(),
+
+            // ── Content types ─────────────────────────────────────────────────
+            S.listItem()
+              .title("Articles")
+              .schemaType("post")
+              .child(S.documentTypeList("post").title("Articles")),
+            S.listItem()
+              .title("Dissections")
+              .schemaType("dissection")
+              .child(S.documentTypeList("dissection").title("Dissections")),
+            S.listItem()
+              .title("Arsenal")
+              .schemaType("arsenal")
+              .child(S.documentTypeList("arsenal").title("Arsenal")),
+            S.listItem()
+              .title("Lab")
+              .schemaType("labItem")
+              .child(S.documentTypeList("labItem").title("Lab")),
+            S.listItem()
+              .title("Downloads")
+              .schemaType("download")
+              .child(S.documentTypeList("download").title("Downloads")),
+            S.divider(),
+
+            // ── Reference data ────────────────────────────────────────────────
             S.listItem()
               .title("Authors")
               .schemaType("author")

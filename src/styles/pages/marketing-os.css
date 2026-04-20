@@ -71,9 +71,6 @@
 /* Zero-to-one problem */
 .zto-problem {
   padding: 80px 40px;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--surface);
 }
 .zto-problem-inner {
   max-width: 760px;
@@ -206,9 +203,6 @@
 /* Retainer */
 .zto-retainer {
   padding: 40px;
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
 }
 .zto-retainer-inner {
   max-width: 760px;
@@ -256,7 +250,6 @@
 /* CTA */
 .zto-cta {
   padding: 100px 40px;
-  border-top: 1px solid var(--border);
   text-align: center;
 }
 .zto-cta-inner { max-width: 600px; margin: 0 auto; }
@@ -276,8 +269,6 @@
 /* ── FRICTION PAGE ── */
 .fri-problem {
   padding: 80px 40px;
-  border-top: 1px solid var(--border);
-  background: var(--surface);
 }
 .fri-problem-inner {
   max-width: 760px;
@@ -300,7 +291,6 @@
 
 .fri-diagnosis {
   padding: 100px 40px;
-  border-top: 1px solid var(--border);
 }
 .fri-diagnosis-inner {
   max-width: 1200px;
@@ -339,9 +329,6 @@
 /* ── SCALE PAGE — OPS TAX ── */
 .scale-ops-tax {
   padding: 100px 40px;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--surface2);
 }
 .scale-ops-tax-inner {
   max-width: 760px;
@@ -394,9 +381,6 @@
 
 .leader-visibility {
   padding: 100px 40px;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--surface2);
   text-align: center;
 }
 .leader-visibility-inner {
@@ -421,7 +405,6 @@
 
 .leader-proof {
   padding: 100px 40px;
-  border-top: 1px solid var(--border);
 }
 .leader-proof-inner {
   max-width: 1200px;
@@ -463,8 +446,6 @@
 /* ── FAQ ── */
 .mos-faq {
   padding: 80px 24px;
-  background: var(--bg);
-  border-top: 1px solid var(--border);
 }
 .mos-faq-inner {
   max-width: 720px;

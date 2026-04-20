@@ -55,6 +55,7 @@
   color: #f0e6d3;
   line-height: 1;
   letter-spacing: -0.03em;
+  white-space: nowrap;
   text-shadow: 0 0 30px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.5), 0 0 10px rgba(240,230,211,0.9), 0 0 20px rgba(240,230,211,0.6);
   pointer-events: none;
   margin: 0;
@@ -63,7 +64,7 @@
 /* ── Header ───────────────────────────────────────────────────────────────── */
 
 .cg-page .cg-header {
-  padding: 52px 60px 56px;
+  padding: 52px 2.7% 56px;
 }
 
 .cg-page .cg-back {
@@ -108,7 +109,7 @@
 /* ── Brick grid ───────────────────────────────────────────────────────────── */
 
 .cg-page .cg-main {
-  padding: 0 60px 0;
+  padding: 0 2.7% 0;
   overflow: hidden;
   height: 1200px;
 }
@@ -141,6 +142,7 @@
 
 .cg-page .cg-col {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 7px;
@@ -159,7 +161,8 @@
   position: relative;
   cursor: default;
   transition: transform 0.18s ease, brightness 0.18s ease;
-  height: 300px;
+  aspect-ratio: 6/7;
+  height: auto;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
   transform: scale(0.98);
   filter: saturate(1.12) brightness(1.04);
@@ -286,7 +289,8 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  height: 300px;
+  aspect-ratio: 6/7;
+  height: auto;
   opacity: 0.6;
   transform: scale(0.92);
 }
@@ -308,16 +312,165 @@
 
 /* ── Responsive ───────────────────────────────────────────────────────────── */
 
-@media (max-width: 1100px) {
-  .cg-page .cg-grid { grid-template-columns: repeat(6, 1fr); }
+/* ── 6-column desktop (MacBook 13" / 14") ─────────────────────────────────── */
+
+@media (max-width: 1799px) {
+  .cg-page .cg-grid            { grid-template-columns: repeat(6, 1fr); }
+  .cg-page .cg-grid--staggered { margin-top: -130px; }
+  .cg-page .cg-main            { height: 1000px; }
+  .cg-tool-name-stacked span   { font-size: 1.78vw; }
+  .cg-page .cg-wall-title      { font-size: clamp(3.5rem, 9vw, 9.9rem); }
 }
 
-@media (max-width: 768px) {
-  .cg-page .cg-header { padding: 36px 24px 40px; }
-  .cg-page .cg-main   { padding: 0 20px 48px; }
-  .cg-page .cg-grid   { grid-template-columns: repeat(5, 1fr); gap: 5px; }
+/* ── Mobile header ────────────────────────────────────────────────────────── */
+
+@media (max-width: 699px) {
+  .cg-page .cg-header { padding: 36px 2.7% 40px; }
 }
 
-@media (max-width: 480px) {
-  .cg-page .cg-grid { grid-template-columns: repeat(4, 1fr); }
+/* ── Mobile 3-column layout (cg-m- prefix — fully isolated) ──────────────── */
+
+.cg-mobile {
+  position: relative;
+  padding: 0 2.7%;
+  overflow: hidden;
+}
+
+/* Title box */
+.cg-m-wall-box {
+  position: absolute;
+  top: 25px;
+  left: 2.7%;
+  z-index: 5;
+  background: #0f0d0b;
+  padding: 24px 16px 18px;
+  border-radius: 8px;
+  width: 63%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cg-m-wall-back {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(240, 230, 211, 0.4);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.cg-m-wall-back:hover { color: #ff5c00; }
+
+.cg-m-wall-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 12vw, 5rem);
+  font-weight: 900;
+  color: #f0e6d3;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  text-shadow: 0 0 30px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.5), 0 0 10px rgba(240,230,211,0.9), 0 0 20px rgba(240,230,211,0.6);
+  margin: 0;
+}
+
+/* 3-col staggered grid */
+.cg-m-grid {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: -120px;
+}
+
+.cg-m-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Tool card */
+.cg-m-tool-card {
+  background: var(--cc);
+  border-radius: 6px;
+  padding: 12px 14px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 6/7;
+  height: auto;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  transform: scale(0.98);
+  filter: saturate(1.12) brightness(1.04);
+}
+
+.cg-m-tool-top {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cg-m-tool-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 6px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ct);
+  background: rgba(0, 0, 0, 0.2);
+  padding: 3px 8px;
+  border-radius: 100px;
+}
+
+.cg-m-tool-name {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+}
+.cg-m-tool-name span {
+  font-family: 'Playfair Display', serif;
+  font-size: 4.2vw;
+  font-weight: 900;
+  color: var(--ct);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  display: block;
+}
+
+.cg-m-tool-cta {
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ct);
+  opacity: 0.75;
+}
+
+.cg-m-tool-bg-num {
+  position: absolute;
+  bottom: -8px;
+  right: 6px;
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--ct);
+  opacity: 0.07;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Deco card */
+.cg-m-deco-card {
+  border-radius: 6px;
+  aspect-ratio: 6/7;
+  height: auto;
+  opacity: 0.6;
+  transform: scale(0.92);
 }

@@ -368,7 +368,7 @@ const Join2 = () => {
     </div>
 
     <div className="join-page join2-page">
-      <Nav variant="light" />
+      <Nav variant="light" hideBooking />
 
       {/* ── Hero (centered) ── */}
       <section className="join-hero">

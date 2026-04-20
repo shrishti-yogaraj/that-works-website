@@ -1,0 +1,354 @@
+/* ── DISSECTION POST PAGE ────────────────────────────────────────────────────── */
+
+.dis-page {
+  background: var(--bg);
+  min-height: 100vh;
+  color: var(--text);
+}
+
+/* ── Banner ─────────────────────────────────────────────────────────────────── */
+.dis-banner {
+  background: linear-gradient(135deg, #1a1208 0%, #2a1a06 40%, #1f1508 100%);
+  padding: 100px 60px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.dis-banner-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.dis-back {
+  display: inline-block;
+  font-size: 13px;
+  color: rgba(251, 191, 36, 0.6);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.15s;
+  margin-bottom: 32px;
+}
+.dis-back:hover { color: var(--yellow); }
+
+.dis-banner-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--orange);
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 92, 0, 0.3);
+  padding: 5px 12px;
+  border-radius: 4px;
+}
+
+.dis-company {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 900;
+  line-height: 0.95;
+  color: var(--yellow);
+  margin: 0 0 24px;
+  letter-spacing: -0.02em;
+}
+
+.dis-banner-title {
+  font-size: clamp(1.25rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+  max-width: 780px;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+
+.dis-banner-excerpt {
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(240, 230, 211, 0.65);
+  max-width: 680px;
+  margin: 0;
+}
+
+.dis-stats-row {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 28px;
+  margin-top: 44px;
+}
+
+.dis-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dis-stat-value {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--yellow);
+  line-height: 1;
+}
+
+.dis-stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(154, 144, 136, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ── Body layout ─────────────────────────────────────────────────────────────── */
+.dis-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 80px;
+  padding: 80px 60px;
+}
+
+/* ── Chapter nav ─────────────────────────────────────────────────────────────── */
+.dis-nav {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-self: start;
+  height: fit-content;
+}
+
+.dis-nav-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--label);
+  margin-bottom: 12px;
+  padding: 0 12px;
+}
+
+.dis-nav-item {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 8px 12px;
+  border-left: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  text-align: left;
+  line-height: 1.4;
+  border-radius: 0 4px 4px 0;
+}
+
+.dis-nav-item:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.dis-nav-item.active {
+  border-left-color: var(--orange);
+  color: var(--text);
+  background: rgba(255, 92, 0, 0.06);
+}
+
+/* ── Content area ────────────────────────────────────────────────────────────── */
+.dis-content {
+  min-width: 0;
+}
+
+/* ── Chapters ────────────────────────────────────────────────────────────────── */
+.dis-chapter {
+  margin-bottom: 80px;
+}
+
+.dis-chapter:last-child {
+  margin-bottom: 0;
+}
+
+.dis-chapter h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.6rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: var(--yellow);
+  margin: 0 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.25;
+}
+
+.dis-chapter p {
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.dis-chapter p:last-child {
+  margin-bottom: 0;
+}
+
+.dis-chapter p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ── Related articles ────────────────────────────────────────────────────────── */
+.dis-related {
+  padding: 80px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dis-related h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 32px;
+}
+
+.dis-related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.dis-related-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+  display: block;
+}
+
+.dis-related-card:hover {
+  border-color: rgba(255, 92, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.dis-related-card-tag {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--orange);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.dis-related-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+  margin: 0 0 10px;
+}
+
+.dis-related-card p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── CTA section ─────────────────────────────────────────────────────────────── */
+.dis-cta-section {
+  padding: 80px 60px;
+  text-align: center;
+}
+
+.dis-cta-inner {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.dis-cta-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--orange);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.dis-cta-section h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 16px;
+  line-height: 1.2;
+}
+
+.dis-cta-section p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 0 0 32px;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .dis-body {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 60px 40px;
+  }
+
+  .dis-nav {
+    display: none;
+  }
+
+  .dis-related-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .dis-banner {
+    padding: 80px 24px 48px;
+  }
+
+  .dis-body {
+    padding: 48px 24px;
+  }
+
+  .dis-related {
+    padding: 48px 24px;
+  }
+
+  .dis-cta-section {
+    padding: 60px 24px;
+  }
+
+  .dis-stats-row {
+    gap: 24px;
+  }
+
+  .dis-chapter {
+    margin-bottom: 56px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dis-related-grid {
+    grid-template-columns: 1fr;
+  }
+}

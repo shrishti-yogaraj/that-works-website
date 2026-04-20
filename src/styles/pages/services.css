@@ -1,7 +1,6 @@
 /* ── SERVICES PAGE ── */
 .svcs-hero {
   padding: 120px 40px 64px;
-  border-bottom: 1px solid var(--border);
 }
 .svcs-hero-inner {
   max-width: 700px;
@@ -137,8 +136,6 @@
 
 .svcs-cta-strip {
   padding: 80px 40px;
-  border-top: 1px solid var(--border);
-  background: var(--surface);
 }
 .svcs-cta-strip-inner {
   max-width: 700px;

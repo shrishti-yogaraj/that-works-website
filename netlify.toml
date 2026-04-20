@@ -14,6 +14,16 @@
 #   2. Copy the URL and add it as a webhook in Sanity:
 #      Sanity manage → your project → API → Webhooks
 
+# Assets must never be caught by the SPA fallback.
+# If a JS/CSS chunk is missing (stale cache after redeploy), return a real 404
+# so the chunk-load error handler can prompt a refresh instead of crashing.
+[[redirects]]
+  from = "/assets/*"
+  to = "/assets/:splat"
+  status = 404
+  force = true
+
+# SPA fallback for all page routes
 [[redirects]]
   from = "/*"
   to = "/index.html"

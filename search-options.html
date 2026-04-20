@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Results</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:     #f5f0e8;
+      --bg2:    #ede8df;
+      --border: #d8d2c8;
+      --text:   #1c1917;
+      --muted:  #6b6360;
+      --label:  #9a9088;
+      --orange: #ff5c00;
+      --amber:  #fbbf24;
+      --lav:    #c4b5fd;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Cabinet Grotesk', sans-serif; color: var(--text); background: var(--bg); }
+
+    /* Query bar */
+    .query-bar {
+      padding: 32px 56px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 12px;
+      font-size: 13px; color: var(--muted);
+    }
+    .query-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); flex-shrink: 0; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .query-q { color: var(--text); font-weight: 700; }
+
+    /* Two-column layout */
+    .layout {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      min-height: 100vh;
+    }
+
+    /* ── LEFT COLUMN ── */
+    .left {
+      border-right: 1px solid var(--border);
+      padding: 52px 48px 64px;
+      display: flex; flex-direction: column; gap: 48px;
+    }
+
+    /* AI Insight */
+    .insight-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--orange);
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 16px;
+    }
+    .insight-label::before { content: '✦'; font-size: 11px; }
+    .insight-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-style: italic;
+      line-height: 1.75; color: var(--text);
+      margin-bottom: 24px;
+    }
+    .insight-text strong { font-style: normal; }
+    .insight-text mark { background: none; color: var(--orange); font-style: normal; }
+
+    /* Referenced pieces */
+    .insight-refs-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--label); margin-bottom: 12px;
+    }
+    .insight-ref {
+      display: flex; align-items: baseline; gap: 10px;
+      padding: 10px 0;
+      border-top: 1px solid var(--border);
+      text-decoration: none; color: inherit;
+      transition: background 0.1s;
+    }
+    .insight-ref:last-child { border-bottom: 1px solid var(--border); }
+    .insight-ref:hover .insight-ref-title { color: var(--orange); }
+    .insight-ref-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+    .insight-ref-body { }
+    .insight-ref-type { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--label); margin-bottom: 2px; }
+    .insight-ref-title { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.3; transition: color 0.12s; }
+
+    /* Divider within left col */
+    .left-divider {
+      display: flex; align-items: center; gap: 14px;
+      font-size: 9px; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--label);
+    }
+    .left-divider::before, .left-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* Arsenal / Lab resources */
+    .resource {
+      display: block; text-decoration: none; color: inherit;
+      padding: 20px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .resource + .resource { margin-top: 10px; }
+    .resource.arsenal { background: rgba(255,92,0,0.04); }
+    .resource.lab { background: rgba(196,181,253,0.06); }
+    .resource:hover.arsenal { border-color: rgba(255,92,0,0.3); background: rgba(255,92,0,0.07); }
+    .resource:hover.lab { border-color: rgba(196,181,253,0.4); background: rgba(196,181,253,0.1); }
+    .resource-type {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; margin-bottom: 6px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .resource-type.a { color: var(--orange); }
+    .resource-type.l { color: #7c3aed; }
+    .resource-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .resource-desc { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 10px; }
+    .resource-cta { font-size: 11px; font-weight: 700; }
+    .resource-cta.a { color: var(--orange); }
+    .resource-cta.l { color: #7c3aed; }
+
+    /* ── RIGHT COLUMN — Article list ── */
+    .right { padding: 52px 56px 64px; }
+
+    .right-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--label);
+      margin-bottom: 4px;
+    }
+
+    /* Category colour map */
+    .cat-strategy  { color: var(--orange); }
+    .cat-gtm       { color: #16a34a; }
+    .cat-position  { color: #7c3aed; }
+    .cat-retention { color: var(--amber); }
+
+    .article {
+      display: block;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none; color: inherit;
+      transition: padding-left 0.15s;
+    }
+    .article:first-of-type { border-top: 1px solid var(--border); }
+    .article:hover { padding-left: 6px; }
+    .article:hover .article-title { color: var(--orange); }
+
+    .article-cat {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .article-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--text); line-height: 1.3;
+      margin-bottom: 6px; transition: color 0.12s;
+    }
+    .article-context {
+      font-size: 12px; color: var(--muted);
+      line-height: 1.65; font-style: italic;
+      margin-bottom: 8px;
+    }
+    .article-meta { font-size: 11px; color: var(--label); }
+
+    /* ── DISSECTION — below, secondary ── */
+    .dissection-wrap {
+      border-top: 1px solid var(--border);
+      padding: 0 56px 0 0;
+      display: grid; grid-template-columns: 2fr 3fr;
+    }
+    .dissection-intro {
+      padding: 48px 48px;
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column; justify-content: center;
+      gap: 10px;
+    }
+    .dissection-intro-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--label);
+    }
+    .dissection-intro-line {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-style: italic;
+      color: var(--muted); line-height: 1.5;
+    }
+
+    .dissection {
+      display: block; text-decoration: none; color: inherit;
+      background: #0a0907;
+      padding: 48px 56px;
+      transition: filter 0.2s;
+    }
+    .dissection:hover { filter: brightness(1.06); }
+    .dis-badge {
+      font-size: 8px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--amber);
+      margin-bottom: 14px;
+    }
+    .dis-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 900;
+      color: #f0e6d3; line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .dis-meta {
+      font-size: 11px; color: rgba(240,230,211,0.25);
+      margin-bottom: 18px;
+    }
+    .dis-cta {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--amber);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="query-bar">
+    <span class="query-dot"></span>
+    Results for <span class="query-q">"how to build a PLG GTM motion"</span>
+  </div>
+
+  <div class="layout">
+
+    <!-- LEFT: AI insight + resources -->
+    <div class="left">
+
+      <div>
+        <div class="insight-label">AI Insight</div>
+        <p class="insight-text">PLG scales when the product delivers undeniable value <strong>before</strong> a sales conversation. The real lever is <mark>ICP precision upstream</mark> — the right users activate, the wrong ones churn and blame the product. Notion proved it: no outbound for three years, $10B on onboarding mechanics most GTM teams haven't studied.</p>
+        <div class="insight-refs-label">Referenced in this answer</div>
+        <a href="#" class="insight-ref">
+          <span class="insight-ref-dot" style="background:var(--orange)"></span>
+          <div class="insight-ref-body">
+            <div class="insight-ref-type">Article</div>
+            <div class="insight-ref-title">The PLG Playbook: 5 Moves That Actually Work</div>
+          </div>
+        </a>
+        <a href="#" class="insight-ref">
+          <span class="insight-ref-dot" style="background:#7c3aed"></span>
+          <div class="insight-ref-body">
+            <div class="insight-ref-type">The Lab · Diagnostic</div>
+            <div class="insight-ref-title">ICP Qualification Canvas</div>
+          </div>
+        </a>
+        <a href="#" class="insight-ref">
+          <span class="insight-ref-dot" style="background:var(--amber)"></span>
+          <div class="insight-ref-body">
+            <div class="insight-ref-type">Dissection</div>
+            <div class="insight-ref-title">How Notion Went From $0 to $10B</div>
+          </div>
+        </a>
+      </div>
+
+      <div>
+        <div class="left-divider">From the Arsenal & Lab</div>
+        <div style="margin-top:20px;">
+          <a href="#" class="resource arsenal">
+            <div class="resource-type a">Arsenal · Template</div>
+            <div class="resource-name">PLG GTM Audit</div>
+            <div class="resource-desc">Score your motion across 4 pillars. Surfaces where revenue is leaking and what to fix first.</div>
+            <div class="resource-cta a">Download free →</div>
+          </a>
+          <a href="#" class="resource lab">
+            <div class="resource-type l">The Lab · Diagnostic</div>
+            <div class="resource-name">ICP Qualification Canvas</div>
+            <div class="resource-desc">Rank accounts against real closed-won patterns. Surfaces your top 3 gaps in 8 minutes.</div>
+            <div class="resource-cta l">Run for free →</div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: Articles -->
+    <div class="right">
+      <div class="right-label">Articles & Playbooks</div>
+
+      <a href="#" class="article">
+        <div class="article-cat cat-strategy">Strategy</div>
+        <div class="article-title">The PLG Playbook: 5 Moves That Actually Work</div>
+        <div class="article-context">The specific, operational moves — not "build a great product" advice — that separate companies that actually grow product-led.</div>
+        <div class="article-meta">8 min read</div>
+      </a>
+
+      <a href="#" class="article">
+        <div class="article-cat cat-gtm">GTM</div>
+        <div class="article-title">Product-Led vs Sales-Led: Picking the Right Motion for Your Stage</div>
+        <div class="article-context">How to read your own signals and choose the right dominant motion without burning runway on the wrong one.</div>
+        <div class="article-meta">6 min read</div>
+      </a>
+
+      <a href="#" class="article">
+        <div class="article-cat cat-position">Positioning</div>
+        <div class="article-title">ICP Clarity: Why Most B2B Companies Get This Backwards</div>
+        <div class="article-context">Start from the problem that makes your solution non-optional — then work back to the profile, not the other way around.</div>
+        <div class="article-meta">5 min read</div>
+      </a>
+
+      <a href="#" class="article">
+        <div class="article-cat cat-retention">Retention</div>
+        <div class="article-title">Onboarding as a GTM Lever: What High-Retention Teams Do Differently</div>
+        <div class="article-context">The onboarding mechanics that correlate with expansion revenue, from 14 B2B SaaS case studies.</div>
+        <div class="article-meta">7 min read</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- DISSECTION — last, positioned as optional further context -->
+  <div class="dissection-wrap">
+    <div class="dissection-intro">
+      <div class="dissection-intro-label">While you're here</div>
+      <div class="dissection-intro-line">A real company that solved exactly this problem — if you want to see how it played out end to end.</div>
+    </div>
+    <a href="#" class="dissection">
+      <div class="dis-badge">★ Dissection</div>
+      <div class="dis-title">How Notion Went From $0 to $10B: The GTM Infrastructure Behind the Growth</div>
+      <div class="dis-meta">22 min read · $10B valuation · PLG motion · 6 systems covered</div>
+      <div class="dis-cta">Read the dissection →</div>
+    </a>
+  </div>
+
+</body>
+</html>

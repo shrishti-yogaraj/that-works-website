@@ -328,7 +328,7 @@ const JoinRole = () => {
   if (!role) {
     return (
       <div className="join-role-page">
-        <Nav variant="light" />
+        <Nav variant="light" applyNow />
         <div className="jr-not-found">
           <p>Role not found.</p>
           <Link to="/join">← Back to careers</Link>
@@ -375,7 +375,7 @@ const JoinRole = () => {
         canonical={`/join/${slug}`}
       />
       <div className="join-role-page">
-        <Nav variant="light" />
+        <Nav variant="light" applyNow />
 
         {/* ── Hero ── */}
         <section className="jr-hero">
@@ -466,7 +466,7 @@ const JoinRole = () => {
         </section>
 
         {/* ── Application form ── */}
-        <section className="jr-section jr-form-section">
+        <section className="jr-section jr-form-section" id="apply">
           <div className="jr-inner">
             <h2 className="jr-apply-hed">Apply</h2>
 

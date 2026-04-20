@@ -1,7 +1,6 @@
 /* ── BRANDING PAGE ── */
 .br-hero {
   padding: 120px 40px 80px;
-  border-bottom: 1px solid var(--border);
 }
 .br-hero-inner {
   max-width: 760px;
@@ -32,7 +31,6 @@
 
 .br-problem {
   padding: 80px 40px;
-  border-bottom: 1px solid var(--border);
 }
 .br-problem-inner { max-width: 800px; margin: 0 auto; }
 .br-problem-block {
@@ -54,8 +52,6 @@
 
 .br-included {
   padding: 100px 40px;
-  border-bottom: 1px solid var(--border);
-  background: var(--surface);
 }
 .br-included-inner { max-width: 1200px; margin: 0 auto; }
 .br-included-inner h2 {
@@ -91,7 +87,6 @@
 
 .br-how {
   padding: 100px 40px;
-  border-bottom: 1px solid var(--border);
 }
 .br-how-inner { max-width: 1200px; margin: 0 auto; }
 .br-how-inner h2 {
@@ -134,8 +129,6 @@
 
 .br-output {
   padding: 100px 40px;
-  border-bottom: 1px solid var(--border);
-  background: var(--surface);
 }
 .br-output-inner {
   max-width: 800px;

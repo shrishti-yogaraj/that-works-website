@@ -3,7 +3,6 @@
 .faq-hero {
   padding: 96px 24px 80px;
   background: var(--bg);
-  border-bottom: 1px solid var(--border);
 }
 .faq-hero-inner {
   max-width: 760px;
@@ -38,7 +37,6 @@
 /* Section nav pills */
 .faq-section-nav {
   padding: 18px 24px;
-  background: var(--surface);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
@@ -75,9 +73,6 @@
 }
 .faq-section:last-child { border-bottom: none; }
 
-.faq-section:nth-child(even) {
-  background: var(--surface);
-}
 
 .faq-section-inner {
   max-width: 760px;
@@ -155,8 +150,6 @@
 /* ── CTA ── */
 .faq-cta {
   padding: 96px 24px;
-  background: var(--surface);
-  border-top: 1px solid var(--border);
   text-align: center;
 }
 .faq-cta-inner {

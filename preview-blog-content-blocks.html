@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Content Blocks — That Works Design Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Cabinet+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+
+    /* ── Variables (light reading theme — same as live blog posts) ── */
+    :root {
+      --bg:      #f5f0e8;
+      --surface: #f5f0e8;
+      --surface2:#ede8df;
+      --border:  #dad4c8;
+      --orange:  #ff5c00;
+      --lavender:#c4b5fd;
+      --yellow:  #fbbf24;
+      --text:    #1c1917;
+      --muted:   #6b6360;
+      --label:   #9a9088;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); }
+
+    body {
+      color: var(--text);
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    /* ── Nav stub ── */
+    .nav-stub {
+      height: 64px;
+      background: #f5f0e8;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--text);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .nav-stub span {
+      font-weight: 400;
+      color: var(--muted);
+      margin-left: 8px;
+      font-size: 13px;
+    }
+
+    /* ── Page header ── */
+    .post-header {
+      padding: 60px 40px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .post-back {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      display: block;
+      margin-bottom: 20px;
+    }
+    .post-cat {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--yellow);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .post-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0 0 20px;
+      color: var(--text);
+    }
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .post-lede {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin: 0;
+      font-style: italic;
+      max-width: 680px;
+      border-left: 2px solid var(--border);
+      padding-left: 20px;
+    }
+
+    /* ── Two-column layout ── */
+    .post-layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 0;
+      padding: 48px 40px 80px;
+      border-top: 1px solid var(--border);
+    }
+    .post-content-col {
+      min-width: 0;
+      padding-right: 56px;
+    }
+    .post-content {
+      max-width: 680px;
+    }
+    .post-sidebar {
+      border-left: 1px solid var(--border);
+      padding-left: 36px;
+    }
+    .sidebar-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin: 0 0 16px;
+    }
+    .sidebar-note {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .sidebar-note strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    /* ── Block: paragraph ── */
+    .blogpost-p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--text);
+      margin: 0 0 24px;
+    }
+    .blogpost-p strong { color: var(--text); font-weight: 700; }
+    .blogpost-p em { font-style: italic; }
+
+    /* ── Block: headings ── */
+    .blogpost-h2 {
+      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+      font-weight: 900;
+      margin: 56px 0 20px;
+      color: var(--text);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      padding-left: 16px;
+      border-left: 3px solid var(--orange);
+    }
+    .blogpost-h3 {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-weight: 700;
+      margin: 40px 0 14px;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .blogpost-h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 28px 0 10px;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Block: blockquote ── */
+    .blogpost-blockquote {
+      border-left: 3px solid var(--border);
+      padding: 4px 0 4px 24px;
+      margin: 32px 0;
+      font-style: italic;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* ── Block: inline code ── */
+    .blogpost-inline-code {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: 0.875em;
+      font-family: "JetBrains Mono", "Fira Code", monospace;
+    }
+
+    /* ── Block: link ── */
+    .blogpost-link {
+      color: var(--text);
+      text-decoration: underline;
+      text-decoration-color: var(--border);
+      text-underline-offset: 3px;
+    }
+
+    /* ── Block: lists ── */
+    .blogpost-list {
+      margin: 0 0 28px;
+      padding-left: 24px;
+      list-style-type: disc;
+    }
+    .blogpost-list--ordered { list-style-type: decimal; }
+    .blogpost-list li {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .blogpost-list li strong { font-weight: 700; }
+
+    /* ── Block: callout box ── */
+    .blogpost-callout {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      border-radius: 8px;
+      margin: 32px 0;
+    }
+    .blogpost-callout-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .blogpost-callout-text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+      margin: 0;
+    }
+    .callout--tip     { background: rgba(255,92,0,0.07);    border-left: 3px solid var(--orange); }
+    .callout--warning { background: rgba(251,191,36,0.08);  border-left: 3px solid var(--yellow); }
+    .callout--info    { background: rgba(196,181,253,0.08); border-left: 3px solid var(--lavender); }
+    .callout--success { background: rgba(240,230,211,0.06); border-left: 3px solid var(--muted); }
+
+    /* ── Block: pull quote ── */
+    .blogpost-pullquote {
+      margin: 56px 0;
+      padding: 36px 32px 32px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .blogpost-pullquote::before {
+      content: '\201C';
+      display: block;
+      font-size: 5rem;
+      line-height: 0.8;
+      color: var(--orange);
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+    .blogpost-pullquote blockquote {
+      font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin: 0 auto 14px;
+      max-width: 560px;
+    }
+    .blogpost-pullquote figcaption {
+      font-size: 12px;
+      color: var(--muted);
+      font-style: normal;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── Block: stats ── */
+    .blogpost-stat {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 32px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .blogpost-stat-number {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+    .blogpost-stat-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+    .blogpost-stat-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── Block: divider ── */
+    .blogpost-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
+
+    /* ── Block: table ── */
+    .blogpost-table-wrap {
+      overflow-x: auto;
+      margin: 32px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .blogpost-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .blogpost-table th {
+      background: var(--surface2);
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 700;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+    }
+    .blogpost-table td {
+      padding: 10px 16px;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+    }
+    .blogpost-table tr:last-child td { border-bottom: none; }
+
+    /* ── Block: code block ── */
+    .blogpost-code-wrap {
+      background: #0d1117;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 32px 0;
+    }
+    .blogpost-code-lang {
+      padding: 8px 16px;
+      font-size: 11px;
+      color: #7d8590;
+      border-bottom: 1px solid #21262d;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-family: "JetBrains Mono", monospace;
+    }
+    .blogpost-code {
+      margin: 0;
+      padding: 20px;
+      overflow-x: auto;
+    }
+    .blogpost-code code {
+      font-family: "JetBrains Mono", "Fira Code", monospace;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #e6edf3;
+      white-space: pre;
+    }
+
+    /* ── Block: CTA buttons ── */
+    .blogpost-cta-wrap { margin: 32px 0; display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── Block labels (used in the guide) ── */
+    .block-label {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--label);
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 3px 8px;
+      margin-bottom: 8px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .post-layout {
+        grid-template-columns: 1fr;
+        padding: 40px 20px 60px;
+      }
+      .post-content-col { padding-right: 0; }
+      .post-sidebar {
+        border-left: none;
+        border-top: 1px solid var(--border);
+        padding-left: 0;
+        padding-top: 36px;
+        margin-top: 36px;
+      }
+    }
+    @media (max-width: 600px) {
+      .post-header { padding: 40px 20px 32px; }
+      .nav-stub { padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav stub -->
+  <div class="nav-stub">
+    That Works <span>· Blog content blocks reference</span>
+  </div>
+
+  <!-- Post header -->
+  <div class="post-header">
+    <a href="#" class="post-back">← Back to Blog</a>
+    <span class="post-cat" style="color: var(--yellow);">GTM &amp; Growth</span>
+    <h1 class="post-title">Design Preview: Every Content Block</h1>
+    <div class="post-meta">
+      <span>2 min read</span>
+      <span style="color:var(--border)">·</span>
+      <time>9 April 2026</time>
+    </div>
+    <p class="post-lede">
+      A reference showing every block type available in the blog layout — paragraphs, headings, callouts, pull quotes, stats, tables, code, CTAs, and more.
+    </p>
+  </div>
+
+  <!-- Body + sidebar -->
+  <div class="post-layout">
+    <div class="post-content-col">
+      <div class="post-content">
+
+        <!-- ── PARAGRAPH ── -->
+        <span class="block-label">paragraph</span>
+        <p class="blogpost-p">
+          This is a standard paragraph. Use it for body copy throughout the post. You can include
+          <strong>bold text</strong>, <em>italic text</em>, or
+          <code class="blogpost-inline-code">inline code</code>
+          inline within paragraphs.
+        </p>
+
+        <!-- ── H2 ── -->
+        <span class="block-label">heading 2 (h2)</span>
+        <h2 class="blogpost-h2">This Is a Heading 2</h2>
+        <p class="blogpost-p">
+          Paragraph following an H2. Heading 2 is the primary section divider — it has the orange left-border accent and bold weight. Use it to break up major sections of a long post.
+        </p>
+
+        <!-- ── H3 ── -->
+        <span class="block-label">heading 3 (h3)</span>
+        <h3 class="blogpost-h3">This Is a Heading 3</h3>
+        <p class="blogpost-p">
+          Heading 3 is a sub-section header within an H2 section. Lighter weight than H2, no accent border.
+        </p>
+
+        <!-- ── H4 ── -->
+        <span class="block-label">heading 4 (h4)</span>
+        <h4 class="blogpost-h4">Heading 4 — Small Label Style</h4>
+        <p class="blogpost-p">
+          H4 is uppercase, tracked out — works well as a label for a sub-section that doesn't need the full weight of an H3.
+        </p>
+
+        <!-- ── BLOCKQUOTE ── -->
+        <span class="block-label">blockquote</span>
+        <blockquote class="blogpost-blockquote">
+          This is a standard blockquote. Use it for short citations, a client quote, or a line you want to call out without the full pull-quote treatment.
+        </blockquote>
+
+        <!-- ── LISTS ── -->
+        <h2 class="blogpost-h2">Lists</h2>
+
+        <span class="block-label">bullet list</span>
+        <ul class="blogpost-list">
+          <li>Bullet list item one</li>
+          <li>Bullet item two with <strong>bold text</strong> inline</li>
+          <li>Bullet item three</li>
+        </ul>
+
+        <span class="block-label">ordered list</span>
+        <ol class="blogpost-list blogpost-list--ordered">
+          <li>Ordered list item one</li>
+          <li>Ordered list item two</li>
+          <li>Ordered list item three</li>
+        </ol>
+
+        <!-- ── CALLOUTS ── -->
+        <h2 class="blogpost-h2">Callout Boxes — Four Variants</h2>
+
+        <span class="block-label">callout: tip</span>
+        <div class="blogpost-callout callout--tip">
+          <span class="blogpost-callout-icon"></span>
+          <p class="blogpost-callout-text">TIP: Use this for actionable advice or a quick win the reader can apply right now.</p>
+        </div>
+
+        <span class="block-label">callout: info</span>
+        <div class="blogpost-callout callout--info">
+          <span class="blogpost-callout-icon"></span>
+          <p class="blogpost-callout-text">INFO: Use this for contextual notes, definitions, or background information.</p>
+        </div>
+
+        <span class="block-label">callout: warning</span>
+        <div class="blogpost-callout callout--warning">
+          <span class="blogpost-callout-icon"></span>
+          <p class="blogpost-callout-text">WARNING: Use this for caveats, common mistakes, or things the reader should watch out for.</p>
+        </div>
+
+        <span class="block-label">callout: success</span>
+        <div class="blogpost-callout callout--success">
+          <span class="blogpost-callout-icon"></span>
+          <p class="blogpost-callout-text">SUCCESS: Use this to highlight a positive outcome, a win, or a result worth celebrating.</p>
+        </div>
+
+        <!-- ── PULL QUOTE ── -->
+        <h2 class="blogpost-h2">Pull Quote</h2>
+
+        <span class="block-label">pullQuote</span>
+        <figure class="blogpost-pullquote">
+          <blockquote>Strategy without infrastructure is just a wish. Build the foundation first.</blockquote>
+          <figcaption>— That Works</figcaption>
+        </figure>
+
+        <!-- ── STATS ── -->
+        <h2 class="blogpost-h2">Stats Block</h2>
+
+        <span class="block-label">statsBlock</span>
+        <div class="blogpost-stat">
+          <div class="blogpost-stat-number">83%</div>
+          <div class="blogpost-stat-label">of GTM strategies fail in year one</div>
+          <div class="blogpost-stat-desc">The root cause is almost never the strategy itself — it's the infrastructure underneath it.</div>
+        </div>
+
+        <!-- ── DIVIDER ── -->
+        <h2 class="blogpost-h2">Divider</h2>
+
+        <span class="block-label">divider</span>
+        <hr class="blogpost-divider" />
+
+        <p class="blogpost-p">Content continues after the divider above. Use dividers to create visual breathing room between major sections without adding a heading.</p>
+
+        <!-- ── TABLE ── -->
+        <h2 class="blogpost-h2">Table</h2>
+
+        <span class="block-label">table</span>
+        <div class="blogpost-table-wrap">
+          <table class="blogpost-table">
+            <thead>
+              <tr>
+                <th>Channel</th>
+                <th>Cost per SQL</th>
+                <th>Win Rate</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Outbound</td><td>$420</td><td>28%</td><td>High intent, longer cycle</td></tr>
+              <tr><td>Content</td><td>$210</td><td>34%</td><td>Lower volume, better fit</td></tr>
+              <tr><td>Referral</td><td>$80</td><td>52%</td><td>Best economics, hard to scale</td></tr>
+              <tr><td>Paid</td><td>$680</td><td>19%</td><td>Fast to spin up, expensive at scale</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ── CODE BLOCK ── -->
+        <h2 class="blogpost-h2">Code Block</h2>
+
+        <span class="block-label">codeBlock</span>
+        <div class="blogpost-code-wrap">
+          <div class="blogpost-code-lang">javascript</div>
+          <pre class="blogpost-code"><code>// Example: Lead scoring logic
+const scoreLead = (lead) => {
+  let points = 0;
+  if (lead.title.includes('VP')) points += 20;
+  if (lead.title.includes('Director')) points += 15;
+  if (lead.pageViews > 5) points += 10;
+  if (lead.demoRequested) points += 30;
+  return points;
+};</code></pre>
+        </div>
+
+        <!-- ── CTA BUTTONS ── -->
+        <h2 class="blogpost-h2">CTA Buttons</h2>
+
+        <span class="block-label">ctaButton — primary</span>
+        <div class="blogpost-cta-wrap">
+          <a href="#" class="btn-primary">Book a Diagnostic Call →</a>
+        </div>
+
+        <span class="block-label">ctaButton — secondary (ghost)</span>
+        <div class="blogpost-cta-wrap">
+          <a href="#" class="btn-ghost">View Services</a>
+        </div>
+
+        <span class="block-label">both together</span>
+        <div class="blogpost-cta-wrap">
+          <a href="#" class="btn-primary">Book a Diagnostic Call →</a>
+          <a href="#" class="btn-ghost">View Services</a>
+        </div>
+
+      </div><!-- /post-content -->
+    </div><!-- /post-content-col -->
+
+    <!-- Sidebar -->
+    <aside class="post-sidebar">
+      <p class="sidebar-label">Notes for writers</p>
+      <div class="sidebar-note">
+        <strong>How to use this file</strong>
+        Open it in any browser — no server needed. Each block is labelled with the Sanity field type name in a grey badge above it.
+      </div>
+      <br />
+      <div class="sidebar-note">
+        <strong>Headings</strong>
+        Use H2 for major sections, H3 for sub-sections, H4 for micro-labels. Don't skip levels.
+      </div>
+      <br />
+      <div class="sidebar-note">
+        <strong>Callouts</strong>
+        Four variants: tip (orange), info (lavender), warning (yellow), success (grey). Pick based on intent — not colour preference.
+      </div>
+      <br />
+      <div class="sidebar-note">
+        <strong>Pull quote vs blockquote</strong>
+        Pull quote = big centred statement you want the reader to remember. Blockquote = short citation or aside.
+      </div>
+      <br />
+      <div class="sidebar-note">
+        <strong>Stats block</strong>
+        One number, one label, one optional sentence. Don't crowd it with multiple stats — it loses impact.
+      </div>
+      <br />
+      <div class="sidebar-note">
+        <strong>CTA buttons</strong>
+        Use primary for the main action. Use ghost (secondary) as a softer alternative alongside it. Don't stack more than two CTAs.
+      </div>
+    </aside>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hub Layout Options</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:     #f5f0e8;
+      --bg2:    #ede8df;
+      --bg3:    #e6e0d6;
+      --border: #d8d2c8;
+      --bdr2:   #c4bcb0;
+      --text:   #1c1917;
+      --muted:  #6b6360;
+      --label:  #9a9088;
+      --orange: #ff5c00;
+      --amber:  #fbbf24;
+      --lav:    #c4b5fd;
+      --green:  #34d399;
+      --blue:   #60a5fa;
+      --pink:   #fb7185;
+      --dark:   #12100f;
+      --dark2:  #1c1816;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #d8d2c8; font-family: 'Cabinet Grotesk', sans-serif; color: var(--text); padding: 48px 40px 140px; }
+
+    .page-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--label); margin-bottom: 64px; }
+    .opt { margin-bottom: 120px; }
+    .opt-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 5px; display: flex; align-items: center; gap: 10px; }
+    .opt-tag::before { content:''; width:24px; height:2px; background:var(--orange); }
+    .opt-name { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; margin-bottom: 5px; }
+    .opt-desc { font-size: 13px; color: var(--muted); line-height: 1.6; max-width: 600px; margin-bottom: 24px; }
+
+    /* ── shared atoms ── */
+    .cat { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+    .c-gtm  { color: var(--amber); }
+    .c-lead { color: var(--orange); }
+    .c-mkt  { color: var(--lav); }
+    .c-play { color: var(--green); }
+    .c-hire { color: var(--pink); }
+    .c-rev  { color: var(--blue); }
+
+    /* fake image block */
+    .img { background: var(--bg3); border-radius: 6px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .img span { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bdr2); }
+
+    /* search bar — light */
+    .srch { position: relative; }
+    .srch input { width: 100%; background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 13px 48px 13px 18px; font-family: 'Cabinet Grotesk', sans-serif; font-size: 14px; color: var(--text); outline: none; }
+    .srch input::placeholder { color: var(--label); }
+    .srch-ic { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: var(--label); font-size: 15px; }
+
+    /* search bar — dark */
+    .srch-dk input { background: rgba(240,230,211,0.06); border: 1px solid rgba(240,230,211,0.12); color: rgba(240,230,211,0.85); border-radius: 8px; }
+    .srch-dk input::placeholder { color: rgba(240,230,211,0.28); }
+
+    /* tool moment card — dark */
+    .tool-moment { background: var(--dark); border-radius: 10px; padding: 28px 32px; }
+    .tool-moment-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); display: block; margin-bottom: 10px; }
+    .tool-moment-hed { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: #f0e6d3; margin-bottom: 8px; line-height: 1.2; }
+    .tool-moment-dek { font-size: 12px; color: rgba(240,230,211,0.42); line-height: 1.6; margin-bottom: 16px; }
+    .tool-moment-cta { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); }
+
+    /* arsenal pill row */
+    .ars-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .ars-pill { display: inline-flex; align-items: center; gap: 8px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; font-size: 12px; font-weight: 700; color: var(--muted); text-decoration: none; transition: background 0.12s, color 0.12s; }
+    .ars-pill:hover { background: var(--bg2); color: var(--text); }
+    .ars-pill-icon { font-size: 14px; }
+
+    /* lex pull-out */
+    .lex-pullout { background: var(--dark2); border-radius: 10px; padding: 28px 32px; }
+    .lex-pullout-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(240,230,211,0.3); display: block; margin-bottom: 10px; }
+    .lex-pullout-word { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; font-style: italic; color: #f0e6d3; display: block; margin-bottom: 8px; }
+    .lex-pullout-def { font-size: 13px; color: rgba(240,230,211,0.45); line-height: 1.65; margin-bottom: 14px; }
+    .lex-pullout-link { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(240,230,211,0.3); }
+
+    /* research moment */
+    .res-moment { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 24px 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .res-moment-lav { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lav); display: block; margin-bottom: 6px; }
+    .res-moment-hed { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .res-moment-dek { font-size: 12px; color: var(--muted); }
+    .res-moment-cta { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lav); white-space: nowrap; flex-shrink: 0; }
+
+    /* dis moment */
+    .dis-moment { background: var(--dark); border-radius: 10px; overflow: hidden; display: grid; grid-template-columns: 1fr 1.6fr; }
+    .dis-moment-left { padding: 28px 28px; border-right: 1px solid rgba(240,230,211,0.08); display: flex; flex-direction: column; justify-content: space-between; }
+    .dis-moment-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); display: block; margin-bottom: 12px; }
+    .dis-moment-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,230,211,0.22); display: block; margin-bottom: 2px; }
+    .dis-moment-val { font-size: 13px; color: rgba(240,230,211,0.5); margin-bottom: 14px; }
+    .dis-moment-right { padding: 28px 32px; }
+    .dis-moment-hed { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.2; color: #f0e6d3; margin-bottom: 10px; }
+    .dis-moment-dek { font-size: 13px; color: rgba(240,230,211,0.42); line-height: 1.6; margin-bottom: 14px; }
+    .dis-moment-cta { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber); }
+
+    /* article card atoms */
+    .a-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 8px; }
+    .a-hed { font-family: 'Playfair Display', serif; font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
+    .a-dek { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 8px; }
+    .a-meta { font-size: 11px; color: var(--label); }
+    .a-rule { height: 2px; background: var(--text); margin-bottom: 12px; }
+    .a-pq { border-top: 1.5px solid var(--text); border-bottom: 1.5px solid var(--text); padding: 12px 0; margin: 14px 0; }
+    .a-pq p { font-family: 'Playfair Display', serif; font-size: 0.9rem; font-style: italic; font-weight: 700; line-height: 1.35; }
+
+
+    /* ══════════════════════════════════════════════════
+       1 — THE MAGAZINE
+       Dominant image lead. Articles in editorial grid.
+       Tool / lex / dis / res woven as interruptions.
+    ══════════════════════════════════════════════════ */
+    .m1 { background: var(--bg); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
+
+    /* compact header */
+    .m1-head { padding: 20px 40px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .m1-head-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; letter-spacing: -0.02em; }
+    .m1-head-search { flex: 1; max-width: 380px; }
+    .m1-head-link { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); text-decoration: none; }
+
+    /* hero feature */
+    .m1-hero { display: grid; grid-template-columns: 1.4fr 1fr; border-bottom: 1px solid var(--border); }
+    .m1-hero-img { height: 380px; background: var(--dark); display: flex; align-items: flex-end; padding: 32px; border-right: 1px solid var(--border); position: relative; }
+    .m1-hero-img-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1c1410 0%, #2a1f14 100%); }
+    .m1-hero-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(18,16,15,0.9) 0%, transparent 55%); }
+    .m1-hero-img-content { position: relative; z-index: 1; }
+    .m1-hero-img-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); display: block; margin-bottom: 10px; }
+    .m1-hero-img-hed { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2.2vw, 1.9rem); font-weight: 900; line-height: 1.1; color: #f0e6d3; margin-bottom: 8px; }
+    .m1-hero-img-meta { font-size: 11px; color: rgba(240,230,211,0.45); }
+    .m1-hero-sidebar { display: flex; flex-direction: column; }
+    .m1-hero-side-item { padding: 24px 28px; border-bottom: 1px solid var(--border); flex: 1; text-decoration: none; color: inherit; transition: background 0.12s; display: block; }
+    .m1-hero-side-item:last-child { border-bottom: none; }
+    .m1-hero-side-item:hover { background: var(--bg2); }
+
+    /* 3-col grid */
+    .m1-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; border-bottom: 1px solid var(--border); }
+    .m1-col { border-right: 1px solid var(--border); }
+    .m1-col:last-child { border-right: none; }
+    .m1-card { padding: 24px 28px; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; display: block; transition: background 0.12s; }
+    .m1-card:last-child { border-bottom: none; }
+    .m1-card:hover { background: var(--bg2); }
+    .m1-card-img { height: 140px; margin-bottom: 16px; border-radius: 6px; overflow: hidden; background: var(--bg3); }
+
+    /* interruption row */
+    .m1-interrupt { display: grid; grid-template-columns: 1fr 1fr 1fr; border-bottom: 1px solid var(--border); gap: 0; }
+    .m1-int-cell { padding: 28px 32px; border-right: 1px solid var(--border); }
+    .m1-int-cell:last-child { border-right: none; }
+
+
+    /* ══════════════════════════════════════════════════
+       2 — THE DASHBOARD
+       Left nav rail. Right: scrollable content feed.
+       Tool/lex/dis appear inline in the feed.
+    ══════════════════════════════════════════════════ */
+    .m2 { background: var(--bg); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); display: grid; grid-template-columns: 220px 1fr; min-height: 900px; }
+
+    .m2-nav { background: var(--dark); padding: 32px 24px; display: flex; flex-direction: column; gap: 0; border-right: 1px solid rgba(240,230,211,0.08); }
+    .m2-nav-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 900; color: #f0e6d3; margin-bottom: 8px; line-height: 1.1; }
+    .m2-nav-sub { font-size: 11px; color: rgba(240,230,211,0.3); margin-bottom: 32px; line-height: 1.5; }
+    .m2-nav-search { margin-bottom: 28px; }
+    .m2-nav-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(240,230,211,0.22); margin-bottom: 8px; display: block; }
+    .m2-nav-item { font-size: 12px; font-weight: 600; color: rgba(240,230,211,0.38); padding: 7px 0; border-bottom: 1px solid rgba(240,230,211,0.05); cursor: pointer; transition: color 0.12s; }
+    .m2-nav-item.on { color: rgba(240,230,211,0.85); }
+    .m2-nav-item:hover { color: rgba(240,230,211,0.65); }
+    .m2-nav-divider { height: 1px; background: rgba(240,230,211,0.07); margin: 20px 0; }
+    .m2-nav-util { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(240,230,211,0.25); padding: 6px 0; cursor: pointer; transition: color 0.12s; }
+    .m2-nav-util:hover { color: var(--orange); }
+    .m2-nav-util.highlight { color: var(--orange); }
+
+    .m2-feed { display: flex; flex-direction: column; }
+    .m2-featured { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
+    .m2-feat-img { height: 280px; background: var(--dark2); border-right: 1px solid var(--border); position: relative; display: flex; align-items: flex-end; padding: 24px; }
+    .m2-feat-img-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1c1410 0%, #231a10 100%); }
+    .m2-feat-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(18,16,15,0.88) 0%, transparent 60%); }
+    .m2-feat-img-label { position: relative; z-index: 1; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); }
+    .m2-feat-text { padding: 28px 32px; display: flex; flex-direction: column; justify-content: center; }
+
+    .m2-row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
+    .m2-item { padding: 22px 28px; border-right: 1px solid var(--border); text-decoration: none; color: inherit; transition: background 0.12s; display: block; }
+    .m2-item:last-child { border-right: none; }
+    .m2-item:hover { background: var(--bg2); }
+    .m2-item-img { height: 100px; border-radius: 6px; background: var(--bg3); margin-bottom: 14px; }
+
+    .m2-inline-tool { padding: 24px 28px; border-bottom: 1px solid var(--border); background: var(--dark2); }
+    .m2-inline-lex { padding: 20px 28px; border-bottom: 1px solid var(--border); background: var(--bg2); display: flex; gap: 24px; align-items: flex-start; }
+    .m2-inline-dis { padding: 24px 28px; border-bottom: 1px solid var(--border); }
+
+
+    /* ══════════════════════════════════════════════════
+       3 — THE BROADSHEET REIMAGINED
+       Tabloid-style. No images. Pure type hierarchy.
+       Dense, intelligent, editorial.
+    ══════════════════════════════════════════════════ */
+    .m3 { background: var(--bg); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
+
+    .m3-head { padding: 16px 44px; border-bottom: 3px double var(--text); display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .m3-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; letter-spacing: -0.03em; }
+    .m3-head-right { flex: 1; max-width: 360px; }
+    .m3-head-meta { font-size: 11px; color: var(--label); text-align: right; }
+
+    .m3-above-fold { display: grid; grid-template-columns: 2fr 1px 1.2fr 1px 1fr; border-bottom: 1px solid var(--border); }
+    .m3-divider { background: var(--border); }
+    .m3-lead { padding: 32px 36px; }
+    .m3-lead-hed { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 14px; }
+    .m3-lead-rule { height: 2px; background: var(--text); margin-bottom: 14px; }
+    .m3-lead-dek { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 14px; }
+    .m3-lead-pq { border-top: 1.5px solid var(--text); border-bottom: 1.5px solid var(--text); padding: 14px 0; margin: 18px 0; }
+    .m3-lead-pq p { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; font-weight: 700; line-height: 1.35; }
+
+    .m3-col { padding: 32px 28px; }
+    .m3-item { padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid var(--border); }
+    .m3-item:last-child { border-bottom: none; margin: 0; padding: 0; }
+
+    /* tool interrupts as a full-width dark bar */
+    .m3-tool-bar { background: var(--dark); padding: 20px 44px; border-bottom: 1px solid rgba(240,230,211,0.08); display: grid; grid-template-columns: auto 1fr auto; gap: 32px; align-items: center; }
+    .m3-tool-bar-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); white-space: nowrap; }
+    .m3-tool-bar-hed { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: #f0e6d3; }
+    .m3-tool-bar-dek { font-size: 12px; color: rgba(240,230,211,0.4); }
+    .m3-tool-bar-cta { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); white-space: nowrap; }
+
+    /* lex as inline ruled block */
+    .m3-lex-bar { padding: 16px 44px; border-bottom: 1px solid var(--border); background: var(--bg2); display: flex; gap: 48px; align-items: baseline; }
+    .m3-lex-bar-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--label); white-space: nowrap; flex-shrink: 0; }
+    .m3-lex-bar-word { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; font-style: italic; flex-shrink: 0; }
+    .m3-lex-bar-def { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .m3-lex-bar-more { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); white-space: nowrap; flex-shrink: 0; margin-left: auto; }
+
+    .m3-lower { display: grid; grid-template-columns: 1fr 1fr 1fr; border-bottom: 1px solid var(--border); }
+    .m3-lower-col { padding: 28px 32px; border-right: 1px solid var(--border); }
+    .m3-lower-col:last-child { border-right: none; }
+
+    /* dis as full-width feature below fold */
+    .m3-dis { display: grid; grid-template-columns: 220px 1fr; background: var(--dark2); }
+    .m3-dis-num { padding: 32px 28px; border-right: 1px solid rgba(240,230,211,0.08); display: flex; flex-direction: column; justify-content: space-between; }
+    .m3-dis-n { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: rgba(240,230,211,0.07); line-height: 1; }
+    .m3-dis-content { padding: 32px 36px; }
+
+    /* arsenal as bottom ticker */
+    .m3-ars { display: grid; grid-template-columns: repeat(5,1fr); border-top: 1px solid var(--border); }
+    .m3-ars-item { padding: 16px 22px; border-right: 1px solid var(--border); text-decoration: none; color: inherit; transition: background 0.12s; }
+    .m3-ars-item:last-child { border-right: none; }
+    .m3-ars-item:hover { background: var(--bg2); }
+    .m3-ars-type { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--label); display: block; margin-bottom: 4px; }
+    .m3-ars-name { font-size: 12px; font-weight: 700; color: var(--text); line-height: 1.3; }
+
+
+    /* ══════════════════════════════════════════════════
+       4 — THE MOSAIC
+       Asymmetric CSS grid. Cards of different sizes.
+       No column logic — pure grid placement.
+    ══════════════════════════════════════════════════ */
+    .m4 { background: var(--bg); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
+
+    .m4-head { padding: 20px 36px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .m4-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 900; letter-spacing: -0.02em; }
+    .m4-head-right { display: flex; align-items: center; gap: 20px; }
+    .m4-search { width: 280px; }
+
+    .m4-mosaic {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 260px 200px 220px 180px;
+      border-bottom: 1px solid var(--border);
+    }
+    /* row 1 */
+    .m4-a { grid-column: 1/6; grid-row: 1; background: var(--dark); padding: 32px; display: flex; flex-direction: column; justify-content: flex-end; border-right: 1px solid rgba(240,230,211,0.08); border-bottom: 1px solid rgba(240,230,211,0.08); position: relative; }
+    .m4-a-bg { position: absolute; inset: 0; background: linear-gradient(135deg,#1c1410,#2a1a0e); }
+    .m4-a-ov { position: absolute; inset: 0; background: linear-gradient(to top, rgba(18,16,15,0.92) 0%, transparent 55%); }
+    .m4-a-content { position: relative; z-index: 1; }
+    .m4-b { grid-column: 6/9; grid-row: 1; padding: 24px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); display: flex; flex-direction: column; justify-content: space-between; text-decoration: none; color: inherit; transition: background 0.12s; }
+    .m4-b:hover { background: var(--bg2); }
+    .m4-c { grid-column: 9/13; grid-row: 1; background: var(--dark2); padding: 28px; border-bottom: 1px solid rgba(240,230,211,0.08); display: flex; flex-direction: column; }
+    /* row 2 */
+    .m4-d { grid-column: 1/4; grid-row: 2; padding: 24px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: background 0.12s; display: block; }
+    .m4-d:hover { background: var(--bg2); }
+    .m4-e { grid-column: 4/7; grid-row: 2; padding: 24px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: background 0.12s; display: block; }
+    .m4-e:hover { background: var(--bg2); }
+    .m4-f { grid-column: 7/10; grid-row: 2; background: var(--bg2); padding: 24px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .m4-g { grid-column: 10/13; grid-row: 2; padding: 24px; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: background 0.12s; display: block; }
+    .m4-g:hover { background: var(--bg2); }
+    /* row 3 */
+    .m4-h { grid-column: 1/5; grid-row: 3; background: var(--dark); padding: 28px 32px; border-right: 1px solid rgba(240,230,211,0.08); border-bottom: 1px solid rgba(240,230,211,0.08); display: flex; flex-direction: column; justify-content: space-between; }
+    .m4-i { grid-column: 5/9; grid-row: 3; padding: 24px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: background 0.12s; display: flex; flex-direction: column; }
+    .m4-i:hover { background: var(--bg2); }
+    .m4-i-img { height: 100px; border-radius: 6px; background: var(--bg3); margin-bottom: 14px; flex-shrink: 0; }
+    .m4-j { grid-column: 9/13; grid-row: 3; padding: 24px; border-bottom: 1px solid var(--border); display: flex; flex-direction: column; gap: 16px; }
+    /* row 4 */
+    .m4-k { grid-column: 1/13; grid-row: 4; display: grid; grid-template-columns: repeat(5,1fr); }
+    .m4-k-item { padding: 18px 22px; border-right: 1px solid var(--border); text-decoration: none; color: inherit; transition: background 0.12s; display: block; }
+    .m4-k-item:last-child { border-right: none; }
+    .m4-k-item:hover { background: var(--bg2); }
+    .m4-k-type { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--label); display: block; margin-bottom: 4px; }
+    .m4-k-name { font-size: 12px; font-weight: 700; line-height: 1.3; }
+
+    /* mosaic text helpers */
+    .m4-feat-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); display: block; margin-bottom: 8px; }
+    .m4-feat-hed { font-family: 'Playfair Display', serif; font-size: clamp(1.2rem,2vw,1.6rem); font-weight: 900; line-height: 1.1; color: #f0e6d3; margin-bottom: 6px; }
+    .m4-feat-meta { font-size: 11px; color: rgba(240,230,211,0.4); }
+    .m4-sm-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 6px; }
+    .m4-sm-hed { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; line-height: 1.2; margin-bottom: 6px; }
+    .m4-sm-dek { font-size: 12px; color: var(--muted); line-height: 1.55; margin-bottom: 6px; }
+    .m4-sm-meta { font-size: 11px; color: var(--label); }
+
+
+    /* ══════════════════════════════════════════════════
+       5 — THE CARD STACK
+       All content as cards in a masonry-like 3-col flow.
+       Different card types (article, tool, lex, dis)
+       are visually distinct but live in the same grid.
+    ══════════════════════════════════════════════════ */
+    .m5 { background: var(--bg2); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
+
+    .m5-head { background: var(--bg); padding: 24px 36px; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; }
+    .m5-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 900; letter-spacing: -0.02em; }
+    .m5-search { }
+    .m5-tags { display: flex; gap: 6px; justify-content: flex-end; flex-wrap: wrap; }
+    .m5-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--label); background: var(--bg2); border: 1px solid var(--border); border-radius: 100px; padding: 4px 12px; cursor: pointer; transition: background 0.12s, color 0.12s; }
+    .m5-tag:hover { background: var(--bg3); color: var(--text); }
+    .m5-tag.on { background: var(--text); color: var(--bg); }
+
+    .m5-grid { padding: 28px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; align-items: start; }
+
+    /* article card */
+    .m5-art { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; text-decoration: none; color: inherit; display: block; transition: transform 0.15s, box-shadow 0.15s; }
+    .m5-art:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(28,25,23,0.1); }
+    .m5-art:hover .m5-art-hed { color: var(--orange); }
+    .m5-art-img { height: 160px; background: var(--bg3); }
+    .m5-art-body { padding: 20px 22px; }
+    .m5-art-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 8px; }
+    .m5-art-hed { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; line-height: 1.25; margin-bottom: 8px; transition: color 0.12s; }
+    .m5-art-dek { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 10px; }
+    .m5-art-meta { font-size: 11px; color: var(--label); }
+
+    /* featured article card — wider */
+    .m5-art-feat { grid-column: span 2; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; text-decoration: none; color: inherit; display: grid; grid-template-columns: 1fr 1fr; transition: transform 0.15s, box-shadow 0.15s; }
+    .m5-art-feat:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(28,25,23,0.1); }
+    .m5-art-feat-img { background: var(--dark2); position: relative; }
+    .m5-art-feat-img-bg { position: absolute; inset: 0; background: linear-gradient(135deg,#1c1410,#231a10); }
+    .m5-art-feat-body { padding: 28px 26px; border-left: 1px solid var(--border); }
+
+    /* tool card */
+    .m5-tool { background: var(--dark); border: 1px solid rgba(240,230,211,0.1); border-radius: 10px; padding: 24px 24px; text-decoration: none; color: inherit; display: block; transition: transform 0.15s; }
+    .m5-tool:hover { transform: translateY(-2px); }
+    .m5-tool-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); display: block; margin-bottom: 8px; }
+    .m5-tool-hed { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: #f0e6d3; margin-bottom: 8px; line-height: 1.2; }
+    .m5-tool-dek { font-size: 12px; color: rgba(240,230,211,0.4); line-height: 1.6; margin-bottom: 14px; }
+    .m5-tool-cta { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); }
+
+    /* lex card */
+    .m5-lex { background: var(--dark2); border: 1px solid rgba(240,230,211,0.08); border-radius: 10px; padding: 24px 24px; text-decoration: none; color: inherit; display: block; }
+    .m5-lex-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(240,230,211,0.25); display: block; margin-bottom: 6px; }
+    .m5-lex-word { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; font-style: italic; color: rgba(240,230,211,0.8); display: block; margin-bottom: 8px; }
+    .m5-lex-def { font-size: 12px; color: rgba(240,230,211,0.38); line-height: 1.65; margin-bottom: 12px; }
+    .m5-lex-more { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(240,230,211,0.28); }
+
+    /* dis card */
+    .m5-dis { background: var(--dark); border: 1px solid rgba(251,191,36,0.15); border-radius: 10px; padding: 24px; text-decoration: none; color: inherit; display: block; transition: transform 0.15s; }
+    .m5-dis:hover { transform: translateY(-2px); }
+    .m5-dis-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); display: block; margin-bottom: 8px; }
+    .m5-dis-hed { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: #f0e6d3; margin-bottom: 8px; line-height: 1.2; }
+    .m5-dis-dek { font-size: 12px; color: rgba(240,230,211,0.4); line-height: 1.6; margin-bottom: 12px; }
+    .m5-dis-meta { font-size: 11px; color: rgba(240,230,211,0.25); }
+
+    /* res card */
+    .m5-res { background: rgba(196,181,253,0.07); border: 1px solid rgba(196,181,253,0.18); border-radius: 10px; padding: 24px; display: block; }
+    .m5-res-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lav); display: block; margin-bottom: 8px; }
+    .m5-res-hed { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.25; }
+    .m5-res-dek { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 12px; }
+    .m5-res-cta { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lav); }
+
+
+    /* ══════════════════════════════════════════════════
+       6 — THE INDEX
+       Left: search + filters + stats. Permanently visible.
+       Right: dense content list. Articles, tools, etc.
+       all appear as rows in a single indexed list.
+    ══════════════════════════════════════════════════ */
+    .m6 { background: var(--bg); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); display: grid; grid-template-columns: 280px 1fr; min-height: 900px; }
+
+    .m6-sidebar { background: var(--bg2); border-right: 1px solid var(--border); padding: 32px 28px; display: flex; flex-direction: column; gap: 0; }
+    .m6-logo { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 900; margin-bottom: 6px; line-height: 1.1; }
+    .m6-tagline { font-size: 12px; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
+    .m6-sidebar-search { margin-bottom: 28px; }
+    .m6-filter-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--label); display: block; margin-bottom: 10px; }
+    .m6-filter-item { font-size: 13px; font-weight: 600; color: var(--muted); padding: 8px 0; border-bottom: 1px solid var(--border); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: color 0.12s; }
+    .m6-filter-item.on { color: var(--text); font-weight: 700; }
+    .m6-filter-item:hover { color: var(--text); }
+    .m6-filter-item span { font-size: 11px; color: var(--label); }
+    .m6-sidebar-divider { height: 1px; background: var(--border); margin: 20px 0; }
+    .m6-type-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--label); display: block; margin-bottom: 10px; }
+    .m6-type-item { font-size: 12px; font-weight: 600; color: var(--muted); padding: 6px 0; cursor: pointer; display: flex; justify-content: space-between; }
+    .m6-type-item.on { color: var(--text); }
+    .m6-sidebar-stats { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border); }
+    .m6-stat { display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0; }
+    .m6-stat span:first-child { color: var(--label); }
+    .m6-stat span:last-child { font-weight: 700; color: var(--text); }
+
+    .m6-list { display: flex; flex-direction: column; }
+    .m6-list-head { padding: 14px 32px; background: var(--bg2); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .m6-list-head-l { font-size: 11px; color: var(--label); }
+    .m6-list-head-r { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); }
+
+    /* row types */
+    .m6-row { display: grid; grid-template-columns: 48px 1fr auto; align-items: start; padding: 20px 32px; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: background 0.12s; gap: 16px; }
+    .m6-row:hover { background: var(--bg2); }
+    .m6-row:hover .m6-row-hed { color: var(--orange); }
+    .m6-row-num { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: var(--bdr2); line-height: 1; padding-top: 2px; }
+    .m6-row-cat { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 5px; }
+    .m6-row-hed { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; line-height: 1.25; margin-bottom: 5px; transition: color 0.12s; }
+    .m6-row-dek { font-size: 12px; color: var(--muted); line-height: 1.55; max-width: 560px; }
+    .m6-row-aside { text-align: right; white-space: nowrap; }
+    .m6-row-aside span { display: block; font-size: 11px; color: var(--label); line-height: 1.9; }
+    .m6-row-type { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 4px; padding: 2px 7px; margin-bottom: 4px; }
+    .m6-row-type.art { background: rgba(28,25,23,0.07); color: var(--muted); }
+    .m6-row-type.tool { background: rgba(255,92,0,0.1); color: var(--orange); }
+    .m6-row-type.lex { background: rgba(196,181,253,0.15); color: var(--lav); }
+    .m6-row-type.dis { background: rgba(251,191,36,0.12); color: var(--amber); }
+    .m6-row-type.ars { background: rgba(52,211,153,0.12); color: var(--green); }
+    /* featured row */
+    .m6-row-feat { background: #fff8f0; }
+    .m6-row-feat .m6-row-num { color: var(--orange); }
+
+
+    /* ══════════════════════════════════════════════════
+       7 — THE SCROLL REEL
+       One column. Tall. Each piece of content gets
+       a full-width 'moment'. Feels like a feed you
+       want to keep scrolling.
+    ══════════════════════════════════════════════════ */
+    .m7 { background: var(--bg); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-width: 780px; margin: 0 auto; }
+
+    .m7-head { padding: 20px 48px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 24px; background: var(--bg2); }
+    .m7-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 900; letter-spacing: -0.02em; }
+    .m7-search { flex: 1; max-width: 300px; }
+
+    /* reel items */
+    .m7-item { padding: 36px 48px; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; display: block; transition: background 0.12s; }
+    .m7-item:hover { background: var(--bg2); }
+    .m7-item-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; display: block; margin-bottom: 12px; }
+    .m7-item-img { height: 220px; border-radius: 8px; background: var(--dark2); margin-bottom: 20px; position: relative; overflow: hidden; }
+    .m7-item-img-bg { position: absolute; inset: 0; background: linear-gradient(135deg,#1c1410,#231a0e); }
+    .m7-item-hed { font-family: 'Playfair Display', serif; font-size: clamp(1.3rem,2.2vw,1.8rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .m7-item-rule { height: 2px; background: var(--text); margin-bottom: 14px; }
+    .m7-item-dek { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 12px; }
+    .m7-item-meta { font-size: 11px; color: var(--label); }
+    .m7-item-sm { padding: 24px 48px; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; display: grid; grid-template-columns: 1fr 100px; gap: 20px; align-items: start; transition: background 0.12s; }
+    .m7-item-sm:hover { background: var(--bg2); }
+    .m7-item-sm-img { height: 80px; border-radius: 6px; background: var(--bg3); }
+
+    /* tool interrupt in reel */
+    .m7-tool { padding: 28px 48px; border-bottom: 1px solid var(--border); background: var(--dark2); }
+    .m7-lex { padding: 24px 48px; border-bottom: 1px solid var(--border); background: var(--bg2); display: flex; align-items: baseline; gap: 24px; }
+    .m7-lex-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--label); flex-shrink: 0; }
+    .m7-lex-word { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-style: italic; font-weight: 700; flex-shrink: 0; }
+    .m7-lex-def { font-size: 13px; color: var(--muted); line-height: 1.55; }
+    .m7-lex-link { flex-shrink: 0; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); margin-left: auto; }
+  </style>
+</head>
+<body>
+
+<p class="page-label">Hub Layout Explorations — The Anatomy of Scale</p>
+
+
+<!-- ══════════════════════════════════════
+     1 — THE MAGAZINE
+══════════════════════════════════════ -->
+<div class="opt">
+  <div class="opt-tag">1</div>
+  <div class="opt-name">The Magazine</div>
+  <p class="opt-desc">Dominant image-led hero. Articles in an editorial grid with real image placeholders. Tools, lexicon, dissection appear as interruptions between rows — not their own sections.</p>
+
+  <div class="m1">
+    <div class="m1-head">
+      <div class="m1-head-title">The Anatomy of Scale.</div>
+      <div class="m1-head-search"><div class="srch"><input type="text" placeholder="Search or ask anything..." /><span class="srch-ic">↵</span></div></div>
+      <a class="m1-head-link" href="#">Book a call →</a>
+    </div>
+
+    <div class="m1-hero">
+      <div class="m1-hero-img">
+        <div class="m1-hero-img-bg"></div>
+        <div class="m1-hero-img-overlay"></div>
+        <div class="m1-hero-img-content">
+          <span class="m1-hero-img-eyebrow">★ Featured · GTM & Growth</span>
+          <div class="m1-hero-img-hed">The Founder-Led Sales Ceiling: Why Every Founder Hits It and How Systems Break Through</div>
+          <div class="m1-hero-img-meta">March 2026 · 8 min read</div>
+        </div>
+      </div>
+      <div class="m1-hero-sidebar">
+        <a class="m1-hero-side-item" href="#">
+          <span class="a-eyebrow cat c-lead">Lead Generation</span>
+          <div class="a-hed" style="font-size:0.95rem;">Cold Outreach That Doesn't Feel Cold</div>
+          <p class="a-dek">The gap between spray-and-pray and genuine personalisation is infrastructure.</p>
+          <div class="a-meta">Feb 2026 · 6 min</div>
+        </a>
+        <a class="m1-hero-side-item" href="#">
+          <span class="a-eyebrow cat c-mkt">Marketing Systems</span>
+          <div class="a-hed" style="font-size:0.95rem;">Marketing Ops Is Not Marketing</div>
+          <p class="a-dek">Separating strategy from execution is the unlock most teams never find.</p>
+          <div class="a-meta">Jan 2026 · 5 min</div>
+        </a>
+        <a class="m1-hero-side-item" href="#">
+          <span class="a-eyebrow cat c-play">Playbooks</span>
+          <div class="a-hed" style="font-size:0.95rem;">The 90-Day GTM Playbook for Series A</div>
+          <p class="a-dek">Sequenced, budgeted, decision-ready.</p>
+          <div class="a-meta">Jan 2026 · 11 min</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- article grid row 1 -->
+    <div class="m1-grid">
+      <div class="m1-col">
+        <a class="m1-card" href="#">
+          <div class="m1-card-img"><div style="height:100%;background:linear-gradient(135deg,#1e1a16,#2a2018);"></div></div>
+          <span class="a-eyebrow cat c-gtm">GTM & Growth</span>
+          <div class="a-hed" style="font-size:0.95rem;">Why Your ICP Is Wrong (And How to Fix It)</div>
+          <div class="a-meta">Dec 2025 · 7 min</div>
+        </a>
+      </div>
+      <div class="m1-col">
+        <a class="m1-card" href="#">
+          <div class="m1-card-img"><div style="height:100%;background:linear-gradient(135deg,#161a1e,#182028);"></div></div>
+          <span class="a-eyebrow cat c-hire">Hiring & Team</span>
+          <div class="a-hed" style="font-size:0.95rem;">Your First Marketing Hire: Growth vs. Brand</div>
+          <div class="a-meta">Dec 2025 · 9 min</div>
+        </a>
+      </div>
+      <div class="m1-col">
+        <a class="m1-card" href="#">
+          <div class="m1-card-img"><div style="height:100%;background:linear-gradient(135deg,#161e18,#182820);"></div></div>
+          <span class="a-eyebrow cat c-rev">Revenue Architecture</span>
+          <div class="a-hed" style="font-size:0.95rem;">Revenue Systems That Compound</div>
+          <div class="a-meta">Nov 2025 · 10 min</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- interrupt row: tool + lex + dis -->
+    <div class="m1-interrupt">
+      <div class="m1-int-cell" style="background:var(--dark2);">
+        <div class="tool-moment">
+          <span class="tool-moment-eyebrow">Tool of the day · Diagnostic</span>
+          <div class="tool-moment-hed">GTM Readiness Score</div>
+          <p class="tool-moment-dek">12 questions. Find where your go-to-market is leaking before you scale it.</p>
+          <div class="tool-moment-cta">Run it now →</div>
+        </div>
+      </div>
+      <div class="m1-int-cell">
+        <div class="lex-pullout">
+          <span class="lex-pullout-label">The Lexicon</span>
+          <span class="lex-pullout-word">Revenue Architecture</span>
+          <p class="lex-pullout-def">The deliberate system design behind how a company generates, captures and compounds revenue. Not to be confused with the tools used to manage it.</p>
+          <div class="lex-pullout-link">Explore the full lexicon →</div>
+        </div>
+      </div>
+      <div class="m1-int-cell">
+        <div class="dis-moment">
+          <div class="dis-moment-left">
+            <div>
+              <span class="dis-moment-badge">Dissection</span>
+              <span class="dis-moment-label">Company</span>
+              <div class="dis-moment-val">Notion</div>
+              <span class="dis-moment-label">Read time</span>
+              <div class="dis-moment-val">22 min</div>
+            </div>
+          </div>
+          <div class="dis-moment-right">
+            <div class="dis-moment-hed">How Notion Went From $0 to $10B</div>
+            <p class="dis-moment-dek">A forensic breakdown of the GTM infrastructure behind the growth.</p>
+            <div class="dis-moment-cta">Read the dissection →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- more articles -->
+    <div class="m1-grid" style="border-bottom:1px solid var(--border);">
+      <div class="m1-col">
+        <a class="m1-card" href="#">
+          <span class="a-eyebrow cat c-lead">Lead Gen</span>
+          <div class="a-hed" style="font-size:0.95rem;">Attribution Is a Lie. Here's How to Make Decisions Without It</div>
+          <div class="a-meta">Nov 2025 · 6 min</div>
+        </a>
+      </div>
+      <div class="m1-col">
+        <a class="m1-card" href="#">
+          <span class="a-eyebrow cat c-mkt">Marketing Systems</span>
+          <div class="a-hed" style="font-size:0.95rem;">The Real Cost of a Leaky CRM</div>
+          <div class="a-meta">Oct 2025 · 8 min</div>
+        </a>
+      </div>
+      <div class="m1-col">
+        <a class="m1-card" href="#">
+          <span class="a-eyebrow cat c-play">Playbooks</span>
+          <div class="a-hed" style="font-size:0.95rem;">Content Engine With Two People</div>
+          <div class="a-meta">Oct 2025 · 7 min</div>
+        </a>
+      </div>
+    </div>
+    <!-- arsenal + research at base -->
+    <div style="padding:20px 32px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--label);flex-shrink:0;">The Arsenal</span>
+      <div class="ars-row">
+        <a class="ars-pill" href="#"><span class="ars-pill-icon">📐</span>Revenue Architecture Canvas</a>
+        <a class="ars-pill" href="#"><span class="ars-pill-icon">📋</span>90-Day GTM Template</a>
+        <a class="ars-pill" href="#"><span class="ars-pill-icon">🗺️</span>ICP Worksheet</a>
+        <a class="ars-pill" href="#"><span class="ars-pill-icon">⚙️</span>Ops Stack Audit</a>
+      </div>
+    </div>
+    <div class="res-moment" style="border-radius:0;border:none;border-bottom:none;padding:20px 32px;">
+      <div><span class="res-moment-lav">Coming 2026 · Research</span><div class="res-moment-hed">The B2B Growth Infrastructure Report</div><p class="res-moment-dek">200+ companies. Original benchmarks. First study of its kind.</p></div>
+      <div class="res-moment-cta">Register for early access →</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     2 — THE DASHBOARD
+══════════════════════════════════════ -->
+<div class="opt">
+  <div class="opt-tag">2</div>
+  <div class="opt-name">The Dashboard</div>
+  <p class="opt-desc">Persistent dark left nav with search, category filters, and utility links. Right side is a content feed — articles with images, tool/lex/dis appearing inline between article rows.</p>
+
+  <div class="m2">
+    <div class="m2-nav">
+      <div class="m2-nav-title">The Anatomy of Scale.</div>
+      <p class="m2-nav-sub">That Works · Resource hub for B2B operators</p>
+      <div class="m2-nav-search"><div class="srch srch-dk"><input type="text" placeholder="Search..." /><span class="srch-ic" style="color:rgba(240,230,211,0.25);">↵</span></div></div>
+      <span class="m2-nav-label">Categories</span>
+      <div class="m2-nav-item on">All</div>
+      <div class="m2-nav-item">GTM & Growth</div>
+      <div class="m2-nav-item">Lead Generation</div>
+      <div class="m2-nav-item">Marketing Systems</div>
+      <div class="m2-nav-item">Playbooks</div>
+      <div class="m2-nav-item">Revenue Architecture</div>
+      <div class="m2-nav-item">Hiring & Team</div>
+      <div class="m2-nav-divider"></div>
+      <div class="m2-nav-util highlight">⚡ The Lab</div>
+      <div class="m2-nav-util">📐 The Arsenal</div>
+      <div class="m2-nav-util">📖 The Lexicon</div>
+      <div class="m2-nav-util">🔬 Dissections</div>
+      <div class="m2-nav-util">📊 Research</div>
+    </div>
+
+    <div class="m2-feed">
+      <div class="m2-featured">
+        <div class="m2-feat-img">
+          <div class="m2-feat-img-bg"></div>
+          <div class="m2-feat-img-overlay"></div>
+          <span class="m2-feat-img-label">★ Featured</span>
+        </div>
+        <div class="m2-feat-text">
+          <div>
+            <span class="a-eyebrow cat c-gtm">GTM & Growth</span>
+            <div class="a-hed" style="font-size:clamp(1.2rem,2vw,1.6rem);letter-spacing:-0.015em;">The Founder-Led Sales Ceiling: Why Every Founder Hits It and How Systems Break Through</div>
+            <div class="a-rule"></div>
+            <p class="a-dek" style="font-size:14px;">Every founder who is good at sales eventually becomes the bottleneck. Not because they're doing it wrong — but because they're doing it at all.</p>
+            <div class="a-pq"><p>"The answer isn't hiring faster. It's building the system before you feel the pressure."</p></div>
+          </div>
+          <div class="a-meta">March 2026 · 8 min read</div>
+        </div>
+      </div>
+
+      <div class="m2-row">
+        <a class="m2-item" href="#">
+          <div class="m2-item-img" style="background:linear-gradient(135deg,#1c1a14,#28221a);"></div>
+          <span class="a-eyebrow cat c-lead">Lead Generation</span>
+          <div class="a-hed" style="font-size:0.95rem;">Cold Outreach That Doesn't Feel Cold</div>
+          <p class="a-dek">The gap between spray-and-pray and genuine personalisation is infrastructure, not effort.</p>
+          <div class="a-meta">Feb 2026 · 6 min</div>
+        </a>
+        <a class="m2-item" href="#">
+          <div class="m2-item-img" style="background:linear-gradient(135deg,#14181c,#1a2028);"></div>
+          <span class="a-eyebrow cat c-mkt">Marketing Systems</span>
+          <div class="a-hed" style="font-size:0.95rem;">Marketing Ops Is Not Marketing</div>
+          <p class="a-dek">Separating strategy from execution is the unlock most teams never find.</p>
+          <div class="a-meta">Jan 2026 · 5 min</div>
+        </a>
+      </div>
+
+      <!-- inline tool -->
+      <div class="m2-inline-tool">
+        <div style="display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;">
+          <div>
+            <span style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:8px;">Tool of the day · Diagnostic</span>
+            <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#f0e6d3;margin-bottom:6px;">GTM Readiness Score</div>
+            <p style="font-size:12px;color:rgba(240,230,211,0.4);line-height:1.6;">12 questions. Find where your go-to-market is leaking before you scale it and the leak becomes a flood.</p>
+          </div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);white-space:nowrap;">Run it now →</div>
+        </div>
+      </div>
+
+      <div class="m2-row">
+        <a class="m2-item" href="#">
+          <div class="m2-item-img" style="background:linear-gradient(135deg,#141c14,#1a2820);"></div>
+          <span class="a-eyebrow cat c-play">Playbooks</span>
+          <div class="a-hed" style="font-size:0.95rem;">The 90-Day GTM Playbook for Series A</div>
+          <p class="a-dek">Sequenced, budgeted, decision-ready.</p>
+          <div class="a-meta">Jan 2026 · 11 min</div>
+        </a>
+        <a class="m2-item" href="#">
+          <div class="m2-item-img" style="background:linear-gradient(135deg,#1c1414,#281a1a);"></div>
+          <span class="a-eyebrow cat c-gtm">GTM & Growth</span>
+          <div class="a-hed" style="font-size:0.95rem;">Why Your ICP Is Wrong</div>
+          <p class="a-dek">Real ICPs are built from closed-won data, not optimistic guesswork.</p>
+          <div class="a-meta">Dec 2025 · 7 min</div>
+        </a>
+      </div>
+
+      <!-- inline lex -->
+      <div class="m2-inline-lex">
+        <span style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--label);flex-shrink:0;padding-top:2px;">The Lexicon</span>
+        <div>
+          <span style="font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;font-weight:700;display:block;margin-bottom:4px;">Revenue Architecture</span>
+          <p style="font-size:13px;color:var(--muted);line-height:1.55;">The deliberate system design behind how a company generates, captures and compounds revenue — not to be confused with the tools used to manage it.</p>
+        </div>
+        <a href="#" style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);white-space:nowrap;margin-left:auto;flex-shrink:0;align-self:center;text-decoration:none;">Full lexicon →</a>
+      </div>
+
+      <div class="m2-inline-dis" style="background:var(--dark);padding:24px 28px;border-bottom:1px solid rgba(240,230,211,0.08);">
+        <div style="display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;">
+          <div>
+            <span style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:8px;">Current Dissection</span>
+            <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#f0e6d3;margin-bottom:6px;">How Notion Went From $0 to $10B: The GTM Infrastructure Behind the Growth</div>
+            <p style="font-size:12px;color:rgba(240,230,211,0.4);line-height:1.6;">A forensic breakdown of the systems behind one of the most capital-efficient PLG motions in SaaS.</p>
+          </div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--amber);white-space:nowrap;">Read it →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     3 — THE BROADSHEET REIMAGINED
+══════════════════════════════════════ -->
+<div class="opt">
+  <div class="opt-tag">3</div>
+  <div class="opt-name">The Broadsheet Reimagined</div>
+  <p class="opt-desc">No images. Pure typographic hierarchy like a serious financial newspaper. Dense, intelligent, every word earning its place. Tools and lexicon appear as full-width ruled bars that interrupt the columns. Arsenal as a bottom ticker.</p>
+
+  <div class="m3">
+    <div class="m3-head">
+      <div class="m3-title">The Anatomy of Scale.</div>
+      <div class="m3-head-right"><div class="srch"><input type="text" placeholder="Search or ask anything..." /><span class="srch-ic">↵</span></div></div>
+      <div class="m3-head-meta"><p>That Works · Vol. I</p><p>April 2026 · 36 essays</p></div>
+    </div>
+
+    <div class="m3-above-fold">
+      <div class="m3-lead">
+        <span class="a-eyebrow cat c-gtm">★ Featured · GTM & Growth</span>
+        <div class="m3-lead-hed">The Founder-Led Sales Ceiling: Why Every Founder Hits It and How Systems Break Through</div>
+        <div class="m3-lead-rule"></div>
+        <p class="m3-lead-dek">Every founder who is good at sales eventually becomes the bottleneck. Not because they're doing it wrong — but because they're doing it at all. The pipeline depends on their calendar, their energy, their relationships.</p>
+        <div class="m3-lead-pq"><p>"The answer isn't hiring faster. It's building the system before you feel the pressure."</p></div>
+        <p class="m3-lead-dek">Systems replace the founder in the repeatable parts of the sale and free them for what only they can do.</p>
+        <div class="a-meta">March 2026 · 8 min read</div>
+      </div>
+      <div class="m3-divider"></div>
+      <div class="m3-col">
+        <div class="m3-item">
+          <span class="a-eyebrow cat c-lead">Lead Generation</span>
+          <div class="a-hed" style="font-size:0.95rem;">Cold Outreach That Doesn't Feel Cold</div>
+          <p class="a-dek">The gap between spray-and-pray and genuine personalisation is infrastructure, not effort.</p>
+          <div class="a-meta">Feb 2026 · 6 min</div>
+        </div>
+        <div class="m3-item">
+          <span class="a-eyebrow cat c-mkt">Marketing Systems</span>
+          <div class="a-hed" style="font-size:0.95rem;">Marketing Ops Is Not Marketing</div>
+          <p class="a-dek">Separating strategy from execution is the unlock most teams never find.</p>
+          <div class="a-meta">Jan 2026 · 5 min</div>
+        </div>
+        <div class="m3-item">
+          <span class="a-eyebrow cat c-play">Playbooks</span>
+          <div class="a-hed" style="font-size:0.95rem;">The 90-Day GTM Playbook for Series A</div>
+          <p class="a-dek">Sequenced, budgeted, decision-ready.</p>
+          <div class="a-meta">Jan 2026 · 11 min</div>
+        </div>
+      </div>
+      <div class="m3-divider"></div>
+      <div class="m3-col">
+        <div class="m3-item">
+          <span class="a-eyebrow cat c-gtm">GTM & Growth</span>
+          <div class="a-hed" style="font-size:0.95rem;">Why Your ICP Is Wrong</div>
+          <p class="a-dek">Real ICPs come from closed-won data, not guesswork.</p>
+          <div class="a-meta">Dec 2025 · 7 min</div>
+        </div>
+        <div class="m3-item">
+          <span class="a-eyebrow cat c-hire">Hiring & Team</span>
+          <div class="a-hed" style="font-size:0.95rem;">Your First Marketing Hire</div>
+          <p class="a-dek">The wrong hire sets you back 18 months.</p>
+          <div class="a-meta">Dec 2025 · 9 min</div>
+        </div>
+        <div class="m3-item">
+          <span class="a-eyebrow cat c-rev">Revenue Architecture</span>
+          <div class="a-hed" style="font-size:0.95rem;">Revenue Systems That Compound</div>
+          <p class="a-dek">The difference between linear and compounding growth is the architecture.</p>
+          <div class="a-meta">Nov 2025 · 10 min</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- tool bar -->
+    <div class="m3-tool-bar">
+      <div class="m3-tool-bar-label">Tool of the day</div>
+      <div><div class="m3-tool-bar-hed">GTM Readiness Score — 12 questions. Find where your go-to-market is leaking.</div></div>
+      <div class="m3-tool-bar-cta">Run it now →</div>
+    </div>
+
+    <div class="m3-lower">
+      <div class="m3-lower-col">
+        <div class="m3-item"><span class="a-eyebrow cat c-lead">Lead Gen</span><div class="a-hed" style="font-size:0.95rem;">Attribution Is a Lie</div><p class="a-dek">How to make decisions without trusting your attribution model.</p><div class="a-meta">Nov 2025 · 6 min</div></div>
+        <div class="m3-item"><span class="a-eyebrow cat c-mkt">Systems</span><div class="a-hed" style="font-size:0.95rem;">The Real Cost of a Leaky CRM</div><p class="a-dek">What bad data is actually costing you in closed revenue.</p><div class="a-meta">Oct 2025 · 8 min</div></div>
+      </div>
+      <div class="m3-lower-col">
+        <div class="m3-item"><span class="a-eyebrow cat c-play">Playbooks</span><div class="a-hed" style="font-size:0.95rem;">Content Engine With Two People</div><p class="a-dek">How to build a content flywheel without a content team.</p><div class="a-meta">Oct 2025 · 7 min</div></div>
+        <div class="m3-item"><span class="a-eyebrow cat c-rev">Revenue</span><div class="a-hed" style="font-size:0.95rem;">The Retention Metric Nobody Tracks</div><p class="a-dek">NRR is a result. This is the leading indicator that predicts it.</p><div class="a-meta">Sep 2025 · 6 min</div></div>
+      </div>
+      <div class="m3-lower-col">
+        <div class="m3-item"><span class="a-eyebrow cat c-gtm">GTM</span><div class="a-hed" style="font-size:0.95rem;">Positioning Is Not Messaging</div><p class="a-dek">Most companies conflate the two and get neither right.</p><div class="a-meta">Sep 2025 · 9 min</div></div>
+        <div class="m3-item"><span class="a-eyebrow cat c-hire">Hiring</span><div class="a-hed" style="font-size:0.95rem;">When to Hire a Fractional CMO</div><p class="a-dek">The three signals that tell you it's time.</p><div class="a-meta">Aug 2025 · 5 min</div></div>
+      </div>
+    </div>
+
+    <!-- lex bar -->
+    <div class="m3-lex-bar">
+      <span class="m3-lex-bar-label">The Lexicon</span>
+      <span class="m3-lex-bar-word">Revenue Architecture</span>
+      <p class="m3-lex-bar-def">The deliberate system design behind how a company generates, captures and compounds revenue — not to be confused with the tools used to manage it.</p>
+      <span class="m3-lex-bar-more">Full lexicon →</span>
+    </div>
+
+    <!-- dissection -->
+    <div class="m3-dis">
+      <div class="m3-dis-num">
+        <div><span style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:8px;">Dissection</span><div class="m3-dis-n">01</div></div>
+        <div style="font-size:11px;color:rgba(240,230,211,0.25);">22 min read</div>
+      </div>
+      <div class="m3-dis-content">
+        <span style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:10px;">Current · Series B SaaS · PLG</span>
+        <div style="font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.2vw,1.9rem);font-weight:900;line-height:1.1;color:#f0e6d3;margin-bottom:12px;letter-spacing:-0.02em;">How Notion Went From $0 to $10B: The GTM Infrastructure Behind the Growth</div>
+        <p style="font-size:14px;color:rgba(240,230,211,0.42);line-height:1.7;margin-bottom:16px;">A forensic breakdown of the systems, channels and sequencing behind one of the most capital-efficient product-led growth motions in SaaS history.</p>
+        <a href="#" style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--amber);text-decoration:none;">Read the dissection →</a>
+      </div>
+    </div>
+
+    <!-- arsenal ticker -->
+    <div class="m3-ars">
+      <a class="m3-ars-item" href="#"><span class="m3-ars-type">Canvas</span><div class="m3-ars-name">Revenue Architecture Canvas</div></a>
+      <a class="m3-ars-item" href="#"><span class="m3-ars-type">Template</span><div class="m3-ars-name">90-Day GTM Plan</div></a>
+      <a class="m3-ars-item" href="#"><span class="m3-ars-type">Worksheet</span><div class="m3-ars-name">ICP Definition Worksheet</div></a>
+      <a class="m3-ars-item" href="#"><span class="m3-ars-type">Audit</span><div class="m3-ars-name">Ops Stack Audit</div></a>
+      <a class="m3-ars-item" href="#" style="border-right:none;"><span class="m3-ars-type">Research</span><div class="m3-ars-name">B2B Growth Report — Coming 2026</div></a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     4 — THE MOSAIC
+══════════════════════════════════════ -->
+<div class="opt">
+  <div class="opt-tag">4</div>
+  <div class="opt-name">The Mosaic</div>
+  <p class="opt-desc">Pure CSS grid. Cards of genuinely different sizes placed asymmetrically. Featured article is large and dark-image. Tool card sits in the grid as a dark cell. Bottom row is an Arsenal ticker. Nothing announces itself — content defines the shape.</p>
+
+  <div class="m4">
+    <div class="m4-head">
+      <div class="m4-title">The Anatomy of Scale.</div>
+      <div class="m4-head-right">
+        <div class="m4-search"><div class="srch"><input type="text" placeholder="Search or ask..." /><span class="srch-ic">↵</span></div></div>
+        <a href="#" style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);text-decoration:none;">Browse all →</a>
+      </div>
+    </div>
+    <div class="m4-mosaic">
+      <!-- R1: dark feature | article | tool -->
+      <div class="m4-a">
+        <div class="m4-a-bg"></div><div class="m4-a-ov"></div>
+        <div class="m4-a-content">
+          <span class="m4-feat-eyebrow">★ Featured · GTM & Growth</span>
+          <div class="m4-feat-hed">The Founder-Led Sales Ceiling: Why Every Founder Hits It and How Systems Break Through</div>
+          <div class="m4-feat-meta">March 2026 · 8 min read</div>
+        </div>
+      </div>
+      <a class="m4-b" href="#">
+        <div>
+          <span class="m4-sm-eyebrow cat c-lead">Lead Generation</span>
+          <div class="m4-sm-hed">Cold Outreach That Doesn't Feel Cold</div>
+          <p class="m4-sm-dek">Infrastructure, not effort, is the gap between spray-and-pray and genuine personalisation.</p>
+        </div>
+        <div class="m4-sm-meta">Feb 2026 · 6 min</div>
+      </a>
+      <div class="m4-c">
+        <span style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:12px;">Tool of the day</span>
+        <div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#f0e6d3;margin-bottom:10px;line-height:1.2;">GTM Readiness Score</div>
+        <p style="font-size:12px;color:rgba(240,230,211,0.4);line-height:1.6;margin-bottom:auto;flex:1;">12 questions. Find exactly where your go-to-market is leaking before you scale it.</p>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);margin-top:16px;">Run it now →</div>
+      </div>
+      <!-- R2: 4 article cells -->
+      <a class="m4-d" href="#">
+        <span class="m4-sm-eyebrow cat c-mkt">Marketing Systems</span>
+        <div class="m4-sm-hed">Marketing Ops Is Not Marketing</div>
+        <p class="m4-sm-dek">Separating strategy from execution.</p>
+        <div class="m4-sm-meta">Jan 2026 · 5 min</div>
+      </a>
+      <a class="m4-e" href="#">
+        <span class="m4-sm-eyebrow cat c-play">Playbooks</span>
+        <div class="m4-sm-hed">The 90-Day GTM Playbook for Series A</div>
+        <p class="m4-sm-dek">Sequenced, budgeted, decision-ready.</p>
+        <div class="m4-sm-meta">Jan 2026 · 11 min</div>
+      </a>
+      <div class="m4-f">
+        <span style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--label);display:block;margin-bottom:8px;">The Lexicon</span>
+        <span style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;font-style:italic;display:block;margin-bottom:6px;">Revenue Architecture</span>
+        <p style="font-size:12px;color:var(--muted);line-height:1.6;">The deliberate system design behind how a company generates, captures and compounds revenue.</p>
+      </div>
+      <a class="m4-g" href="#">
+        <span class="m4-sm-eyebrow cat c-gtm">GTM & Growth</span>
+        <div class="m4-sm-hed">Why Your ICP Is Wrong</div>
+        <p class="m4-sm-dek">Real ICPs come from closed-won data, not guesswork.</p>
+        <div class="m4-sm-meta">Dec 2025 · 7 min</div>
+      </a>
+      <!-- R3: dis | article with img | small stack -->
+      <div class="m4-h">
+        <div>
+          <span style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:10px;">Current Dissection</span>
+          <div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#f0e6d3;line-height:1.2;margin-bottom:8px;">How Notion Went From $0 to $10B</div>
+          <p style="font-size:12px;color:rgba(240,230,211,0.38);line-height:1.6;">A forensic breakdown of the GTM infrastructure behind the growth.</p>
+        </div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--amber);">Read the dissection →</div>
+      </div>
+      <a class="m4-i" href="#">
+        <div class="m4-i-img" style="background:linear-gradient(135deg,#1a1814,#251e16);"></div>
+        <span class="m4-sm-eyebrow cat c-hire">Hiring & Team</span>
+        <div class="m4-sm-hed">Your First Marketing Hire: Growth vs. Brand</div>
+        <p class="m4-sm-dek">The wrong hire sets you back 18 months.</p>
+        <div class="m4-sm-meta" style="margin-top:auto;">Dec 2025 · 9 min</div>
+      </a>
+      <div class="m4-j">
+        <a href="#" style="text-decoration:none;color:inherit;display:block;padding-bottom:16px;border-bottom:1px solid var(--border);">
+          <span class="m4-sm-eyebrow cat c-rev">Revenue Architecture</span>
+          <div class="m4-sm-hed">Revenue Systems That Compound</div>
+          <div class="m4-sm-meta">Nov 2025 · 10 min</div>
+        </a>
+        <a href="#" style="text-decoration:none;color:inherit;display:block;">
+          <span class="m4-sm-eyebrow cat c-lead">Lead Gen</span>
+          <div class="m4-sm-hed">Attribution Is a Lie</div>
+          <div class="m4-sm-meta">Nov 2025 · 6 min</div>
+        </a>
+      </div>
+      <!-- R4: arsenal ticker -->
+      <div class="m4-k">
+        <a class="m4-k-item" href="#"><span class="m4-k-type">Canvas</span><div class="m4-k-name">Revenue Architecture Canvas</div></a>
+        <a class="m4-k-item" href="#"><span class="m4-k-type">Template</span><div class="m4-k-name">90-Day GTM Plan</div></a>
+        <a class="m4-k-item" href="#"><span class="m4-k-type">Worksheet</span><div class="m4-k-name">ICP Definition Worksheet</div></a>
+        <a class="m4-k-item" href="#"><span class="m4-k-type">Audit</span><div class="m4-k-name">Ops Stack Audit</div></a>
+        <a class="m4-k-item" href="#"><span class="m4-k-type">Research</span><div class="m4-k-name">B2B Growth Report — 2026</div></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     5 — THE CARD STACK
+══════════════════════════════════════ -->
+<div class="opt">
+  <div class="opt-tag">5</div>
+  <div class="opt-name">The Card Stack</div>
+  <p class="opt-desc">Everything is a card. Articles, tools, lexicon entries, dissections — all live in the same masonry grid, visually distinct by colour and treatment. Search and filter in the header. The grid itself tells you what's there.</p>
+
+  <div class="m5">
+    <div class="m5-head">
+      <div class="m5-title">The Anatomy of Scale.</div>
+      <div class="m5-search"><div class="srch"><input type="text" placeholder="Search or ask..." /><span class="srch-ic">↵</span></div></div>
+      <div class="m5-tags">
+        <div class="m5-tag on">All</div>
+        <div class="m5-tag">GTM</div>
+        <div class="m5-tag">Lead Gen</div>
+        <div class="m5-tag">Systems</div>
+        <div class="m5-tag">Tools</div>
+      </div>
+    </div>
+    <div class="m5-grid">
+      <!-- featured article — wide -->
+      <div class="m5-art-feat">
+        <div class="m5-art-feat-img">
+          <div class="m5-art-feat-img-bg"></div>
+        </div>
+        <div class="m5-art-feat-body">
+          <span style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:10px;">★ Featured · GTM & Growth</span>
+          <div style="font-family:'Playfair Display',serif;font-size:clamp(1.1rem,1.8vw,1.5rem);font-weight:900;line-height:1.1;margin-bottom:12px;letter-spacing:-0.015em;">The Founder-Led Sales Ceiling: Why Every Founder Hits It and How Systems Break Through</div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:12px;">Every founder who is good at sales eventually becomes the bottleneck. The answer isn't hiring faster — it's building the system before you feel the pressure.</p>
+          <div style="font-size:11px;color:var(--label);">March 2026 · 8 min read</div>
+        </div>
+      </div>
+      <!-- tool card -->
+      <a class="m5-tool" href="#">
+        <span class="m5-tool-tag">Tool of the day · Diagnostic</span>
+        <div class="m5-tool-hed">GTM Readiness Score</div>
+        <p class="m5-tool-dek">12 questions. Find where your GTM is leaking before you scale it and the leak becomes a flood.</p>
+        <div class="m5-tool-cta">Run it now →</div>
+      </a>
+      <!-- article cards -->
+      <a class="m5-art" href="#">
+        <div class="m5-art-img" style="background:linear-gradient(135deg,#1c1a14,#281e10);"></div>
+        <div class="m5-art-body">
+          <span class="m5-art-eyebrow cat c-lead">Lead Generation</span>
+          <div class="m5-art-hed">Cold Outreach That Doesn't Feel Cold</div>
+          <p class="m5-art-dek">Infrastructure, not effort, is the gap.</p>
+          <div class="m5-art-meta">Feb 2026 · 6 min</div>
+        </div>
+      </a>
+      <a class="m5-art" href="#">
+        <div class="m5-art-img" style="background:linear-gradient(135deg,#14181c,#1a2028);"></div>
+        <div class="m5-art-body">
+          <span class="m5-art-eyebrow cat c-mkt">Marketing Systems</span>
+          <div class="m5-art-hed">Marketing Ops Is Not Marketing</div>
+          <p class="m5-art-dek">Separating strategy from execution is the unlock.</p>
+          <div class="m5-art-meta">Jan 2026 · 5 min</div>
+        </div>
+      </a>
+      <!-- lex card -->
+      <a class="m5-lex" href="#">
+        <span class="m5-lex-label">The Lexicon</span>
+        <span class="m5-lex-word">Revenue Architecture</span>
+        <p class="m5-lex-def">The deliberate system design behind how a company generates, captures and compounds revenue — not to be confused with the tools used to manage it.</p>
+        <div class="m5-lex-more">Explore the full lexicon →</div>
+      </a>
+      <a class="m5-art" href="#">
+        <div class="m5-art-img" style="background:linear-gradient(135deg,#141c14,#1a2820);"></div>
+        <div class="m5-art-body">
+          <span class="m5-art-eyebrow cat c-play">Playbooks</span>
+          <div class="m5-art-hed">The 90-Day GTM Playbook for Series A</div>
+          <p class="m5-art-dek">Sequenced, budgeted, decision-ready.</p>
+          <div class="m5-art-meta">Jan 2026 · 11 min</div>
+        </div>
+      </a>
+      <!-- dis card -->
+      <a class="m5-dis" href="#">
+        <span class="m5-dis-badge">Current Dissection</span>
+        <div class="m5-dis-hed">How Notion Went From $0 to $10B</div>
+        <p class="m5-dis-dek">A forensic breakdown of the GTM infrastructure behind the growth. 6 systems mapped.</p>
+        <div class="m5-dis-meta">March 2026 · 22 min</div>
+      </a>
+      <a class="m5-art" href="#">
+        <div class="m5-art-img" style="background:linear-gradient(135deg,#1c1414,#281a18);"></div>
+        <div class="m5-art-body">
+          <span class="m5-art-eyebrow cat c-gtm">GTM & Growth</span>
+          <div class="m5-art-hed">Why Your ICP Is Wrong</div>
+          <p class="m5-art-dek">Built on guesswork, not data.</p>
+          <div class="m5-art-meta">Dec 2025 · 7 min</div>
+        </div>
+      </a>
+      <!-- res card -->
+      <div class="m5-res">
+        <span class="m5-res-label">Research · Coming 2026</span>
+        <div class="m5-res-hed">The B2B Growth Infrastructure Report</div>
+        <p class="m5-res-dek">200+ companies. Original benchmarks. First study of its kind.</p>
+        <div class="m5-res-cta">Register for early access →</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     6 — THE INDEX
+══════════════════════════════════════ -->
+<div class="opt">
+  <div class="opt-tag">6</div>
+  <div class="opt-name">The Index</div>
+  <p class="opt-desc">Sidebar with search, category + type filters, and stats. Main area is a single indexed list where every resource — articles, tools, lexicon entries, dissections — appears as a typed row. Dense, functional, zero ambiguity.</p>
+
+  <div class="m6">
+    <div class="m6-sidebar">
+      <div class="m6-logo">The Anatomy of Scale.</div>
+      <p class="m6-tagline">That Works · Resource hub for B2B operators building scalable systems.</p>
+      <div class="m6-sidebar-search"><div class="srch"><input type="text" placeholder="Search or ask anything..." /><span class="srch-ic">↵</span></div></div>
+      <span class="m6-filter-label">Category</span>
+      <div class="m6-filter-item on">All <span>42</span></div>
+      <div class="m6-filter-item">GTM & Growth <span>12</span></div>
+      <div class="m6-filter-item">Lead Generation <span>8</span></div>
+      <div class="m6-filter-item">Marketing Systems <span>7</span></div>
+      <div class="m6-filter-item">Playbooks <span>5</span></div>
+      <div class="m6-filter-item">Revenue Architecture <span>6</span></div>
+      <div class="m6-filter-item">Hiring & Team <span>4</span></div>
+      <div class="m6-sidebar-divider"></div>
+      <span class="m6-type-label">Type</span>
+      <div class="m6-type-item on">All types <span>42</span></div>
+      <div class="m6-type-item">Articles <span>36</span></div>
+      <div class="m6-type-item">Tools <span>3</span></div>
+      <div class="m6-type-item">Arsenal <span>6</span></div>
+      <div class="m6-type-item">Dissections <span>1</span></div>
+      <div class="m6-type-item">Lexicon <span>18</span></div>
+      <div class="m6-sidebar-stats">
+        <div class="m6-stat"><span>Total resources</span><span>42</span></div>
+        <div class="m6-stat"><span>Updated</span><span>Apr 2026</span></div>
+      </div>
+    </div>
+    <div class="m6-list">
+      <div class="m6-list-head"><span class="m6-list-head-l">42 resources · sorted by recent</span><span class="m6-list-head-r">Book a call →</span></div>
+      <a class="m6-row m6-row-feat" href="#">
+        <div class="m6-row-num">01</div>
+        <div><span class="m6-row-type art">Article</span><span class="m6-row-cat cat c-gtm">★ Featured · GTM & Growth</span><div class="m6-row-hed">The Founder-Led Sales Ceiling: Why Every Founder Hits It and How Systems Break Through</div><p class="m6-row-dek">Every founder who is good at sales eventually becomes the bottleneck. The answer isn't hiring faster — it's building the system before you feel the pressure.</p></div>
+        <div class="m6-row-aside"><span>Mar 2026</span><span>8 min</span></div>
+      </a>
+      <a class="m6-row" href="#">
+        <div class="m6-row-num">02</div>
+        <div><span class="m6-row-type tool">Tool</span><span class="m6-row-cat" style="color:var(--orange);">Diagnostic</span><div class="m6-row-hed">GTM Readiness Score</div><p class="m6-row-dek">12 questions. Find where your GTM is leaking before you scale it.</p></div>
+        <div class="m6-row-aside"><span>Interactive</span><span>5 min</span></div>
+      </a>
+      <a class="m6-row" href="#">
+        <div class="m6-row-num">03</div>
+        <div><span class="m6-row-type art">Article</span><span class="m6-row-cat cat c-lead">Lead Generation</span><div class="m6-row-hed">Cold Outreach That Doesn't Feel Cold: Personalisation at Scale</div><p class="m6-row-dek">The gap between spray-and-pray and genuine personalisation isn't effort — it's infrastructure.</p></div>
+        <div class="m6-row-aside"><span>Feb 2026</span><span>6 min</span></div>
+      </a>
+      <a class="m6-row" href="#">
+        <div class="m6-row-num">04</div>
+        <div><span class="m6-row-type lex">Lexicon</span><span class="m6-row-cat" style="color:var(--lav);">Definition</span><div class="m6-row-hed">Revenue Architecture</div><p class="m6-row-dek">The deliberate system design behind how a company generates, captures and compounds revenue — not to be confused with the tools used to manage it.</p></div>
+        <div class="m6-row-aside"><span>The Lexicon</span><span>→</span></div>
+      </a>
+      <a class="m6-row" href="#">
+        <div class="m6-row-num">05</div>
+        <div><span class="m6-row-type art">Article</span><span class="m6-row-cat cat c-mkt">Marketing Systems</span><div class="m6-row-hed">Marketing Ops Is Not Marketing</div><p class="m6-row-dek">Most teams bury themselves in ops work that should be automated. The separation is the unlock.</p></div>
+        <div class="m6-row-aside"><span>Jan 2026</span><span>5 min</span></div>
+      </a>
+      <a class="m6-row" href="#">
+        <div class="m6-row-num">06</div>
+        <div><span class="m6-row-type ars">Arsenal</span><span class="m6-row-cat cat c-play">Canvas</span><div class="m6-row-hed">Revenue Architecture Canvas</div><p class="m6-row-dek">Map your full revenue system and find the gaps costing you growth.</p></div>
+        <div class="m6-row-aside"><span>Download</span><span>PDF</span></div>
+      </a>
+      <a class="m6-row" href="#">
+        <div class="m6-row-num">07</div>
+        <div><span class="m6-row-type dis">Dissection</span><span class="m6-row-cat" style="color:var(--amber);">Series B · PLG</span><div class="m6-row-hed">How Notion Went From $0 to $10B</div><p class="m6-row-dek">A forensic breakdown of the GTM infrastructure behind the growth. 6 systems mapped.</p></div>
+        <div class="m6-row-aside"><span>Mar 2026</span><span>22 min</span></div>
+      </a>
+      <a class="m6-row" href="#">
+        <div class="m6-row-num">08</div>
+        <div><span class="m6-row-type art">Article</span><span class="m6-row-cat cat c-play">Playbooks</span><div class="m6-row-hed">The 90-Day GTM Playbook for a Series A B2B SaaS Company</div><p class="m6-row-dek">Sequenced, budgeted, decision-ready. What to build post-funding and in what order.</p></div>
+        <div class="m6-row-aside"><span>Jan 2026</span><span>11 min</span></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     7 — THE SCROLL REEL
+══════════════════════════════════════ -->
+<div class="opt">
+  <div class="opt-tag">7</div>
+  <div class="opt-name">The Scroll Reel</div>
+  <p class="opt-desc">Single narrow column. Full-width moments. Each piece of content gets breathing room — big articles with image headers, smaller ones as quick reads, tool and lexicon interruptions inline. Feels like a carefully curated feed you want to keep scrolling.</p>
+
+  <div class="m7">
+    <div class="m7-head">
+      <div class="m7-title">The Anatomy of Scale.</div>
+      <div class="m7-search"><div class="srch"><input type="text" placeholder="Search or ask..." /><span class="srch-ic">↵</span></div></div>
+    </div>
+
+    <!-- big featured -->
+    <a class="m7-item" href="#">
+      <span class="m7-item-eyebrow cat c-gtm">★ Featured · GTM & Growth</span>
+      <div class="m7-item-img"><div class="m7-item-img-bg"></div></div>
+      <div class="m7-item-hed">The Founder-Led Sales Ceiling: Why Every Founder Hits It and How Systems Break Through</div>
+      <div class="m7-item-rule"></div>
+      <p class="m7-item-dek">Every founder who is good at sales eventually becomes the bottleneck. Not because they're doing it wrong — but because they're doing it at all. The pipeline depends on their calendar, their energy, their relationships.</p>
+      <div class="m7-item-meta">March 2026 · 8 min read</div>
+    </a>
+
+    <!-- tool interrupt -->
+    <div class="m7-tool">
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:10px;">Tool of the day · Diagnostic</span>
+      <div style="display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;">
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#f0e6d3;margin-bottom:6px;">GTM Readiness Score</div>
+          <p style="font-size:13px;color:rgba(240,230,211,0.4);line-height:1.6;">12 questions. Find where your go-to-market is leaking before you scale it.</p>
+        </div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);white-space:nowrap;">Run it →</div>
+      </div>
+    </div>
+
+    <!-- small items -->
+    <a class="m7-item-sm" href="#">
+      <div>
+        <span style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:7px;">Lead Generation</span>
+        <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;line-height:1.2;margin-bottom:6px;">Cold Outreach That Doesn't Feel Cold</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:7px;">The gap between spray-and-pray and genuine personalisation is infrastructure, not effort.</p>
+        <div style="font-size:11px;color:var(--label);">Feb 2026 · 6 min</div>
+      </div>
+      <div class="m7-item-sm-img" style="background:linear-gradient(135deg,#1c1a14,#282010);"></div>
+    </a>
+    <a class="m7-item-sm" href="#">
+      <div>
+        <span style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--lav);display:block;margin-bottom:7px;">Marketing Systems</span>
+        <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;line-height:1.2;margin-bottom:6px;">Marketing Ops Is Not Marketing</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:7px;">Separating strategy from execution is the unlock most teams never find.</p>
+        <div style="font-size:11px;color:var(--label);">Jan 2026 · 5 min</div>
+      </div>
+      <div class="m7-item-sm-img" style="background:linear-gradient(135deg,#14181c,#1a2028);"></div>
+    </a>
+
+    <!-- lex interrupt -->
+    <div class="m7-lex">
+      <span class="m7-lex-label">The Lexicon</span>
+      <span class="m7-lex-word">Revenue Architecture</span>
+      <p class="m7-lex-def">The deliberate system design behind how a company generates, captures and compounds revenue.</p>
+      <a href="#" class="m7-lex-link">Full lexicon →</a>
+    </div>
+
+    <!-- another big article -->
+    <a class="m7-item" href="#">
+      <span class="m7-item-eyebrow cat c-play">Playbooks</span>
+      <div class="m7-item-img" style="height:160px;"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#14201a,#1a2a20);"></div></div>
+      <div class="m7-item-hed" style="font-size:clamp(1.1rem,1.8vw,1.5rem);">The 90-Day GTM Playbook for a Series A B2B SaaS Company</div>
+      <p class="m7-item-dek">Sequenced, budgeted, decision-ready. What to build post-funding and in what order.</p>
+      <div class="m7-item-meta">January 2026 · 11 min read</div>
+    </a>
+
+    <!-- dis interrupt -->
+    <div style="padding:28px 48px;border-bottom:1px solid var(--border);background:var(--dark);text-decoration:none;display:block;">
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:10px;">Current Dissection</span>
+      <div style="display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;">
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#f0e6d3;margin-bottom:6px;line-height:1.2;">How Notion Went From $0 to $10B: The GTM Infrastructure Behind the Growth</div>
+          <p style="font-size:13px;color:rgba(240,230,211,0.38);line-height:1.6;">A forensic breakdown. 6 systems mapped. 22 min read.</p>
+        </div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--amber);white-space:nowrap;">Read it →</div>
+      </div>
+    </div>
+
+    <a class="m7-item-sm" href="#">
+      <div>
+        <span style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:7px;">GTM & Growth</span>
+        <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;line-height:1.2;margin-bottom:6px;">Why Your ICP Is Wrong (And How to Fix It)</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:7px;">Real ICPs are built from closed-won data analysis, not optimistic guesswork.</p>
+        <div style="font-size:11px;color:var(--label);">Dec 2025 · 7 min</div>
+      </div>
+      <div class="m7-item-sm-img" style="background:linear-gradient(135deg,#1c1814,#28200e);"></div>
+    </a>
+  </div>
+</div>
+
+
+</body>
+</html>

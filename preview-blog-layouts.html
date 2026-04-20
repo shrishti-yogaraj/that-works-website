@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Layout Options — The Anatomy of Scale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:     #f5f0e8;
+      --bg2:    #ede8df;
+      --border: #d8d2c8;
+      --bdr2:   #c4bcb0;
+      --text:   #1c1917;
+      --muted:  #6b6360;
+      --label:  #9a9088;
+      --orange: #ff5c00;
+      --amber:  #fbbf24;
+      --lav:    #c4b5fd;
+      --dark:   #12100f;
+      --dark2:  #1c1816;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #e0dbd2; font-family: 'Cabinet Grotesk', sans-serif; color: var(--text); padding: 48px 40px 140px; }
+    .page-title { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--label); margin-bottom: 64px; }
+    .option { margin-bottom: 100px; }
+    .option-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+    .option-tag::before { content:''; width:24px; height:2px; background:var(--orange); }
+    .option-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+    .option-desc { font-size: 14px; color: var(--muted); line-height: 1.65; max-width: 640px; margin-bottom: 28px; }
+
+    /* shared */
+    .cat { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+    .c-gtm  { color: var(--amber); }
+    .c-lead { color: var(--orange); }
+    .c-mkt  { color: var(--lav); }
+    .c-play { color: #34d399; }
+    .c-hire { color: #fb7185; }
+    .c-rev  { color: #60a5fa; }
+
+    /* shared index row */
+    .ix-row { display: grid; grid-template-columns: 60px 1fr auto; align-items: center; padding: 22px 52px; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: background 0.12s; }
+    .ix-row:last-child { border-bottom: none; }
+    .ix-row:hover { background: var(--bg2); }
+    .ix-row:hover .ix-num { color: var(--orange); }
+    .ix-num { font-family: 'Playfair Display', serif; font-size: 1.45rem; font-weight: 900; color: var(--bdr2); line-height: 1; transition: color 0.12s; }
+    .ix-cat { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 5px; }
+    .ix-hed { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; line-height: 1.25; color: var(--text); }
+    .ix-exc { font-size: 13px; color: var(--muted); line-height: 1.5; margin-top: 4px; max-width: 560px; }
+    .ix-aside { text-align: right; white-space: nowrap; padding-left: 28px; }
+    .ix-aside span { display: block; font-size: 11px; color: var(--label); line-height: 1.9; }
+
+    /* shared broadsheet masthead */
+    .mast { padding: 30px 52px 24px; border-bottom: 3px double var(--text); }
+    .mast-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .mast-top span { font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+    .mast-title { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 5.6vw, 5.4rem); font-weight: 900; line-height: 1; letter-spacing: -0.025em; text-align: center; }
+    .mast-rule { height: 1px; background: var(--bdr2); margin: 13px 0; }
+    .mast-tag { font-size: 13px; color: var(--muted); font-style: italic; letter-spacing: 0.04em; text-align: center; }
+    .mast-bar { padding: 9px 52px; background: var(--text); display: flex; align-items: center; gap: 24px; }
+    .mast-bar span { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(240,230,211,0.4); cursor: pointer; }
+    .mast-bar span.on { color: #f0e6d3; }
+
+    /* shared broadsheet body col */
+    .bs-col { padding: 32px 36px; border-right: 1px solid var(--border); }
+    .bs-col:last-child { border-right: none; }
+    .bs-overline { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); display: block; margin-bottom: 12px; }
+    .bs-hed { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2.2vw, 1.9rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.015em; margin-bottom: 12px; }
+    .bs-thick { height: 2px; background: var(--text); margin-bottom: 14px; }
+    .bs-dek { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 14px; }
+    .bs-pq { border-top: 1.5px solid var(--text); border-bottom: 1.5px solid var(--text); padding: 14px 0; margin: 18px 0; }
+    .bs-pq p { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; font-style: italic; line-height: 1.35; }
+    .bs-meta { font-size: 11px; color: var(--label); letter-spacing: 0.04em; }
+    .bs-story { padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .bs-story:last-child { border-bottom: none; margin: 0; padding: 0; }
+    .bs-scat { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 7px; }
+    .bs-shed { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; line-height: 1.25; margin-bottom: 7px; }
+    .bs-sdek { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 7px; }
+    .bs-smeta { font-size: 11px; color: var(--label); }
+
+    /* shared ticker */
+    .ticker { display: grid; grid-template-columns: repeat(4,1fr); }
+    .tick { padding: 20px 26px; border-right: 1px solid var(--border); text-decoration: none; color: inherit; transition: background 0.12s; display: block; }
+    .tick:last-child { border-right: none; }
+    .tick:hover { background: var(--bg2); }
+    .tick-n { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 900; color: var(--bdr2); margin-bottom: 6px; }
+    .tick-h { font-size: 13px; font-weight: 700; line-height: 1.3; margin-bottom: 4px; }
+    .tick-m { font-size: 11px; color: var(--label); }
+
+    /* shared timeline entry */
+    .cr-entry { display: grid; grid-template-columns: 100px 1fr; text-decoration: none; color: inherit; transition: background 0.12s; border-bottom: 1px solid var(--border); }
+    .cr-entry:last-child { border-bottom: none; }
+    .cr-entry:hover { background: var(--bg2); }
+    .cr-entry:hover .cr-dot { background: var(--orange); border-color: var(--orange); }
+    .cr-entry:hover .cr-hed { color: var(--orange); }
+    .cr-date-col { padding: 24px 20px 24px 0; text-align: right; position: relative; }
+    .cr-dot { position: absolute; right: -5px; top: 30px; width: 9px; height: 9px; border-radius: 50%; background: var(--bg); border: 2px solid var(--bdr2); transition: background 0.15s, border-color 0.15s; z-index: 1; }
+    .cr-month { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); display: block; }
+    .cr-year { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 900; color: var(--bdr2); }
+    .cr-content { padding: 24px 0 24px 28px; }
+    .cr-cat { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 6px; }
+    .cr-hed { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; line-height: 1.25; color: var(--text); margin-bottom: 6px; transition: color 0.12s; }
+    .cr-dek { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 6px; max-width: 560px; }
+    .cr-meta { font-size: 11px; color: var(--label); }
+    .cr-feat { background: var(--dark); }
+    .cr-feat .cr-month { color: rgba(240,230,211,0.3); }
+    .cr-feat .cr-year { color: rgba(240,230,211,0.18); }
+    .cr-feat .cr-dot { background: var(--orange); border-color: var(--orange); }
+    .cr-feat .cr-hed { color: #f0e6d3; }
+    .cr-feat .cr-dek { color: rgba(240,230,211,0.5); }
+    .cr-feat .cr-meta { color: rgba(240,230,211,0.28); }
+    .cr-feat:hover { background: #1c1814; }
+    .cr-feat:hover .cr-hed { color: var(--orange); }
+    .cr-feat-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); display: block; margin-bottom: 8px; }
+
+    /* ══════════════════════════════════════════════════════
+       OPTION C — THE BROADSHEET
+    ══════════════════════════════════════════════════════ */
+    .c-wrap { background: var(--bg); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
+    .c-body { display: grid; grid-template-columns: 1fr 1fr 1fr; border-bottom: 1px solid var(--border); }
+
+    /* ══════════════════════════════════════════════════════
+       OPTION F — THE CATALOG (dark sidebar + light catalog)
+    ══════════════════════════════════════════════════════ */
+    .f-wrap { background: var(--bg); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); display: grid; grid-template-columns: 280px 1fr; min-height: 600px; }
+    .f-panel { background: var(--dark); padding: 44px 32px; display: flex; flex-direction: column; gap: 0; }
+    .f-panel-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 20px; }
+    .f-panel-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 2.2vw, 2.2rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; color: #f0e6d3; margin-bottom: 16px; }
+    .f-panel-rule { height: 1px; background: rgba(240,230,211,0.12); margin-bottom: 16px; }
+    .f-panel-sub { font-size: 13px; color: rgba(240,230,211,0.45); line-height: 1.7; margin-bottom: 32px; }
+    .f-panel-cats { display: flex; flex-direction: column; gap: 6px; margin-bottom: 32px; }
+    .f-panel-cat { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,230,211,0.3); padding: 7px 0; border-bottom: 1px solid rgba(240,230,211,0.07); cursor: pointer; transition: color 0.15s; }
+    .f-panel-cat.on { color: #f0e6d3; }
+    .f-panel-cat:hover { color: rgba(240,230,211,0.7); }
+    .f-panel-stats { margin-top: auto; padding-top: 24px; border-top: 1px solid rgba(240,230,211,0.1); display: flex; flex-direction: column; gap: 8px; }
+    .f-panel-stat { display: flex; justify-content: space-between; align-items: center; }
+    .f-panel-stat span:first-child { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,230,211,0.28); }
+    .f-panel-stat span:last-child { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 900; color: rgba(240,230,211,0.18); }
+    .f-list { display: flex; flex-direction: column; }
+    .f-item { padding: 28px 36px; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: start; transition: background 0.12s; }
+    .f-item:last-child { border-bottom: none; }
+    .f-item:hover { background: var(--bg2); }
+    .f-item:hover .f-item-hed { color: var(--orange); }
+    .f-item-feat { background: #fff8f0; }
+    .f-item-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 8px; }
+    .f-item-hed { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; line-height: 1.25; margin-bottom: 8px; transition: color 0.12s; }
+    .f-item-dek { font-size: 13px; color: var(--muted); line-height: 1.6; max-width: 500px; margin-bottom: 8px; }
+    .f-item-meta { font-size: 11px; color: var(--label); }
+    .f-item-aside { text-align: right; white-space: nowrap; flex-shrink: 0; }
+    .f-item-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; color: var(--bdr2); line-height: 1; display: block; margin-bottom: 4px; }
+    .f-item-aside span { font-size: 11px; color: var(--label); display: block; line-height: 1.9; }
+
+    /* ══════════════════════════════════════════════════════
+       OPTION H — BROADSHEET MASTHEAD + DARK CATALOG BELOW
+       (C's newspaper header → F's dark-panel catalog as archive)
+    ══════════════════════════════════════════════════════ */
+    .h-wrap { background: var(--bg); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
+    .h-body { display: grid; grid-template-columns: 1fr 1fr 1fr; border-bottom: 1px solid var(--border); }
+    /* F-style catalog section inside H */
+    .h-catalog { display: grid; grid-template-columns: 260px 1fr; }
+    .h-panel { background: var(--dark2); padding: 36px 28px; display: flex; flex-direction: column; gap: 0; border-right: none; }
+    .h-panel-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+    .h-panel-label { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: rgba(240,230,211,0.8); margin-bottom: 12px; line-height: 1.15; }
+    .h-panel-rule { height: 1px; background: rgba(240,230,211,0.1); margin-bottom: 14px; }
+    .h-panel-cats { display: flex; flex-direction: column; gap: 4px; margin-bottom: 28px; }
+    .h-panel-cat { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(240,230,211,0.28); padding: 6px 0; border-bottom: 1px solid rgba(240,230,211,0.06); cursor: pointer; transition: color 0.15s; }
+    .h-panel-cat.on { color: rgba(240,230,211,0.85); }
+    .h-panel-stats { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(240,230,211,0.1); }
+    .h-panel-stat { display: flex; justify-content: space-between; margin-bottom: 6px; }
+    .h-panel-stat span:first-child { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,230,211,0.25); }
+    .h-panel-stat span:last-child { font-family: 'Playfair Display', serif; font-size: 0.9rem; font-weight: 900; color: rgba(240,230,211,0.15); }
+    .h-list { display: flex; flex-direction: column; }
+    .h-item { padding: 24px 32px; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: start; transition: background 0.12s; }
+    .h-item:last-child { border-bottom: none; }
+    .h-item:hover { background: var(--bg2); }
+    .h-item:hover .h-item-hed { color: var(--orange); }
+    .h-item-feat { background: #fff8f0; }
+    .h-item-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 7px; }
+    .h-item-hed { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; line-height: 1.25; margin-bottom: 7px; transition: color 0.12s; }
+    .h-item-dek { font-size: 13px; color: var(--muted); line-height: 1.6; max-width: 480px; margin-bottom: 7px; }
+    .h-item-meta { font-size: 11px; color: var(--label); }
+    .h-item-aside { text-align: right; white-space: nowrap; flex-shrink: 0; }
+    .h-item-num { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: var(--bdr2); line-height: 1; display: block; margin-bottom: 4px; }
+    .h-item-aside span { font-size: 11px; color: var(--label); display: block; line-height: 1.9; }
+
+    /* ══════════════════════════════════════════════════════
+       OPTION I — DARK PANEL LEFT + BROADSHEET COLS RIGHT
+       (F's dark sidebar as the permanent left rail)
+       (C's 3-col newspaper grid on the right)
+    ══════════════════════════════════════════════════════ */
+    .i-wrap { background: var(--bg); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); display: grid; grid-template-columns: 300px 1fr; }
+    /* Left dark panel — full height */
+    .i-panel { background: var(--dark); padding: 48px 36px; display: flex; flex-direction: column; gap: 0; }
+    .i-panel-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 18px; }
+    .i-panel-title { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 2.4vw, 2.4rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; color: #f0e6d3; margin-bottom: 14px; }
+    .i-panel-rule { height: 1px; background: rgba(240,230,211,0.12); margin-bottom: 14px; }
+    .i-panel-sub { font-size: 13px; color: rgba(240,230,211,0.42); line-height: 1.7; margin-bottom: 36px; }
+    .i-panel-cats { display: flex; flex-direction: column; gap: 4px; margin-bottom: 36px; }
+    .i-panel-cat { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,230,211,0.28); padding: 7px 0; border-bottom: 1px solid rgba(240,230,211,0.07); cursor: pointer; transition: color 0.15s; }
+    .i-panel-cat.on { color: #f0e6d3; }
+    .i-panel-cat:hover { color: rgba(240,230,211,0.65); }
+    .i-panel-stats { margin-top: auto; padding-top: 24px; border-top: 1px solid rgba(240,230,211,0.1); }
+    .i-panel-stat { display: flex; justify-content: space-between; align-items: center; margin-bottom: 9px; }
+    .i-panel-stat span:first-child { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,230,211,0.28); }
+    .i-panel-stat span:last-child { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 900; color: rgba(240,230,211,0.2); }
+    /* Right: broadsheet newspaper layout */
+    .i-right { display: flex; flex-direction: column; }
+    .i-mast { padding: 28px 44px 20px; border-bottom: 3px double var(--text); }
+    .i-mast-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .i-mast-top span { font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+    .i-mast-tag { font-size: 13px; color: var(--muted); font-style: italic; letter-spacing: 0.04em; text-align: center; }
+    .i-bar { padding: 9px 44px; background: var(--text); display: flex; align-items: center; gap: 22px; }
+    .i-bar span { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(240,230,211,0.4); cursor: pointer; }
+    .i-bar span.on { color: #f0e6d3; }
+    .i-grid { display: grid; grid-template-columns: 1fr 1fr; flex: 1; }
+    .i-grid-col { padding: 28px 32px; border-right: 1px solid var(--border); }
+    .i-grid-col:last-child { border-right: none; }
+    .i-lead-overline { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); display: block; margin-bottom: 10px; }
+    .i-lead-hed { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2vw, 1.75rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.015em; margin-bottom: 10px; }
+    .i-lead-thick { height: 2px; background: var(--text); margin-bottom: 12px; }
+    .i-lead-dek { font-size: 13px; color: var(--muted); line-height: 1.75; margin-bottom: 12px; }
+    .i-lead-pq { border-top: 1.5px solid var(--text); border-bottom: 1.5px solid var(--text); padding: 12px 0; margin: 14px 0; }
+    .i-lead-pq p { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; font-style: italic; line-height: 1.35; }
+    .i-lead-meta { font-size: 11px; color: var(--label); }
+    .i-story { padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid var(--border); }
+    .i-story:last-child { border-bottom: none; margin: 0; padding: 0; }
+    .i-story-cat { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 6px; }
+    .i-story-hed { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; line-height: 1.25; margin-bottom: 6px; }
+    .i-story-dek { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 6px; }
+    .i-story-meta { font-size: 11px; color: var(--label); }
+    .i-ticker { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--border); }
+    .i-archive-header { padding: 12px 52px; background: var(--dark); display: flex; align-items: center; justify-content: space-between; }
+    .i-archive-header span { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+    .i-archive-header .l { color: rgba(240,230,211,0.38); }
+    .i-archive-header .r { color: var(--orange); }
+  </style>
+</head>
+<body>
+
+<p class="page-title">Blog Layout Options — The Anatomy of Scale</p>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     OPTION C — THE BROADSHEET
+══════════════════════════════════════════════════════════ -->
+<div class="option">
+  <div class="option-tag">Option C</div>
+  <div class="option-name">The Broadsheet</div>
+  <p class="option-desc">Newspaper three-column layout. Lead story left, two secondary columns right. Ticker row below. Pure editorial typography.</p>
+
+  <div class="c-wrap">
+    <div class="mast">
+      <div class="mast-top"><span>That Works · Resource Library</span><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:var(--label)">Systems as a catalyst for exponential growth</span><span>Vol. I · April 2026</span></div>
+      <div class="mast-title">The Anatomy of Scale</div>
+      <div class="mast-rule"></div>
+      <div class="mast-tag">Frameworks, breakdowns and honest opinions on GTM, lead generation, and the infrastructure behind B2B growth.</div>
+    </div>
+    <div class="mast-bar"><span class="on">All</span><span>GTM & Growth</span><span>Lead Generation</span><span>Marketing Systems</span><span>Playbooks</span><span>Revenue Architecture</span></div>
+    <div class="c-body">
+      <div class="bs-col">
+        <span class="bs-overline">★ Featured · GTM & Growth</span>
+        <div class="bs-hed">The Founder-Led Sales Ceiling: Why Every Founder Hits It and How Systems Break Through</div>
+        <div class="bs-thick"></div>
+        <p class="bs-dek">Every founder who is good at sales eventually becomes the bottleneck. Not because they're doing it wrong — but because they're doing it at all. The pipeline depends on their calendar, their energy, their relationships.</p>
+        <div class="bs-pq"><p>"The answer isn't hiring faster. It's building the system before you feel the pressure."</p></div>
+        <p class="bs-dek">Systems replace the founder in the repeatable parts of the sale and free them for what only they can do.</p>
+        <div class="bs-meta">March 2026 · 8 min read · That Works</div>
+      </div>
+      <div class="bs-col">
+        <div class="bs-story"><span class="bs-scat cat c-lead">Lead Generation</span><div class="bs-shed">Cold Outreach That Doesn't Feel Cold</div><p class="bs-sdek">The gap between spray-and-pray and genuine personalisation is infrastructure, not effort.</p><div class="bs-smeta">Feb 2026 · 6 min</div></div>
+        <div class="bs-story"><span class="bs-scat cat c-mkt">Marketing Systems</span><div class="bs-shed">Marketing Ops Is Not Marketing</div><p class="bs-sdek">Separating strategy from execution is the unlock most teams never find.</p><div class="bs-smeta">Jan 2026 · 5 min</div></div>
+        <div class="bs-story"><span class="bs-scat cat c-play">Playbooks</span><div class="bs-shed">The 90-Day GTM Playbook for Series A</div><p class="bs-sdek">Sequenced, budgeted, decision-ready.</p><div class="bs-smeta">Jan 2026 · 11 min</div></div>
+      </div>
+      <div class="bs-col">
+        <div class="bs-story"><span class="bs-scat cat c-gtm">GTM & Growth</span><div class="bs-shed">Why Your ICP Is Wrong</div><p class="bs-sdek">Real ICPs come from closed-won data, not optimistic guesswork.</p><div class="bs-smeta">Dec 2025 · 7 min</div></div>
+        <div class="bs-story"><span class="bs-scat cat c-hire">Hiring & Team</span><div class="bs-shed">Your First Marketing Hire: Growth vs. Brand</div><p class="bs-sdek">The wrong call sets you back 18 months.</p><div class="bs-smeta">Dec 2025 · 9 min</div></div>
+        <div class="bs-story"><span class="bs-scat cat c-rev">Revenue Architecture</span><div class="bs-shed">Revenue Architecture: Systems That Compound</div><p class="bs-sdek">The difference between linear and compounding growth is the architecture.</p><div class="bs-smeta">Nov 2025 · 10 min</div></div>
+      </div>
+    </div>
+    <div class="ticker">
+      <a class="tick" href="#"><div class="tick-n">07</div><div class="tick-h">Attribution Is a Lie</div><div class="tick-m">GTM & Growth · Nov 2025</div></a>
+      <a class="tick" href="#"><div class="tick-n">08</div><div class="tick-h">The Real Cost of a Leaky CRM</div><div class="tick-m">Marketing Systems · Oct 2025</div></a>
+      <a class="tick" href="#"><div class="tick-n">09</div><div class="tick-h">Content Engine With Two People</div><div class="tick-m">Playbooks · Oct 2025</div></a>
+      <a class="tick" href="#"><div class="tick-n">10</div><div class="tick-h">The Retention Metric Nobody Tracks</div><div class="tick-m">Revenue Architecture · Sep 2025</div></a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     OPTION F — THE CATALOG (dark sidebar + numbered list)
+══════════════════════════════════════════════════════════ -->
+<div class="option">
+  <div class="option-tag">Option F</div>
+  <div class="option-name">The Catalog</div>
+  <p class="option-desc">Dark sidebar panel left — blog title, category filter, issue stats. Light catalog right — numbered article entries with dek and meta. Clean split, high contrast.</p>
+
+  <div class="f-wrap">
+    <!-- Dark left panel -->
+    <div class="f-panel">
+      <div class="f-panel-eyebrow">That Works · Library</div>
+      <div class="f-panel-title">The Anatomy<br>of Scale.</div>
+      <div class="f-panel-rule"></div>
+      <p class="f-panel-sub">Systems thinking, GTM strategy, and the mechanics of exponential B2B growth.</p>
+      <div class="f-panel-cats">
+        <div class="f-panel-cat on">All Essays</div>
+        <div class="f-panel-cat">GTM &amp; Growth</div>
+        <div class="f-panel-cat">Lead Generation</div>
+        <div class="f-panel-cat">Marketing Systems</div>
+        <div class="f-panel-cat">Playbooks</div>
+        <div class="f-panel-cat">Revenue Architecture</div>
+        <div class="f-panel-cat">Hiring &amp; Team</div>
+      </div>
+      <div class="f-panel-stats">
+        <div class="f-panel-stat"><span>Essays</span><span>12</span></div>
+        <div class="f-panel-stat"><span>Categories</span><span>6</span></div>
+        <div class="f-panel-stat"><span>Updated</span><span>Apr '26</span></div>
+      </div>
+    </div>
+    <!-- Light right catalog -->
+    <div class="f-list">
+      <a class="f-item f-item-feat" href="#">
+        <div>
+          <span class="f-item-eyebrow cat c-gtm">★ Featured · GTM &amp; Growth</span>
+          <div class="f-item-hed">The Founder-Led Sales Ceiling: Why Every Founder Hits It and How Systems Break Through</div>
+          <p class="f-item-dek">Every founder who is good at sales eventually becomes the bottleneck. The answer isn't hiring faster — it's building the system before you feel the pressure.</p>
+          <div class="f-item-meta">March 2026 · 8 min read</div>
+        </div>
+        <div class="f-item-aside"><span class="f-item-num">01</span><span>Mar 2026</span><span>8 min</span></div>
+      </a>
+      <a class="f-item" href="#">
+        <div>
+          <span class="f-item-eyebrow cat c-lead">Lead Generation</span>
+          <div class="f-item-hed">Cold Outreach That Doesn't Feel Cold: Personalisation at Scale</div>
+          <p class="f-item-dek">The gap between spray-and-pray and genuine personalisation isn't effort — it's infrastructure.</p>
+          <div class="f-item-meta">February 2026 · 6 min read</div>
+        </div>
+        <div class="f-item-aside"><span class="f-item-num">02</span><span>Feb 2026</span><span>6 min</span></div>
+      </a>
+      <a class="f-item" href="#">
+        <div>
+          <span class="f-item-eyebrow cat c-mkt">Marketing Systems</span>
+          <div class="f-item-hed">Marketing Ops Is Not Marketing: Separating Strategy From Execution Infrastructure</div>
+          <p class="f-item-dek">Most teams bury themselves in ops work that should be automated. The separation is the unlock.</p>
+          <div class="f-item-meta">January 2026 · 5 min read</div>
+        </div>
+        <div class="f-item-aside"><span class="f-item-num">03</span><span>Jan 2026</span><span>5 min</span></div>
+      </a>
+      <a class="f-item" href="#">
+        <div>
+          <span class="f-item-eyebrow cat c-play">Playbooks</span>
+          <div class="f-item-hed">The 90-Day GTM Playbook for a Series A B2B SaaS Company</div>
+          <p class="f-item-dek">Sequenced, budgeted, decision-ready. What to build post-funding and in what order.</p>
+          <div class="f-item-meta">January 2026 · 11 min read</div>
+        </div>
+        <div class="f-item-aside"><span class="f-item-num">04</span><span>Jan 2026</span><span>11 min</span></div>
+      </a>
+      <a class="f-item" href="#">
+        <div>
+          <span class="f-item-eyebrow cat c-gtm">GTM &amp; Growth</span>
+          <div class="f-item-hed">Why Your ICP Is Wrong (And How to Actually Figure It Out)</div>
+          <p class="f-item-dek">Real ICPs are built from closed-won data analysis, not optimistic guesswork.</p>
+          <div class="f-item-meta">December 2025 · 7 min read</div>
+        </div>
+        <div class="f-item-aside"><span class="f-item-num">05</span><span>Dec 2025</span><span>7 min</span></div>
+      </a>
+      <a class="f-item" href="#">
+        <div>
+          <span class="f-item-eyebrow cat c-hire">Hiring &amp; Team</span>
+          <div class="f-item-hed">Your First Marketing Hire: Head of Growth vs. Head of Brand</div>
+          <p class="f-item-dek">The wrong hire sets you back 18 months. Here's the framework for making the call.</p>
+          <div class="f-item-meta">December 2025 · 9 min read</div>
+        </div>
+        <div class="f-item-aside"><span class="f-item-num">06</span><span>Dec 2025</span><span>9 min</span></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     OPTION H — BROADSHEET TOP + DARK CATALOG ARCHIVE
+     C's masthead & 3-col featured → F's dark panel catalog below
+══════════════════════════════════════════════════════════ -->
+<div class="option">
+  <div class="option-tag">Option H — C + F combo</div>
+  <div class="option-name">Broadsheet Header, Catalog Archive</div>
+  <p class="option-desc">The top section is pure C — newspaper masthead, 3-col lead layout. Then a hard break into F: a dark left panel (filter + stats) sitting beside a numbered catalog of all essays. Editorial weight up top, structured catalog below.</p>
+
+  <div class="h-wrap">
+    <!-- C: newspaper masthead + 3-col -->
+    <div class="mast">
+      <div class="mast-top"><span>That Works · Resource Library</span><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:var(--label)">Systems as a catalyst for exponential growth</span><span>Vol. I · April 2026</span></div>
+      <div class="mast-title">The Anatomy of Scale</div>
+      <div class="mast-rule"></div>
+      <div class="mast-tag">Frameworks, breakdowns and honest opinions on GTM, lead generation, and the infrastructure behind B2B growth.</div>
+    </div>
+    <div class="mast-bar"><span class="on">All</span><span>GTM & Growth</span><span>Lead Generation</span><span>Marketing Systems</span><span>Playbooks</span></div>
+    <div class="h-body">
+      <div class="bs-col">
+        <span class="bs-overline">★ Featured · GTM & Growth</span>
+        <div class="bs-hed">The Founder-Led Sales Ceiling: Why Every Founder Hits It and How Systems Break Through</div>
+        <div class="bs-thick"></div>
+        <p class="bs-dek">Every founder who is good at sales eventually becomes the bottleneck. Not because they're doing it wrong — but because they're doing it at all.</p>
+        <div class="bs-pq"><p>"The answer isn't hiring faster. It's building the system before you feel the pressure."</p></div>
+        <div class="bs-meta">March 2026 · 8 min read · That Works</div>
+      </div>
+      <div class="bs-col">
+        <div class="bs-story"><span class="bs-scat cat c-lead">Lead Generation</span><div class="bs-shed">Cold Outreach That Doesn't Feel Cold</div><p class="bs-sdek">The gap between spray-and-pray and genuine personalisation is infrastructure, not effort.</p><div class="bs-smeta">Feb 2026 · 6 min</div></div>
+        <div class="bs-story"><span class="bs-scat cat c-mkt">Marketing Systems</span><div class="bs-shed">Marketing Ops Is Not Marketing</div><p class="bs-sdek">Separating strategy from execution is the unlock most teams never find.</p><div class="bs-smeta">Jan 2026 · 5 min</div></div>
+      </div>
+      <div class="bs-col">
+        <div class="bs-story"><span class="bs-scat cat c-play">Playbooks</span><div class="bs-shed">The 90-Day GTM Playbook for Series A</div><p class="bs-sdek">Sequenced, budgeted, decision-ready. What to build post-funding and in what order.</p><div class="bs-smeta">Jan 2026 · 11 min</div></div>
+        <div class="bs-story"><span class="bs-scat cat c-gtm">GTM & Growth</span><div class="bs-shed">Why Your ICP Is Wrong</div><p class="bs-sdek">Real ICPs come from closed-won data, not optimistic guesswork.</p><div class="bs-smeta">Dec 2025 · 7 min</div></div>
+      </div>
+    </div>
+    <!-- F: dark panel catalog -->
+    <div class="h-catalog">
+      <div class="h-panel">
+        <div class="h-panel-eyebrow">All Essays</div>
+        <div class="h-panel-label">The full<br>archive.</div>
+        <div class="h-panel-rule"></div>
+        <div class="h-panel-cats">
+          <div class="h-panel-cat on">All</div>
+          <div class="h-panel-cat">GTM &amp; Growth</div>
+          <div class="h-panel-cat">Lead Generation</div>
+          <div class="h-panel-cat">Marketing Systems</div>
+          <div class="h-panel-cat">Playbooks</div>
+          <div class="h-panel-cat">Revenue Architecture</div>
+        </div>
+        <div class="h-panel-stats">
+          <div class="h-panel-stat"><span>Essays</span><span>12</span></div>
+          <div class="h-panel-stat"><span>Updated</span><span>Apr '26</span></div>
+        </div>
+      </div>
+      <div class="h-list">
+        <a class="h-item h-item-feat" href="#">
+          <div><span class="h-item-eyebrow cat c-gtm">★ Featured · GTM & Growth</span><div class="h-item-hed">The Founder-Led Sales Ceiling: Why Every Founder Hits It and How Systems Break Through</div><p class="h-item-dek">Every founder who is good at sales eventually becomes the bottleneck.</p><div class="h-item-meta">March 2026 · 8 min read</div></div>
+          <div class="h-item-aside"><span class="h-item-num">01</span><span>Mar '26</span><span>8 min</span></div>
+        </a>
+        <a class="h-item" href="#">
+          <div><span class="h-item-eyebrow cat c-lead">Lead Generation</span><div class="h-item-hed">Cold Outreach That Doesn't Feel Cold: Personalisation at Scale</div><p class="h-item-dek">The gap between spray-and-pray and genuine personalisation isn't effort — it's infrastructure.</p><div class="h-item-meta">February 2026 · 6 min read</div></div>
+          <div class="h-item-aside"><span class="h-item-num">02</span><span>Feb '26</span><span>6 min</span></div>
+        </a>
+        <a class="h-item" href="#">
+          <div><span class="h-item-eyebrow cat c-mkt">Marketing Systems</span><div class="h-item-hed">Marketing Ops Is Not Marketing: Separating Strategy From Execution Infrastructure</div><p class="h-item-dek">Most teams bury themselves in ops work that should be automated.</p><div class="h-item-meta">January 2026 · 5 min read</div></div>
+          <div class="h-item-aside"><span class="h-item-num">03</span><span>Jan '26</span><span>5 min</span></div>
+        </a>
+        <a class="h-item" href="#">
+          <div><span class="h-item-eyebrow cat c-play">Playbooks</span><div class="h-item-hed">The 90-Day GTM Playbook for a Series A B2B SaaS Company</div><p class="h-item-dek">Sequenced, budgeted, decision-ready. What to build post-funding and in what order.</p><div class="h-item-meta">January 2026 · 11 min read</div></div>
+          <div class="h-item-aside"><span class="h-item-num">04</span><span>Jan '26</span><span>11 min</span></div>
+        </a>
+        <a class="h-item" href="#">
+          <div><span class="h-item-eyebrow cat c-gtm">GTM &amp; Growth</span><div class="h-item-hed">Why Your ICP Is Wrong (And How to Actually Figure It Out)</div><p class="h-item-dek">Real ICPs are built from closed-won data analysis, not optimistic guesswork.</p><div class="h-item-meta">December 2025 · 7 min read</div></div>
+          <div class="h-item-aside"><span class="h-item-num">05</span><span>Dec '25</span><span>7 min</span></div>
+        </a>
+        <a class="h-item" href="#">
+          <div><span class="h-item-eyebrow cat c-hire">Hiring &amp; Team</span><div class="h-item-hed">Your First Marketing Hire: Head of Growth vs. Head of Brand</div><p class="h-item-dek">The wrong hire sets you back 18 months. Here's the framework for making the call.</p><div class="h-item-meta">December 2025 · 9 min read</div></div>
+          <div class="h-item-aside"><span class="h-item-num">06</span><span>Dec '25</span><span>9 min</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     OPTION I — DARK PANEL LEFT + BROADSHEET COLS RIGHT
+     F's dark sidebar is the permanent left rail
+     C's newspaper 3-col grid lives on the right
+══════════════════════════════════════════════════════════ -->
+<div class="option">
+  <div class="option-tag">Option I — C + F combo</div>
+  <div class="option-name">Dark Rail + Broadsheet Grid</div>
+  <p class="option-desc">F's tall dark panel becomes the permanent left rail — blog identity, category filter, stats. The right side is C's newspaper layout: masthead strip, category bar, and the full 3-col broadsheet grid with lead story and secondary columns. The dark rail anchors the page; the broadsheet fills it.</p>
+
+  <div class="i-wrap">
+    <!-- F: dark left panel — full height rail -->
+    <div class="i-panel">
+      <div class="i-panel-eyebrow">That Works · Library</div>
+      <div class="i-panel-title">The Anatomy<br>of Scale.</div>
+      <div class="i-panel-rule"></div>
+      <p class="i-panel-sub">Systems thinking, GTM strategy, and the mechanics of exponential B2B growth.</p>
+      <div class="i-panel-cats">
+        <div class="i-panel-cat on">All Essays</div>
+        <div class="i-panel-cat">GTM &amp; Growth</div>
+        <div class="i-panel-cat">Lead Generation</div>
+        <div class="i-panel-cat">Marketing Systems</div>
+        <div class="i-panel-cat">Playbooks</div>
+        <div class="i-panel-cat">Revenue Architecture</div>
+        <div class="i-panel-cat">Hiring &amp; Team</div>
+      </div>
+      <div class="i-panel-stats">
+        <div class="i-panel-stat"><span>Essays</span><span>12</span></div>
+        <div class="i-panel-stat"><span>Categories</span><span>6</span></div>
+        <div class="i-panel-stat"><span>Updated</span><span>Apr '26</span></div>
+      </div>
+    </div>
+    <!-- C: broadsheet right side -->
+    <div class="i-right">
+      <div class="i-mast">
+        <div class="i-mast-top"><span>Vol. I · April 2026</span><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:var(--label)">Systems as a catalyst for exponential growth</span><span>That Works</span></div>
+        <div class="i-mast-tag">Frameworks, breakdowns and honest opinions on GTM, lead generation, and the infrastructure behind B2B growth.</div>
+      </div>
+      <div class="i-bar"><span class="on">All</span><span>GTM & Growth</span><span>Lead Gen</span><span>Systems</span><span>Playbooks</span><span>Revenue</span></div>
+      <div class="i-grid">
+        <!-- Lead story -->
+        <div class="i-grid-col">
+          <span class="i-lead-overline">★ Featured · GTM & Growth</span>
+          <div class="i-lead-hed">The Founder-Led Sales Ceiling: Why Every Founder Hits It and How Systems Break Through</div>
+          <div class="i-lead-thick"></div>
+          <p class="i-lead-dek">Every founder who is good at sales eventually becomes the bottleneck. Not because they're doing it wrong — but because they're doing it at all.</p>
+          <div class="i-lead-pq"><p>"The answer isn't hiring faster. It's building the system before you feel the pressure."</p></div>
+          <p class="i-lead-dek">Systems replace the founder in the repeatable parts of the sale.</p>
+          <div class="i-lead-meta">March 2026 · 8 min read · That Works</div>
+        </div>
+        <!-- Secondary stories -->
+        <div class="i-grid-col">
+          <div class="i-story"><span class="i-story-cat cat c-lead">Lead Generation</span><div class="i-story-hed">Cold Outreach That Doesn't Feel Cold</div><p class="i-story-dek">The gap between spray-and-pray and genuine personalisation is infrastructure, not effort.</p><div class="i-story-meta">Feb 2026 · 6 min</div></div>
+          <div class="i-story"><span class="i-story-cat cat c-mkt">Marketing Systems</span><div class="i-story-hed">Marketing Ops Is Not Marketing</div><p class="i-story-dek">Separating strategy from execution is the unlock most teams never find.</p><div class="i-story-meta">Jan 2026 · 5 min</div></div>
+          <div class="i-story"><span class="i-story-cat cat c-play">Playbooks</span><div class="i-story-hed">The 90-Day GTM Playbook for Series A</div><p class="i-story-dek">Sequenced, budgeted, decision-ready.</p><div class="i-story-meta">Jan 2026 · 11 min</div></div>
+          <div class="i-story"><span class="i-story-cat cat c-gtm">GTM &amp; Growth</span><div class="i-story-hed">Why Your ICP Is Wrong</div><p class="i-story-dek">Real ICPs come from closed-won data, not optimistic guesswork.</p><div class="i-story-meta">Dec 2025 · 7 min</div></div>
+        </div>
+      </div>
+      <div class="i-ticker">
+        <a class="tick" href="#"><div class="tick-n">05</div><div class="tick-h">Your First Marketing Hire</div><div class="tick-m">Hiring · Dec 2025</div></a>
+        <a class="tick" href="#"><div class="tick-n">06</div><div class="tick-h">Revenue Architecture That Compounds</div><div class="tick-m">Revenue · Nov 2025</div></a>
+        <a class="tick" href="#"><div class="tick-n">07</div><div class="tick-h">Attribution Is a Lie</div><div class="tick-m">GTM · Nov 2025</div></a>
+        <a class="tick" href="#"><div class="tick-n">08</div><div class="tick-h">The Real Cost of a Leaky CRM</div><div class="tick-m">Systems · Oct 2025</div></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

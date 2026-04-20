@@ -575,3 +575,13 @@
   color: #f87171;
   margin-top: 4px;
 }
+
+@media (max-width: 768px) {
+  .jr-hero { padding: 80px 20px 32px; }
+  .jr-section { padding: 24px 20px; }
+  .jr-form-section { padding-bottom: 60px; }
+  .jr-form-section .jr-inner { padding: 32px 20px; }
+  .jr-form-row { grid-template-columns: 1fr; }
+  .jr-apply-hed { font-size: clamp(2rem, 10vw, 3rem); margin-bottom: 32px; }
+  .jr-not-found { padding: 120px 20px; }
+}

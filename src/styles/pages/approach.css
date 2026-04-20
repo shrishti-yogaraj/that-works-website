@@ -1,7 +1,6 @@
 /* ── APPROACH PAGE ── */
 .approach-hero {
   padding: 120px 40px 80px;
-  border-bottom: 1px solid var(--border);
 }
 .approach-hero-inner {
   max-width: 760px;
@@ -33,7 +32,6 @@
 /* Gap section */
 .gap-section {
   padding: 100px 40px;
-  border-bottom: 1px solid var(--border);
 }
 .gap-inner { max-width: 1200px; margin: 0 auto; }
 .gap-inner h2 {
@@ -88,8 +86,6 @@
 /* Pillars */
 .pillars-section {
   padding: 100px 40px;
-  border-bottom: 1px solid var(--border);
-  background: var(--surface);
 }
 .pillars-inner { max-width: 1200px; margin: 0 auto; }
 .pillars-header { text-align: center; margin-bottom: 64px; }
@@ -137,7 +133,6 @@
 /* Process */
 .process-section {
   padding: 100px 40px;
-  border-bottom: 1px solid var(--border);
 }
 .process-inner { max-width: 1200px; margin: 0 auto; }
 .process-header { text-align: center; margin-bottom: 72px; }
@@ -186,8 +181,6 @@
 /* Deliverables */
 .deliverables-section {
   padding: 100px 40px;
-  border-bottom: 1px solid var(--border);
-  background: var(--surface);
 }
 .deliverables-inner { max-width: 800px; margin: 0 auto; }
 .deliverables-header { text-align: center; margin-bottom: 56px; }
@@ -224,7 +217,6 @@
 /* Promise */
 .promise-section {
   padding: 100px 40px;
-  border-bottom: 1px solid var(--border);
 }
 .promise-inner {
   max-width: 760px;
@@ -246,9 +238,15 @@
 }
 
 @media (max-width: 768px) {
+  .approach-hero { padding: 80px 20px 48px; }
+  .gap-section { padding: 60px 20px; }
   .gap-grid { grid-template-columns: 1fr; }
+  .pillars-section { padding: 60px 20px; }
   .pillars-grid { grid-template-columns: 1fr 1fr; }
+  .process-section { padding: 60px 20px; }
   .process-steps { grid-template-columns: 1fr 1fr; }
   .process-steps::before { display: none; }
+  .deliverables-section { padding: 60px 20px; }
   .deliverables-grid { grid-template-columns: 1fr; }
+  .promise-section { padding: 60px 20px; }
 }

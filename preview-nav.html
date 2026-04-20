@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nav Layout Options — That Works</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #12100f;
+      --surface: #1a1816;
+      --border: #2a2826;
+      --orange: #ff5c00;
+      --text: #f0e6d3;
+      --muted: #9a9088;
+      --nav-link: #c8bdb5;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0e0c0b;
+      font-family: 'Cabinet Grotesk', sans-serif;
+      color: var(--text);
+      padding: 60px 40px;
+    }
+
+    .page-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 48px;
+    }
+
+    /* ── Option wrapper ── */
+    .option {
+      margin-bottom: 64px;
+    }
+    .option-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .option-desc {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      max-width: 640px;
+      line-height: 1.6;
+    }
+
+    /* ── Shared nav base ── */
+    .nav {
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      height: 72px;
+      gap: 0;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      flex-shrink: 0;
+    }
+    .nav-logo span { color: var(--orange); }
+    .cta-btn {
+      padding: 9px 20px;
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .nav-link {
+      font-size: 14px;
+      color: var(--nav-link);
+      text-decoration: none;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.15s;
+      position: relative;
+    }
+    .nav-link:hover { color: var(--text); }
+    .nav-link.active { color: var(--text); }
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+    .divider {
+      width: 1px;
+      height: 20px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    /* ── OPTION A: Blog right, adjacent to CTA ── */
+    .nav-a .nav-links-left {
+      display: flex;
+      gap: 32px;
+      flex: 1;
+      margin-left: 48px;
+    }
+    .nav-a .nav-links-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .nav-a .blog-link {
+      font-size: 14px;
+      color: var(--nav-link);
+      text-decoration: none;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.15s;
+    }
+    .nav-a .blog-link:hover { color: var(--text); }
+
+    /* ── OPTION B: Blog with dot badge ── */
+    .nav-b .nav-links-left {
+      display: flex;
+      gap: 32px;
+      flex: 1;
+      margin-left: 48px;
+    }
+    .nav-b .nav-links-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .blog-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 14px;
+      color: var(--nav-link);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .blog-badge:hover { color: var(--text); }
+    .blog-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+
+    /* ── OPTION C: Split layout ── */
+    .nav-c {
+      justify-content: space-between;
+    }
+    .nav-c .nav-center {
+      display: flex;
+      gap: 32px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .nav-c-wrap {
+      position: relative;
+    }
+    .nav-c .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-left: auto;
+    }
+
+    /* ── OPTION D: Pill container ── */
+    .nav-d {
+      justify-content: space-between;
+    }
+    .nav-pill-group {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 5px 6px;
+    }
+    .pill-link {
+      font-size: 13px;
+      color: var(--nav-link);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 100px;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .pill-link:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+    .pill-link.active {
+      color: var(--text);
+      background: var(--surface);
+    }
+    .pill-link.blog {
+      color: var(--orange);
+    }
+    .pill-link.blog:hover { color: var(--orange); background: rgba(255,92,0,0.08); }
+
+    /* ── OPTION E: Minimal — Blog as a standalone right-side element ── */
+    .nav-e {
+      justify-content: space-between;
+    }
+    .nav-e .nav-links-center {
+      display: flex;
+      gap: 32px;
+      margin: 0 auto;
+    }
+    .nav-e .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .blog-standalone {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      padding: 7px 14px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      transition: all 0.15s;
+    }
+    .blog-standalone:hover { border-color: var(--orange); color: var(--orange); }
+    .blog-standalone-arrow { font-size: 12px; opacity: 0.6; }
+  </style>
+</head>
+<body>
+
+  <p class="page-label">Nav Layout Options — That Works</p>
+
+  <!-- ── OPTION A ─────────────────────────────────────────────────────────── -->
+  <div class="option">
+    <div class="option-label">Option A — Blog adjacent to CTA</div>
+    <div class="option-desc">
+      Utility links (Home, How It Works, Services, FAQ) sit on the left. Blog moves to the right side, separated by a thin divider, immediately before "Book a Call". Signals that Blog is a destination, not a utility.
+    </div>
+    <div class="nav nav-a">
+      <a href="#" class="nav-logo">that<span>.</span>works</a>
+      <div class="nav-links-left">
+        <a href="#" class="nav-link active">Home</a>
+        <a href="#" class="nav-link">How It Works</a>
+        <a href="#" class="nav-link">Services</a>
+        <a href="#" class="nav-link">FAQ</a>
+      </div>
+      <div class="nav-links-right">
+        <div class="divider"></div>
+        <a href="#" class="nav-link">Blog</a>
+        <div class="divider"></div>
+        <button class="cta-btn">Book a Call</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── OPTION B ─────────────────────────────────────────────────────────── -->
+  <div class="option">
+    <div class="option-label">Option B — Blog with orange dot badge</div>
+    <div class="option-desc">
+      Same split as Option A, but Blog gets a small orange dot prefix — a visual signal that there's fresh content. Works well if you publish regularly. The dot can also act as a "new post" indicator.
+    </div>
+    <div class="nav nav-b">
+      <a href="#" class="nav-logo">that<span>.</span>works</a>
+      <div class="nav-links-left">
+        <a href="#" class="nav-link">Home</a>
+        <a href="#" class="nav-link active">How It Works</a>
+        <a href="#" class="nav-link">Services</a>
+        <a href="#" class="nav-link">FAQ</a>
+      </div>
+      <div class="nav-links-right">
+        <div class="divider"></div>
+        <a href="#" class="blog-badge">
+          <span class="blog-badge-dot"></span>
+          Blog
+        </a>
+        <div class="divider"></div>
+        <button class="cta-btn">Book a Call</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── OPTION C ─────────────────────────────────────────────────────────── -->
+  <div class="option">
+    <div class="option-label">Option C — True split layout</div>
+    <div class="option-desc">
+      Logo far left. Core nav links perfectly centred. Blog + Book a Call grouped on the right. Clean hierarchy — the centre is purely informational, the right is all action.
+    </div>
+    <div class="nav-c-wrap" style="position: relative;">
+      <div class="nav nav-c">
+        <a href="#" class="nav-logo">that<span>.</span>works</a>
+        <div class="nav-center">
+          <a href="#" class="nav-link">Home</a>
+          <a href="#" class="nav-link">How It Works</a>
+          <a href="#" class="nav-link active">Services</a>
+          <a href="#" class="nav-link">FAQ</a>
+        </div>
+        <div class="nav-right">
+          <div class="divider"></div>
+          <a href="#" class="nav-link">Blog</a>
+          <button class="cta-btn">Book a Call</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── OPTION D ─────────────────────────────────────────────────────────── -->
+  <div class="option">
+    <div class="option-label">Option D — Pill group</div>
+    <div class="option-desc">
+      All nav links wrapped in a floating pill container. Blog sits inside but is coloured orange — it pops against the other links without leaving the group. Feels product-y and intentional. Active page gets a filled background within the pill.
+    </div>
+    <div class="nav nav-d">
+      <a href="#" class="nav-logo">that<span>.</span>works</a>
+      <div class="nav-pill-group">
+        <a href="#" class="pill-link">Home</a>
+        <a href="#" class="pill-link">How It Works</a>
+        <a href="#" class="pill-link active">Services</a>
+        <a href="#" class="pill-link">FAQ</a>
+        <div class="divider" style="margin: 0 4px;"></div>
+        <a href="#" class="pill-link blog">Blog</a>
+      </div>
+      <button class="cta-btn">Book a Call</button>
+    </div>
+  </div>
+
+  <!-- ── OPTION E ─────────────────────────────────────────────────────────── -->
+  <div class="option">
+    <div class="option-label">Option E — Blog as a bordered button</div>
+    <div class="option-desc">
+      Blog becomes a ghost button — bordered, distinct, right-side. It echoes the "Book a Call" CTA treatment but without the fill. Two clear actions on the right: read or talk. Everything else is informational on the left.
+    </div>
+    <div class="nav nav-e">
+      <a href="#" class="nav-logo">that<span>.</span>works</a>
+      <div class="nav-links-center">
+        <a href="#" class="nav-link">Home</a>
+        <a href="#" class="nav-link">How It Works</a>
+        <a href="#" class="nav-link active">Services</a>
+        <a href="#" class="nav-link">FAQ</a>
+      </div>
+      <div class="nav-right">
+        <a href="#" class="blog-standalone">Blog <span class="blog-standalone-arrow">↗</span></a>
+        <button class="cta-btn">Book a Call</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

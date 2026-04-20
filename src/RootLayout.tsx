@@ -35,6 +35,29 @@ const ContactPopupController = () => {
   );
 };
 
+// Detect stale chunk failures (happens after a Netlify redeploy when a user
+// still has the old page cached). Prompt them to refresh rather than crashing.
+if (typeof window !== "undefined") {
+  window.addEventListener("unhandledrejection", (event) => {
+    const msg = event.reason?.message ?? "";
+    const isChunkError =
+      msg.includes("Failed to fetch dynamically imported module") ||
+      msg.includes("Importing a module script failed") ||
+      msg.includes("Loading chunk") ||
+      event.reason?.name === "ChunkLoadError";
+    if (isChunkError) {
+      event.preventDefault();
+      // Avoid spamming if the user already dismissed once this session
+      if (!sessionStorage.getItem("chunk-reload-prompted")) {
+        sessionStorage.setItem("chunk-reload-prompted", "1");
+        if (window.confirm("The site has been updated. Reload to get the latest version?")) {
+          window.location.reload();
+        }
+      }
+    }
+  });
+}
+
 const RootLayout = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>

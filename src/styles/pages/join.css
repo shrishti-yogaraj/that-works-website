@@ -682,3 +682,33 @@
   color: var(--muted);
   line-height: 1.7;
 }
+
+@media (max-width: 768px) {
+  .join-hero { padding: 80px 20px 40px; }
+  .join-who { padding: 40px 20px; }
+  .join-how { padding: 24px 20px 40px; }
+  .join-roles { padding: 60px 20px; }
+  .join-open { padding: 24px 20px 60px; }
+  .join-open-inner {
+    padding: 32px 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .join-open-left { max-width: 100%; }
+  .join-open-cta { width: 100%; justify-content: center; }
+  .join-role-card-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 20px;
+  }
+  .join-role-card-right {
+    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .join-popup { padding: 40px 24px; }
+}

@@ -24,6 +24,9 @@ import "./styles/pages/approach.css";
 import "./styles/pages/marketing-os.css";
 import "./styles/pages/faq.css";
 import "./styles/pages/hub.css";
+import "./styles/pages/dissection.css";
+import "./styles/pages/lab-item.css";
+import "./styles/pages/arsenal-item.css";
 
 const BASE = "https://thatworksco.com";
 const OG_IMG = `${BASE}/logo.svg`;

@@ -24,6 +24,9 @@ import BookACall from "./pages/BookACall";
 import FAQ from "./pages/FAQ";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import DissectionPost from "./pages/DissectionPost";
+import LabItemPage from "./pages/LabItemPage";
+import ArsenalItem from "./pages/ArsenalItem";
 import NotFound from "./pages/NotFound";
 
 export const routes: RouteObject[] = [
@@ -49,6 +52,9 @@ export const routes: RouteObject[] = [
       { path: "/lab", element: <Lab /> },
       { path: "/join", element: <Join /> },
       { path: "/join/:slug", element: <JoinRole /> },
+      { path: "/dissections/:slug", element: <DissectionPost /> },
+      { path: "/lab/:slug", element: <LabItemPage /> },
+      { path: "/arsenal/:slug", element: <ArsenalItem /> },
       { path: "/faq", element: <FAQ /> },
       { path: "/privacy", element: <Privacy /> },
       { path: "/terms", element: <Terms /> },
