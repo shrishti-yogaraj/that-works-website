@@ -28,6 +28,8 @@ import DissectionPost from "./pages/DissectionPost";
 import LabItemPage from "./pages/LabItemPage";
 import ArsenalItem from "./pages/ArsenalItem";
 import NotFound from "./pages/NotFound";
+import Proposals from "./pages/Proposals";
+import In10s from "./pages/proposals/In10s";
 
 export const routes: RouteObject[] = [
   {
@@ -58,6 +60,8 @@ export const routes: RouteObject[] = [
       { path: "/faq", element: <FAQ /> },
       { path: "/privacy", element: <Privacy /> },
       { path: "/terms", element: <Terms /> },
+      { path: "/proposals", element: <Proposals /> },
+      { path: "/proposals/in10s", element: <In10s /> },
       { path: "*", element: <NotFound /> },
     ],
   },
