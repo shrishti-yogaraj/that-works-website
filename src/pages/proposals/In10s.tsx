@@ -249,6 +249,7 @@ const In10s = () => {
   const [activePage, setActivePage] = useState<'overview' | 'deliverables' | 'fineprint'>('overview');
 
   useEffect(() => {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     window.scrollTo({ top: 0, behavior: 'instant' });
     const fadeObserver = new IntersectionObserver(
       (entries) => { entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }); },
@@ -278,7 +279,7 @@ const In10s = () => {
       {/* COVER */}
       <section className="cover" id="cover">
         <div className="cover-header-row">
-          <img src="/logo.svg" alt="That Works" className="cover-logo" />
+          <img src="/logo.svg" alt="That Works" className="cover-logo" height="65" />
           <div className="doc-label">GTM Proposal · Confidential</div>
         </div>
         <div className="cover-body">
@@ -329,7 +330,7 @@ const In10s = () => {
       </section>
 
       {/* STRATEGIC FRAME */}
-      <section className="strategic-frame" id="frame">
+      <section className="strategic-frame" id="edge">
         <div className="section-inner fade-in">
           <div className="eyebrow">The In10s edge</div>
           <h2>Three facts that make<br />10 weeks <em>enough</em>.</h2>
@@ -455,7 +456,7 @@ const In10s = () => {
       {/* DELIVERABLES INTRO */}
       <section className="deliverables-intro">
         <div className="cover-header-row">
-          <img src="/logo.svg" alt="That Works" className="cover-logo" />
+          <img src="/logo.svg" alt="That Works" className="cover-logo" height="65" />
           <div className="doc-label">GTM Proposal · Confidential</div>
         </div>
         <div className="deliverables-intro-inner fade-in">
@@ -497,7 +498,7 @@ const In10s = () => {
       {/* FINE PRINT INTRO */}
       <section className="fineprint-intro">
         <div className="cover-header-row">
-          <img src="/logo.svg" alt="That Works" className="cover-logo" />
+          <img src="/logo.svg" alt="That Works" className="cover-logo" height="65" />
           <div className="doc-label">GTM Proposal · Confidential</div>
         </div>
         <div className="section-inner fade-in">
@@ -597,7 +598,7 @@ const In10s = () => {
 
       {/* FOOTER */}
       <footer className="proposal-footer">
-        <img src="/logo.svg" alt="That Works Co." className="footer-logo" />
+        <img src="/logo.svg" alt="That Works Co." className="footer-logo" height="81" />
         <div className="footer-links">
           <a href="https://thatworksco.com" target="_blank" rel="noreferrer" className="footer-link">Visit our website</a>
           <span className="footer-sep">|</span>

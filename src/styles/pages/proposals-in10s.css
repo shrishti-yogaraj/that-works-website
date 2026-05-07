@@ -210,13 +210,8 @@
 
 /* ─────────── SCROLL FADE ─────────── */
 .in10s-root .fade-in {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.in10s-root .fade-in.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 /* ─────────── COVER ─────────── */
@@ -2657,12 +2652,17 @@
 .in10s-root .deliverables-intro-inner {
   max-width: 1100px;
   margin: 0 auto;
+  padding-top: 60px;
 }
 
 /* ─────────── FINE PRINT INTRO ─────────── */
 .in10s-root .fineprint-intro {
   background: var(--charcoal);
   padding: 20px 80px 60px;
+}
+
+.in10s-root .fineprint-intro .section-inner {
+  padding-top: 60px;
 }
 
 /* ─────────── PAYMENT TERMS ─────────── */
