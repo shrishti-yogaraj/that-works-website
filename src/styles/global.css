@@ -185,3 +185,46 @@ h1 em, h2 em, h3 em, h4 em { font-weight: 700; }
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
+/* ── PROPOSALS GATE ── */
+.proposals-gate {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  gap: 20px;
+}
+.proposals-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin: 0;
+}
+.proposals-heading {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.1;
+}
+.proposals-sub {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 480px;
+  line-height: 1.7;
+  margin: 0;
+}
+.proposals-home {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  margin-top: 8px;
+  transition: color 0.2s;
+}
+.proposals-home:hover { color: var(--text); }
