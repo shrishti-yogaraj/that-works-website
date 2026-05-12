@@ -941,6 +941,34 @@
   line-height: 1.6;
 }
 
+/* ─────────── MULTI-PRODUCT NOTE ─────────── */
+.in10s-root .multi-product-note {
+  margin-top: 48px;
+  padding: 28px 32px;
+  border-left: 3px solid var(--lavender);
+  background: rgba(196,181,253,0.06);
+  border-radius: 0 8px 8px 0;
+}
+
+.in10s-root .multi-product-label {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lavender);
+  margin-bottom: 12px;
+}
+
+.in10s-root .multi-product-body {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(240,230,211,0.7);
+  line-height: 1.65;
+  max-width: 760px;
+}
+
 /* ─────────── BUCKETS ONE-LINER LIST ─────────── */
 .in10s-root .buckets-list {
   list-style: none;
@@ -1929,7 +1957,154 @@
   font-weight: 700;
   color: var(--orange);
   text-align: right;
-  white-space: nowrap;
+}
+
+/* ─────────── KPI KEY ─────────── */
+.in10s-root .kpi-key {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 40px;
+  padding: 20px 24px;
+  background: rgba(240,230,211,0.05);
+  border: 1px solid rgba(240,230,211,0.1);
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.in10s-root .kpi-key-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 13px;
+  color: rgba(240,230,211,0.6);
+}
+
+/* ─────────── KPI TAGS ─────────── */
+.in10s-root .kpi-tag {
+  display: block;
+  width: fit-content;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-bottom: 4px;
+}
+
+.in10s-root .kpi-key .kpi-tag {
+  display: inline-block;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.in10s-root .kpi-tag-committed {
+  background: rgba(255,92,0,0.15);
+  color: var(--orange);
+}
+
+.in10s-root .kpi-tag-influenced {
+  background: rgba(251,191,36,0.18);
+  color: var(--amber);
+}
+
+.in10s-root .kpi-tag-tracked {
+  background: rgba(196,181,253,0.18);
+  color: var(--lavender);
+}
+
+/* Tags inside kpi-cards (cream background) need darker text */
+.in10s-root .kpi-card .kpi-tag-influenced {
+  background: rgba(180,83,9,0.1);
+  color: #92400e;
+}
+
+.in10s-root .kpi-card .kpi-tag-tracked {
+  background: rgba(109,40,217,0.1);
+  color: #5b21b6;
+}
+
+/* ─────────── KPI NOTES ─────────── */
+.in10s-root .kpi-notes {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.in10s-root .kpi-note {
+  padding: 22px 24px;
+  border: 1px dashed rgba(18,16,15,0.14);
+  border-radius: 6px;
+}
+
+.in10s-root .kpi-note-label {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--char-mute);
+  margin-bottom: 10px;
+}
+
+.in10s-root .kpi-note-body {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 14px;
+  color: rgba(18,16,15,0.6);
+  line-height: 1.65;
+}
+
+/* ─────────── KPI SPLIT NOTE ─────────── */
+.in10s-root .kpi-split-note {
+  margin-top: 52px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(18,16,15,0.1);
+}
+
+.in10s-root .kpi-split-label {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 2.2vw, 32px);
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.in10s-root .kpi-split-body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.in10s-root .kpi-split-col {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 15px;
+  color: var(--char-mute);
+  line-height: 1.65;
+}
+
+.in10s-root .kpi-split-col strong {
+  display: block;
+  color: var(--charcoal);
+  margin-bottom: 6px;
+}
+
+.in10s-root .kpi-split-footer {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px dashed rgba(18,16,15,0.1);
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 15px;
+  color: var(--char-mute);
+  line-height: 1.65;
+}
+
+.in10s-root .kpi-split-footer strong {
+  color: var(--charcoal);
 }
 
 /* ─────────── COLLAPSIBLE SECTIONS ─────────── */
