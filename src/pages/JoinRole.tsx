@@ -19,68 +19,70 @@ const roleData: Record<string, {
   workOn: { label: string; desc: string }[];
   closing: string[];
   whoYouAre?: { lead: string; body: string }[];
+  howItWorks?: string[];
   offer: string[];
   questions: { q: string; hint?: string; placeholder?: string }[];
 }> = {
-  "marketing-intern": {
-    title: "Marketing Generalist Intern",
+  "content-social-intern": {
+    title: "Content & Social Media Intern",
     type: "Internship · Converts to full-time",
-    stipend: "₹10,000 – ₹20,000 / month",
-    intro: `This is a real, messy, high-context generalist position where you'll touch every part of how we grow the business and how we deliver for clients. We know what we need from you, but it's also important that you know what you want from us. You'll have a genuine say in where you go deep, what you own, and how your role develops. The best version of this internship is one you help define.`,
+    stipend: "",
+    intro: `You'll own how That Works shows up in public, and then you'll learn to run that same machine for our clients. We build content systems, not just content. By the end of this internship you'll know how to do both: write things worth reading, and build the engine that publishes them consistently without anyone burning out.
+
+We know what we need from you, but it's also important that you know what you want from us. You'll have a genuine say in where you go deep, what you own, and how your role develops. The best version of this internship is one you help define.`,
     workOn: [
-      { label: "Content production", desc: "Writing LinkedIn posts, editing thought leadership pieces, building content calendars, helping clients figure out what the hell to say and how to say it." },
-      { label: "Systems building", desc: "Setting up Notion workspaces, designing workflows, building dashboards, making sure nothing falls through the cracks." },
-      { label: "Client delivery", desc: "Sitting in on strategy calls, doing competitive research, auditing funnels, building go-to-market plans alongside the team." },
-      { label: "Internal ops", desc: "Maintaining our own content engine, keeping the CRM clean, running experiments, figuring out what's working and what isn't." },
-      { label: "Brand building", desc: "Helping us show up consistently across LinkedIn, Reddit, our site, everywhere we need to have a presence." },
+      { label: "Writing and editing", desc: "LinkedIn posts, thought leadership pieces, long-form breakdowns. Drafting from scratch, and editing AI-assisted drafts to give them the hooks, texture, and point of view that only a human touch brings. There's no editing SOP yet. You'll help write it, and it becomes part of how we deliver for every client after you." },
+      { label: "Running the content engine", desc: "We build automated content workflows for ourselves and for clients: pipelines that turn ideas into drafts, images, and carousels. You'll operate these systems. Feeding them, quality-checking what comes out, scheduling, repurposing one strong idea into five formats. You don't need to know how to build automations; you need to become excellent at running them." },
+      { label: "Content calendars and consistency", desc: "Planning what goes out, where, and when, for us and eventually for clients. Keeping the calendar honest. Noticing when we've gone quiet and fixing it." },
+      { label: "Community and distribution", desc: "Helping us show up consistently across LinkedIn, Reddit, and our site. Everywhere our people are. Watching what lands, tracking engagement, and feeding what you learn back into what we make next." },
+      { label: "Client content work", desc: "As you get good, you'll pick up real client content: drafting for founder voices that aren't ours, adapting to different brand guidelines, and seeing your work published under real companies' names." },
     ],
     closing: [
-      "Some weeks you'll be deep in a Notion build. Some weeks you'll be drafting three months of content. Some weeks you'll be researching a client's competitors and building out positioning frameworks. It changes constantly, and that's the point.",
-      "If you want a clearly defined role where you do the same thing every day, this isn't it. If you want to learn how marketing actually works end-to-end by doing it in real time with real stakes, keep reading.",
+      "Some weeks you'll be deep in a content calendar. Some weeks you'll be editing fifteen drafts. Some weeks you'll be figuring out why one post did 40x the numbers of everything else that month. It changes constantly, and that's the point.",
+      "If you want a clearly defined role where you do the same thing every day, this isn't it. If you want to learn how content actually works, the writing and the system behind it, by doing it in real time with real stakes, keep reading.",
     ],
     whoYouAre: [
-      { lead: "Curious in a way that's hard to turn off.", body: "You read things no one asked you to read, notice campaigns other people scroll past, and have opinions about why things work." },
-      { lead: "You've spent time in marketing, formally or informally.", body: "A course, a job, a project, a brand you've pulled apart in your head. You have some grounding and you're here to build on it." },
-      { lead: "Success is a real motivator for you.", body: "You keep score. You track whether things are actually working, and you care about the outcome, not just the effort." },
-      { lead: "Organised without being rigid.", body: "You move fluidly between different kinds of work, hold a lot of moving pieces, keep track of what matters, and flag things before they become problems." },
+      { lead: "You already write.", body: "Somewhere, anywhere. LinkedIn, a blog, a newsletter, notes app essays nobody's seen. You don't need an audience; you need the habit." },
+      { lead: "You notice content.", body: "You can tell why one post worked and another died, and you have opinions about it that you can defend." },
+      { lead: "Organised without being rigid.", body: "Content ops is deadlines, calendars, and a hundred small moving pieces. You keep track of what matters and flag things before they become problems." },
+      { lead: "You use AI tools and you can tell when writing sounds like AI.", body: "Both halves matter to us equally." },
+    ],
+    howItWorks: [
+      "The role has three stages, and moving through them depends on performance, not time served alone.",
+      "Months 1 to 3: unpaid internship. Part-time or full-time, whatever your schedule allows. You get trained, you do real work, and we both find out if this is a fit.",
+      "Months 4 onwards: paid internship with a monthly stipend. Part-time or full-time, depending on your availability.",
+      "Full-time conversion happens after 3 months of the paid internship, or when you graduate if you're still studying, whichever is later. We're not hiring an intern, we're training our first content hire.",
+      "If your circumstances change along the way, talk to us and we'll work it out case by case.",
     ],
     offer: [
-      "₹10,000 – ₹20,000/month stipend, based on age and education",
-      "3-month conversion window to a full-time role",
+      "A full-time offer path from day one",
+      "Real work from day one. No busywork, no coffee runs. Your writing gets published, your calendars ship.",
+      "Direct access to the founder. You're not three layers away from decisions, you're in the room.",
       "Flexible working hours (we care about output, not when you're online)",
-      "Remote-first with occasional in-person time",
-      "Generous paid leave",
-      "Real work from day one. No busywork, no coffee runs.",
-      "Direct access to the founding team",
+      "Remote-first with occasional in-person time in Bangalore",
+      "A monthly stipend once the role converts to a paid internship",
+      "You'll leave knowing how to run a content operation end to end, which almost nobody your age can say",
     ],
     questions: [
       {
-        q: "What's a piece of marketing you saw recently that made you stop and think 'I wish I'd made that'?",
-        placeholder: "Link it. Tell us why it hit.",
+        q: "Show us one piece of content (anyone's but yours) that you think is genuinely great.",
+        placeholder: "Don't just tell us it's great. Tell us what it's doing. Who's it for, what's the hook, why did this format and not another, what would most people have done instead? Link the piece and walk us through your read of it.",
       },
       {
-        q: "Pick a B2B brand whose marketing you pay attention to. Tell us about one thing they did that didn't work, or that you thought was a miss.",
-        placeholder: "What would you have done differently?",
+        q: "A founder tells you: \"We post three times a week and nothing happens.\" What are the first three questions you'd ask them?",
       },
       {
-        q: "We work primarily with early-stage B2B founders. What do you think most founders get wrong about marketing when they're just starting to scale?",
-        placeholder: "Tell us what you actually think, not what sounds smart.",
+        q: "Share something you've written. Anything. A post, an essay, a caption you're proud of, a rant in your notes app. We're reading for voice, not polish.",
       },
       {
-        q: "Tell us about something you built, created, led, designed, organised, or figured out.",
-        hint: "Could be a project, a system, a team, a campaign, a plan, an event, anything. We want to understand how you think, create, and get things done.",
-        placeholder: "Walk us through it. What was the thing, how did you approach it, and what does it tell you about how you work?",
-      },
-      {
-        q: "What do you actually want to do in marketing long-term?",
-        placeholder: "If you know the kind of work you love, tell us what it is. If you don't know yet, tell us what you're trying to figure out or want to try. This won't impact your application, we're just curious.",
+        q: "Where do you want to be in content/marketing three years from now?",
       },
     ],
   },
   "finance-intern": {
     title: "Finance Intern",
     type: "Internship · Converts to full-time",
-    stipend: "₹10,000 – ₹20,000 / month",
+    stipend: "",
     intro: "This is not a role where you sit in a corner and reconcile spreadsheets. This is the financial engine of a fast-moving consultancy, and you'll be in the middle of it. You'll see how a services business actually makes money, where it leaks money, and how to build the systems that keep it healthy. We know what we need from you, but it's equally important that you know what you want from us. You'll have a say in where you go deep and how your role develops.",
     workOn: [
       { label: "Financial tracking and reporting", desc: "Building and maintaining our P&L, cash flow forecasts, and financial dashboards. The numbers that tell us whether we're actually on track." },
@@ -99,14 +101,21 @@ const roleData: Record<string, {
       { lead: "Precise and organised without being slow.", body: "You catch errors others miss, document things properly, and don't let loose ends sit. But you can also move at pace when you need to." },
       { lead: "You want to understand the whole picture.", body: "Not just the numbers in isolation. You want to know what they mean for the business and what decisions they should drive." },
     ],
+    howItWorks: [
+      "The role has three stages, and moving through them depends on performance, not time served alone.",
+      "Months 1 to 3: unpaid internship. Part-time or full-time, whatever your schedule allows. You get trained, you do real work, and we both find out if this is a fit.",
+      "Months 4 onwards: paid internship with a monthly stipend. Part-time or full-time, depending on your availability.",
+      "Full-time conversion happens after 3 months of the paid internship, or when you graduate if you're still studying, whichever is later. We're not hiring an intern, we're training our first finance hire.",
+      "If your circumstances change along the way, talk to us and we'll work it out case by case.",
+    ],
     offer: [
-      "₹10,000 – ₹20,000/month stipend, based on age and education",
-      "3-month conversion window to a full-time role",
-      "Direct access to the founding team",
+      "A full-time offer path from day one",
+      "Real work from day one. No busywork, no coffee runs. Real numbers, real stakes, real decisions.",
+      "Direct access to the founder. You're not three layers away from decisions, you're in the room.",
       "Flexible working hours (we care about output, not when you're online)",
-      "Remote-first with occasional in-person time",
-      "Generous paid leave",
-      "Real work from day one. No busywork, no coffee runs.",
+      "Remote-first with occasional in-person time in Bangalore",
+      "A monthly stipend once the role converts to a paid internship",
+      "You'll leave knowing how a services business actually works financially, end to end, which almost nobody your age can say",
     ],
     questions: [
       {
@@ -131,57 +140,57 @@ const roleData: Record<string, {
       },
     ],
   },
-  "ops-admin-intern": {
-    title: "Ops & Admin Intern",
+  "sales-intern": {
+    title: "Sales Intern (B2B)",
     type: "Internship · Converts to full-time",
-    stipend: "₹10,000 – ₹20,000 / month",
-    intro: "Every system that runs smoothly runs because someone built it and someone maintains it. That someone is you. This is the role that keeps the whole operation from falling apart, and we mean that as a compliment. You'll touch every part of how we work, internally and with clients. We know what we need from you, but we're equally invested in what you get out of this. The best version of this internship is one you help define.",
+    stipend: "",
+    intro: `Nobody teaches sales. Every company wants an AE with two years of experience, and no one can tell you where those two years are supposed to come from. This role is where they come from.
+
+You'll learn B2B sales from the ground up, selling real engagements to real founders, with structured training from a sales coach who trains and coaches leaders at companies like Accenture and IBM. You start with prospecting and pipeline, you grow into running full deal cycles yourself, and if you're good, this converts into a full-time sales role with a fixed salary and commission. We're taking on two people for this, and we're telling you the whole path upfront.`,
     workOn: [
-      { label: "Systems and processes", desc: "Building and maintaining the operational backbone of the business. Notion workspaces, SOPs, workflows, the stuff that makes everything repeatable." },
-      { label: "Scheduling and coordination", desc: "Keeping the team and clients in sync. Meetings happen when they should, nothing falls through the cracks, everyone knows what's going on." },
-      { label: "Client operations", desc: "Onboarding new clients, tracking deliverables, making sure what we promise gets delivered the way we promised it." },
-      { label: "Tool and stack management", desc: "Owning our tool stack. Knowing what we're paying for, what we're actually using, and what we should add or cut." },
-      { label: "Internal projects", desc: "Helping us get better at how we work. If something is inefficient, you'll notice it, flag it, and help fix it." },
+      { label: "Prospecting and pipeline", desc: "Building lists of companies that fit who we serve, researching them properly, and reaching out in a way that doesn't feel like spam because it isn't. Email, LinkedIn, communities. Your first scoreboard is simple: qualified meetings booked." },
+      { label: "Learning the craft", desc: "Structured sales training from day one. Discovery, qualification, objection handling, negotiation, follow-up. Not YouTube-course theory. Coaching from someone who does this for leadership teams at some of the biggest companies in the world, applied immediately to live pipeline." },
+      { label: "Running deal cycles", desc: "As you get good, you take deals end to end. Our entry engagement is a fixed-scope GTM diagnostic priced at ₹50,000: one decision-maker, a tight pitch, a real close. You'll run these yourself, with support until you don't need it." },
+      { label: "Sales operations", desc: "Keeping the CRM honest, tracking what's working across channels and messages, and helping refine the pitch based on what founders actually say. You'll see how a sales motion gets built, because you'll be building it." },
     ],
     closing: [
-      "This role touches everything. Some days that means setting up an onboarding flow. Other days it means figuring out why a process broke and making sure it never breaks the same way again.",
-      "If you're the kind of person who builds a spreadsheet for fun and notices when a system is clunky and immediately starts thinking about how to fix it, keep reading.",
+      "Some weeks you'll be deep in list building. Some weeks you'll be on calls back to back. Some weeks you'll be rewriting an email sequence because the data says the old one is dead. It changes constantly, and that's the point.",
+      "If you want a role where someone hands you a script and a dialer, this isn't it. If you want to actually learn how B2B deals get found, worked, and won, keep reading.",
     ],
     whoYouAre: [
-      { lead: "Wired for organisation.", body: "You have systems for your systems. Your notes are clean, your inbox is managed, and you get genuine satisfaction from things running smoothly." },
-      { lead: "Proactive, not reactive.", body: "You spot problems before they become fires. You don't wait to be asked. You flag, suggest, and solve." },
-      { lead: "Comfortable across very different kinds of work.", body: "Ops isn't one thing. You'll be in spreadsheets, in Notion, in client calls, in strategy conversations. You move between all of it without losing your footing." },
-      { lead: "Not precious about scope.", body: "You do what needs doing. If something is important and no one else is handling it, you handle it." },
+      { lead: "You want a career in sales.", body: "Not \"open to it\". You've thought about it and you want it, and you want somewhere that will actually train you." },
+      { lead: "Rejection doesn't break you.", body: "You can hear no fifteen times, figure out what to change, and send the sixteenth message anyway." },
+      { lead: "You're curious about businesses.", body: "Why companies buy things, how founders think, what makes one pitch land and another die." },
+      { lead: "Organised and honest with numbers.", body: "Pipeline only works if the CRM reflects reality, including the ugly parts." },
+      { lead: "You write well enough to be trusted in a founder's inbox.", body: "Clear, short, human." },
+    ],
+    howItWorks: [
+      "The role has three stages, and moving through them depends on performance, not time served alone.",
+      "Months 1 to 3: unpaid internship. Part-time or full-time, whatever your schedule allows. You get trained, you build your first pipeline, and we both find out if this is a fit.",
+      "Months 4 onwards: paid internship with a monthly stipend. Part-time or full-time, depending on your availability.",
+      "Full-time conversion happens after 3 months of the paid internship, or when you graduate if you're still studying, whichever is later. Fixed salary plus commission. We're not hiring interns, we're training our first sales team.",
+      "If your circumstances change along the way, talk to us and we'll work it out case by case.",
     ],
     offer: [
-      "₹10,000 – ₹20,000/month stipend, based on age and education",
-      "3-month conversion window to a full-time role",
-      "Direct access to the founding team",
+      "A full-time fixed + commission sales role path from day one",
+      "Structured sales training and coaching that companies pay serious money for, free, because you're doing the role",
+      "Real pipeline from day one. No mock calls that don't matter, no shadowing for months. Your meetings are real meetings.",
+      "Direct access to the founder. You're not three layers away from decisions, you're in the room.",
       "Flexible working hours (we care about output, not when you're online)",
-      "Remote-first with occasional in-person time",
-      "Generous paid leave",
-      "Real work from day one. No busywork, no coffee runs.",
+      "Remote-first with occasional in-person time in Bangalore",
+      "A monthly stipend once the role converts to a paid internship",
+      "You'll leave with something almost no fresher has: a track record. Meetings booked, deals closed, numbers you can put in front of any future employer.",
     ],
     questions: [
       {
-        q: "Describe a system you built or improved to solve a recurring problem.",
-        placeholder: "Could be personal, academic, at work, anywhere. What was the problem, what did you build, and did it work?",
+        q: "Meet Nikhil. He's 34, founded a 12-person B2B software company two years ago, and does everything himself: sales calls in the morning, product reviews after lunch, investor updates at midnight. He hasn't taken a Sunday off in four months and his calendar is the first thing he checks when he wakes up. Sell him something you think would genuinely help his day to day.",
+        placeholder: "Anything. An app, a service, a hire, a habit, a ₹200 purchase. We're watching how you read his situation: what you decide he actually needs versus what he'd say he needs, and how you pitch to someone with no time and no patience for fluff. Write it like a message straight to him.",
       },
       {
-        q: "Three urgent things land on your plate at the same time. How do you decide what to do first?",
-        placeholder: "Walk us through your actual thought process.",
+        q: "You send a founder a great email. No reply. A week later, you follow up. Still nothing. What do you do next, and when do you stop?",
       },
       {
-        q: "We use Notion as our main workspace. What does a well-built team Notion look like to you?",
-        placeholder: "If you've built one before, tell us about it. If not, tell us what you'd want it to do.",
-      },
-      {
-        q: "Tell us about a time something important slipped through the cracks, yours or someone else's, and you had to fix it.",
-        placeholder: "What happened, what did you do, and what did you change afterwards?",
-      },
-      {
-        q: "What do you want to own here, and where do you want this to take you?",
-        placeholder: "Be specific. What does a good version of this internship look like for you?",
+        q: "Why sales? Most people run from this job. Tell us honestly why you're running toward it.",
       },
     ],
   },
@@ -318,7 +327,7 @@ const JoinRole = () => {
 
   const fieldErrors = {
     email:    !isValidEmail(form.email)    ? "Please enter a valid email address." : null,
-    phone:    !isValidPhone(form.phone)    ? "Please enter a valid phone number (e.g. +61 400 000 000)." : null,
+    phone:    !isValidPhone(form.phone)    ? "Please enter a valid phone number (e.g. +91 98765 43210)." : null,
     linkedin: !isValidLinkedIn(form.linkedin) ? "Please enter a valid LinkedIn URL (e.g. linkedin.com/in/yourprofile)." : null,
   };
 
@@ -391,7 +400,9 @@ const JoinRole = () => {
         {(role.intro || role.workOn.length > 0) && (
           <section className="jr-section">
             <div className="jr-inner">
-              <p className="jr-intro">{role.intro}</p>
+              {role.intro.split("\n\n").map((para, i) => (
+                <p key={i} className="jr-intro">{para}</p>
+              ))}
               {role.workOn.length > 0 && (
                 <>
                   <h2 className="jr-subhead">You'll work on:</h2>
@@ -424,6 +435,18 @@ const JoinRole = () => {
                   </li>
                 ))}
               </ul>
+            </div>
+          </section>
+        )}
+
+        {/* ── How this role works ── */}
+        {role.howItWorks && role.howItWorks.length > 0 && (
+          <section className="jr-section">
+            <div className="jr-inner">
+              <div className="jr-section-eyebrow">How this role works</div>
+              {role.howItWorks.map((para, i) => (
+                <p key={i} className="jr-body">{para}</p>
+              ))}
             </div>
           </section>
         )}
@@ -517,7 +540,7 @@ const JoinRole = () => {
                       onChange={handleChange}
                       onBlur={() => handleBlur("phone")}
                       required
-                      placeholder="+61 400 000 000"
+                      placeholder="+91 98765 43210"
                     />
                     {show("phone") && fieldErrors.phone && (
                       <span className="jr-field-error">{fieldErrors.phone}</span>

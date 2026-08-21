@@ -15,10 +15,10 @@ const OPEN_CALL_WEBHOOK = "https://shrishti-y.app.n8n.cloud/webhook/open-call-hi
 
 const internRoles = [
   {
-    slug: "marketing-intern",
-    name: "Marketing Intern",
-    tagline: "Curious, hands-dirty, opinionated. Real work from day one.",
-    desc: "An open call. We're not looking for a specific skill set; we're looking for someone who is curious, opinionated, and wants to get their hands dirty across strategy, content, and GTM. You'll do real work from day one.",
+    slug: "content-social-intern",
+    name: "Content & Social Media Intern",
+    tagline: "Write things worth reading. Run the machine that ships them.",
+    desc: "You'll own how That Works shows up in public, then learn to run that same machine for our clients. Writing, editing, content calendars, and the automated engine behind all of it. Real work, published under real names.",
     badges: ["Intern", "Converts to full-time"],
   },
   {
@@ -29,10 +29,10 @@ const internRoles = [
     badges: ["Intern", "Converts to full-time"],
   },
   {
-    slug: "ops-admin-intern",
-    name: "Ops & Admin Intern",
-    tagline: "You make everything run. Systems, people, process.",
-    desc: "The person who makes everything run. Systems, scheduling, client ops, internal processes. If you're the kind of person who builds a spreadsheet for fun, we want to meet you.",
+    slug: "sales-intern",
+    name: "Sales Intern (B2B)",
+    tagline: "Nobody teaches sales. This role does.",
+    desc: "Learn B2B sales from the ground up: real pipeline, real founders, structured coaching from someone who trains leaders at companies like Accenture and IBM. Converts to a full-time fixed plus commission role. We're taking on two people.",
     badges: ["Intern", "Converts to full-time"],
   },
 ];
@@ -113,7 +113,7 @@ const OpenCallPopup = ({ onClose }: { onClose: () => void }) => {
 
   const fieldErrors = {
     email:    !isValidEmail(email)    ? "Please enter a valid email address." : null,
-    phone:    !isValidPhone(phone)    ? "Please enter a valid phone number (e.g. +61 400 000 000)." : null,
+    phone:    !isValidPhone(phone)    ? "Please enter a valid phone number (e.g. +91 98765 43210)." : null,
     linkedin: !isValidLinkedIn(linkedin) ? "Please enter a valid LinkedIn URL (e.g. linkedin.com/in/yourprofile)." : null,
   };
 
@@ -195,7 +195,7 @@ const OpenCallPopup = ({ onClose }: { onClose: () => void }) => {
                   <input
                     className={`join-popup-input${show("phone") && fieldErrors.phone ? " join-popup-input--error" : ""}`}
                     type="tel"
-                    placeholder="+61 400 000 000"
+                    placeholder="+91 98765 43210"
                     value={phone}
                     onChange={e => setPhone(e.target.value)}
                     onBlur={() => handleBlur("phone")}

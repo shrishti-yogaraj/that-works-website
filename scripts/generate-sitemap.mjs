@@ -44,9 +44,9 @@ const STATIC_ROUTES = [
   { path: "/articles",                             priority: "0.7", changefreq: "weekly"  },
   { path: "/lab",                                  priority: "0.7", changefreq: "weekly"  },
   { path: "/join",                                 priority: "0.8", changefreq: "monthly" },
-  { path: "/join/marketing-intern",                priority: "0.7", changefreq: "monthly" },
+  { path: "/join/content-social-intern",           priority: "0.7", changefreq: "monthly" },
   { path: "/join/finance-intern",                  priority: "0.7", changefreq: "monthly" },
-  { path: "/join/ops-admin-intern",                priority: "0.7", changefreq: "monthly" },
+  { path: "/join/sales-intern",                    priority: "0.7", changefreq: "monthly" },
   { path: "/join/gtm-systems-engineer",            priority: "0.7", changefreq: "monthly" },
   { path: "/join/sales",                           priority: "0.7", changefreq: "monthly" },
 ];

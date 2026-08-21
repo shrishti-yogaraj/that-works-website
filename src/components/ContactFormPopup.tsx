@@ -71,7 +71,7 @@ const ContactFormPopup = ({ open, onOpenChange, source = "general", mode = "book
   const errors = {
     name: !values.name.trim() ? "Please enter your name." : null,
     email: !isValidEmail(values.email) ? "Please enter a valid email address." : null,
-    phone: !isGuide && !isValidPhone(values.phone) ? "Please enter a valid phone number (e.g. +61 400 000 000)." : null,
+    phone: !isGuide && !isValidPhone(values.phone) ? "Please enter a valid phone number (e.g. +91 98765 43210)." : null,
   };
 
   const consumerWarning = isValidEmail(values.email) && isConsumerEmail(values.email);
@@ -234,7 +234,7 @@ const ContactFormPopup = ({ open, onOpenChange, source = "general", mode = "book
                     value={values.phone}
                     onChange={handleChange}
                     onBlur={() => handleBlur("phone")}
-                    placeholder="+61 400 000 000"
+                    placeholder="+91 98765 43210"
                     disabled={status === "submitting"}
                   />
                   {show("phone") && errors.phone && (
