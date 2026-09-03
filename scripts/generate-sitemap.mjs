@@ -40,15 +40,18 @@ const STATIC_ROUTES = [
   { path: "/services/marketing-os/friction",       priority: "0.8", changefreq: "monthly" },
   { path: "/services/marketing-os/scale",          priority: "0.8", changefreq: "monthly" },
   { path: "/services/marketing-os/leader",         priority: "0.8", changefreq: "monthly" },
+  { path: "/ai-search",                            priority: "0.9", changefreq: "monthly" },
   { path: "/blog",                                 priority: "0.8", changefreq: "weekly"  },
   { path: "/articles",                             priority: "0.7", changefreq: "weekly"  },
   { path: "/lab",                                  priority: "0.7", changefreq: "weekly"  },
   { path: "/join",                                 priority: "0.8", changefreq: "monthly" },
+  { path: "/join/projects",                        priority: "0.8", changefreq: "weekly"  },
   { path: "/join/content-social-intern",           priority: "0.7", changefreq: "monthly" },
   { path: "/join/finance-intern",                  priority: "0.7", changefreq: "monthly" },
   { path: "/join/sales-intern",                    priority: "0.7", changefreq: "monthly" },
   { path: "/join/gtm-systems-engineer",            priority: "0.7", changefreq: "monthly" },
   { path: "/join/sales",                           priority: "0.7", changefreq: "monthly" },
+  { path: "/under-the-hood",                       priority: "0.9", changefreq: "monthly" },
 ];
 
 // ── Sanity queries ────────────────────────────────────────────────────────────

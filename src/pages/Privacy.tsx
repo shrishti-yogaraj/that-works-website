@@ -13,12 +13,12 @@ const Privacy = () => (
     <main className="legal-page">
       <div className="legal-inner">
         <h1>Privacy Policy</h1>
-        <p className="legal-updated">Last updated: April 2026</p>
+        <p className="legal-updated">Last updated: September 2026</p>
 
         <p>That Works Co ("That Works", "we", "us", or "our") is committed to protecting your personal information. This policy explains what we collect, how we use it, and your rights in relation to it.</p>
 
         <h2>1. Who we are</h2>
-        <p>That Works Co is a GTM consultancy operating in Australia. We design and implement go-to-market systems for B2B companies. You can reach us at <a href="https://www.linkedin.com/company/that-works-co/">LinkedIn</a> or via the contact form on this website.</p>
+        <p>That Works Co is a GTM consultancy based in Bangalore, India. We design and implement go-to-market systems for B2B companies. You can reach us at <a href="https://www.linkedin.com/company/that-works-co/">LinkedIn</a> or via the contact form on this website.</p>
 
         <h2>2. What we collect</h2>
         <p>We collect personal information only when you voluntarily provide it to us. This includes:</p>
@@ -62,7 +62,7 @@ const Privacy = () => (
           <li>Request correction of inaccurate information</li>
           <li>Request deletion of your information</li>
           <li>Withdraw consent for marketing communications at any time (unsubscribe links are included in every email)</li>
-          <li>Lodge a complaint with the Office of the Australian Information Commissioner (OAIC) if you believe we have mishandled your information</li>
+          <li>Lodge a complaint with the Data Protection Board of India if you believe we have mishandled your information</li>
         </ul>
         <p>To exercise any of these rights, contact us via LinkedIn or the contact form on this website.</p>
 
@@ -73,7 +73,7 @@ const Privacy = () => (
         <p>We may update this policy from time to time. The date at the top of this page reflects when it was last revised. Continued use of our website after changes constitutes acceptance of the updated policy.</p>
 
         <h2>10. Governing law</h2>
-        <p>This policy is governed by the laws of Australia, including the Privacy Act 1988 (Cth) and the Australian Privacy Principles.</p>
+        <p>This policy is governed by the laws of India, including the Digital Personal Data Protection Act, 2023 and the Information Technology Act, 2000.</p>
       </div>
     </main>
     <Footer />

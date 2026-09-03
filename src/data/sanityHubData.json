@@ -1,6 +1,50 @@
 {
-  "featuredPost": null,
-  "recentPosts": [],
+  "featuredPost": {
+    "category": "GTM & Growth",
+    "categoryColor": "var(--yellow)",
+    "excerpt": "You have your strategy, but do you have the infrastructure to support it? Here's what breaks, and how to build a foundation that holds.",
+    "publishedAt": "2026-02-28T00:00:00.000Z",
+    "readTime": 6,
+    "slug": "why-most-gtm-strategies-fail-before-launch",
+    "title": "Why Most GTM Strategies Fail Before Launch"
+  },
   "labItems": [],
-  "latestDissection": null
+  "latestDissection": null,
+  "recentPosts": [
+    {
+      "category": "GTM & Growth",
+      "categoryColor": "var(--yellow)",
+      "featuredImage": null,
+      "slug": "why-most-gtm-strategies-fail-before-launch",
+      "title": "Why Most GTM Strategies Fail Before Launch"
+    },
+    {
+      "category": "Marketing Systems",
+      "categoryColor": "var(--lavender)",
+      "featuredImage": null,
+      "slug": "the-real-cost-of-bad-attribution",
+      "title": "The Real Cost of Bad Attribution"
+    },
+    {
+      "category": "Lead Generation",
+      "categoryColor": "var(--orange)",
+      "featuredImage": null,
+      "slug": "cold-outreach-that-doesnt-feel-cold",
+      "title": "Cold Outreach That Doesn't Feel Cold"
+    },
+    {
+      "category": "Tool Reviews",
+      "categoryColor": "var(--muted)",
+      "featuredImage": null,
+      "slug": "hubspot-vs-salesforce-honest-take",
+      "title": "HubSpot vs Salesforce: An Honest Take for Scaling B2B"
+    },
+    {
+      "category": "Revenue Architecture",
+      "categoryColor": "#4ade80",
+      "featuredImage": null,
+      "slug": "pipeline-math-that-keeps-cfos-up-at-night",
+      "title": "The Pipeline Math That Keeps CFOs Up at Night"
+    }
+  ]
 }

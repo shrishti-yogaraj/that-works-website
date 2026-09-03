@@ -1,0 +1,320 @@
+/* ── JOIN PROJECTS PAGE ──────────────────────────────────────────────────────── */
+
+.jp-page {
+  background: #f0e6d3;
+  --bg:      #f0e6d3;
+  --surface: #e4d8c4;
+  --border:  #cfc3af;
+  --text:    #12100f;
+  --muted:   #6b5a48;
+
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  align-items: start;
+  min-height: 100vh;
+  color: var(--text);
+  position: relative;
+  z-index: 2;
+}
+
+/* Nav full width */
+.jp-page .site-nav { grid-column: 1 / -1; }
+
+/* Center column sections */
+.jp-page .join-hero,
+.jp-page .jp-gate,
+.jp-page .jp-how {
+  grid-column: 2;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Remove inner max-width constraints */
+.jp-page .join-hero-inner { max-width: 100%; }
+
+/* Dot pattern — left and right gutters */
+.jp-page::before,
+.jp-page::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 30%;
+  background-image: radial-gradient(circle, rgba(28,17,5,0.3) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.jp-page::before {
+  left: 0;
+  mask-image: radial-gradient(ellipse 90% 380px at 50% 430px, black 20%, transparent 80%);
+}
+
+.jp-page::after {
+  right: 0;
+  mask-image: radial-gradient(ellipse 90% 380px at 50% 880px, black 20%, transparent 80%);
+}
+
+/* ── Colour overrides for cream background ── */
+
+.jp-page .join-headline em      { color: var(--orange); }
+.jp-page .join-sub strong       { color: #a78bfa; }
+.jp-page .join-section-label    { color: var(--orange); }
+
+/* Stars (reusing j2-star from join2.css — define here for safety) */
+.jp-page .j2-star {
+  position: absolute;
+  line-height: 1;
+  color: rgba(28, 17, 5, 0.2);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Illustration layer ── */
+.jp-illus-layer {
+  z-index: 3;
+  position: absolute;
+  overflow: visible;
+  height: 100%;
+}
+.jp-illus-layer .join-illus {
+  opacity: 1;
+  will-change: auto;
+  transform: none;
+}
+.jp-illus-layer .join-illus--woman {
+  left: 0;
+  right: auto;
+  top: 50px;
+  width: 30vw;
+}
+.jp-illus-layer .join-illus--desk {
+  right: 0;
+  left: auto;
+  top: 500px;
+  width: 30vw;
+}
+
+/* ── Gating note ── */
+.jp-gate {
+  padding: 0 0 56px;
+}
+
+.jp-gate-inner {
+  border-left: 2px solid var(--orange);
+  padding-left: 20px;
+}
+
+.jp-gate-text {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.75;
+  margin: 0;
+}
+
+.jp-gate-text strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* ── How it works ── */
+.jp-how {
+  padding: 0 0 80px;
+}
+
+.jp-how .join-section-label {
+  display: inline-flex;
+  margin-bottom: 36px;
+}
+
+.jp-phases {
+  display: flex;
+  flex-direction: column;
+}
+
+.jp-phase {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 24px;
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+}
+
+.jp-phase:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.jp-phase-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+  padding-top: 3px;
+}
+
+.jp-phase-body {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* ── Project listings — full width ── */
+.jp-listings {
+  grid-column: 1 / -1;
+  padding: 80px 8vw 100px;
+  position: relative;
+  z-index: 1;
+}
+
+.jp-listings-header {
+  margin-bottom: 24px;
+}
+
+.jp-listings-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #a78bfa;
+}
+
+.jp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.jp-listings-note {
+  margin-top: 24px;
+  font-size: 12px;
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+/* ── Project card ── */
+.jp-card {
+  display: flex;
+  flex-direction: column;
+  background: #faf5ed;
+  border: 1px solid #eedfd0;
+  border-radius: 12px;
+  padding: 28px 24px 24px;
+  text-decoration: none;
+  color: var(--text);
+  gap: 12px;
+  min-height: 260px;
+  transition: border-color 0.2s ease, transform 0.15s ease;
+}
+
+.jp-card:hover {
+  border-color: var(--orange);
+  transform: translateY(-2px);
+}
+
+.jp-card-function {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.jp-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.jp-card-tagline {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+  flex: 1;
+  margin: 0;
+}
+
+.jp-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid #eedfd0;
+  margin-top: auto;
+}
+
+.jp-card-tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 100px;
+  border: 1px solid rgba(18, 16, 15, 0.18);
+  color: rgba(18, 16, 15, 0.4);
+}
+
+.jp-card-tag--paid {
+  border-color: #fbbf24;
+  color: #92400e;
+  background: rgba(251, 191, 36, 0.08);
+}
+
+.jp-card-cta {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange);
+  transition: letter-spacing 0.2s;
+}
+
+.jp-card:hover .jp-card-cta {
+  letter-spacing: 0.13em;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 1100px) {
+  .jp-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .jp-page {
+    grid-template-columns: 1fr;
+  }
+
+  .jp-page .site-nav { grid-column: 1; }
+
+  .jp-page .join-hero,
+  .jp-page .jp-gate,
+  .jp-page .jp-how {
+    grid-column: 1;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .jp-page .join-hero { padding-top: 80px; padding-bottom: 40px; }
+  .jp-gate            { padding-bottom: 40px; }
+  .jp-how             { padding-bottom: 60px; }
+
+  .jp-illus-layer      { display: none; }
+  .jp-page::before,
+  .jp-page::after      { display: none; }
+
+  .jp-listings { padding: 60px 20px 80px; }
+
+  .jp-grid { grid-template-columns: 1fr; }
+
+  .jp-phase {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}

@@ -19,6 +19,7 @@ import BlogPost from "./pages/BlogPost";
 import Articles from "./pages/Articles";
 import { Lab } from "./pages/CardGridPage";
 import Join from "./pages/Join2";
+import JoinProjects from "./pages/JoinProjects";
 import JoinRole from "./pages/JoinRole";
 import BookACall from "./pages/BookACall";
 import FAQ from "./pages/FAQ";
@@ -30,6 +31,8 @@ import ArsenalItem from "./pages/ArsenalItem";
 import NotFound from "./pages/NotFound";
 import Proposals from "./pages/Proposals";
 import In10s from "./pages/proposals/In10s";
+import UnderTheHood from "./pages/UnderTheHood";
+import AiSearch from "./pages/AiSearch";
 
 export const routes: RouteObject[] = [
   {
@@ -53,6 +56,7 @@ export const routes: RouteObject[] = [
       { path: "/articles", element: <Articles /> },
       { path: "/lab", element: <Lab /> },
       { path: "/join", element: <Join /> },
+      { path: "/join/projects", element: <JoinProjects /> },
       { path: "/join/:slug", element: <JoinRole /> },
       { path: "/dissections/:slug", element: <DissectionPost /> },
       { path: "/lab/:slug", element: <LabItemPage /> },
@@ -62,6 +66,8 @@ export const routes: RouteObject[] = [
       { path: "/terms", element: <Terms /> },
       { path: "/proposals", element: <Proposals /> },
       { path: "/proposals/in10s", element: <In10s /> },
+      { path: "/under-the-hood", element: <UnderTheHood /> },
+      { path: "/ai-search", element: <AiSearch /> },
       { path: "*", element: <NotFound /> },
     ],
   },

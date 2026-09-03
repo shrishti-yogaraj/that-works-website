@@ -13,7 +13,7 @@ const Terms = () => (
     <main className="legal-page">
       <div className="legal-inner">
         <h1>Terms of Use</h1>
-        <p className="legal-updated">Last updated: April 2026</p>
+        <p className="legal-updated">Last updated: September 2026</p>
 
         <p>These terms govern your use of the That Works Co website at thatworksco.com ("the Website"). By accessing or using the Website, you agree to these terms. If you do not agree, please do not use the Website.</p>
 
@@ -44,13 +44,13 @@ const Terms = () => (
         <p>Content on the Website, including blog articles and resources, is for informational purposes only. It does not constitute professional advice for your specific situation.</p>
 
         <h2>7. Limitation of liability</h2>
-        <p>To the maximum extent permitted by Australian law, That Works Co will not be liable for any indirect, incidental, or consequential loss arising from your use of or reliance on the Website or its content.</p>
+        <p>To the maximum extent permitted by Indian law, That Works Co will not be liable for any indirect, incidental, or consequential loss arising from your use of or reliance on the Website or its content.</p>
 
         <h2>8. Changes to these terms</h2>
         <p>We may update these terms from time to time. The date at the top of this page reflects the last revision. Continued use of the Website after changes constitutes acceptance of the updated terms.</p>
 
         <h2>9. Governing law</h2>
-        <p>These terms are governed by the laws of Australia. Any disputes arising from these terms or your use of the Website will be subject to the exclusive jurisdiction of Australian courts.</p>
+        <p>These terms are governed by the laws of India. Any disputes arising from these terms or your use of the Website will be subject to the exclusive jurisdiction of the courts of Bengaluru, Karnataka, India.</p>
 
         <h2>10. Contact</h2>
         <p>If you have any questions about these terms, please reach out via our <a href="/contact">contact page</a> or through <a href="https://www.linkedin.com/company/that-works-co/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
