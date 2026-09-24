@@ -33,7 +33,6 @@ import Proposals from "./pages/Proposals";
 import In10s from "./pages/proposals/In10s";
 import Groyouth from "./pages/proposals/Groyouth";
 import UnderTheHood from "./pages/UnderTheHood";
-import UnderTheHoodAlt from "./pages/UnderTheHoodAlt";
 import AiSearch from "./pages/AiSearch";
 
 export const routes: RouteObject[] = [
@@ -70,8 +69,6 @@ export const routes: RouteObject[] = [
       { path: "/proposals/in10s", element: <In10s /> },
       { path: "/proposals/groyouth", element: <Groyouth /> },
       { path: "/under-the-hood", element: <UnderTheHood /> },
-      // Alternate draft, deliberately kept out of the sitemap and set to noindex.
-      { path: "/under-the-hood-alt", element: <UnderTheHoodAlt /> },
       { path: "/ai-search", element: <AiSearch /> },
       { path: "*", element: <NotFound /> },
     ],
