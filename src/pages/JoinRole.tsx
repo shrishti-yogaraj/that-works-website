@@ -312,6 +312,21 @@ type FormState = {
 const emptyForm: FormState = { name: "", email: "", phone: "", linkedin: "", q1: "", q2: "", q3: "", q4: "", q5: "", q6: "" };
 const qKeys = ["q1", "q2", "q3", "q4", "q5", "q6"] as const;
 
+// Shown when someone tries to submit with an answer left blank. Rotates by question so six empties don't all nag the same way.
+const emptyAnswerNudges = [
+  "Blank is a bold choice. Unfortunately, we do need actual words here.",
+  "We promise it doesn't have to be good. It just has to exist.",
+  "Skipping this one is a strong opening move. It's also not allowed.",
+  "Half-formed is fine. Messy is fine. Empty is the only thing that won't fly.",
+  "We read every answer. This one too, once you write it.",
+  "Nothing here yet. Even two honest sentences beats a beautiful blank.",
+];
+
+// Fallback placeholder for questions that don't set their own.
+const defaultAnswerPlaceholder = "Messy, half-formed, honest. Just not empty.";
+
+const isAnswered = (v: string) => v.trim().length > 0;
+
 // ── Page ───────────────────────────────────────────────────────────────────────
 
 const JoinRole = () => {
@@ -325,10 +340,15 @@ const JoinRole = () => {
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [submitAttempted, setSubmitAttempted] = useState(false);
 
-  const fieldErrors = {
+  const questionCount = role?.questions.length ?? 0;
+  const fieldErrors: Record<string, string | null> = {
+    name:     !isAnswered(form.name)       ? "We'd love to know what to call you." : null,
     email:    !isValidEmail(form.email)    ? "Please enter a valid email address." : null,
     phone:    !isValidPhone(form.phone)    ? "Please enter a valid phone number (e.g. +91 98765 43210)." : null,
     linkedin: !isValidLinkedIn(form.linkedin) ? "Please enter a valid LinkedIn URL (e.g. linkedin.com/in/yourprofile)." : null,
+    ...Object.fromEntries(
+      qKeys.slice(0, questionCount).map((k, i) => [k, !isAnswered(form[k]) ? emptyAnswerNudges[i % emptyAnswerNudges.length] : null])
+    ),
   };
 
   const show = (field: string) => touched[field] || submitAttempted;
@@ -355,7 +375,15 @@ const JoinRole = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitAttempted(true);
-    if (Object.values(fieldErrors).some(Boolean)) return;
+    const firstInvalid = Object.entries(fieldErrors).find(([, err]) => err)?.[0];
+    if (firstInvalid) {
+      const el = (e.currentTarget as HTMLFormElement).elements.namedItem(firstInvalid);
+      if (el instanceof HTMLElement) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+        el.focus({ preventScroll: true });
+      }
+      return;
+    }
 
     setStatus("loading");
     setErrorMsg("");
@@ -509,7 +537,18 @@ const JoinRole = () => {
                 <div className="jr-form-row">
                   <div className="jr-field">
                     <label className="jr-label">Full name</label>
-                    <input className="jr-input" name="name" value={form.name} onChange={handleChange} required placeholder="Your name" />
+                    <input
+                      className={`jr-input${show("name") && fieldErrors.name ? " jr-input--error" : ""}`}
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      onBlur={() => handleBlur("name")}
+                      required
+                      placeholder="Your name"
+                    />
+                    {show("name") && fieldErrors.name && (
+                      <span className="jr-field-error">{fieldErrors.name}</span>
+                    )}
                   </div>
                   <div className="jr-field">
                     <label className="jr-label">Email</label>
@@ -568,14 +607,18 @@ const JoinRole = () => {
                     <label className="jr-label jr-label--q"><span className="jr-q-num">{String(i + 1).padStart(2, '0')}</span>{qObj.q}</label>
                     {qObj.hint && <span className="jr-hint">{qObj.hint}</span>}
                     <textarea
-                      className="jr-textarea"
+                      className={`jr-textarea${show(qKeys[i]) && fieldErrors[qKeys[i]] ? " jr-textarea--error" : ""}`}
                       name={qKeys[i]}
                       value={form[qKeys[i]]}
                       onChange={handleChange}
+                      onBlur={() => handleBlur(qKeys[i])}
                       required
                       rows={5}
-                      placeholder={qObj.placeholder}
+                      placeholder={qObj.placeholder ?? defaultAnswerPlaceholder}
                     />
+                    {show(qKeys[i]) && fieldErrors[qKeys[i]] && (
+                      <span className="jr-field-error">{fieldErrors[qKeys[i]]}</span>
+                    )}
                   </div>
                 ))}
 

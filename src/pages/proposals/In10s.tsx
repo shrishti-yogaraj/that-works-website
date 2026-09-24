@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../../styles/pages/proposals-in10s.css";
+import "../../styles/pages/proposals-shared.css";
 
 const tabs = [
   { num: "01", label: "Foundation",  phase: "Wks 1–8",  addon: false, outbound: true  },
@@ -262,7 +262,7 @@ const In10s = () => {
   const isDark = false;
 
   return (
-    <div className="in10s-root">
+    <div className="proposal-root">
 
       {/* FIXED NAV — pills only, always on top */}
       <div className="proposal-nav-fixed">

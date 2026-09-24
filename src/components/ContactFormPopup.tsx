@@ -7,7 +7,14 @@ import { sanityClient, sanityFileUrl } from "@/lib/sanity";
 
 const WEBHOOK_URL = "https://shrishti-y.app.n8n.cloud/webhook/that-works-default-lead-form";
 const GUIDE_WEBHOOK_URL = "https://shrishti-y.app.n8n.cloud/webhook/that-works-guide-download";
-const CAL_BASE = "https://calendly.com/thatworks-shrishti/20-min-diagnostic?background_color=12100f&text_color=f0e6d3&primary_color=fbbf24";
+const CAL_THEME = "background_color=12100f&text_color=f0e6d3&primary_color=fbbf24";
+
+// Most of the site books the 20-minute diagnostic. Under the Hood books the
+// longer call instead, because it qualifies a paid engagement rather than a
+// first conversation. Add a source prefix here to route it to the long call.
+const CALL_SHORT = { minutes: 20, url: `https://calendly.com/thatworks-shrishti/20-min-diagnostic?${CAL_THEME}` };
+const CALL_LONG  = { minutes: 30, url: `https://calendly.com/thatworks-shrishti/30-min-diagnostic-with-shrishti?${CAL_THEME}` };
+const LONG_CALL_SOURCES = ["under-the-hood"];
 
 interface Props {
   open: boolean;
@@ -20,14 +27,18 @@ type Status = "idle" | "submitting" | "success-download" | "success-email" | "er
 
 const ContactFormPopup = ({ open, onOpenChange, source = "general", mode = "booking" }: Props) => {
   const [status, setStatus] = useState<Status>("idle");
-  const [values, setValues] = useState({ name: "", email: "", phone: "" });
+  const [values, setValues] = useState({ name: "", email: "", phone: "", domain: "" });
   const [newsletter, setNewsletter] = useState(true);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [submitAttempted, setSubmitAttempted] = useState(false);
   const [guideFileUrl, setGuideFileUrl] = useState<string | null>(null);
   const [guideFilename, setGuideFilename] = useState("that-works-gtm-guide.pdf");
 
+  const call = LONG_CALL_SOURCES.some(prefix => source.startsWith(prefix)) ? CALL_LONG : CALL_SHORT;
   const isGuide = mode === "guide";
+  // Sample mode: same webhook, different shape. Asks for a domain instead of a
+  // phone number and never shows the Calendly step.
+  const isSample = mode === "sample";
   const isIdle = status === "idle" || status === "submitting";
 
   // Fetch the guide PDF from the Downloads library when popup opens in guide mode.
@@ -55,7 +66,7 @@ const ContactFormPopup = ({ open, onOpenChange, source = "general", mode = "book
     if (!open) {
       const t = setTimeout(() => {
         setStatus("idle");
-        setValues({ name: "", email: "", phone: "" });
+        setValues({ name: "", email: "", phone: "", domain: "" });
         setNewsletter(true);
         setTouched({});
         setSubmitAttempted(false);
@@ -71,11 +82,12 @@ const ContactFormPopup = ({ open, onOpenChange, source = "general", mode = "book
   const errors = {
     name: !values.name.trim() ? "Please enter your name." : null,
     email: !isValidEmail(values.email) ? "Please enter a valid email address." : null,
-    phone: !isGuide && !isValidPhone(values.phone) ? "Please enter a valid phone number (e.g. +91 98765 43210)." : null,
+    phone: !isGuide && !isSample && !isValidPhone(values.phone) ? "Please enter a valid phone number (e.g. +91 98765 43210)." : null,
+    domain: isSample && !values.domain.trim() ? "We need a domain to look at." : null,
   };
 
   const consumerWarning = isValidEmail(values.email) && isConsumerEmail(values.email);
-  const hasErrors = !!errors.name || !!errors.email || (!isGuide && !!errors.phone);
+  const hasErrors = !!errors.name || !!errors.email || (!isGuide && !isSample && !!errors.phone) || !!errors.domain;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setValues(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -152,7 +164,7 @@ const ContactFormPopup = ({ open, onOpenChange, source = "general", mode = "book
   const handlePickSlot = () => {
     setSubmitAttempted(true);
     if (hasErrors) return;
-    const url = new URL(CAL_BASE);
+    const url = new URL(call.url);
     if (values.name)  url.searchParams.set("name",  values.name);
     if (values.email) url.searchParams.set("email", values.email);
     if (values.phone) url.searchParams.set("a1",    values.phone);
@@ -169,12 +181,18 @@ const ContactFormPopup = ({ open, onOpenChange, source = "general", mode = "book
         {isIdle ? (
           <>
             <h2 className="booking-title">
-              {isGuide ? "Download the GTM Guide" : "Book a diagnostic call"}
+              {isGuide
+                ? "Download the GTM Guide"
+                : isSample
+                ? "Send us your domain"
+                : "Book a diagnostic call"}
             </h2>
             <p className="booking-sub">
               {isGuide
                 ? "Leave your details and grab it instantly, or we'll email it to you."
-                : "20 minutes. No pitch. You'll leave with clarity."}
+                : isSample
+                ? "We'll run the outside-in pass and come back with five things we found, without ever logging in."
+                : `${call.minutes} minutes. No pitch. You'll leave with clarity.`}
             </p>
 
             <form
@@ -223,8 +241,28 @@ const ContactFormPopup = ({ open, onOpenChange, source = "general", mode = "book
                 )}
               </div>
 
+              {/* Domain — sample only */}
+              {isSample && (
+                <div className="booking-field">
+                  <label className="booking-label">Your domain</label>
+                  <input
+                    className={`booking-input${show("domain") && errors.domain ? " booking-input--error" : ""}`}
+                    type="text"
+                    name="domain"
+                    value={values.domain}
+                    onChange={handleChange}
+                    onBlur={() => handleBlur("domain")}
+                    placeholder="yourcompany.com"
+                    disabled={status === "submitting"}
+                  />
+                  {show("domain") && errors.domain && (
+                    <span className="booking-field-error">{errors.domain}</span>
+                  )}
+                </div>
+              )}
+
               {/* Phone — booking only */}
-              {!isGuide && (
+              {!isGuide && !isSample && (
                 <div className="booking-field">
                   <label className="booking-label">Phone number</label>
                   <input
@@ -276,6 +314,14 @@ const ContactFormPopup = ({ open, onOpenChange, source = "general", mode = "book
                       {status === "submitting" ? "…" : "Email it to me"}
                     </button>
                   </>
+                ) : isSample ? (
+                  <button
+                    type="submit"
+                    className="booking-btn booking-btn--orange"
+                    disabled={status === "submitting"}
+                  >
+                    {status === "submitting" ? "Sending…" : "Send it over →"}
+                  </button>
                 ) : (
                   <>
                     <button
@@ -311,11 +357,13 @@ const ContactFormPopup = ({ open, onOpenChange, source = "general", mode = "book
           <div className="booking-state">
             <div className="booking-state-icon">✓</div>
             <h3 className="booking-state-title">
-              {isGuide ? "Check your inbox." : "We'll be in touch."}
+              {isGuide ? "Check your inbox." : isSample ? "We're on it." : "We'll be in touch."}
             </h3>
             <p className="booking-state-body">
               {isGuide
                 ? "The guide is on its way. Check your spam if it doesn't arrive within a few minutes."
+                : isSample
+                ? "We'll run the pass and email you what we found within two working days."
                 : "Expect a call within one business day."}
             </p>
             <button className="btn-primary" onClick={() => onOpenChange(false)}>Done</button>

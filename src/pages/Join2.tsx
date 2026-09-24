@@ -111,16 +111,30 @@ const OpenCallPopup = ({ onClose }: { onClose: () => void }) => {
   const show = (f: string) => touched[f] || submitAttempted;
   const handleBlur = (f: string) => setTouched(prev => ({ ...prev, [f]: true }));
 
-  const fieldErrors = {
-    email:    !isValidEmail(email)    ? "Please enter a valid email address." : null,
-    phone:    !isValidPhone(phone)    ? "Please enter a valid phone number (e.g. +91 98765 43210)." : null,
-    linkedin: !isValidLinkedIn(linkedin) ? "Please enter a valid LinkedIn URL (e.g. linkedin.com/in/yourprofile)." : null,
+  const isBlank = (v: string) => v.trim().length === 0;
+  const fieldErrors: Record<string, string | null> = {
+    name:         isBlank(name)             ? "We'd love to know what to call you." : null,
+    email:        !isValidEmail(email)      ? "Please enter a valid email address." : null,
+    phone:        !isValidPhone(phone)      ? "Please enter a valid phone number (e.g. +91 98765 43210)." : null,
+    linkedin:     !isValidLinkedIn(linkedin) ? "Please enter a valid LinkedIn URL (e.g. linkedin.com/in/yourprofile)." : null,
+    workInterest: isBlank(workInterest)     ? "Pick one. \"Not sure yet\" is a perfectly good answer." : null,
+    workExpand:   showWorkExpand && isBlank(workExpand) ? "Blank is a bold choice. Unfortunately, we do need actual words here." : null,
+    proudOf:      isBlank(proudOf)          ? "We promise it doesn't have to be impressive. It just has to exist." : null,
+    wantToOwn:    isBlank(wantToOwn)        ? "Skipping this one is a strong opening move. It's also not allowed." : null,
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitAttempted(true);
-    if (Object.values(fieldErrors).some(Boolean)) return;
+    const firstInvalid = Object.entries(fieldErrors).find(([, err]) => err)?.[0];
+    if (firstInvalid) {
+      const el = (e.currentTarget as HTMLFormElement).elements.namedItem(firstInvalid);
+      if (el instanceof HTMLElement) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+        el.focus({ preventScroll: true });
+      }
+      return;
+    }
     setStatus("loading");
     try {
       const body = new FormData();
@@ -164,13 +178,18 @@ const OpenCallPopup = ({ onClose }: { onClose: () => void }) => {
                 <div className="join-popup-field">
                   <label className="join-popup-label">Your name</label>
                   <input
-                    className="join-popup-input"
+                    className={`join-popup-input${show("name") && fieldErrors.name ? " join-popup-input--error" : ""}`}
                     type="text"
+                    name="name"
                     placeholder="First and last"
                     value={name}
                     onChange={e => setName(e.target.value)}
+                    onBlur={() => handleBlur("name")}
                     required
                   />
+                  {show("name") && fieldErrors.name && (
+                    <span className="join-popup-field-error">{fieldErrors.name}</span>
+                  )}
                 </div>
                 <div className="join-popup-field">
                   <label className="join-popup-label">Your email</label>
@@ -225,9 +244,11 @@ const OpenCallPopup = ({ onClose }: { onClose: () => void }) => {
               <div className="join-popup-field">
                 <label className="join-popup-label">Where do you naturally fit?</label>
                 <select
-                  className={`join-popup-input join-popup-select${workInterest === "" ? " join-popup-select--placeholder" : ""}`}
+                  className={`join-popup-input join-popup-select${workInterest === "" ? " join-popup-select--placeholder" : ""}${show("workInterest") && fieldErrors.workInterest ? " join-popup-input--error" : ""}`}
+                  name="workInterest"
                   value={workInterest}
                   onChange={e => { setWorkInterest(e.target.value); setWorkExpand(""); }}
+                  onBlur={() => handleBlur("workInterest")}
                   required
                 >
                   <option value="" disabled>Pick the one that fits best</option>
@@ -241,40 +262,58 @@ const OpenCallPopup = ({ onClose }: { onClose: () => void }) => {
                 </select>
                 {showWorkExpand && (
                   <textarea
-                    className="join-popup-input join-popup-textarea join-popup-expand"
+                    className={`join-popup-input join-popup-textarea join-popup-expand${show("workExpand") && fieldErrors.workExpand ? " join-popup-input--error" : ""}`}
+                    name="workExpand"
                     placeholder={workInterest === "not-sure"
                       ? "That's completely fine. Tell us what you're drawn to, what you're good at, or what you find yourself thinking about."
                       : "Tell us what you do. We're all ears."}
                     value={workExpand}
                     onChange={e => setWorkExpand(e.target.value)}
+                    onBlur={() => handleBlur("workExpand")}
                     required
                     rows={3}
                   />
+                )}
+                {show("workInterest") && fieldErrors.workInterest && (
+                  <span className="join-popup-field-error">{fieldErrors.workInterest}</span>
+                )}
+                {show("workExpand") && fieldErrors.workExpand && (
+                  <span className="join-popup-field-error">{fieldErrors.workExpand}</span>
                 )}
               </div>
 
               <div className="join-popup-field">
                 <label className="join-popup-label">Tell us something you made, solved, or figured out that you're genuinely proud of.</label>
                 <textarea
-                  className="join-popup-input join-popup-textarea"
+                  className={`join-popup-input join-popup-textarea${show("proudOf") && fieldErrors.proudOf ? " join-popup-input--error" : ""}`}
+                  name="proudOf"
                   placeholder="Could be a project, a decision, a system you built, a problem you cracked."
                   value={proudOf}
                   onChange={e => setProudOf(e.target.value)}
+                  onBlur={() => handleBlur("proudOf")}
                   required
                   rows={3}
                 />
+                {show("proudOf") && fieldErrors.proudOf && (
+                  <span className="join-popup-field-error">{fieldErrors.proudOf}</span>
+                )}
               </div>
 
               <div className="join-popup-field">
                 <label className="join-popup-label">What would you want to own here, and why us specifically?</label>
                 <textarea
-                  className="join-popup-input join-popup-textarea"
+                  className={`join-popup-input join-popup-textarea${show("wantToOwn") && fieldErrors.wantToOwn ? " join-popup-input--error" : ""}`}
+                  name="wantToOwn"
                   placeholder="Not 'I'm passionate about growth.' What would you actually build or run? And what is it about That Works that makes you think this is the right place?"
                   value={wantToOwn}
                   onChange={e => setWantToOwn(e.target.value)}
+                  onBlur={() => handleBlur("wantToOwn")}
                   required
                   rows={3}
                 />
+                {show("wantToOwn") && fieldErrors.wantToOwn && (
+                  <span className="join-popup-field-error">{fieldErrors.wantToOwn}</span>
+                )}
               </div>
 
               <div className="join-popup-field">

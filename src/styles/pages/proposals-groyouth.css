@@ -1,0 +1,244 @@
+/* ── GROYOUTH PROPOSAL OVERRIDES ──────────────────────────────────────────────
+   Loaded after proposals-shared.css. Everything here is specific to this
+   document: a vertical timeline, a cream-native needs grid, balanced document
+   columns, and a close section that does not rely on the shared .lead colour
+   (which is charcoal, and therefore invisible on the dark close ground).
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* The open question in the funnel. The shared sheet colours funnel numerals by
+   nth-child position, so this needs to match that specificity to win. */
+.proposal-root .funnel-stage:nth-child(5) .funnel-num.gy-q { color: var(--orange); }
+
+/* Lead paragraph that works on a dark ground. */
+.proposal-root .gy-lead {
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(240, 230, 211, 0.6);
+  max-width: 620px;
+  margin: 0 0 8px;
+}
+
+/* ── Timeline: same construction as the Under the Hood landing page.
+   Hairline rules between steps, numbers in the left column, lavender titles. ── */
+.proposal-root .gy-timeline {
+  list-style: none;
+  margin: 44px 0 0;
+  padding: 0;
+}
+.proposal-root .gy-tl-item {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 24px;
+  padding: 28px 0;
+  border-top: 1px solid rgba(240, 230, 211, 0.1);
+}
+.proposal-root .gy-tl-item:last-child {
+  border-bottom: 1px solid rgba(240, 230, 211, 0.1);
+}
+
+.proposal-root .gy-tl-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--orange);
+}
+.proposal-root .gy-tl-item:last-child .gy-tl-num { color: var(--amber); }
+
+.proposal-root .gy-tl-when {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(240, 230, 211, 0.45);
+  margin-bottom: 8px;
+}
+.proposal-root .gy-tl-item:last-child .gy-tl-when { color: var(--amber); }
+
+.proposal-root .gy-tl-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--lavender);
+  line-height: 1.2;
+  margin: 0 0 10px;
+}
+.proposal-root .gy-tl-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(240, 230, 211, 0.6);
+  margin: 0;
+  max-width: 620px;
+}
+
+/* ── Needs grid: cream ground, hairlines instead of dark cards ── */
+.proposal-root .gy-needs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 56px;
+  margin-top: 48px;
+}
+.proposal-root .gy-need {
+  padding-top: 22px;
+  border-top: 2px solid rgba(18, 16, 15, 0.14);
+}
+.proposal-root .gy-need:nth-child(1) { border-top-color: var(--lavender); }
+.proposal-root .gy-need:nth-child(2) { border-top-color: var(--orange); }
+.proposal-root .gy-need-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(18, 16, 15, 0.45);
+  margin-bottom: 12px;
+}
+.proposal-root .gy-need h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--charcoal);
+  line-height: 1.25;
+  margin: 0 0 10px;
+}
+.proposal-root .gy-need p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: rgba(18, 16, 15, 0.62);
+  margin: 0;
+}
+
+/* ── Document columns: equal height, lighter item weight ── */
+.proposal-root .tech-columns { align-items: stretch; }
+.proposal-root .tech-col { height: 100%; }
+.proposal-root .tech-tool-name {
+  font-weight: 500;
+  font-size: 14.5px;
+}
+
+/* ── Close ── */
+.proposal-root .gy-close-head {
+  font-size: clamp(2rem, 4.2vw, 3.2rem);
+  line-height: 1.12;
+  margin-bottom: 20px;
+}
+.proposal-root .gy-close-lead {
+  font-size: 17px;
+  line-height: 1.75;
+  color: rgba(240, 230, 211, 0.6);
+  max-width: 620px;
+  margin: 0 0 40px;
+}
+.proposal-root .gy-close-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 760px;
+  margin-bottom: 52px;
+}
+.proposal-root .gy-close-step {
+  padding-top: 16px;
+  border-top: 1px solid rgba(240, 230, 211, 0.16);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1.5;
+}
+.proposal-root .gy-close-step span {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+
+@media (max-width: 860px) {
+  .proposal-root .gy-needs { grid-template-columns: 1fr; gap: 32px; }
+  .proposal-root .gy-close-steps { grid-template-columns: 1fr; gap: 16px; }
+  .proposal-root .gy-tl-item { grid-template-columns: 48px 1fr; gap: 16px; }
+}
+
+/* ── Quote attribution ── */
+.proposal-root .gy-attrib {
+  display: block;
+  margin: 14px 0 22px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(240, 230, 211, 0.45);
+}
+.proposal-root .gy-attrib::before {
+  content: '';
+  display: inline-block;
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+/* On the cream ground. */
+.proposal-root .gy-attrib--dark {
+  margin: 0 0 28px;
+  color: rgba(18, 16, 15, 0.5);
+}
+
+/* ── Expandable document packs ── */
+.proposal-root .gy-pack-toggle {
+  margin-top: 18px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--orange);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.proposal-root .gy-pack-toggle:hover { opacity: 0.72; }
+.proposal-root .gy-pack-extra { animation: gyFadeUp 0.25s ease both; }
+
+@keyframes gyFadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Cards size to their own content again now that they expand. */
+.proposal-root .tech-columns { align-items: start; }
+.proposal-root .tech-col { height: auto; }
+
+/* ── The questions this audit answers for them ── */
+.proposal-root .gy-questions {
+  list-style: none;
+  margin: 44px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px 52px;
+}
+.proposal-root .gy-question {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+.proposal-root .gy-question-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--lavender);
+}
+.proposal-root .gy-question p {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: rgba(240, 230, 211, 0.72);
+}
+
+@media (max-width: 860px) {
+  .proposal-root .gy-questions { grid-template-columns: 1fr; gap: 24px; }
+}

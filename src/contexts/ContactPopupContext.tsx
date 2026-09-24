@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 
-export type PopupMode = "booking" | "guide";
+export type PopupMode = "booking" | "guide" | "sample";
 
 interface ContactPopupContextType {
   isOpen: boolean;
